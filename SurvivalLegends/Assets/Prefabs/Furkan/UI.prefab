@@ -32,7 +32,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2357057280577714739}
-  - {fileID: 4824056376926532704}
+  - {fileID: 1291086158312831443}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &593069581335477063
+--- !u!1001 &6567268699480667892
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 5388974850603667239, guid: b51e73e4d45a99a49b255b3bd4cae00a,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5388974850603667239, guid: b51e73e4d45a99a49b255b3bd4cae00a,
         type: 3}
@@ -195,7 +195,7 @@ PrefabInstance:
     - target: {fileID: 5388974850603667239, guid: b51e73e4d45a99a49b255b3bd4cae00a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2160
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5388974850603667239, guid: b51e73e4d45a99a49b255b3bd4cae00a,
         type: 3}
@@ -222,21 +222,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AimStick
       objectReference: {fileID: 0}
-    - target: {fileID: 8435416358814664939, guid: b51e73e4d45a99a49b255b3bd4cae00a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b51e73e4d45a99a49b255b3bd4cae00a, type: 3}
---- !u!224 &4824056376926532704 stripped
+--- !u!224 &1291086158312831443 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5388974850603667239, guid: b51e73e4d45a99a49b255b3bd4cae00a,
     type: 3}
-  m_PrefabInstance: {fileID: 593069581335477063}
+  m_PrefabInstance: {fileID: 6567268699480667892}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7673165133374027028
 PrefabInstance:
@@ -351,6 +346,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7169621315447983105, guid: b51e73e4d45a99a49b255b3bd4cae00a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d00ad584047669458dff31e6af9c333,
+        type: 3}
     - target: {fileID: 8435416358814664939, guid: b51e73e4d45a99a49b255b3bd4cae00a,
         type: 3}
       propertyPath: m_Name
