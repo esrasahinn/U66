@@ -17,7 +17,7 @@ public class JoyStick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log($"O Drag Fired {eventData.position}"); //Ateþ atýmý.(etrafa dönme hareketi)
+        //Debug.Log($"O Drag Fired {eventData.position}"); //Ateþ atýmý.(etrafa dönme hareketi)
         Vector2 TouchPos = eventData.position;
         Vector2 centerPos = BackgroundTrans.position;
 
