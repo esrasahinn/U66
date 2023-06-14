@@ -55,7 +55,6 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             sonrakiAteþZamaný = Time.time + 1f / atesHizi; // Sonraki ateþ zamanýný günceller
         }
     }
-
     void HedefSec()
     {
         // Tüm düþmanlarý al
