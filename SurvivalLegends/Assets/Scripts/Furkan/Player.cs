@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     Animator animator;
 
     float animatorTurnSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +28,10 @@ public class Player : MonoBehaviour
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
     }
-    
+
     void aimStickUpdated(Vector2 inputValue)
     {
-        aimInput= inputValue;
+        aimInput = inputValue;
     }
 
     void moveStickUpdated(Vector2 inputValue)
@@ -54,6 +55,11 @@ public class Player : MonoBehaviour
 
     private void PerformMoveAndAim()
     {
+        // Hareket giriþini al
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        moveInput = new Vector2(horizontalInput, verticalInput);
+
         Vector3 MoveDir = StickInputToWorldDir(moveInput);
         characterController.Move(MoveDir * Time.deltaTime * moveSpeed);
 
@@ -78,10 +84,10 @@ public class Player : MonoBehaviour
 
     private void UpdateCamera()
     {
-        //oyuncu hareket ediyor ama niþan almýyor ve cameraController var
+        // Oyuncu hareket ediyor ama niþan almýyor ve cameraController var
         if (moveInput.magnitude != 0 && aimInput.magnitude == 0 && cameraController != null)
         {
-           cameraController.AddYawInput(moveInput.x);
+            cameraController.AddYawInput(moveInput.x);
         }
     }
 
@@ -99,11 +105,8 @@ public class Player : MonoBehaviour
             float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
             float rotationDelta = Quaternion.Angle(prevRot, currentRot) * Dir;
             currentTurnSpeed = rotationDelta / Time.deltaTime;
-
-            
         }
         animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
-
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
 }
