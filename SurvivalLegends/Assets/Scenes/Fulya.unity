@@ -562,6 +562,18 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &407614647 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 666060227191461929, guid: 89cdd6c91dc3b704488bf99e713289c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 175042273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9556df93b79043147a3b735e6b05cee4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &564120199 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5640341622558535386, guid: 89cdd6c91dc3b704488bf99e713289c1,
@@ -1471,33 +1483,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbar: {fileID: 1140321781}
---- !u!114 &1513789765
-MonoBehaviour:
+--- !u!95 &1513789767
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513789763}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6137ed3ffa4ebc54eb02ce7163a84a94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 1
-  lvlText: {fileID: 0}
-  expBarImage: {fileID: 997357607}
---- !u!114 &1513789766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513789763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f66c637c504384e9e027cbe09b3240, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 9000000, guid: 9f078227c6f09b54392514bfaa25c741, type: 3}
+  m_Controller: {fileID: 9100000, guid: ab87adb8183a8864aa651ffec437fccd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1718798531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1589,8 +1595,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1113756812850296048, guid: cdb1652ad49370749b3dfb4b6fe658e0,
         type: 3}
+      propertyPath: aimStick
+      value: 
+      objectReference: {fileID: 407614647}
+    - target: {fileID: 1113756812850296048, guid: cdb1652ad49370749b3dfb4b6fe658e0,
+        type: 3}
       propertyPath: moveSpeed
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1113756812850296048, guid: cdb1652ad49370749b3dfb4b6fe658e0,
         type: 3}
@@ -1687,11 +1698,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5341799375106778562, guid: cdb1652ad49370749b3dfb4b6fe658e0,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1513789765}
-    - targetCorrespondingSourceObject: {fileID: 5341799375106778562, guid: cdb1652ad49370749b3dfb4b6fe658e0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1513789766}
+      addedObject: {fileID: 1513789767}
   m_SourcePrefab: {fileID: 100100000, guid: cdb1652ad49370749b3dfb4b6fe658e0, type: 3}
 --- !u!114 &2000105479 stripped
 MonoBehaviour:
