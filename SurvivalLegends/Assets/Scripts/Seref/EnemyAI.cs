@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class NewBehaviourScript : MonoBehaviour
 
 {
+    UnitHealth unitHealth;
+
     private Animator animator;
     public NavMeshAgent enemy;
     public Transform player;
@@ -18,7 +20,6 @@ public class NewBehaviourScript : MonoBehaviour
     public bool inAttackRange;
 
     
-
     void Awake()
     {
         player = GameObject.Find("Player").transform;
