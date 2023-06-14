@@ -5,26 +5,18 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Transform followTrans;
-    [SerializeField] float TurnSpeed = 2f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] float turnSpeed = 2f;
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
-    }
-
-    private void LateUpdate()
-    {
-        transform.position = followTrans.position;
+        if (followTrans != null)
+        {
+            transform.position = followTrans.position;
+        }
     }
 
     public void AddYawInput(float amt)
     {
-        transform.Rotate(Vector3.up, amt * Time.deltaTime * TurnSpeed);
+        transform.Rotate(Vector3.up, amt * Time.deltaTime * turnSpeed);
     }
-}  
+}
