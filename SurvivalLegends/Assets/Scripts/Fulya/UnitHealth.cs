@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class UnitHealth
 {
 
     // Fields
-    int _currentHealth;
-    int _currentMaxHealth;
+    public int _currentHealth;
+    public int _currentMaxHealth;
     // Properties
 
     public int Health
@@ -59,6 +60,15 @@ public class UnitHealth
         if (_currentHealth > _currentMaxHealth)
         {
             _currentHealth = _currentMaxHealth;
+        }
+    }
+
+    public void Die()
+    { 
+        if (_currentHealth <= 0) 
+        {
+            //Destroy(GameObject);
+            //CoinDrop();
         }
     }
 }
