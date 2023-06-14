@@ -15,9 +15,9 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlayerTakeDmg(20);
-            Debug.Log(GameManager.gameManager._playerHealth.Health);
+            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
 
-            if (GameManager.gameManager._playerHealth.Health <= 0)
+            if (GameManager.gameManager._dusmanHealth.Health <= 0)
             {
                 Destroy(gameObject);
             }
@@ -26,19 +26,19 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             PlayerHeal(10);
-            Debug.Log(GameManager.gameManager._playerHealth.Health);
+            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
         }
     }
 
     private void PlayerTakeDmg(int dmg)
     {
-        GameManager.gameManager._playerHealth.DmgUnit(dmg);
-        _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
+        GameManager.gameManager._dusmanHealth.DmgUnit(dmg);
+        _healthbar.SetHealth(GameManager.gameManager._dusmanHealth.Health);
     }
 
     private void PlayerHeal(int healing)
     {
-        GameManager.gameManager._playerHealth.HealUnit(healing);
-        _healthbar.SetHealth(GameManager.gameManager._playerHealth.Health);
+        GameManager.gameManager._dusmanHealth.HealUnit(healing);
+        _healthbar.SetHealth(GameManager.gameManager._dusmanHealth.Health);
     }
 }
