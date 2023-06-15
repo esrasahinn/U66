@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     Camera mainCam;
     CameraController cameraController;
     Animator animator;
+  
 
     float animatorTurnSpeed;
 
@@ -109,4 +110,5 @@ public class Player : MonoBehaviour
         animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
+
 }

@@ -796,6 +796,11 @@ PrefabInstance:
       propertyPath: ThumbStickTrans
       value: 
       objectReference: {fileID: 1946667859}
+    - target: {fileID: 6556710975602891144, guid: 89cdd6c91dc3b704488bf99e713289c1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6846435136871203778, guid: 89cdd6c91dc3b704488bf99e713289c1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1708,18 +1713,13 @@ MonoBehaviour:
   menzilMesafesi: 10
   donmeHizi: 5
   atesHizi: 10
-  "ate\u015FEtmeMesafesi": 5
+  atesEtmeMesafesi: 5
   hedefeGitmeHizi: 5
   donmeBaslamaMesafesi: 3
   donmeBitisMesafesi: 7
   mermiOmru: 5
   mermiPrefab: {fileID: 0}
-  "ate\u015FNoktas\u0131": {fileID: 0}
-  "ozelYetenekAte\u015FNoktas\u0131": {fileID: 0}
-  ozelYetenekAraligi: 10
-  ozelYetenekAtesHizi: 5
-  ozelYetenekPrefab: {fileID: 0}
-  ozelYetenekButonu: {fileID: 0}
+  atesNoktasi: {fileID: 0}
 --- !u!114 &708806703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,6 +1887,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1128268024}
     m_Modifications:
+    - target: {fileID: 1174023742876560, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1317649772427120, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1344827926872286, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
       propertyPath: m_Name
       value: Character_Bandit_Male_01
@@ -1895,13 +1903,53 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1467666173833572, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471524635879920, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1497745435233898, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1557699243854062, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1629304300435744, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759538274638492, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1820434798659008, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942024939459900, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1948270388273162, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953783845051722, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1960394563534214, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1976863799551242, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4713775797608474, guid: 1007a253e12b0a040ac2601c4464f7c2, type: 3}
       propertyPath: m_RootOrder
@@ -2487,23 +2535,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad58ff43d93633a49b7537a3b2b2310d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menzilMesafesi: 10
+  menzilMesafesi: 15
   donmeHizi: 100
-  atesHizi: 10
-  "ate\u015FEtmeMesafesi": 10
-  hedefeGitmeHizi: 10
-  donmeBaslamaMesafesi: 10
-  donmeBitisMesafesi: 10
+  atesHizi: 20
+  atesEtmeMesafesi: 15
+  hedefeGitmeHizi: 20
+  donmeBaslamaMesafesi: 15
+  donmeBitisMesafesi: 15
   mermiOmru: 1
   mermiPrefab: {fileID: 5341742223406746680, guid: 9c3cddd6060b7cc4eadfb9cefcf6e7db,
     type: 3}
-  "ate\u015FNoktas\u0131": {fileID: 920970826}
-  "ozelYetenekAte\u015FNoktas\u0131": {fileID: 920970826}
-  ozelYetenekAraligi: 10
-  ozelYetenekAtesHizi: 5
-  ozelYetenekPrefab: {fileID: 3575611928538805115, guid: 745a87995944ab94caa447ec2061dbc4,
-    type: 3}
-  ozelYetenekButonu: {fileID: 1827557848}
+  atesNoktasi: {fileID: 920970826}
 --- !u!95 &1128268021
 Animator:
   serializedVersion: 5
@@ -3365,18 +3407,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9556df93b79043147a3b735e6b05cee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1827557848 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6846435136871203778, guid: 89cdd6c91dc3b704488bf99e713289c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 175042273}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1843729199
