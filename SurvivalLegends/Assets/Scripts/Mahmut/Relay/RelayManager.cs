@@ -1,13 +1,17 @@
-using System.Collections;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using TMPro;
+using UnityEngine;
+using UnityEngine.Networking;
+
+using Unity.Netcode;
+using Unity.Netcode.Transports.UTP;
 using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using Unity.Services.Authentication;
-using UnityEngine;
-using TMPro;
-
 public class RelayManager : MonoBehaviour
 {
     private string PlayerID;
@@ -18,6 +22,7 @@ public class RelayManager : MonoBehaviour
     public TextMeshProUGUI joinCodeText;
     public TextMeshProUGUI connected;
 
+    private NetworkManager NetworkManager;
 
     public TMP_Dropdown playerCount;
 
@@ -58,14 +63,16 @@ public class RelayManager : MonoBehaviour
             ConnectionData = allocation.ConnectionData,
             Key = allocation.Key
         };
-         
-     
+
+
         _hostData.JoinCode = await RelayService.Instance.GetJoinCodeAsync(_hostData.AllocationID);
         joinCodeText.text = _hostData.JoinCode;
         Debug.Log("Allocated Complate" + _hostData.AllocationID);
         Debug.LogWarning("JoinCode " + _hostData.JoinCode);
 
-
+        UnityTransport transport = NetworkManager.Singleton.gameObject.GetComponent<UnityTransport>();
+        transport.SetRelayServerData(_hostData.IPv4Address, _hostData.Port, _hostData.AllocationIDBytes, _hostData.Key, _hostData.ConnectionData);
+        NetworkManager.Singleton.StartHost();
     }
 
     public async void OnJoinClick()
@@ -73,8 +80,8 @@ public class RelayManager : MonoBehaviour
 
         try
         {
-            
-            Debug.Log("Join Code: " + joinInputField.text);
+
+            // Debug.Log("Join Code: " + joinInputField.text);
             string joinCode = joinInputField.text;
             JoinAllocation allocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
 
@@ -88,16 +95,19 @@ public class RelayManager : MonoBehaviour
                 HostConnectionData = allocation.HostConnectionData,
                 Key = allocation.Key
             };
-         
+
             Debug.Log("Join Success: " + _joinData.AllocationID);
-             connected.text = "Connected";
+            connected.text = "Connected";
+            UnityTransport transport = NetworkManager.Singleton.gameObject.GetComponent<UnityTransport>();
+            transport.SetRelayServerData(_joinData.IPv4Address, _joinData.Port, _joinData.AllocationIDBytes, _joinData.Key, _joinData.ConnectionData, _joinData.HostConnectionData);
+            NetworkManager.Singleton.StartClient();
         }
         catch (Exception ex)
         {
             Debug.Log("Bir Hata Oluştu");
             Debug.LogError(ex);
-          connected.text = "NotConnect";
-       
+            connected.text = "NotConnect";
+
         }
 
     }
