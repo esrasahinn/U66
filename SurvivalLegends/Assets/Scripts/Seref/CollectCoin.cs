@@ -4,26 +4,15 @@ using UnityEngine;
 
 public class CollectCoin : MonoBehaviour
 {
-    public int coinAmount;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int coinAmount = 0;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.tag == "Coin")
+        if (other.CompareTag("Coin"))
         {
             coinAmount++;
-            Debug.Log(coinAmount);
-            Destroy(other);
+            Debug.Log(coinAmount + "coins.");
+            Destroy(other.gameObject);
+            //other.gameObject.SetActive(false);
         }
     }
-}
+} 

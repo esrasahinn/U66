@@ -16,12 +16,11 @@ public class dusmansu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PlayerTakeDmg(30);
+            PlayerTakeDmg(100);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
 
             if (GameManager.gameManager._playerHealth.Health <= 0)
-            {
-                
+            {                
                 Destroy(gameObject);
                 coinScript.CoinDrop();
             }

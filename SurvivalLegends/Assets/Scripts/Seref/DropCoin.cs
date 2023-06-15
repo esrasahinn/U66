@@ -5,35 +5,29 @@ using UnityEngine;
 public class DropCoin : MonoBehaviour
 {
     public GameObject collectiblePrefab;
+    public int minCollectibles;
+    public int maxCollectibles;
     public float minSplashForce;
     public float maxSplashForce;
+    public float verticalForceMultiplier = 2f;
     public float splashRadius;
+    //Animator animator;
+
 
     public void CoinDrop()
     {
-        int coinDropAmount = Random.Range(3,4);
+        int numCollectibles = Random.Range(minCollectibles, maxCollectibles + 1);
 
-        for (int i = 0; i < coinDropAmount; i++)
+        for (int i = 0; i < numCollectibles; i++)
         {
-            GameObject collectible = Instantiate(collectiblePrefab, transform.position + Random.insideUnitSphere * splashRadius, Quaternion.identity);
-
+            GameObject collectible = Instantiate(collectiblePrefab, transform.position, Quaternion.identity);
             Rigidbody rb = collectible.GetComponent<Rigidbody>();
 
+            // Apply splash force
             float splashForce = Random.Range(minSplashForce, maxSplashForce);
-            Vector3 splashDirection = Random.onUnitSphere.normalized;
+            Vector3 splashDirection = new Vector3(Random.Range(-1f, 1f), verticalForceMultiplier, Random.Range(-1f, 1f)).normalized;
             Vector3 forceVector = splashDirection * splashForce;
             rb.AddForce(forceVector, ForceMode.Impulse);
-
-            //StartCoroutine(StartAnimation());
         }
-
-
     }
-
-    IEnumerator StartAnimation()
-    {
-        yield return new WaitForSeconds(2f); 
-        GetComponent<Animator>().Play("CoinAnimation"); 
-    }
-
 }
