@@ -5,21 +5,25 @@ using UnityEngine;
 public class dusmansu : MonoBehaviour
 {
     [SerializeField] Healthbar _healthbar;
+    DropCoin coinScript;
 
     void Start()
     {
+        coinScript = gameObject.GetComponent<DropCoin>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PlayerTakeDmg(20);
+            PlayerTakeDmg(30);
             Debug.Log(GameManager.gameManager._playerHealth.Health);
 
             if (GameManager.gameManager._playerHealth.Health <= 0)
             {
+                
                 Destroy(gameObject);
+                coinScript.CoinDrop();
             }
         }
 
