@@ -1,24 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 {
-    public float menzilMesafesi = 10f; // Ateþin menzil mesafesi
-    public float donmeHizi = 5f; // Dönme hýzý
-    public float atesHizi = 10f; // Ateþ hýzý (saniyede ateþ sayýsý)
-    public float ateþEtmeMesafesi = 5f; // Ateþ etme mesafesi
-    public float hedefeGitmeHizi = 5f; // Merminin hedefe gitme hýzý
-    public float donmeBaslamaMesafesi = 3f; // Dönme mesafesi baþlangýcý
-    public float donmeBitisMesafesi = 7f; // Dönme mesafesi bitiþi
-    public float mermiOmru = 5f; // Mermi ömrü (saniye)
+    [SerializeField] float menzilMesafesi = 10f; // Ateþin menzil mesafesi
+    [SerializeField] float donmeHizi = 5f; // Dönme hýzý
+    [SerializeField] float atesHizi = 10f; // Ateþ hýzý (saniyede ateþ sayýsý)
+    [SerializeField] float maxAtesHizi = 80f; //özel yetenek.
+    [SerializeField] float minAtesHizi = 1f; //özel yetenek.
+    [SerializeField] float atesEtmeMesafesi = 5f; // Ateþ etme mesafesi
+    [SerializeField] float hedefeGitmeHizi = 5f; // Merminin hedefe gitme hýzý
+    [SerializeField] float donmeBaslamaMesafesi = 3f; // Dönme mesafesi baþlangýcý
+    [SerializeField] float donmeBitisMesafesi = 7f; // Dönme mesafesi bitiþi
+    [SerializeField] float mermiOmru = 5f; // Mermi ömrü (saniye)
     public GameObject mermiPrefab; // Merminin prefabý
-    public Transform ateþNoktasý; // Ateþin baþlayacaðý nokta
+    public Transform atesNoktasi; // Ateþin baþlayacaðý nokta
 
     private GameObject hedef; // Menzile giren düþman hedefi
     private bool dusmanaDonuyor = false; // Düþmana dönme durumu
     private bool menzilde = false; // Menzile girdi durumu
-    private float sonrakiAteþZamaný = 0f; // Sonraki ateþ zamanýný takip etmek için kullanýlýr
+    private float sonrakiAtesZamani = 0f; // Sonraki ateþ zamanýný takip etmek için kullanýlýr
+
+    internal void AddAtesHizi(float boostAmt)
+    {
+        atesHizi += boostAmt;
+        atesHizi = Mathf.Clamp(atesHizi, minAtesHizi, maxAtesHizi);
+    }
 
     private void Update()
     {
@@ -47,14 +56,15 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         }
 
         // Hedef seçildiyse, ateþ etme mesafesine geldiyse ve ateþ zamaný geldiyse ateþ et
-        if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= ateþEtmeMesafesi && Time.time >= sonrakiAteþZamaný)
+        if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= atesEtmeMesafesi && Time.time >= sonrakiAtesZamani)
         {
             AtesEt(); // Ateþ etme fonksiyonunu çaðýrýr
             dusmanaDonuyor = true; // Düþmana dönme durumunu etkinleþtir
 
-            sonrakiAteþZamaný = Time.time + 1f / atesHizi; // Sonraki ateþ zamanýný günceller
+            sonrakiAtesZamani = Time.time + 1f / atesHizi; // Sonraki ateþ zamanýný günceller
         }
     }
+
     void HedefSec()
     {
         // Tüm düþmanlarý al
@@ -89,11 +99,13 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 
     void AtesEt()
     {
-        GameObject mermi = Instantiate(mermiPrefab, ateþNoktasý.position, ateþNoktasý.rotation);
+        GameObject mermi = Instantiate(mermiPrefab, atesNoktasi.position, atesNoktasi.rotation);
         Mermi mermiScript = mermi.GetComponent<Mermi>(); // Mermi scriptini al
         mermiScript.HedefBelirle(hedef.transform); // Mermi scriptindeki HedefBelirle fonksiyonunu çaðýr
-       // mermiScript.HizAyarla(hedefeGitmeHizi); // Mermi hýzýný ayarla
+        //mermiScript.HizAyarla(hedefeGitmeHizi); // Mermi hýzýný ayarla
 
         Destroy(mermi, mermiOmru); // Mermi objesini belirli bir süre sonra yok et
     }
+
+   
 }

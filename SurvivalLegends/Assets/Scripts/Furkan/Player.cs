@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] JoyStick moveStick;
-    [SerializeField] JoyStick aimStick;
+    //[SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 20f;
     [SerializeField] float turnSpeed = 30f;
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     Camera mainCam;
     CameraController cameraController;
     Animator animator;
+  
 
     float animatorTurnSpeed;
 
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         moveStick.onStickValueUpdated += moveStickUpdated;
-        aimStick.onStickValueUpdated += aimStickUpdated;
+        //aimStick.onStickValueUpdated += aimStickUpdated;
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
@@ -109,4 +110,5 @@ public class Player : MonoBehaviour
         animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
+
 }
