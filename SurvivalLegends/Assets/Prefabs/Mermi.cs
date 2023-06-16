@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mermi : MonoBehaviour
 {
     private Transform hedef; // Mermi hedefi
-    public float HizAyarla = 10f; // Mermi hýzý
+    [SerializeField] float HizAyarla = 10f; // Mermi hýzý
 
     public void HedefBelirle(Transform hedefTransform)
     {
