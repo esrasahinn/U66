@@ -23,7 +23,6 @@ public class DropCoin : MonoBehaviour
             GameObject collectible = Instantiate(collectiblePrefab, transform.position, Quaternion.identity);
             Rigidbody rb = collectible.GetComponent<Rigidbody>();
 
-            // Apply splash force
             float splashForce = Random.Range(minSplashForce, maxSplashForce);
             Vector3 splashDirection = new Vector3(Random.Range(-1f, 1f), verticalForceMultiplier, Random.Range(-1f, 1f)).normalized;
             Vector3 forceVector = splashDirection * splashForce;
