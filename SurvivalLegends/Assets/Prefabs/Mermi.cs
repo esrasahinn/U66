@@ -16,7 +16,7 @@ public class Mermi : MonoBehaviour
     {
         if (hedef == null)
         {
-            Destroy(gameObject); // Hedef yoksa mermiyi yok et
+            Destroy(gameObject); // mermiyi yok et
             return;
         }
 

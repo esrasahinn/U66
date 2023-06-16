@@ -16,7 +16,6 @@ public class LookAtObject : MonoBehaviour
 
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(transform.position -
-            _object.transform.position);
+        transform.rotation = Quaternion.LookRotation(transform.position - _object.transform.position);
     }
 }
