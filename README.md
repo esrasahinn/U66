@@ -75,7 +75,6 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 ![Backlog 3](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/Ekran görüntüsü 2023-06-16 210303.png) 
 ![Backlog 4](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/Ekran görüntüsü 2023-06-16 210325.png) 
 ![Backlog 5](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/gdd.png) 
-SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/karakterlerdemo.png
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
