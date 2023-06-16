@@ -70,15 +70,17 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 
 - **Sprint board update**: Sprint board screenshotları: 
 -
-![Backlog 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/Ekran görüntüsü 2023-06-16 210205.png) 
-![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/Ekran görüntüsü 2023-06-16 210238.png) 
-![Backlog 3](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/Ekran görüntüsü 2023-06-16 210303.png) 
-![Backlog 4](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/Ekran görüntüsü 2023-06-16 210325.png) 
+![Backlog 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/1.png) 
+![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/2.png) 
+![Backlog 3](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/3.png) 
+![Backlog 4](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/4.png) 
 ![Backlog 5](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/gdd.png) 
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
+  
   ![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/karakterlerdemo.png)
+
   
 - **Sprint Review**: 
  Alınan kararlar: Oyun için görevler gözden geçirilmiş, Kullanıcı kontrolleri ve multiplayer kontrol edilmiştir. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
