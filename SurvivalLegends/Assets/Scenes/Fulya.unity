@@ -3161,8 +3161,10 @@ GameObject:
   - component: {fileID: 1479144078}
   - component: {fileID: 1479144077}
   - component: {fileID: 1479144076}
+  - component: {fileID: 1479144084}
   - component: {fileID: 1479144081}
   - component: {fileID: 1479144082}
+  - component: {fileID: 1479144083}
   m_Layer: 0
   m_Name: Dusman (1)
   m_TagString: Dusman
@@ -3317,6 +3319,55 @@ MonoBehaviour:
   maxSplashForce: 8
   verticalForceMultiplier: 2
   splashRadius: 0.1
+--- !u!114 &1479144083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479144075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87c56ca8a5f94d4c81138ce1cc5f215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1479144084}
+  player: {fileID: 1627355985}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  projectile: {fileID: 8340486057547913488, guid: 85e87fdc4c3cdbe48b14294e1be98d47,
+    type: 3}
+  projectileSpeed: 10
+  attackCooldown: 0
+  alreadyAttacked: 0
+  attackRange: 10
+  inAttackRange: 0
+--- !u!195 &1479144084
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479144075}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1513789763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5341799375106778562, guid: cdb1652ad49370749b3dfb4b6fe658e0,
