@@ -89,8 +89,8 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 
 
 - **Sprint Retrospective:**
-Takım üyeleri, süreci ve iş akışını nasıl geliştirebileceklerini tartışabilirler. 
-Takım, sprint boyunca verimliliği artırmak için kullanabilecekleri araçlar veya teknikler hakkında konuşuldu
+Takım üyeleri ile süreci ve iş akışını nasıl geliştirebilecekleri hakkında toplantılar yapıldı.
+Takımca sprint boyunca verimliliği artırmak için kullanabilecekleri araçlar veya teknikler hakkında konuşuldu.
 Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte toplantılar yapıldı.
 
  
@@ -100,7 +100,8 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 
 ## Product Backlog URL
 
-
+![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/burndown1.png)
+![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/diagram.png)
 
 
 ---
