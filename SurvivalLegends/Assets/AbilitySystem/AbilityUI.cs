@@ -50,7 +50,7 @@ public class AbilityUI : MonoBehaviour
         bIsOnCooldown = true;
         CooldownCounter = ability.GetCooldownDuration();
         float cooldownDuration = CooldownCounter;
-
+        CooldownWheel.enabled = true;
         while (CooldownCounter > 0)
         {
             CooldownCounter -= Time.deltaTime;
