@@ -3,62 +3,62 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NewBehaviourScript : MonoBehaviour
-
+public class EnemyAI : MonoBehaviour
 {
-    UnitHealth unitHealth;
-
-    private Animator animator;
-    public NavMeshAgent enemy;
+    [SerializeField] Transform launchPoint;
+    private NavMeshAgent enemy;
     public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
-    public GameObject projectile;
+    public LayerMask whatIsPlayer;
+    public GameObject projectilePrefab;
     public float projectileSpeed = 10.0f;
     public float attackCooldown;
-    public bool alreadyAttacked;
+    private bool alreadyAttacked;
     public float attackRange = 10.0f;
-    public bool inAttackRange;
+    private bool inAttackRange;
 
-    
     void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-    }
-
-    void Start()
-    {
-        
     }
 
     void Update()
     {
-        inAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        inAttackRange = distanceToPlayer <= attackRange;
 
-        if (inAttackRange) { AttackPlayer(); }
-        if (!inAttackRange) { ChasePlayer(); }
+        if (inAttackRange)
+        {
+            AttackPlayer();
+        }
+        else
+        {
+            ChasePlayer();
+        }
     }
 
     void ChasePlayer()
     {
         enemy.SetDestination(player.position);
-        animator.SetFloat("Speed", 1);
     }
 
     void AttackPlayer()
     {
-        enemy.SetDestination(transform.position);
-        animator.SetFloat("Speed", 0);
-        animator.SetBool("AttackRange", true);
-        transform.LookAt(player);
+        enemy.SetDestination(transform.position); 
 
         if (!alreadyAttacked)
         {
-            Rigidbody projectileRb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            projectileRb.AddForce(transform.forward * projectileSpeed, ForceMode.Impulse);
+            GameObject projectile = Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
+
+            Vector3 direction = (player.position - transform.position).normalized;
+
+            Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+            projectileRb.velocity = direction * projectileSpeed;
+
+            ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
+            projectileController.Initialize(transform.position);
+
             alreadyAttacked = true;
-            animator.SetBool("InAttackCD", true);
             Invoke(nameof(ResetAttack), attackCooldown);
         }
     }
@@ -66,6 +66,5 @@ public class NewBehaviourScript : MonoBehaviour
     void ResetAttack()
     {
         alreadyAttacked = false;
-        animator.SetBool("InAttackCD", false);
     }
 }
