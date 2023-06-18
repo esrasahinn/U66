@@ -6,7 +6,7 @@ public class Mermi : MonoBehaviour
 {
     private Transform hedef;
     private float hiz;
-    //private float damage;
+    [SerializeField] float hasar = 5f;
 
     public void HedefBelirle(Transform hedef)
     {
@@ -18,10 +18,10 @@ public class Mermi : MonoBehaviour
         this.hiz = hiz;
     }
 
-  // public void SetDamage(float damage)
-  // {
-  //     this.damage = damage;
-  // }
+    public void HasarAyarla(float hasar)
+    {
+        this.hasar = hasar;
+    }
 
     private void Update()
     {
@@ -45,16 +45,17 @@ public class Mermi : MonoBehaviour
 
     private void HedefiVur()
     {
-        // Burada hedefe hasar uygulama veya baþka bir iþlem yapabilirsiniz
+        Collider[] hedefColliders = Physics.OverlapSphere(transform.position, 1f);
+
+        foreach (Collider collider in hedefColliders)
+        {
+            Dusman dusman = collider.GetComponent<Dusman>();
+            if (dusman != null)
+            {
+                dusman.HasarAl((int)hasar);
+            }
+        }
+
         Destroy(gameObject);
     }
-
-    //public void DamageGameObject(GameObject objToDamage, float amt)
-    //{
-    //    HealthComponent healthComp = objToDamage.GetComponent<HealthComponent>();
-    //    if (healthComp != null)
-    //    {
-    //        healthComp.changeHealth(-amt);
-    //    }
-    //}
 }
