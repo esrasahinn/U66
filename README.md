@@ -70,14 +70,13 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 
 - **Sprint board update**: Sprint board screenshotları: 
 -
-![Backlog 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/1.png) 
-![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/2.png) 
-![Backlog 3](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/3.png) 
-![Backlog 4](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/4.png) 
+![Backlog 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/b588648c-0752-4d3d-ab37-07cee4c67a4c 1.jpg) 
+![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/sprintgorevler.png) 
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
-- 
+
+  ![Backlog 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/1.jpg) 
   ![Backlog 5](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/gdd.png) 
   ![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/karakterlerdemo.png)
   ![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/gif1.gif)
@@ -100,7 +99,7 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 
 ## Product Backlog URL
 
-![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/burndown1.png)
+![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/burndown.png)
 ![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/diagram.png)
 
 
