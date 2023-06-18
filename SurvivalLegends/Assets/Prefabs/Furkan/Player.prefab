@@ -47,8 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveStick: {fileID: 0}
+  aimStick: {fileID: 0}
   characterController: {fileID: 220703303333321597}
   moveSpeed: 20
+  turnSpeed: 30
+  animTurnSpeed: 30
 --- !u!143 &220703303333321597
 CharacterController:
   m_ObjectHideFlags: 0
@@ -298,6 +301,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: e2b9f02208e7ced4993a393d1534bffc, type: 3}
 --- !u!4 &4201499259596679174 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400052, guid: e2b9f02208e7ced4993a393d1534bffc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 400052, guid: e2b9f02208e7ced4993a393d1534bffc,
+    type: 3}
   m_PrefabInstance: {fileID: 4201499259596812978}
   m_PrefabAsset: {fileID: 0}
