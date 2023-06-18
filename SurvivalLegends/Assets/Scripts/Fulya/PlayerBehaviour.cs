@@ -5,6 +5,21 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] Healthbar _healthbar;
+    private int _health = 100; // Karakterin can deðeri
+    private static PlayerBehaviour _instance;
+
+    public static PlayerBehaviour GetInstance()
+    {
+        return _instance;
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+    }
 
     void Start()
     {
@@ -42,8 +57,13 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void PlayerTakeDmg(int dmg)
     {
-        GameManager.gameManager._dusmanHealth.DmgUnit(dmg);
-        _healthbar.SetHealth(GameManager.gameManager._dusmanHealth.Health);
+        _health -= dmg;
+        _healthbar.SetHealth(_health);
+
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void PlayerHeal(int healing)

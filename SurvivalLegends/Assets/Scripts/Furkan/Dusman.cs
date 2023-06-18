@@ -12,6 +12,7 @@ public class Dusman : MonoBehaviour
     public Transform atisNoktasi; // Mermilerin çýkacaðý atýþ noktasý
     public GameObject mermiPrefab; // Mermi prefabi
     public int mermiHasari = 10; // Mermi hasarý
+    private PlayerBehaviour _playerBehaviour;
 
     private GameObject hedef;
     private bool takipEdiyor = false;
@@ -25,8 +26,14 @@ public class Dusman : MonoBehaviour
 
         if (canBariSlider != null)
         {
-            canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
-            canBariSlider.value = can; // Can çubuðunun deðerini ayarla
+            canBariSlider.maxValue = maxCan;
+            canBariSlider.value = can;
+        }
+
+        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+        if (playerObject != null)
+        {
+            _playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
         }
     }
 
@@ -64,12 +71,16 @@ public class Dusman : MonoBehaviour
 
         if (canBariSlider != null)
         {
-            canBariSlider.value = can; // Can çubuðunun deðerini güncelle
+            canBariSlider.value = can;
         }
 
         if (can <= 0)
         {
             Olum();
+        }
+        else if (_playerBehaviour != null)
+        {
+            _playerBehaviour.PlayerTakeDmg(hasar);
         }
     }
 
@@ -97,14 +108,21 @@ public class Dusman : MonoBehaviour
     {
         if (atisNoktasi != null && mermiPrefab != null)
         {
-            // Mermiyi oluþtur
             GameObject mermi = Instantiate(mermiPrefab, atisNoktasi.position, atisNoktasi.rotation);
-
-            // Oluþturulan mermiye MermiBilgisi bileþenini ekle
             DusmanMermi dusmanMermi = mermi.GetComponent<DusmanMermi>();
             if (dusmanMermi != null)
             {
-                dusmanMermi.Ayarla(mermiHasari, hedef.transform); // Mermi hasarýný ayarla ve hedefi iletilir
+                dusmanMermi.Ayarla(mermiHasari, hedef.transform);
+
+                GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
+                if (playerObject != null)
+                {
+                    PlayerBehaviour playerBehaviour = playerObject.GetComponent<PlayerBehaviour>();
+                    if (playerBehaviour != null)
+                    {
+                        playerBehaviour.PlayerTakeDmg(mermiHasari);
+                    }
+                }
             }
         }
     }
