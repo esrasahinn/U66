@@ -1,27 +1,27 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 {
-    [SerializeField] float menzilMesafesi = 10f; // Ateþin menzil mesafesi
-    [SerializeField] float donmeHizi = 5f; // Dönme hýzý
-    [SerializeField] float atesHizi = 10f; // Ateþ hýzý (saniyede ateþ sayýsý)
-    [SerializeField] float maxAtesHizi = 80f; //özel yetenek.
-    [SerializeField] float minAtesHizi = 1f; //özel yetenek.
-    [SerializeField] float atesEtmeMesafesi = 5f; // Ateþ etme mesafesi
-    [SerializeField] float hedefeGitmeHizi = 5f; // Merminin hedefe gitme hýzý
-    [SerializeField] float donmeBaslamaMesafesi = 3f; // Dönme mesafesi baþlangýcý
-    [SerializeField] float donmeBitisMesafesi = 7f; // Dönme mesafesi bitiþi
-    [SerializeField] float mermiOmru = 5f; // Mermi ömrü (saniye)
-    public GameObject mermiPrefab; // Merminin prefabý
-    public Transform atesNoktasi; // Ateþin baþlayacaðý nokta
+    [SerializeField] float menzilMesafesi = 10f;
+    [SerializeField] float donmeHizi = 5f;
+    [SerializeField] float atesHizi = 10f;
+    [SerializeField] float maxAtesHizi = 80f;
+    [SerializeField] float minAtesHizi = 1f;
+    [SerializeField] float atesEtmeMesafesi = 5f;
+    [SerializeField] float hedefeGitmeHizi = 5f;
+    [SerializeField] float donmeBaslamaMesafesi = 3f;
+    [SerializeField] float donmeBitisMesafesi = 7f;
+    [SerializeField] float mermiOmru = 5f;
+    //[SerializeField] float mermiDamage = 5f;
+    public GameObject mermiPrefab;
+    public Transform atesNoktasi;
 
-    private GameObject hedef; // Menzile giren düþman hedefi
-    private bool dusmanaDonuyor = false; // Düþmana dönme durumu
-    private bool menzilde = false; // Menzile girdi durumu
-    private float sonrakiAtesZamani = 0f; // Sonraki ateþ zamanýný takip etmek için kullanýlýr
+    private GameObject hedef;
+    private bool dusmanaDonuyor = false;
+    private bool menzilde = false;
+    private float sonrakiAtesZamani = 0f;
 
     internal void AddAtesHizi(float boostAmt)
     {
@@ -31,46 +31,41 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 
     private void Update()
     {
-        // Hedef yoksa veya hedef menzil dýþýndaysa, yeni bir hedef seç
         if (hedef == null || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
         {
             HedefSec();
-            dusmanaDonuyor = false; // Düþmana dönme durumunu sýfýrla
-            menzilde = false; // Menzile girdi durumunu sýfýrla
+            dusmanaDonuyor = false;
+            menzilde = false;
         }
 
-        // Hedef seçildiyse ve düþmana dönme mesafesine geldiyse düþmana doðru dön
         if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi)
         {
             if (!menzilde && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBaslamaMesafesi)
             {
-                dusmanaDonuyor = true; // Düþmana dönme durumunu etkinleþtir
-                menzilde = true; // Menzile girdi durumunu etkinleþtir
+                dusmanaDonuyor = true;
+                menzilde = true;
             }
             DusmanaDon();
         }
         else
         {
-            dusmanaDonuyor = false; // Dönme durumunu sýfýrla
-            menzilde = false; // Menzilden çýktý durumunu sýfýrla
+            dusmanaDonuyor = false;
+            menzilde = false;
         }
 
-        // Hedef seçildiyse, ateþ etme mesafesine geldiyse ve ateþ zamaný geldiyse ateþ et
         if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= atesEtmeMesafesi && Time.time >= sonrakiAtesZamani)
         {
-            AtesEt(); // Ateþ etme fonksiyonunu çaðýrýr
-            dusmanaDonuyor = true; // Düþmana dönme durumunu etkinleþtir
+            AtesEt();
+            dusmanaDonuyor = true;
 
-            sonrakiAtesZamani = Time.time + 1f / atesHizi; // Sonraki ateþ zamanýný günceller
+            sonrakiAtesZamani = Time.time + 1f / atesHizi;
         }
     }
 
-    void HedefSec()
+    public void HedefSec()
     {
-        // Tüm düþmanlarý al
         GameObject[] dusmanlar = GameObject.FindGameObjectsWithTag("Dusman");
 
-        // En yakýn düþmaný bul ve hedef olarak seç
         float enYakinMesafe = Mathf.Infinity;
         GameObject enYakinDusman = null;
 
@@ -85,14 +80,13 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             }
         }
 
-        // Hedefi güncelle
         hedef = enYakinDusman;
     }
 
     void DusmanaDon()
     {
         Vector3 hedefYonu = hedef.transform.position - transform.position;
-        hedefYonu.y = 0f; // Y ekseni üzerinde dönmemek için sýfýrla
+        hedefYonu.y = 0f;
         Quaternion hedefRotasyonu = Quaternion.LookRotation(hedefYonu);
         transform.rotation = Quaternion.Slerp(transform.rotation, hedefRotasyonu, donmeHizi * Time.deltaTime);
     }
@@ -100,12 +94,26 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     void AtesEt()
     {
         GameObject mermi = Instantiate(mermiPrefab, atesNoktasi.position, atesNoktasi.rotation);
-        Mermi mermiScript = mermi.GetComponent<Mermi>(); // Mermi scriptini al
-        mermiScript.HedefBelirle(hedef.transform); // Mermi scriptindeki HedefBelirle fonksiyonunu çaðýr
-        //mermiScript.HizAyarla(hedefeGitmeHizi); // Mermi hýzýný ayarla
+        Mermi mermiScript = mermi.GetComponent<Mermi>();
+        mermiScript.HedefBelirle(hedef.transform);
+        mermiScript.HizAyarla(hedefeGitmeHizi);
+        //mermiScript.SetDamage(mermiDamage);
 
-        Destroy(mermi, mermiOmru); // Mermi objesini belirli bir süre sonra yok et
+        RaycastHit hit;
+        if (Physics.Raycast(atesNoktasi.position, atesNoktasi.forward, out hit, atesEtmeMesafesi))
+        {
+            // Raycast iþaretlemeyle ilgili iþlemler burada gerçekleþtirilebilir
+            Debug.DrawRay(atesNoktasi.position, atesNoktasi.forward * hit.distance, Color.red);
+            // Ýsabet alan hedef ile ilgili iþlemler burada gerçekleþtirilebilir
+            // Örneðin, hit.collider.gameObject kullanýlarak hedefe etki edebilirsiniz
+        }
+        else
+        {
+            Debug.DrawRay(atesNoktasi.position, atesNoktasi.forward * atesEtmeMesafesi, Color.green);
+        }
+
+        Destroy(mermi, mermiOmru);
+
+        //Debug.Log("Düþmana verilen hasar: " + mermiDamage);
     }
-
-   
 }

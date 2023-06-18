@@ -5,11 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] JoyStick moveStick;
-    //[SerializeField] JoyStick aimStick;
+    [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 20f;
     [SerializeField] float turnSpeed = 30f;
     [SerializeField] float animTurnSpeed = 30f;
+
+    [Header("Inventory")]
+    [SerializeField] InventoryComponent inventoryComponent;
+    
     Vector2 moveInput;
     Vector2 aimInput;
 
@@ -24,10 +28,15 @@ public class Player : MonoBehaviour
     void Start()
     {
         moveStick.onStickValueUpdated += moveStickUpdated;
-        //aimStick.onStickValueUpdated += aimStickUpdated;
+        aimStick.onStickValueUpdated += aimStickUpdated;
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
+    }
+
+    public void AttackPoint()
+    {
+        inventoryComponent.GetActiveWeapon().Attack();
     }
 
     void aimStickUpdated(Vector2 inputValue)

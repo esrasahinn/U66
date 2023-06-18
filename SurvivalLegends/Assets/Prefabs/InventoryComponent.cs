@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,9 @@ public class InventoryComponent : MonoBehaviour
 
     [SerializeField] Transform defaultWeaponSlot;
     [SerializeField] Transform[] weaponSlots;
+
+    List<Weapon> weapons;
+    int currentWeaponIndex = -1;
 
     private void Start()
     {
@@ -29,5 +33,10 @@ public class InventoryComponent : MonoBehaviour
             }
             Weapon newWeapon = Instantiate(weapon, weaponSlot);
         }
+    }
+
+    internal Weapon GetActiveWeapon()
+    {
+        return weapons[currentWeaponIndex];
     }
 }
