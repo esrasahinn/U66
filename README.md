@@ -15,7 +15,7 @@ Takım Unity 66
 
 ## Ürün İsmi
 
-Belirlenmedi
+Survival Legends
 
 ## Product Backlog URL
 
