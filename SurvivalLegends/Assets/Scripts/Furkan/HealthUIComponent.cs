@@ -6,7 +6,7 @@ public class HealthUIComponent : MonoBehaviour
 {
     [SerializeField] HealthBar healthBarToSpawn;
     [SerializeField] Transform healthBarAttachPoint;
-    [SerializeField] Dusman dusman;
+    [SerializeField] EnemyAI EnemyAI;
 
     private void Start()
     {
