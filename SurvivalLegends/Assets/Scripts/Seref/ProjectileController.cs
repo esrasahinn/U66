@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : MonoBehaviour
+public class ProjectileController : PlayerBehaviour
 {
     [SerializeField] float maxDistance;
     private Vector3 initialPosition;
 
+    public PlayerBehaviour _playH;
+
+    public void Awake()
+    {
+
+
+        _playH = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+    }
     public void Initialize(Vector3 startPosition)
     {
         initialPosition = startPosition;
@@ -21,12 +29,16 @@ public class ProjectileController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             //Buraya can eksilme fonksiyonu
             Destroy(gameObject);
+            _playH.PlayerTakeDmg(20);
+            _playH.destroyPlayer();
+
         }
     }
 }

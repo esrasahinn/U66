@@ -30,7 +30,17 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    private void PlayerTakeDmg(int dmg)
+    public void destroyPlayer()
+    {
+
+        if (GameManager.gameManager._dusmanHealth.Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+    public void PlayerTakeDmg(int dmg)
     {
         GameManager.gameManager._dusmanHealth.DmgUnit(dmg);
         _healthbar.SetHealth(GameManager.gameManager._dusmanHealth.Health);
