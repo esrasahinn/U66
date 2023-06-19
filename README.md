@@ -19,7 +19,7 @@ Survival Legends
 
 ## Product Backlog URL
 
-[Unity Team 66 Condecks Backlog Board](https://shnesra6-gmial-com.codecks.io/decks/metrics)
+[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/u66survivalegends)
 
 ## Ürün Açıklaması
 
@@ -102,7 +102,7 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 ## Product Backlog URL
 
 
-[Unity Team 66 Condecks Backlog Board](https://shnesra6-gmial-com.codecks.io/decks/metrics)
+[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/u66survivalegends)
 ---
 
 # Sprint 2
