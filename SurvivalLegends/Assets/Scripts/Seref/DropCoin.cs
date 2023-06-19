@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DropCoin : MonoBehaviour
 {
+
     public GameObject collectiblePrefab;
     public int minCollectibles;
     public int maxCollectibles;
@@ -29,6 +30,8 @@ public class DropCoin : MonoBehaviour
             rb.AddForce(forceVector, ForceMode.Impulse);
         }
     }
+
+
     // coin uçma animasyonu ekılenecek
     //coin sayacı entegre edilşebilir
 }
