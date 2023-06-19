@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
+    public GameObject FloatingTextPrefab;
+    [SerializeField] float can = 100f;
+    [SerializeField] float maxCan = 100f;
+    [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
     [SerializeField] Transform launchPoint;
+    public int currentHealth;
+    private PlayerBehaviour _playerBehaviour;
     private NavMeshAgent enemy;
     public Transform player;
     public LayerMask whatIsPlayer;
@@ -37,6 +44,45 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public void HasarAl(float mermiHasar)
+    {
+        can -= mermiHasar;
+        currentHealth = (int)can;
+
+        if (canBariSlider != null)
+        {
+            canBariSlider.value = can;
+        }
+
+        if (FloatingTextPrefab)
+        {
+            ShowFloatingText(mermiHasar); // Hasarý gönder
+        }
+
+        if (can <= 0)
+        {
+            Olum();
+        }
+        else if (_playerBehaviour != null)
+        {
+            _playerBehaviour.PlayerTakeDmg((int)mermiHasar); // Hasarý gönder
+        }
+    }
+
+    void ShowFloatingText(float mermiHasar) // Hasarý parametre olarak al
+    {
+        var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = mermiHasar.ToString(); // Mermi hasarýný yazdýr
+    }
+
+    private void Olum()
+    {
+        Debug.Log("Dusman Oldu");
+        // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
+        Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+    }
+
+
     void ChasePlayer()
     {
         enemy.SetDestination(player.position);
@@ -57,9 +103,12 @@ public class EnemyAI : MonoBehaviour
 
             ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
             projectileController.Initialize(transform.position);
-
+            transform.LookAt(player);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
+
+            
+
         }
     }
 

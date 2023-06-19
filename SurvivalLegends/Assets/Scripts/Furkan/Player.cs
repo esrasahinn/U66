@@ -1,15 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] JoyStick moveStick;
-    //[SerializeField] JoyStick aimStick;
+    [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 20f;
     [SerializeField] float turnSpeed = 30f;
     [SerializeField] float animTurnSpeed = 30f;
+    [SerializeField] float can = 100f;
+    [SerializeField] float maxCan = 100f;
+
+    [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
+
+    [Header("Inventory")]
+    [SerializeField] InventoryComponent inventoryComponent;
+    
     Vector2 moveInput;
     Vector2 aimInput;
 
@@ -17,16 +26,27 @@ public class Player : MonoBehaviour
     CameraController cameraController;
     Animator animator;
 
+    public static Player instance;
     float animatorTurnSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         moveStick.onStickValueUpdated += moveStickUpdated;
-        //aimStick.onStickValueUpdated += aimStickUpdated;
+        aimStick.onStickValueUpdated += aimStickUpdated;
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
+        if (canBariSlider != null)
+        {
+            canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
+            canBariSlider.value = can; // Can çubuðunun deðerini ayarla
+        }
+    }
+
+    public void AttackPoint()
+    {
+        inventoryComponent.GetActiveWeapon().Attack();
     }
 
     void aimStickUpdated(Vector2 inputValue)
@@ -109,4 +129,32 @@ public class Player : MonoBehaviour
         animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public void HasarAl(int hasar)
+    {
+        can -= hasar;
+
+        if (canBariSlider != null)
+        {
+            canBariSlider.value = can; // Can çubuðunun deðerini güncelle
+        }
+
+        if (can <= 0)
+        {
+            Olum();
+        }
+    }
+
+    private void Olum()
+    {
+        Debug.Log("Player Oldu");
+        // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
+        Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+    }
+
 }

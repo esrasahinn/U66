@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour //diðer sýnýflardan eriþmek için abstract eklendi.
 {
     [SerializeField] string AttachSlotTag;
+    [SerializeField] float AttackRateMult = 1f;
+
+    public abstract void Attack();
 
     public string GetAttachSlotTag()
     {
@@ -24,10 +27,20 @@ public abstract class Weapon : MonoBehaviour //diðer sýnýflardan eriþmek için ab
     public void Equip()
     {
         gameObject.SetActive(true);
+
     }
 
     public void UnEquip()
     {
         gameObject.SetActive(false);
+    }
+
+    public void DamageGameObject(GameObject objToDamage,float amt)
+    {
+        HealthComponent healthComp = objToDamage.GetComponent<HealthComponent>();
+        if (healthComp != null)
+        {
+            healthComp.changeHealth(-amt);
+        }
     }
 }
