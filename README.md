@@ -71,7 +71,7 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 - **Sprint board update**: Sprint board screenshotları: 
 -
 
-![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/sprintgorevler.png) 
+![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/gorevler.png) 
 ![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/burndown.png)
 ![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/diagram.png)
 
