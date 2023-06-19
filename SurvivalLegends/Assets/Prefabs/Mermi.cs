@@ -6,7 +6,7 @@ public class Mermi : MonoBehaviour
 {
     private Transform hedef;
     private float hiz;
-    [SerializeField] float hasar = 5f;
+    private int hasar = 5;
 
     public void HedefBelirle(Transform hedef)
     {
@@ -18,7 +18,7 @@ public class Mermi : MonoBehaviour
         this.hiz = hiz;
     }
 
-    public void HasarAyarla(float hasar)
+    public void HasarAyarla(int hasar)
     {
         this.hasar = hasar;
     }
@@ -42,7 +42,6 @@ public class Mermi : MonoBehaviour
 
         transform.Translate(hedefYonu.normalized * hareketMesafesi, Space.World);
     }
-
     private void HedefiVur()
     {
         Collider[] hedefColliders = Physics.OverlapSphere(transform.position, 1f);
@@ -52,7 +51,7 @@ public class Mermi : MonoBehaviour
             EnemyAI enemyAI = collider.GetComponent<EnemyAI>();
             if (enemyAI != null)
             {
-                enemyAI.HasarAl((int)hasar);
+                enemyAI.HasarAl(hasar);
             }
         }
 
