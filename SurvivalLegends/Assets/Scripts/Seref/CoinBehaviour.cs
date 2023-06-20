@@ -21,7 +21,8 @@ public class CoinBehaviour : MonoBehaviour
     {
         if (transform.position.y <= stopY)
         {
-            transform.position = new Vector3(transform.position.x, stopY, transform.position.z);
+            rb.isKinematic = true;
+            //transform.position = new Vector3(transform.position.x, stopY, transform.position.z);
             StartCoroutine(FlyToPlayer());
             // animator.SetBool("landed", true);
         }
@@ -31,11 +32,20 @@ public class CoinBehaviour : MonoBehaviour
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
-    IEnumerator FlyToPlayer()
+IEnumerator FlyToPlayer()
+{
+    Debug.Log("FlyToPlayer coroutine started.");
+    yield return new WaitForSeconds(1f);
+    while (Vector3.Distance(transform.position, target.position) > 0.1f)
     {
-        yield return new WaitForSeconds(1f);
-        transform.position = Vector3.SmoothDamp(transform.position, target.transform.position, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
+        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
+        Debug.Log("Current position: " + transform.position);
+        Debug.Log("Target position: " + target.position);
+        yield return null;
     }
+    Debug.Log("Coin reached the player.");
+}
+
 
 
 }
