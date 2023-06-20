@@ -8,7 +8,7 @@ public class expController : MonoBehaviour
 
     public Image expBar;
     public GameObject popupObject;
-    private float expIncreaseAmount = 0.05f;
+    private float expIncreaseAmount = 0.2f;
     private float maxFillAmount = 1f;
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
@@ -24,13 +24,13 @@ public class expController : MonoBehaviour
                 expBar.fillAmount = currentFillAmount; // Fill Amount'i güncelle
             }
         }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            UpdateExpBar();
-        }
+        //else if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    UpdateExpBar();
+        //}
     }
 
-    private void UpdateExpBar()
+    public void UpdateExpBar()
     {
         currentFillAmount += expIncreaseAmount;
         currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
