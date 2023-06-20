@@ -2194,6 +2194,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinAmount: 0
+--- !u!114 &5288044189366732987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106938362}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18924b4f50e128241b53c5cb7556649c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  credits: 200
+  PurchaseListeners: []
 --- !u!1001 &5432295632606055775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2363,6 +2377,11 @@ PrefabInstance:
       objectReference: {fileID: 380672555}
     - target: {fileID: 230584095458227322, guid: 2969ae240c3d10848a52705f6efbc079,
         type: 3}
+      propertyPath: testItem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 230584095458227322, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
       propertyPath: moveStick
       value: 
       objectReference: {fileID: 1475437625}
@@ -2371,6 +2390,11 @@ PrefabInstance:
       propertyPath: canBariSlider
       value: 
       objectReference: {fileID: 1331703047}
+    - target: {fileID: 230584095458227322, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      propertyPath: testShopSystem
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 230584095458227322, guid: 2969ae240c3d10848a52705f6efbc079,
         type: 3}
       propertyPath: inventoryComponent
@@ -2757,6 +2781,23 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4231210259919166667, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      propertyPath: InitialAbilites.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4231210259919166667, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      propertyPath: InitialAbilites.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 314faee486050144b8f0d193ad280e15,
+        type: 2}
+    - target: {fileID: 4231210259919166667, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      propertyPath: InitialAbilites.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: f878ac764332c6940b06b81f837290e1,
+        type: 2}
     - target: {fileID: 4360902580918419704, guid: 2969ae240c3d10848a52705f6efbc079,
         type: 3}
       propertyPath: m_Layer
@@ -2792,6 +2833,23 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5976145333431864926, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      propertyPath: initWeaponsPrefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976145333431864926, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      propertyPath: initWeaponsPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: -1474707075825839581, guid: cfbcdd8cf086a044193df07091b87374,
+        type: 3}
+    - target: {fileID: 5976145333431864926, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      propertyPath: initWeaponsPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: -1474707075825839581, guid: cfbcdd8cf086a044193df07091b87374,
+        type: 3}
     - target: {fileID: 6411675875734171217, guid: 2969ae240c3d10848a52705f6efbc079,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3415,4 +3473,8 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5288044189366732986}
+    - targetCorrespondingSourceObject: {fileID: 9190121846711725635, guid: 2969ae240c3d10848a52705f6efbc079,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5288044189366732987}
   m_SourcePrefab: {fileID: 100100000, guid: 2969ae240c3d10848a52705f6efbc079, type: 3}
