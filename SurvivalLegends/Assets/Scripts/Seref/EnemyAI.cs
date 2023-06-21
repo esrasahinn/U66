@@ -90,9 +90,9 @@ public class EnemyAI : MonoBehaviour
 
     void AttackPlayer()
     {
-        enemy.SetDestination(transform.position); 
+        enemy.SetDestination(transform.position);
 
-        if (!alreadyAttacked)
+        if (!alreadyAttacked) 
         {
             GameObject projectile = Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
 
@@ -106,14 +106,18 @@ public class EnemyAI : MonoBehaviour
             transform.LookAt(player);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
-
-            
-
         }
     }
 
     void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+
+    void MeleeAttack()
+    {
+        _playerBehaviour.PlayerTakeDmg(20);
+        _playerBehaviour.destroyPlayer();
     }
 }
