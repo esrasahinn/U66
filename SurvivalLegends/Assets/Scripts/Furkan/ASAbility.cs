@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AbilityButton : MonoBehaviour
+public class ASAbility : MonoBehaviour
 {
     public Button abilityButton;
-    public Player player;
+    public MenzileGirenDusmanaAtesVeDonme MenzileGirenDusmanaAtesVeDonme;
     public float boostAmount = 10f;
     public float cooldownDuration = 2f;
     public float abilityDuration = 2f;
@@ -20,7 +20,7 @@ public class AbilityButton : MonoBehaviour
     {
         if (isAbilityReady)
         {
-            player.AddMoveSpeed(boostAmount);
+            MenzileGirenDusmanaAtesVeDonme.AddAtesHizi(boostAmount);
             isAbilityReady = false;
             Invoke("ResetAbility", abilityDuration);
             Invoke("ResetCooldown", cooldownDuration);
@@ -29,7 +29,7 @@ public class AbilityButton : MonoBehaviour
 
     private void ResetAbility()
     {
-        player.AddMoveSpeed(-boostAmount);
+        MenzileGirenDusmanaAtesVeDonme.AddAtesHizi(-boostAmount);
     }
 
     private void ResetCooldown()

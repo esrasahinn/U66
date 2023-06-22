@@ -6,7 +6,7 @@ public class Mermi : MonoBehaviour
 {
     private Transform hedef;
     private float hiz;
-    private int hasar = 5;
+    [SerializeField] private int hasar = 5;
 
     public void HedefBelirle(Transform hedef)
     {

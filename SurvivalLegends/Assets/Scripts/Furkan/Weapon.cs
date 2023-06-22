@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour //diðer sýnýflardan eriþmek için abstract eklendi.
 {
     [SerializeField] string AttachSlotTag;
-    [SerializeField] float AttackRateMult = 1f;
+   // [SerializeField] float AttackRateMult = 1f;
 
     public abstract void Attack();
 

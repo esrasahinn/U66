@@ -90,7 +90,7 @@ public class EnemyAI : MonoBehaviour
 
     void AttackPlayer()
     {
-        enemy.SetDestination(transform.position); 
+        enemy.SetDestination(transform.position);
 
         if (!alreadyAttacked)
         {
@@ -107,7 +107,7 @@ public class EnemyAI : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
 
-            
+
 
         }
     }

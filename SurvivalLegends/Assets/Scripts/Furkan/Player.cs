@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         }
 
 
-        Invoke("TestPurchase", 3);
+//        Invoke("TestPurchase", 3);
     }
 
     public void AttackPoint()
