@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 20f;
+    [SerializeField] float maxMoveSpeed = 50f;
+    [SerializeField] float minMoveSpeed = 10f;
     [SerializeField] float turnSpeed = 30f;
     [SerializeField] float animTurnSpeed = 30f;
     [SerializeField] float can = 100f;
@@ -18,7 +20,15 @@ public class Player : MonoBehaviour
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
-    
+
+
+   [SerializeField] ShopSystem testShopSystem;
+   [SerializeField] ShopItem testItem;
+
+    void TestPurchase()
+    {
+        testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
+}
     Vector2 moveInput;
     Vector2 aimInput;
     public PlayerBehaviour _playH;
@@ -34,6 +44,14 @@ public class Player : MonoBehaviour
 
     public static Player instance;
     float animatorTurnSpeed;
+
+
+    internal void AddMoveSpeed(float boostAmt)
+    {
+        moveSpeed += boostAmt;
+        moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
+    }
+
 
     public void ActivateAbility1()
     {
@@ -54,6 +72,7 @@ public class Player : MonoBehaviour
 
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +86,9 @@ public class Player : MonoBehaviour
             canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
             canBariSlider.value = can; // Can çubuðunun deðerini ayarla
         }
+
+
+        //        Invoke("TestPurchase", 3);
     }
 
     public void AttackPoint()
@@ -163,7 +185,7 @@ public class Player : MonoBehaviour
 
     public void HasarAl(int hasar)
     {
- 
+
 
         can -= hasar;
 
