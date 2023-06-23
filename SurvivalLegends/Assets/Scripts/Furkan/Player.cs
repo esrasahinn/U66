@@ -21,13 +21,38 @@ public class Player : MonoBehaviour
     
     Vector2 moveInput;
     Vector2 aimInput;
-
+    public PlayerBehaviour _playH;
     Camera mainCam;
     CameraController cameraController;
     Animator animator;
+    private bool ability1Active = false;
+
+
+    private float ability1Duration = 30f;
+    private float ability1Timer = 0f;
+    private float ability1SpeedMultiplier = 2f;
 
     public static Player instance;
     float animatorTurnSpeed;
+
+    public void ActivateAbility1()
+    {
+        ability1Active = true;
+        ability1Timer = ability1Duration;
+        moveSpeed *= ability1SpeedMultiplier;
+        StartCoroutine(DisableAbility1AfterDuration());
+    }
+
+
+
+    private IEnumerator DisableAbility1AfterDuration()
+    {
+        yield return new WaitForSeconds(ability1Duration);
+        ability1Active = false;
+        moveSpeed /= ability1SpeedMultiplier;
+    }
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +96,7 @@ public class Player : MonoBehaviour
     {
         PerformMoveAndAim();
         UpdateCamera();
+
     }
 
     private void PerformMoveAndAim()
@@ -137,6 +163,8 @@ public class Player : MonoBehaviour
 
     public void HasarAl(int hasar)
     {
+ 
+
         can -= hasar;
 
         if (canBariSlider != null)
@@ -148,7 +176,11 @@ public class Player : MonoBehaviour
         {
             Olum();
         }
+
+
     }
+
+
 
     private void Olum()
     {
