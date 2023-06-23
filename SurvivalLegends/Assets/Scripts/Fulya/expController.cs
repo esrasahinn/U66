@@ -2,16 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class expController : MonoBehaviour
 {
-
     public Image expBar;
     public GameObject popupObject;
-    private float expIncreaseAmount = 0.05f;
+    private float expIncreaseAmount = 0.9f;
     private float maxFillAmount = 1f;
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
+    public Button Buton1;
+    public Button Buton2;
+
+    private void Awake()
+    {
+        Buton1.onClick.AddListener(ActivateAbility1);
+        Buton2.onClick.AddListener(ActivateAbility2);
+    }
+    private void Start()
+    {
+        // Diðer baþlatma iþlemleri
+    }
 
     private void Update()
     {
@@ -24,13 +34,9 @@ public class expController : MonoBehaviour
                 expBar.fillAmount = currentFillAmount; // Fill Amount'i güncelle
             }
         }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            UpdateExpBar();
-        }
     }
 
-    private void UpdateExpBar()
+    public void UpdateExpBar()
     {
         currentFillAmount += expIncreaseAmount;
         currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
@@ -49,4 +55,27 @@ public class expController : MonoBehaviour
         popupObject.SetActive(false);
         isPopupShowing = false;
     }
+
+    private void ActivateAbility1()
+    {
+        // Karakterin hareket hýzýný 30 saniyeliðine arttýr
+        Player player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            player.ActivateAbility1();
+        }
+        HidePopup();
+    }
+    private void ActivateAbility2()
+    {
+        
+        ProjectileController player = FindObjectOfType<ProjectileController>();
+        if (player != null)
+        {
+            player.ActivateAbility2();
+        }
+
+        HidePopup();
+    }
+
 }
