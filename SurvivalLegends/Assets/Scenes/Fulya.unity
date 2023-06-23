@@ -3315,9 +3315,9 @@ MonoBehaviour:
     type: 3}
   minCollectibles: 2
   maxCollectibles: 3
-  minSplashForce: 6
-  maxSplashForce: 8
-  verticalForceMultiplier: 2
+  minSplashForce: 1500
+  maxSplashForce: 2000
+  verticalForceMultiplier: 3
   splashRadius: 0.1
 --- !u!114 &1479144083
 MonoBehaviour:
@@ -3331,21 +3331,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87c56ca8a5f94d4c81138ce1cc5f215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1479144084}
+  FloatingTextPrefab: {fileID: 0}
+  can: 100
+  maxCan: 100
+  canBariSlider: {fileID: 0}
+  launchPoint: {fileID: 0}
+  currentHealth: 0
   player: {fileID: 1627355985}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 0
-  projectile: {fileID: 8340486057547913488, guid: 85e87fdc4c3cdbe48b14294e1be98d47,
-    type: 3}
+  projectilePrefab: {fileID: 0}
   projectileSpeed: 10
   attackCooldown: 0
-  alreadyAttacked: 0
   attackRange: 10
-  inAttackRange: 0
 --- !u!195 &1479144084
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3446,14 +3445,16 @@ MonoBehaviour:
   menzilMesafesi: 10
   donmeHizi: 100
   atesHizi: 10
-  "ate\xFEEtmeMesafesi": 5
+  maxAtesHizi: 80
+  minAtesHizi: 1
+  atesEtmeMesafesi: 5
   hedefeGitmeHizi: 100
   donmeBaslamaMesafesi: 10
   donmeBitisMesafesi: 10
   mermiOmru: 1
   mermiPrefab: {fileID: 5341742223406746680, guid: 9c3cddd6060b7cc4eadfb9cefcf6e7db,
     type: 3}
-  "ate\xFENoktas\xFD": {fileID: 0}
+  atesNoktasi: {fileID: 0}
 --- !u!95 &1627355982
 Animator:
   serializedVersion: 5
