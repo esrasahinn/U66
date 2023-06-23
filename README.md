@@ -19,7 +19,7 @@ Survival Legends
 
 ## Product Backlog URL
 
-
+[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/u66survivalegends)
 
 ## Ürün Açıklaması
 
@@ -71,7 +71,9 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 - **Sprint board update**: Sprint board screenshotları: 
 -
 
-![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/sprintgorevler.png) 
+![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/gorevler.png) 
+![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/burndown.png)
+![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/diagram.png)
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
@@ -99,10 +101,8 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 
 ## Product Backlog URL
 
-![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/burndown.png)
-![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/diagram.png)
 
-
+[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/u66survivalegends)
 ---
 
 # Sprint 2
