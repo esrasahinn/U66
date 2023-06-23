@@ -14,6 +14,8 @@ public class CoinBehaviour : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target.position += new Vector3(0, 1, 0);
        // animator = GetComponent<Animator>();
     }
 

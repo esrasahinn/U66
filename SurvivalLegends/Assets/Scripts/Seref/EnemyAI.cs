@@ -22,7 +22,7 @@ public class EnemyAI : MonoBehaviour
     private bool alreadyAttacked;
     public float attackRange = 10.0f;
     private bool inAttackRange;
-
+    public DropCoin dropCoinScript;
     void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -62,6 +62,7 @@ public class EnemyAI : MonoBehaviour
         if (can <= 0)
         {
             Olum();
+            dropCoinScript.CoinDrop();
         }
         else if (_playerBehaviour != null)
         {
