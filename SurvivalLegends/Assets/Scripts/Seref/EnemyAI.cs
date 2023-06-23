@@ -80,11 +80,6 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Dusman Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
-        expController expControllerScript = FindObjectOfType<expController>();
-        if (expControllerScript != null)
-        {
-            expControllerScript.UpdateExpBar();
-        }
     }
 
 
@@ -95,7 +90,7 @@ public class EnemyAI : MonoBehaviour
 
     void AttackPlayer()
     {
-        enemy.SetDestination(transform.position); 
+        enemy.SetDestination(transform.position);
 
         if (!alreadyAttacked)
         {
@@ -112,7 +107,7 @@ public class EnemyAI : MonoBehaviour
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
 
-            
+
 
         }
     }

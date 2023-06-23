@@ -67,9 +67,9 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 
 
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/DailyScrumMeetingNotesSprint1.docx)
-
+- **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir.
 - **Sprint board update**: Sprint board screenshotları: 
--
+
 
 ![Backlog 2](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/gorevler.png) 
 ![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/burndown.png)
