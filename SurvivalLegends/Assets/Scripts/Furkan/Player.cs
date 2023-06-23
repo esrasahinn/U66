@@ -24,18 +24,24 @@ public class Player : MonoBehaviour
 
     //[SerializeField] ShopSystem testShopSystem;
     //[SerializeField] ShopItem testItem;
-    
+
     //void TestPurchase()
     //{
     //    testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
     //}
-    
+
     Vector2 moveInput;
     Vector2 aimInput;
-
+    public PlayerBehaviour _playH;
     Camera mainCam;
     CameraController cameraController;
     Animator animator;
+    private bool ability1Active = false;
+
+
+    private float ability1Duration = 30f;
+    private float ability1Timer = 0f;
+    private float ability1SpeedMultiplier = 2f;
 
     public static Player instance;
     float animatorTurnSpeed;
@@ -45,6 +51,24 @@ public class Player : MonoBehaviour
         moveSpeed += boostAmt;
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
     }
+
+    public void ActivateAbility1()
+    {
+        ability1Active = true;
+        ability1Timer = ability1Duration;
+        moveSpeed *= ability1SpeedMultiplier;
+        StartCoroutine(DisableAbility1AfterDuration());
+    }
+
+
+
+    private IEnumerator DisableAbility1AfterDuration()
+    {
+        yield return new WaitForSeconds(ability1Duration);
+        ability1Active = false;
+        moveSpeed /= ability1SpeedMultiplier;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +85,7 @@ public class Player : MonoBehaviour
         }
 
 
-//        Invoke("TestPurchase", 3);
+        //        Invoke("TestPurchase", 3);
     }
 
     public void AttackPoint()
@@ -91,6 +115,7 @@ public class Player : MonoBehaviour
     {
         PerformMoveAndAim();
         UpdateCamera();
+
     }
 
     private void PerformMoveAndAim()
@@ -157,6 +182,8 @@ public class Player : MonoBehaviour
 
     public void HasarAl(int hasar)
     {
+
+
         can -= hasar;
 
         if (canBariSlider != null)
@@ -168,7 +195,11 @@ public class Player : MonoBehaviour
         {
             Olum();
         }
+
+
     }
+
+
 
     private void Olum()
     {
