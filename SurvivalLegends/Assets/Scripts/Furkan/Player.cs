@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     {
         PerformMoveAndAim();
         UpdateCamera();
-
+        //SetRunningAnimation((Math.Abs(Horizontal) > 0 || Math.Abs(Vertical) > 0));
     }
 
     private void PerformMoveAndAim()
@@ -138,7 +138,22 @@ public class Player : MonoBehaviour
 
         animator.SetFloat("forwardSpeed", forward);
         animator.SetFloat("rightSpeed", right);
+
+        // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
+        if (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0)
+        {
+            animator.SetBool("Running", true);
+        }
+        else
+        {
+            animator.SetBool("Running", false);
+        }
     }
+
+    //private void SetRunningAnimation(bool run) //yeni karakter için(warrior)
+    //{
+    //    animator.SetBool("Running", run);
+    //}
 
     private void UpdateAim(Vector3 currentMoveDir)
     {
