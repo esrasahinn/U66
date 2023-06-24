@@ -133,11 +133,16 @@ public class Player : MonoBehaviour
 
         UpdateAim(MoveDir);
 
+        float aim = Vector3.Dot(MoveDir, transform.forward);
+        float rforward = Vector3.Dot(MoveDir, transform.forward);
         float forward = Vector3.Dot(MoveDir, transform.forward);
         float right = Vector3.Dot(MoveDir, transform.right);
 
         animator.SetFloat("forwardSpeed", forward);
         animator.SetFloat("rightSpeed", right);
+
+        animator.SetFloat("Aim", aim);
+        animator.SetFloat("rforward", rforward);
 
         // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
         if (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0)
@@ -223,7 +228,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Player Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
-        Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+       // Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
     }
 
 }

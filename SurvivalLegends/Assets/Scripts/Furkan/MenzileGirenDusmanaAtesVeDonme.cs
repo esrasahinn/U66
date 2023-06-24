@@ -14,7 +14,7 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     [SerializeField] float donmeBaslamaMesafesi = 3f;
     [SerializeField] float donmeBitisMesafesi = 7f;
     [SerializeField] float mermiOmru = 5f;
-    //[SerializeField] float mermiDamage = 5f;
+
     public GameObject mermiPrefab;
     public Transform atesNoktasi;
 
@@ -23,14 +23,24 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     private bool menzilde = false;
     private float sonrakiAtesZamani = 0f;
 
+    private PlayerBehaviour playerBehaviour; // PlayerBehaviour scriptine eriþmek için referans
+
     internal void AddAtesHizi(float boostAmt)
     {
         atesHizi += boostAmt;
         atesHizi = Mathf.Clamp(atesHizi, minAtesHizi, maxAtesHizi);
     }
 
+    private void Start()
+    {
+        playerBehaviour = GetComponent<PlayerBehaviour>(); // PlayerBehaviour componentini al
+    }
+
     private void Update()
     {
+        if (playerBehaviour._health <= 0) // Can deðeri 0 ise ateþ etmeyi ve dönmeyi durdur
+            return;
+
         if (hedef == null || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
         {
             HedefSec();
@@ -97,15 +107,11 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         Mermi mermiScript = mermi.GetComponent<Mermi>();
         mermiScript.HedefBelirle(hedef.transform);
         mermiScript.HizAyarla(hedefeGitmeHizi);
-        //mermiScript.SetDamage(mermiDamage);
 
         RaycastHit hit;
         if (Physics.Raycast(atesNoktasi.position, atesNoktasi.forward, out hit, atesEtmeMesafesi))
         {
-            // Raycast iþaretlemeyle ilgili iþlemler burada gerçekleþtirilebilir
             Debug.DrawRay(atesNoktasi.position, atesNoktasi.forward * hit.distance, Color.red);
-            // Ýsabet alan hedef ile ilgili iþlemler burada gerçekleþtirilebilir
-            // Örneðin, hit.collider.gameObject kullanýlarak hedefe etki edebilirsiniz
         }
         else
         {
@@ -113,7 +119,5 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         }
 
         Destroy(mermi, mermiOmru);
-
-        //Debug.Log("Düþmana verilen hasar: " + mermiDamage);
     }
 }
