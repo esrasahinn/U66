@@ -37,7 +37,7 @@ public class ProjectileController : PlayerBehaviour
             //Buraya can eksilme fonksiyonu
             Destroy(gameObject);
             _playH.PlayerTakeDmg(20);
-            _playH.destroyPlayer();
+            //_playH.destroyPlayer();
 
         }
     }

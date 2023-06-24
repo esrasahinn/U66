@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
     [SerializeField] float moveSpeed = 20f;
+    [SerializeField] float maxMoveSpeed = 50f;
+    [SerializeField] float minMoveSpeed = 10f;
     [SerializeField] float turnSpeed = 30f;
     [SerializeField] float animTurnSpeed = 30f;
     [SerializeField] float can = 100f;
@@ -18,7 +20,15 @@ public class Player : MonoBehaviour
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
-    
+
+
+   [SerializeField] ShopSystem testShopSystem;
+   [SerializeField] ShopItem testItem;
+
+    void TestPurchase()
+    {
+        testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
+}
     Vector2 moveInput;
     Vector2 aimInput;
     public PlayerBehaviour _playH;
@@ -34,6 +44,14 @@ public class Player : MonoBehaviour
 
     public static Player instance;
     float animatorTurnSpeed;
+
+
+    internal void AddMoveSpeed(float boostAmt)
+    {
+        moveSpeed += boostAmt;
+        moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
+    }
+
 
     public void ActivateAbility1()
     {
@@ -54,6 +72,7 @@ public class Player : MonoBehaviour
 
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +86,9 @@ public class Player : MonoBehaviour
             canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
             canBariSlider.value = can; // Can çubuðunun deðerini ayarla
         }
+
+
+        //        Invoke("TestPurchase", 3);
     }
 
     public void AttackPoint()
@@ -96,7 +118,7 @@ public class Player : MonoBehaviour
     {
         PerformMoveAndAim();
         UpdateCamera();
-
+        //SetRunningAnimation((Math.Abs(Horizontal) > 0 || Math.Abs(Vertical) > 0));
     }
 
     private void PerformMoveAndAim()
@@ -111,12 +133,32 @@ public class Player : MonoBehaviour
 
         UpdateAim(MoveDir);
 
+        float aim = Vector3.Dot(MoveDir, transform.forward);
+        float rforward = Vector3.Dot(MoveDir, transform.forward);
         float forward = Vector3.Dot(MoveDir, transform.forward);
         float right = Vector3.Dot(MoveDir, transform.right);
 
         animator.SetFloat("forwardSpeed", forward);
         animator.SetFloat("rightSpeed", right);
+
+        animator.SetFloat("Aim", aim);
+        animator.SetFloat("rforward", rforward);
+
+        // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
+        if (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0)
+        {
+            animator.SetBool("Running", true);
+        }
+        else
+        {
+            animator.SetBool("Running", false);
+        }
     }
+
+    //private void SetRunningAnimation(bool run) //yeni karakter için(warrior)
+    //{
+    //    animator.SetBool("Running", run);
+    //}
 
     private void UpdateAim(Vector3 currentMoveDir)
     {
@@ -163,7 +205,7 @@ public class Player : MonoBehaviour
 
     public void HasarAl(int hasar)
     {
- 
+
 
         can -= hasar;
 
@@ -186,7 +228,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Player Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
-        Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+       // Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
     }
 
 }
