@@ -10,7 +10,7 @@ public class CoinBehaviour : MonoBehaviour
     Vector3 velocity = Vector3.zero;
     public float stopY = 0.5f;
     private Rigidbody rb;
-    public Transform target;
+    Transform target;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

@@ -25,6 +25,7 @@ public class EnemyAI : MonoBehaviour
     public DropCoin dropCoinScript;
     void Awake()
     {
+        dropCoinScript = gameObject.GetComponent<DropCoin>();
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
     }

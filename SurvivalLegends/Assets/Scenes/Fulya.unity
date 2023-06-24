@@ -2367,7 +2367,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1140321778
 GameObject:
@@ -3345,6 +3345,7 @@ MonoBehaviour:
   projectileSpeed: 10
   attackCooldown: 0
   attackRange: 10
+  dropCoinScript: {fileID: 0}
 --- !u!195 &1479144084
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3865,7 +3866,7 @@ PrefabInstance:
     - target: {fileID: 1582264698994278291, guid: 8720ecdbe3735a04b8bb312484ca69bb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1582264698994278291, guid: 8720ecdbe3735a04b8bb312484ca69bb,
         type: 3}
