@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
+    public GameObject confirmationPopup;
+    //public Text confirmationText;
+    private int selectedLevel;
 
     private void Awake()
     {
@@ -20,10 +23,23 @@ public class LevelMenu : MonoBehaviour
             buttons[i].interactable = true;
         }
     }
+
     public void OpenMap(int mapId)
     {
+        selectedLevel = mapId;
         string MapName = "Map " + mapId;
+        //confirmationText.text = "Are you sure you want to play Level " + mapId + "?";
+        confirmationPopup.SetActive(true);
+    }
+
+    public void ConfirmOpenMap()
+    {
+        string MapName = "Map " + selectedLevel;
         SceneManager.LoadScene(MapName);
     }
 
+    public void CancelOpenMap()
+    {
+        confirmationPopup.SetActive(false);
+    }
 }
