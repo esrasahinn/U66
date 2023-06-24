@@ -35,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 1.548, y: -1.443, z: -0.001}
 --- !u!33 &870405330367311793
 MeshFilter:
@@ -106,8 +106,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.8806799
+  m_Center: {x: -3.6351845e-11, y: 0.030734092, z: 0.0942099}
 --- !u!54 &8756561721362618945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,7 +151,6 @@ MonoBehaviour:
   minFolSpeed: 250
   maxFolSpeed: 333
   stopY: 0.5
-  target: {fileID: 0}
 --- !u!96 &1028266147084365397
 TrailRenderer:
   serializedVersion: 3
