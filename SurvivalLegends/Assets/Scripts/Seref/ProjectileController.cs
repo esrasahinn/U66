@@ -62,6 +62,7 @@ public class ProjectileController : PlayerBehaviour
         {
             if (ability2Active && isInvincible)
             {
+                Debug.Log("2boutan");
                 Destroy(gameObject);
                 _playH.PlayerTakeDmg(0);
                 _playH.destroyPlayer();

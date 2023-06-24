@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class expController : MonoBehaviour
 {
     public Image expBar;
@@ -13,11 +14,15 @@ public class expController : MonoBehaviour
     public Button Buton1;
     public Button Buton2;
 
+    private ProjectileController projectileController; // ProjectileController referansý eklendi
+
     private void Awake()
     {
         Buton1.onClick.AddListener(ActivateAbility1);
         Buton2.onClick.AddListener(ActivateAbility2);
+        projectileController = GetComponent<ProjectileController>(); // ProjectileController referansý alýndý
     }
+
     private void Start()
     {
         // Diðer baþlatma iþlemleri
@@ -66,16 +71,15 @@ public class expController : MonoBehaviour
         }
         HidePopup();
     }
+
     private void ActivateAbility2()
     {
-        
-        ProjectileController player = FindObjectOfType<ProjectileController>();
-        if (player != null)
-        {
-            player.ActivateAbility2();
-        }
 
+        ProjectileController projectilecontroller = FindObjectOfType<ProjectileController>();
+        if (projectilecontroller != null)
+        {
+            projectilecontroller.ActivateAbility2();
+        }
         HidePopup();
     }
-
 }
