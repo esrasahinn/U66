@@ -37,17 +37,19 @@ public class CoinBehaviour : MonoBehaviour
 
     IEnumerator FlyToPlayer()
     {
-       // Debug.Log("FlyToPlayer coroutine started.");
         yield return new WaitForSeconds(1f);
+        transform.position = Vector3.SmoothDamp(transform.position, target.transform.position, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
+        //// Debug.Log("FlyToPlayer coroutine started.");
+        // yield return new WaitForSeconds(1f);
 
-        Vector3 targetPosition = target.position + new Vector3(0, 1, 0);
-        while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
-        {
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
-           // Debug.Log("Current position: " + transform.position);
-           // Debug.Log("Target position: " + targetPosition);
-            yield return null;
-        }
-        //Debug.Log("Coin reached the player.");
+        // Vector3 targetPosition = target.position + new Vector3(0, 1, 0);
+        // while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        // {
+        //     transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
+        //    // Debug.Log("Current position: " + transform.position);
+        //    // Debug.Log("Target position: " + targetPosition);
+        //     yield return null;
+        // }
+        // //Debug.Log("Coin reached the player.");
     }
 }
