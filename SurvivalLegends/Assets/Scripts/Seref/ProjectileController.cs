@@ -65,13 +65,13 @@ public class ProjectileController : PlayerBehaviour
                 Debug.Log("2boutan");
                 Destroy(gameObject);
                 _playH.PlayerTakeDmg(0);
-                _playH.destroyPlayer();
+                _playH.DestroyPlayer();
             }
             else
             {
                 Destroy(gameObject);
                 _playH.PlayerTakeDmg(20);
-                _playH.destroyPlayer();
+                _playH.DestroyPlayer();
             }
         }
     }

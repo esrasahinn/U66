@@ -23,11 +23,16 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 10.0f;
     private bool inAttackRange;
     public DropCoin dropCoinScript;
+    private expController expControllerInstance;
+
+
+
     void Awake()
     {
         dropCoinScript = gameObject.GetComponent<DropCoin>();
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
+        expControllerInstance = FindObjectOfType<expController>();
     }
 
     void Update()
@@ -43,7 +48,9 @@ public class EnemyAI : MonoBehaviour
         {
             ChasePlayer();
         }
-    }
+      
+
+        }
 
     public void HasarAl(float mermiHasar)
     {
@@ -79,6 +86,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Olum()
     {
+        expControllerInstance.UpdateExpBar();
         Debug.Log("Dusman Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
@@ -120,6 +128,6 @@ public class EnemyAI : MonoBehaviour
     void MeleeAttack()
     {
         _playerBehaviour.PlayerTakeDmg(20);
-        _playerBehaviour.destroyPlayer();
+        _playerBehaviour.DestroyPlayer();
     }
 }

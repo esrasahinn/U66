@@ -25,10 +25,9 @@ Material:
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _HAFTONESHAPES_DOT
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - _RIMLIGHTING_ON
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -81,10 +80,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _HatchingPatternMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -129,12 +124,10 @@ Material:
     - Boolean_894d04cb310c4f14a61408bc70e7ee14: 0
     - Boolean_b5c3c256e65d45c797a8e6af753f4386: 0
     - Boolean_bc5e77dc359a43ab8fc6e7fcfb9a4be6: 1
-    - Boolean_f9999c8db29c427d86a843c1a1c85720: 0
     - ENUM_4EC9DDC884614C0F98FEF3C56F7575DF: 0
     - ENUM_9EC2C2A314904C4A89DD4F90EA342783: 0
     - OverrideShadowColor: 0
     - RECEIVESHADOWS: 0
-    - ShadowPatternScale: 10
     - Vector1_04c04336c8e14a0b925afed192a72b92: 0.097
     - Vector1_0f3ca3289daa40b4a7654cc64fd05ec1: 0
     - Vector1_179c79284a294b2fba81eeb5b038a2b7: 1
@@ -168,8 +161,6 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DitherTexelSize: 1
-    - _DitherThreshold: 0
     - _DstBlend: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
@@ -177,27 +168,18 @@ Material:
     - _GlossyReflections: 0
     - _HAFTONESHAPEMODE: 0
     - _HAFTONESHAPES: 0
-    - _HafltoneFadeDistance: 10
     - _HalfToneEnabled: 0
     - _HalfToneIncludeReceivedShadow: 0
     - _HalftoneDiffuseOffest: 0
-    - _HalftoneFadeToColor: 0
     - _HalftoneLightSizeFactor: 0
     - _HalftoneScale: 0
     - _HalftoneScreenUVMode: 0
     - _HalftoneSize: 0.3
-    - _HalftoneUseScreenSpaceUV: 0
-    - _HatchingDensity: 1
-    - _HatchingDiffuseOffset: 0
-    - _HatchingDrawStrength: 4
     - _HatchingEnabled: 0
-    - _HatchingRotation: 0
-    - _HatchingSmoothness: 0.2
     - _HideInInspector__Vector1_c89cb8dc56774a9583c7b9c3a5725c4c: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
-    - _QueueControl: -1
     - _QueueOffset: 0
     - _RIMLIGHTING: 1
     - _ReceiveShadows: 1
@@ -205,7 +187,6 @@ Material:
     - _RimLightSmootness: 0
     - _RimPower: 0
     - _SPECULARHIGHTLIGHTS: 0
-    - _ShadowPatternSize: 0.3
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecColor_1: 0
@@ -216,8 +197,6 @@ Material:
     - _StepViaRampTexture: 0
     - _Surface: 0
     - _USERAMPCOLOR: 0
-    - _UseClipPattern: 0
-    - _UseNormalMap: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     - halfToneEnabled: 0
@@ -233,10 +212,7 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _HalfToneColor: {r: 1, g: 1, b: 1, a: 1}
     - _HalftoneColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
-    - _HatchingScale: {r: 15, g: 1, b: 0, a: 0}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
     - _RimLight__RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
