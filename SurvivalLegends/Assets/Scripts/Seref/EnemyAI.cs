@@ -22,13 +22,12 @@ public class EnemyAI : MonoBehaviour
     private bool alreadyAttacked;
     public float attackRange = 10.0f;
     private bool inAttackRange;
-    private expController expControllerInstance;
-
+    public DropCoin dropCoinScript;
     void Awake()
     {
+        dropCoinScript = gameObject.GetComponent<DropCoin>();
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
-        expControllerInstance = FindObjectOfType<expController>();
     }
 
     void Update()
@@ -64,6 +63,7 @@ public class EnemyAI : MonoBehaviour
         if (can <= 0)
         {
             Olum();
+            dropCoinScript.CoinDrop();
         }
         else if (_playerBehaviour != null)
         {
@@ -80,7 +80,6 @@ public class EnemyAI : MonoBehaviour
     private void Olum()
     {
         Debug.Log("Dusman Oldu");
-        expControllerInstance.UpdateExpBar();
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
     }
@@ -95,7 +94,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemy.SetDestination(transform.position);
 
-        if (!alreadyAttacked)
+        if (!alreadyAttacked) 
         {
             GameObject projectile = Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
 
@@ -109,14 +108,18 @@ public class EnemyAI : MonoBehaviour
             transform.LookAt(player);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
-
-
-
         }
     }
 
     void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+
+    void MeleeAttack()
+    {
+        _playerBehaviour.PlayerTakeDmg(20);
+        _playerBehaviour.destroyPlayer();
     }
 }
