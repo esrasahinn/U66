@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : PlayerBehaviour
+public class ArcherProjectileController : ArcherPlayerBehaviour
 {
     [SerializeField] float maxDistance;
     private Vector3 initialPosition;
 
-    public PlayerBehaviour _playH;
-    public ArcherPlayerBehaviour _aplayH;
+    public ArcherPlayerBehaviour _playH;
 
     public void Awake()
     {
 
 
-        _playH = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
-        _aplayH = GameObject.FindGameObjectWithTag("Player").GetComponent<ArcherPlayerBehaviour>();
+        _playH = GameObject.FindGameObjectWithTag("Player").GetComponent<ArcherPlayerBehaviour>();
     }
     public void Initialize(Vector3 startPosition)
     {
@@ -39,9 +37,9 @@ public class ProjectileController : PlayerBehaviour
             //Buraya can eksilme fonksiyonu
             Destroy(gameObject);
             _playH.PlayerTakeDmg(20);
-            _aplayH.PlayerTakeDmg(20);
             //_playH.destroyPlayer();
 
         }
     }
 }
+
