@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8509005113250971960}
   - component: {fileID: 3191264115644736423}
   - component: {fileID: -1329633752002511870}
-  - component: {fileID: -5550683398919910592}
+  - component: {fileID: -7600543457251127281}
+  - component: {fileID: -6954940206506535360}
   m_Layer: 6
   m_Name: Projectile
   m_TagString: Untagged
@@ -134,7 +135,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &-5550683398919910592
+--- !u!114 &-7600543457251127281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8340486057547913488}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aab120a2dadd6542912390c9ed719e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthbar: {fileID: 0}
+  _health: 100
+  maxDistance: 30
+  _playH: {fileID: -7600543457251127281}
+--- !u!114 &-6954940206506535360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -147,5 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthbar: {fileID: 0}
+  _health: 100
   maxDistance: 30
-  _playH: {fileID: -5550683398919910592}
+  _playH: {fileID: -6954940206506535360}
+  _aplayH: {fileID: -7600543457251127281}

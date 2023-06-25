@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerBehaviour : MonoBehaviour
 {
     [SerializeField] Healthbar _healthbar;
-    private int _health = 100; // Karakterin can deðeri
+    public int _health = 100;
     private static PlayerBehaviour _instance;
+    private Animator _animator;
+    private MenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme; // MenzileGirenDusmanaAtesVeDonme scriptine eriþmek için referans
 
     public static PlayerBehaviour GetInstance()
     {
@@ -21,11 +23,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()
     {
+        _animator = GetComponent<Animator>();
+        menzileGirenDusmanaAtesVeDonme = GetComponent<MenzileGirenDusmanaAtesVeDonme>(); // MenzileGirenDusmanaAtesVeDonme componentini al
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -45,14 +49,19 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    public void destroyPlayer()
+    public void DestroyPlayer()
     {
+        _animator.SetBool("Death",true);
+        StartCoroutine(ResetAfterAnimation());
+    }
 
-        if (GameManager.gameManager._dusmanHealth.Health <= 0)
-        {
-            Destroy(gameObject);
-        }
-
+    private IEnumerator ResetAfterAnimation()
+    {
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        _health = 0; // Can deðerini sýfýrla
+        _healthbar.SetHealth(_health);
+        gameObject.SetActive(true);
+        menzileGirenDusmanaAtesVeDonme.enabled = false; // MenzileGirenDusmanaAtesVeDonme scriptini devre dýþý býrak
     }
 
     public void PlayerTakeDmg(int dmg)
@@ -62,13 +71,14 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (_health <= 0)
         {
-            Destroy(gameObject);
+            DestroyPlayer();
         }
     }
 
     private void PlayerHeal(int healing)
     {
         GameManager.gameManager._dusmanHealth.HealUnit(healing);
-        _healthbar.SetHealth(GameManager.gameManager._dusmanHealth.Health);
+        _health = GameManager.gameManager._dusmanHealth.Health;
+        _healthbar.SetHealth(_health);
     }
 }
