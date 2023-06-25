@@ -16,14 +16,18 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     [SerializeField] float mermiOmru = 5f;
 
     public GameObject mermiPrefab;
+    public GameObject ozelYetenekPrefab;
     public Transform atesNoktasi;
 
     private GameObject hedef;
     private bool attackInProgress = false;
     private float sonrakiAtesZamani = 0f;
+    private bool ozelYetenekAktif = false;
+    private GameObject eskiPrefab;
+    private float ozelYetenekZamani = 0f;
 
     private Animator animator;
-    private ArcherPlayerBehaviour playerBehaviour; // PlayerBehaviour scriptine eriþmek için referans
+    private ArcherPlayerBehaviour playerBehaviour;
 
     internal void AddAtesHizi(float boostAmt)
     {
@@ -34,20 +38,30 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        playerBehaviour = GetComponent<ArcherPlayerBehaviour>(); // PlayerBehaviour componentini al
+        playerBehaviour = GetComponent<ArcherPlayerBehaviour>();
     }
 
     private void Update()
     {
-        if (playerBehaviour._health <= 0) // Can deðeri 0 ise ateþ etmeyi ve dönmeyi durdur
+        if (playerBehaviour._health <= 0)
             return;
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!ozelYetenekAktif)
+            {
+                ozelYetenekAktif = true;
+                ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
+                OzelYetenek();
+            }
+        }
 
         if (hedef == null || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
         {
             HedefSec();
             attackInProgress = false;
-            animator.SetBool("Idle", true); // Düþman menzilinden çýktýðýnda Idle animasyonunu etkinleþtir
-            animator.SetBool("Attack", false); // Düþman menzilinden çýktýðýnda Attack animasyonunu devre dýþý býrak
+            animator.SetBool("Idle", true);
+            animator.SetBool("Attack", false);
         }
 
         if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi)
@@ -55,8 +69,8 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             if (!attackInProgress && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBaslamaMesafesi)
             {
                 attackInProgress = true;
-                animator.SetBool("Idle", false); // Düþman menziline girdiðinde Idle animasyonunu devre dýþý býrak
-                animator.SetBool("Attack", true); // Düþman menziline girdiðinde Attack animasyonunu etkinleþtir
+                animator.SetBool("Idle", false);
+                animator.SetBool("Attack", true);
             }
             DusmanaDon();
         }
@@ -76,7 +90,15 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             attackInProgress = false;
         }
 
-        animator.SetBool("Running", attackInProgress); // Running animasyonunu attackInProgress deðiþkenine göre ayarla
+        animator.SetBool("Running", attackInProgress);
+
+        if (ozelYetenekAktif)
+        {
+            if (Time.time >= ozelYetenekZamani + 0.5f) // Özel yetenek süresi kontrol ediliyor
+            {
+                GeriDon();
+            }
+        }
     }
 
     public void HedefSec()
@@ -126,5 +148,26 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         }
 
         Destroy(mermi, mermiOmru);
+    }
+
+    void OzelYetenek()
+    {
+        if (mermiPrefab != null && ozelYetenekPrefab != null)
+        {
+            eskiPrefab = mermiPrefab;
+            mermiPrefab = ozelYetenekPrefab;
+        }
+    }
+
+    void GeriDon()
+    {
+        if (eskiPrefab != null && Time.time >= ozelYetenekZamani + 0.5f) // Özel yetenek süresi kontrol ediliyor
+        {
+            mermiPrefab = eskiPrefab;
+            eskiPrefab = null;
+            ozelYetenekAktif = false;
+            ozelYetenekZamani = 0f;
+            attackInProgress = false;
+        }
     }
 }

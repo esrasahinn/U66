@@ -6,7 +6,16 @@ public class Mermi : MonoBehaviour
 {
     private Transform hedef;
     private float hiz;
-    [SerializeField] private int hasar = 5;
+    [SerializeField] public int hasar = 20;
+    [SerializeField] public int minHasar = 5;
+    [SerializeField] public int maxHasar = 50;
+
+    internal void AddHasar(int hasarAmt)
+    {
+        hasar += hasarAmt;
+        hasar = Mathf.Clamp(hasar, minHasar, maxHasar);
+    }
+
 
     public void HedefBelirle(Transform hedef)
     {
@@ -42,6 +51,7 @@ public class Mermi : MonoBehaviour
 
         transform.Translate(hedefYonu.normalized * hareketMesafesi, Space.World);
     }
+
     private void HedefiVur()
     {
         Collider[] hedefColliders = Physics.OverlapSphere(transform.position, 1f);
