@@ -26,7 +26,7 @@ public class EnemyAI : MonoBehaviour
     void Awake()
     {
         dropCoinScript = gameObject.GetComponent<DropCoin>();
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
     }
 
@@ -120,6 +120,6 @@ public class EnemyAI : MonoBehaviour
     void MeleeAttack()
     {
         _playerBehaviour.PlayerTakeDmg(20);
-        _playerBehaviour.destroyPlayer();
+        _playerBehaviour.DestroyPlayer();
     }
 }
