@@ -8,7 +8,7 @@ public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
     public GameObject confirmationPopup;
-    //public Text confirmationText;
+    public Text confirmationText;
     private int selectedLevel;
 
     private void Awake()
@@ -28,7 +28,7 @@ public class LevelMenu : MonoBehaviour
     {
         selectedLevel = mapId;
         string MapName = "Map " + mapId;
-        //confirmationText.text = "Are you sure you want to play Level " + mapId + "?";
+        confirmationText.text = "Are you sure you want to play Level " + mapId + "?";
         confirmationPopup.SetActive(true);
     }
 
