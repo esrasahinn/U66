@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 6333144558194148537}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7213326926430412563
 PrefabInstance:
@@ -160,6 +160,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4691943734767509665}
+    - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1470389063156955287}
   m_SourcePrefab: {fileID: 100100000, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
 --- !u!114 &5608952472982819429 stripped
 MonoBehaviour:
@@ -199,3 +203,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthbar: {fileID: 5608952472982819429}
   _health: 100
+--- !u!114 &1470389063156955287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951297765646767093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf0ea3112c505d4f8bdb03e2e3d2df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBar: {fileID: 0}
+  popupObject: {fileID: 0}
+  Buton1: {fileID: 0}
+  Buton2: {fileID: 0}
