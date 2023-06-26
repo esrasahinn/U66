@@ -84,13 +84,14 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             AtesEt();
             attackInProgress = true;
             sonrakiAtesZamani = Time.time + 1f / atesHizi;
+            animator.SetBool("Running", attackInProgress);
         }
         else
         {
             attackInProgress = false;
         }
 
-        animator.SetBool("Running", attackInProgress);
+        
 
         if (ozelYetenekAktif)
         {
