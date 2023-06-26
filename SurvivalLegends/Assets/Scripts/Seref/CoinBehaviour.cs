@@ -11,12 +11,12 @@ public class CoinBehaviour : MonoBehaviour
     public float stopY = 0.5f;
     private Rigidbody rb;
     Transform target;
-
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        // animator = GetComponent<Animator>();
+        target.position += new Vector3(0, 1, 0);
+       // animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -29,27 +29,25 @@ public class CoinBehaviour : MonoBehaviour
             // animator.SetBool("landed", true);
         }
     }
-
     void Update()
     {
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
-    IEnumerator FlyToPlayer()
+IEnumerator FlyToPlayer()
+{
+    Debug.Log("FlyToPlayer coroutine started.");
+    yield return new WaitForSeconds(1f);
+    while (Vector3.Distance(transform.position, target.position) > 0.1f)
     {
-        yield return new WaitForSeconds(1f);
-        transform.position = Vector3.SmoothDamp(transform.position, target.transform.position, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
-        //// Debug.Log("FlyToPlayer coroutine started.");
-        // yield return new WaitForSeconds(1f);
-
-        // Vector3 targetPosition = target.position + new Vector3(0, 1, 0);
-        // while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
-        // {
-        //     transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
-        //    // Debug.Log("Current position: " + transform.position);
-        //    // Debug.Log("Target position: " + targetPosition);
-        //     yield return null;
-        // }
-        // //Debug.Log("Coin reached the player.");
+        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
+        Debug.Log("Current position: " + transform.position);
+        Debug.Log("Target position: " + target.position);
+        yield return null;
     }
+    Debug.Log("Coin reached the player.");
+}
+
+
+
 }

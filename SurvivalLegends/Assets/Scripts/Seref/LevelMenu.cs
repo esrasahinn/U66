@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
     public GameObject confirmationPopup;
-    public TextMeshProUGUI confirmationText;
+    //public Text confirmationText;
     private int selectedLevel;
 
     private void Awake()
@@ -29,7 +28,7 @@ public class LevelMenu : MonoBehaviour
     {
         selectedLevel = mapId;
         string MapName = "Map " + mapId;
-        confirmationText.text = "Are you sure you want to access Level " + mapId + "?";
+        //confirmationText.text = "Are you sure you want to play Level " + mapId + "?";
         confirmationPopup.SetActive(true);
     }
 
