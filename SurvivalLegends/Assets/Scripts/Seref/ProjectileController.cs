@@ -32,7 +32,7 @@ public class ProjectileController : PlayerBehaviour
             ability2Timer -= Time.deltaTime;
             if (ability2Timer <= 0f)
             {
-                isInvincible = false; // Yeni özelliði devre dýþý býrak
+                isInvincible = false; // Yeni ï¿½zelliï¿½i devre dï¿½ï¿½ï¿½ bï¿½rak
             }
         }
 
@@ -47,7 +47,7 @@ public class ProjectileController : PlayerBehaviour
     {
         ability2Active = true;
         ability2Timer = ability2Duration;
-        isInvincible = true; // Yeni özelliði etkinleþtir
+        isInvincible = true; // Yeni ï¿½zelliï¿½i etkinleï¿½tir
         StartCoroutine(DisableAbility2AfterDuration());
     }
 
@@ -65,13 +65,13 @@ public class ProjectileController : PlayerBehaviour
                 Debug.Log("2boutan");
                 Destroy(gameObject);
                 _playH.PlayerTakeDmg(0);
-                _playH.destroyPlayer();
+                // _playH.destroyPlayer();
             }
             else
             {
                 Destroy(gameObject);
                 _playH.PlayerTakeDmg(20);
-                _playH.destroyPlayer();
+                // _playH.destroyPlayer();
             }
         }
     }
