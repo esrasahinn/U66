@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour
     void Awake()
     {
         dropCoinScript = gameObject.GetComponent<DropCoin>();
-        player = GameObject.Find("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
         expControllerInstance = FindObjectOfType<expController>();
     }
