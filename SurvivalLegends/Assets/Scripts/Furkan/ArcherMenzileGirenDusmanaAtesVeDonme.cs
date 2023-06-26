@@ -170,4 +170,14 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             attackInProgress = false;
         }
     }
+
+    public void AktiflestirOzelYetenek()
+    {
+        if (!ozelYetenekAktif)
+        {
+            ozelYetenekAktif = true;
+            ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
+            OzelYetenek();
+        }
+    }
 }
