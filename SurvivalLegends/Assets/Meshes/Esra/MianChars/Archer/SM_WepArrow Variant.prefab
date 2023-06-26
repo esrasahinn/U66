@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3b9846c79f1c36a4f81c31d5f4884d47,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3b9846c79f1c36a4f81c31d5f4884d47,
         type: 3}
@@ -100,6 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasar: 20
+  minHasar: 5
+  maxHasar: 50
 --- !u!65 &-2249692585905522176
 BoxCollider:
   m_ObjectHideFlags: 0
