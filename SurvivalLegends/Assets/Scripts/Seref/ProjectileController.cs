@@ -8,12 +8,14 @@ public class ProjectileController : PlayerBehaviour
     private Vector3 initialPosition;
 
     public PlayerBehaviour _playH;
+    public ArcherPlayerBehaviour _aplayH;
 
     public void Awake()
     {
 
 
         _playH = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        _aplayH = GameObject.FindGameObjectWithTag("Player").GetComponent<ArcherPlayerBehaviour>();
     }
     public void Initialize(Vector3 startPosition)
     {
@@ -37,7 +39,8 @@ public class ProjectileController : PlayerBehaviour
             //Buraya can eksilme fonksiyonu
             Destroy(gameObject);
             _playH.PlayerTakeDmg(20);
-            _playH.destroyPlayer();
+            _aplayH.PlayerTakeDmg(20);
+            //_playH.destroyPlayer();
 
         }
     }
