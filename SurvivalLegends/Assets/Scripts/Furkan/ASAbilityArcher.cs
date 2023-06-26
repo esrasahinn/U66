@@ -1,12 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MSAbility : MonoBehaviour
+public class ASAbilityArcher : MonoBehaviour
 {
     public Button abilityButton;
-    public Player player;
-    public Mermi mermi;
-    public int hasarAmount = 10;
+    public ArcherMenzileGirenDusmanaAtesVeDonme archerScript;
+    public float boostAmount = 10f;
     public float cooldownDuration = 2f;
     public float abilityDuration = 2f;
 
@@ -21,7 +20,7 @@ public class MSAbility : MonoBehaviour
     {
         if (isAbilityReady)
         {
-            mermi.AddHasar(hasarAmount);
+            archerScript.AddAtesHizi(boostAmount);
             isAbilityReady = false;
             Invoke("ResetAbility", abilityDuration);
             Invoke("ResetCooldown", cooldownDuration);
@@ -30,7 +29,7 @@ public class MSAbility : MonoBehaviour
 
     private void ResetAbility()
     {
-        mermi.AddHasar(-hasarAmount);
+        archerScript.AddAtesHizi(-boostAmount);
     }
 
     private void ResetCooldown()
