@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Olum()
     {
-        expControllerInstance.UpdateExpBar();
+        //expControllerInstance.UpdateExpBar();
         Debug.Log("Dusman Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
