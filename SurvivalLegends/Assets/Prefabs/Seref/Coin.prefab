@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8756561721362618945}
   - component: {fileID: -5584178110772141754}
   - component: {fileID: 1028266147084365397}
+  - component: {fileID: -6573373897326504685}
   m_Layer: 9
   m_Name: Coin
   m_TagString: Coin
@@ -148,13 +149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 333
-<<<<<<< HEAD
-  minFolSpeed: 250
-  maxFolSpeed: 333
-=======
-  minFolSpeed: 1000
-  maxFolSpeed: 1500
->>>>>>> Seref
+  minFolSpeed: 30
+  maxFolSpeed: 45
   stopY: 0.5
 --- !u!96 &1028266147084365397
 TrailRenderer:
@@ -269,3 +265,19 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!114 &-6573373897326504685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336167481356998226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e0e728a675881d428804c8dd4fe8830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 333
+  minFolSpeed: 15
+  maxFolSpeed: 20
+  stopY: 0.5
