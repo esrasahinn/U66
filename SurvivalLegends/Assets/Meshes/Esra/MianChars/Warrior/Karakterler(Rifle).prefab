@@ -132,6 +132,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: atesNoktasi
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2881194877044934807, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_Layer
@@ -663,7 +668,8 @@ PrefabInstance:
       propertyPath: donmeBaslamaMesafesi
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5262892353393131848, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     - {fileID: 7759591816998674731, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
@@ -689,12 +695,17 @@ PrefabInstance:
     - {fileID: 5347884315641386510, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     - {fileID: 5347110914019713706, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     - {fileID: 5347586659474810804, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
+    - {fileID: 5833320405798756101, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3745090488537537450, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       insertIndex: 0
       addedObject: {fileID: 7416972454465135514}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 767504740195457384}
     - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       insertIndex: -1
@@ -750,6 +761,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4288081145397395117}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &767504740195457384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567566833197298251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad58ff43d93633a49b7537a3b2b2310d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menzilMesafesi: 15
+  donmeHizi: 100
+  atesHizi: 2
+  maxAtesHizi: 80
+  minAtesHizi: 1
+  atesEtmeMesafesi: 15
+  hedefeGitmeHizi: 20
+  donmeBaslamaMesafesi: 15
+  donmeBitisMesafesi: 15
+  mermiOmru: 1
+  mermiPrefab: {fileID: 86524995838482653, guid: 64a4454f667cdd643aaf4bf174c3fc6a,
+    type: 3}
+  atesNoktasi: {fileID: 5206564452908763359}
 --- !u!114 &4407692585933962666
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,7 +5,8 @@ public class MSAbility : MonoBehaviour
 {
     public Button abilityButton;
     public Player player;
-    public float boostAmount = 10f;
+    public Mermi mermi;
+    public int hasarAmount = 10;
     public float cooldownDuration = 2f;
     public float abilityDuration = 2f;
 
@@ -20,7 +21,7 @@ public class MSAbility : MonoBehaviour
     {
         if (isAbilityReady)
         {
-            player.AddMoveSpeed(boostAmount);
+            mermi.AddHasar(hasarAmount);
             isAbilityReady = false;
             Invoke("ResetAbility", abilityDuration);
             Invoke("ResetCooldown", cooldownDuration);
@@ -29,7 +30,7 @@ public class MSAbility : MonoBehaviour
 
     private void ResetAbility()
     {
-        player.AddMoveSpeed(-boostAmount);
+        mermi.AddHasar(-hasarAmount);
     }
 
     private void ResetCooldown()
