@@ -10,7 +10,7 @@ public class CollectCoin : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             coinAmount++;
-            Debug.Log(coinAmount + "coins.");
+            Debug.Log(coinAmount + " coins.");
             Destroy(other.gameObject);
             //other.gameObject.SetActive(false);
         }

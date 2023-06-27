@@ -9,7 +9,10 @@ public class ProjectileController : PlayerBehaviour
     private bool isInvincible = false;
     public PlayerBehaviour _playH;
 
-
+    private bool ability2Active = false;
+    private float ability2Duration = 30f;
+    private float ability2Timer = 0f;
+    private float ability2DamageMultiplier = 2f;
 
     public void Awake()
     {
@@ -24,7 +27,14 @@ public class ProjectileController : PlayerBehaviour
 
     void Update()
     {
-
+        if (isInvincible)
+        {
+            ability2Timer -= Time.deltaTime;
+            if (ability2Timer <= 0f)
+            {
+                isInvincible = false; // Yeni özelliði devre dýþý býrak
+            }
+        }
 
         float distanceTraveled = Vector3.Distance(transform.position, initialPosition);
 
@@ -33,15 +43,36 @@ public class ProjectileController : PlayerBehaviour
             Destroy(gameObject);
         }
     }
+    public void ActivateAbility2()
+    {
+        ability2Active = true;
+        ability2Timer = ability2Duration;
+        isInvincible = true; // Yeni özelliði etkinleþtir
+        StartCoroutine(DisableAbility2AfterDuration());
+    }
 
+    private IEnumerator DisableAbility2AfterDuration()
+    {
+        yield return new WaitForSeconds(ability2Duration);
+        ability2Active = false;
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (ability2Active && isInvincible)
+            {
+                Debug.Log("2boutan");
                 Destroy(gameObject);
-                _playH.PlayerTakeDmg(100);
+                _playH.PlayerTakeDmg(0);
                 _playH.DestroyPlayer();
-            
+            }
+            else
+            {
+                Destroy(gameObject);
+                _playH.PlayerTakeDmg(20);
+                _playH.DestroyPlayer();
+            }
         }
     }
 }
