@@ -22,17 +22,11 @@ public class EnemyAI : MonoBehaviour
     private bool alreadyAttacked;
     public float attackRange = 10.0f;
     private bool inAttackRange;
-    public DropCoin dropCoinScript;
-    private expController expControllerInstance;
-
-
 
     void Awake()
     {
-        dropCoinScript = gameObject.GetComponent<DropCoin>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
-        expControllerInstance = FindObjectOfType<expController>();
     }
 
     void Update()
@@ -48,9 +42,7 @@ public class EnemyAI : MonoBehaviour
         {
             ChasePlayer();
         }
-      
-
-        }
+    }
 
     public void HasarAl(float mermiHasar)
     {
@@ -70,7 +62,6 @@ public class EnemyAI : MonoBehaviour
         if (can <= 0)
         {
             Olum();
-            dropCoinScript.CoinDrop();
         }
         else if (_playerBehaviour != null)
         {
@@ -86,7 +77,6 @@ public class EnemyAI : MonoBehaviour
 
     private void Olum()
     {
-        //expControllerInstance.UpdateExpBar();
         Debug.Log("Dusman Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
@@ -102,7 +92,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemy.SetDestination(transform.position);
 
-        if (!alreadyAttacked) 
+        if (!alreadyAttacked)
         {
             GameObject projectile = Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
 
@@ -116,6 +106,9 @@ public class EnemyAI : MonoBehaviour
             transform.LookAt(player);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
+
+
+
         }
     }
 
@@ -124,10 +117,15 @@ public class EnemyAI : MonoBehaviour
         alreadyAttacked = false;
     }
 
-
-    void MeleeAttack()
+    private void OnTriggerEnter(Collider other)
     {
-        _playerBehaviour.PlayerTakeDmg(20);
-        _playerBehaviour.DestroyPlayer();
+        if (other.CompareTag("Katana"))
+        {
+            Katana katana = other.GetComponent<Katana>();
+            if (katana != null)
+            {
+                HasarAl(katana.damageAmount);
+            }
+        }
     }
 }

@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6334885447555909953}
   - component: {fileID: -1474707075825839581}
   - component: {fileID: 7677355908968615887}
+  - component: {fileID: 2250863228834768108}
+  - component: {fileID: -1055477863169169300}
   m_Layer: 0
   m_Name: Katana
-  m_TagString: Untagged
+  m_TagString: Katana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +70,40 @@ MonoBehaviour:
   aimMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &2250863228834768108
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859626816578343399}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.45685205, y: 1.7250772, z: 0.2942534}
+  m_Center: {x: 0.0025918335, y: 0.69033456, z: -0.004391849}
+--- !u!114 &-1055477863169169300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859626816578343399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d95b4c93b246ac419096c4ccf108285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 50
 --- !u!1 &6741713517866415504
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +280,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 702303cb77a6a4d43af9285b749acdfb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 863327450257327873}
   m_SourcePrefab: {fileID: 100100000, guid: 702303cb77a6a4d43af9285b749acdfb, type: 3}
 --- !u!4 &387416997204103610 stripped
 Transform:
@@ -252,6 +292,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 210218693327713873}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1021104458391407360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 702303cb77a6a4d43af9285b749acdfb,
+    type: 3}
+  m_PrefabInstance: {fileID: 210218693327713873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &863327450257327873
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021104458391407360}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3382082, y: 1.6844832, z: 0.17232507}
+  m_Center: {x: -0.011412561, y: 0.6479754, z: 0.000000014901161}
 --- !u!1001 &4849728405273795875
 PrefabInstance:
   m_ObjectHideFlags: 0
