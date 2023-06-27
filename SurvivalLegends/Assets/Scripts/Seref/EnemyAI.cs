@@ -22,13 +22,11 @@ public class EnemyAI : MonoBehaviour
     private bool alreadyAttacked;
     public float attackRange = 10.0f;
     private bool inAttackRange;
-    DropCoin coinScript;
 
     void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
-        coinScript = GetComponent<DropCoin>();
     }
 
     void Update()
@@ -82,7 +80,6 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Dusman Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
-        coinScript.CoinDrop();
     }
 
 
