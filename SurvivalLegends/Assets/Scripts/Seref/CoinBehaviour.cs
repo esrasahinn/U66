@@ -11,15 +11,11 @@ public class CoinBehaviour : MonoBehaviour
     public float stopY = 0.5f;
     private Rigidbody rb;
     Transform target;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-<<<<<<< HEAD
-        target.position += new Vector3(0, 1, 0);
-       // animator = GetComponent<Animator>();
-=======
->>>>>>> Seref
     }
 
     private void FixedUpdate()
@@ -30,23 +26,14 @@ public class CoinBehaviour : MonoBehaviour
             StartCoroutine(FlyToPlayer());
         }
     }
+
     void Update()
     {
         transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
-IEnumerator FlyToPlayer()
-{
-    Debug.Log("FlyToPlayer coroutine started.");
-    yield return new WaitForSeconds(1f);
-    while (Vector3.Distance(transform.position, target.position) > 0.1f)
+    IEnumerator FlyToPlayer()
     {
-<<<<<<< HEAD
-        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
-        Debug.Log("Current position: " + transform.position);
-        Debug.Log("Target position: " + target.position);
-        yield return null;
-=======
         float smoothTime = Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed);
         float maxDistance = Vector3.Distance(transform.position, target.position);
         float thresholdDistance = 2f; // Adjust this threshold to control when to start decreasing smoothTime
@@ -61,13 +48,7 @@ IEnumerator FlyToPlayer()
             transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, smoothTime);
             yield return null;
         }
->>>>>>> Seref
     }
-    Debug.Log("Coin reached the player.");
-}
-
-
-
 }
 
 //// Debug.Log("FlyToPlayer coroutine started.");
