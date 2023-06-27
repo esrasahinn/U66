@@ -116,4 +116,16 @@ public class EnemyAI : MonoBehaviour
     {
         alreadyAttacked = false;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Katana"))
+        {
+            Katana katana = other.GetComponent<Katana>();
+            if (katana != null)
+            {
+                HasarAl(katana.damageAmount);
+            }
+        }
+    }
 }

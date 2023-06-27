@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
 {
     [SerializeField] Weapon[] initWeaponsPrefabs;
-
-    [SerializeField] Transform defaultWeaponSlot;
+    [SerializeField] Transform[] defaultWeaponSlots;
     [SerializeField] Transform[] weaponSlots;
-    private bool isInventoryActive = false;
     [SerializeField] private Animator animator;
 
     List<Weapon> weapons;
     int currentWeaponIndex = -1;
+    bool isAnimationPlaying = false;
+    public bool isInventoryActive = false;
+    public bool canUseAbility = true;
 
     private void Start()
     {
@@ -25,16 +25,28 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            ToggleInventory();
+            if (!isAnimationPlaying)
+            {
+                ToggleInventory();
+            }
         }
     }
 
     private void InitializeWeapons()
     {
         weapons = new List<Weapon>();
+        int slotIndex = 0; // Kullanýlacak baþlangýç silahý slotunun dizideki indeksi
+
         foreach (Weapon weapon in initWeaponsPrefabs)
         {
-            GiveNewWeapon(weapon);
+            GiveNewWeapon(weapon, defaultWeaponSlots[slotIndex]);
+
+            slotIndex++; // Slot indeksini bir sonraki slot için artýrýn
+
+            if (slotIndex >= defaultWeaponSlots.Length)
+            {
+                slotIndex = 0; // Eðer dizideki slotlarýn sonuna gelindi ise, baþa dönün
+            }
         }
 
         // Baþlangýçta silahlarý devre dýþý býrak
@@ -44,18 +56,14 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
         }
     }
 
-    private void GiveNewWeapon(Weapon weapon)
+    private void GiveNewWeapon(Weapon weapon, Transform weaponSlot)
     {
-        Transform weaponSlot = defaultWeaponSlot;
-        foreach (Transform slot in weaponSlots)
-        {
-            if (slot.gameObject.tag == weapon.GetAttachSlotTag())
-            {
-                weaponSlot = slot;
-            }
-        }
-        Weapon newWeapon = Instantiate(weapon, weaponSlot);
+        GameObject weaponObject = Instantiate(weapon.gameObject, weaponSlot);
+        Weapon newWeapon = weaponObject.GetComponent<Weapon>();
+
+        // Gerekli inizializasyonlarý yap
         newWeapon.Init(gameObject);
+
         weapons.Add(newWeapon);
     }
 
@@ -63,9 +71,6 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
     {
         return weapons[currentWeaponIndex];
     }
-
-
-
 
     public bool HandlePurchase(Object newPurchase)
     {
@@ -75,24 +80,64 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
         Weapon itemAsWeapon = itemAsGameObject.GetComponent<Weapon>();
         if (itemAsWeapon == null) return false;
 
-        GiveNewWeapon(itemAsWeapon);
-        return true;
+        Transform nextWeaponSlot = GetNextAvailableWeaponSlot();
+        if (nextWeaponSlot != null)
+        {
+            GiveNewWeapon(itemAsWeapon, nextWeaponSlot);
+            return true;
+        }
+
+        return false;
     }
-    private void ToggleInventory()
+
+    public void ActivateAbility()
+    {
+        if (!isInventoryActive && canUseAbility)
+        {
+            ToggleInventory();
+            StartCoroutine(DisableAbilityAfterDelay(1f)); // Yetenek kullanýmýndan sonra 1 saniye beklet
+        }
+    }
+
+    public void ToggleInventory()
     {
         isInventoryActive = !isInventoryActive;
 
         if (isInventoryActive)
         {
             currentWeaponIndex = 0; // Ýlk silahý seç
-            ActivateInventory();
+            ActivateInventory(); // Silahý etkinleþtir
+            animator.SetBool("Spine", true); // "spine" animasyon parametresini true olarak ayarla
+            isAnimationPlaying = true;
+            StartCoroutine(StopAnimationAfterDelay(0.5f));
         }
         else
         {
-            currentWeaponIndex = -1; // Silahý devre dýþý býrak
             DeactivateInventory();
         }
     }
+
+    private IEnumerator StopAnimationAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (isInventoryActive)
+        {
+            animator.SetBool("Spine", false); // "spine" animasyon parametresini false olarak ayarla
+            isAnimationPlaying = false;
+            DeactivateInventory(); // Silahý devre dýþý býrak
+        }
+    }
+
+    private IEnumerator DisableAbilityAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        canUseAbility = false;
+        yield return new WaitForSeconds(delay);
+        canUseAbility = true;
+    }
+
     private void ActivateInventory()
     {
         // Önceki silahý devre dýþý býrak
@@ -107,7 +152,15 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
             weapons[currentWeaponIndex].gameObject.SetActive(true);
             animator.SetBool("Spine", true); // "spine" animasyon parametresini true olarak ayarla
         }
+
+        // Ýkinci silahý etkinleþtir
+        int secondWeaponIndex = currentWeaponIndex + 1;
+        if (secondWeaponIndex >= 0 && secondWeaponIndex < weapons.Count)
+        {
+            weapons[secondWeaponIndex].gameObject.SetActive(true);
+        }
     }
+
     private void DeactivateInventory()
     {
         if (currentWeaponIndex >= 0 && currentWeaponIndex < weapons.Count)
@@ -115,6 +168,25 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
             weapons[currentWeaponIndex].gameObject.SetActive(false);
         }
 
+        // Ýkinci silahý devre dýþý býrak
+        int secondWeaponIndex = currentWeaponIndex + 1;
+        if (secondWeaponIndex >= 0 && secondWeaponIndex < weapons.Count)
+        {
+            weapons[secondWeaponIndex].gameObject.SetActive(false);
+        }
+
         animator.SetBool("Spine", false); // "spine" animasyon parametresini false olarak ayarla
+        isInventoryActive = false;
+    }
+
+    private Transform GetNextAvailableWeaponSlot()
+    {
+        int nextSlotIndex = currentWeaponIndex + 1;
+        if (nextSlotIndex >= 0 && nextSlotIndex < defaultWeaponSlots.Length)
+        {
+            return defaultWeaponSlots[nextSlotIndex];
+        }
+
+        return null;
     }
 }

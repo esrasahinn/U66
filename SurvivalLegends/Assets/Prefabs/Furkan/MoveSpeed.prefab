@@ -88,8 +88,7 @@ GameObject:
   - component: {fileID: 5609489860728629368}
   - component: {fileID: 5898364299749910867}
   - component: {fileID: 8353952500884381975}
-  - component: {fileID: 6766135960737297320}
-  - component: {fileID: 3373188600425232523}
+  - component: {fileID: 6732004572291775266}
   m_Layer: 5
   m_Name: MoveSpeed
   m_TagString: Untagged
@@ -191,7 +190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0acaa0a36858894692a85244dc083ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 697a1451596e5e645b94becb02a6f712, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -201,25 +200,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6766135960737297320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7303188709118729417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85caa792bcaeaa0488c2ee4c79386436, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityButton: {fileID: 5898364299749910867}
-  player: {fileID: 0}
-  mermi: {fileID: -4975776661159642416, guid: 06e7d811191967e42909ab73ffb16e7f, type: 3}
-  hasarAmount: 50
-  cooldownDuration: 2
-  abilityDuration: 2
---- !u!114 &3373188600425232523
+--- !u!114 &6732004572291775266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -232,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 5898364299749910867}
-  cooldownTime: 10
+  cooldownTime: 15
   cooldownText: {fileID: 2349117879976743871}
   cooldownFillImage: {fileID: 8315312516904639039}
 --- !u!1 &8235298807094718484
