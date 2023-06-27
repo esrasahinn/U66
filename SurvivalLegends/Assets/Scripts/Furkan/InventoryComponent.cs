@@ -47,7 +47,7 @@ public class InventoryComponent : MonoBehaviour, IPurchaseListener
         return weapons[currentWeaponIndex];
     }
 
-  
+
 
     public bool HandlePurchase(Object newPurchase)
     {
