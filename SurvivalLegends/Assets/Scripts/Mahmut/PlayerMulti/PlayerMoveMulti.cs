@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour
+
+public class PlayerMoveMulti : NetworkBehaviour
 {
     [SerializeField] JoyStick moveStick;
     [SerializeField] JoyStick aimStick;
@@ -25,10 +27,10 @@ public class Player : MonoBehaviour
    [SerializeField] ShopSystem testShopSystem;
    [SerializeField] ShopItem testItem;
 
-    void TestPurchase()
-    {
-        testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
-}
+//     void TestPurchase()
+//     {
+//         testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
+// }
     Vector2 moveInput;
     Vector2 aimInput;
     public PlayerBehaviour _playH;
@@ -198,10 +200,10 @@ public class Player : MonoBehaviour
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
     }
 
-    private void Awake()
-    {
-        instance = this;
-    }
+    // private void Awake()
+    // {
+    //     instance = this;
+    // }
 
     public void HasarAl(int hasar)
     {
