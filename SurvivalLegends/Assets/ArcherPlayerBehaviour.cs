@@ -41,12 +41,12 @@ public class ArcherPlayerBehaviour : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            PlayerHeal(10);
-            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
-        }
+    public void PerformLeftShiftAction()
+    {
+        PlayerHeal(10);
+        Debug.Log(GameManager.gameManager._dusmanHealth.Health);
     }
 
     public void DestroyPlayer()
@@ -75,7 +75,7 @@ public class ArcherPlayerBehaviour : MonoBehaviour
         }
     }
 
-    private void PlayerHeal(int healing)
+    public void PlayerHeal(int healing)
     {
         GameManager.gameManager._dusmanHealth.HealUnit(healing);
         _health = GameManager.gameManager._dusmanHealth.Health;

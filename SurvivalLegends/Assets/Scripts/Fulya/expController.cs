@@ -13,7 +13,8 @@ public class expController : MonoBehaviour
     private bool isPopupShowing = false;
     public Button Buton1;
     public Button Buton2;
-    
+    public Button Buton3;
+
     private ProjectileController projectileController; // ProjectileController referansý eklendi
 
     private void Awake()
