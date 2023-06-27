@@ -13,13 +13,13 @@ public class expController : MonoBehaviour
     private bool isPopupShowing = false;
     public Button Buton1;
     public Button Buton2;
-
+    public Button Buton3;
+    public Button Buton4;
     private ProjectileController projectileController; // ProjectileController referansý eklendi
 
     private void Awake()
     {
         Buton1.onClick.AddListener(ActivateAbility1);
-        Buton2.onClick.AddListener(ActivateAbility2);
         projectileController = GetComponent<ProjectileController>(); // ProjectileController referansý alýndý
     }
 
@@ -55,7 +55,7 @@ public class expController : MonoBehaviour
         isPopupShowing = true;
     }
 
-    private void HidePopup()
+    public void HidePopup()
     {
         popupObject.SetActive(false);
         isPopupShowing = false;
@@ -72,14 +72,5 @@ public class expController : MonoBehaviour
         HidePopup();
     }
 
-    private void ActivateAbility2()
-    {
 
-        ProjectileController projectilecontroller = FindObjectOfType<ProjectileController>();
-        if (projectilecontroller != null)
-        {
-            projectilecontroller.ActivateAbility2();
-        }
-        HidePopup();
-    }
 }
