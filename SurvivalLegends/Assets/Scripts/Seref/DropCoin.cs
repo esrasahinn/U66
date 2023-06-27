@@ -21,7 +21,7 @@ public class DropCoin : MonoBehaviour
 
         for (int i = 0; i < numCollectibles; i++)
         {
-            GameObject collectible = Instantiate(collectiblePrefab, transform.position, Quaternion.identity);
+            GameObject collectible = Instantiate(collectiblePrefab, transform.position + new Vector3(0,0.8f,0), Quaternion.identity);
             Rigidbody rb = collectible.GetComponent<Rigidbody>();
 
             float splashForce = Random.Range(minSplashForce, maxSplashForce);

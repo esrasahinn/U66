@@ -22,13 +22,11 @@ public class EnemyAI : MonoBehaviour
     private bool alreadyAttacked;
     public float attackRange = 10.0f;
     private bool inAttackRange;
-    private expController expControllerInstance;
 
     void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
-        expControllerInstance = FindObjectOfType<expController>();
     }
 
     void Update()
@@ -80,7 +78,6 @@ public class EnemyAI : MonoBehaviour
     private void Olum()
     {
         Debug.Log("Dusman Oldu");
-        expControllerInstance.UpdateExpBar();
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
     }

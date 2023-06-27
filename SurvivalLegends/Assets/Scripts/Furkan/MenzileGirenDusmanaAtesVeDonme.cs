@@ -23,7 +23,7 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     private bool menzilde = false;
     private float sonrakiAtesZamani = 0f;
 
-    private PlayerBehaviour playerBehaviour; // PlayerBehaviour scriptine eriï¿½mek iï¿½in referans
+    private PlayerBehaviour playerBehaviour; // PlayerBehaviour scriptine eriþmek için referans
 
     internal void AddAtesHizi(float boostAmt)
     {
@@ -38,7 +38,7 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 
     private void Update()
     {
-        if (playerBehaviour._health <= 0) // Can deï¿½eri 0 ise ateï¿½ etmeyi ve dï¿½nmeyi durdur
+        if (playerBehaviour._health <= 0) // Can deðeri 0 ise ateþ etmeyi ve dönmeyi durdur
             return;
 
         if (hedef == null || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)

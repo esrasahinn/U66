@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] float can = 100f;
     [SerializeField] float maxCan = 100f;
 
-    [SerializeField] Slider canBariSlider; // Can ï¿½ubuï¿½u Slider bileï¿½eni
+    [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
@@ -83,8 +83,8 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         if (canBariSlider != null)
         {
-            canBariSlider.maxValue = maxCan; // Can ï¿½ubuï¿½unun maksimum deï¿½erini ayarla
-            canBariSlider.value = can; // Can ï¿½ubuï¿½unun deï¿½erini ayarla
+            canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
+            canBariSlider.value = can; // Can çubuðunun deðerini ayarla
         }
 
 
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
 
     private void PerformMoveAndAim()
     {
-        // Hareket giriï¿½ini al
+        // Hareket giriþini al
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         moveInput = new Vector2(horizontalInput, verticalInput);
@@ -144,7 +144,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("Aim", aim);
         animator.SetFloat("rforward", rforward);
 
-        // Hareket giriï¿½i varsa animasyonu ï¿½alï¿½ï¿½tï¿½r, yoksa durumu gï¿½ncelle
+        // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
         if (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0)
         {
             animator.SetBool("Running", true);
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //private void SetRunningAnimation(bool run) //yeni karakter iï¿½in(warrior)
+    //private void SetRunningAnimation(bool run) //yeni karakter için(warrior)
     //{
     //    animator.SetBool("Running", run);
     //}
@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
 
     private void UpdateCamera()
     {
-        // Oyuncu hareket ediyor ama niï¿½an almï¿½yor ve cameraController var
+        // Oyuncu hareket ediyor ama niþan almýyor ve cameraController var
         if (moveInput.magnitude != 0 && aimInput.magnitude == 0 && cameraController != null)
         {
             cameraController.AddYawInput(moveInput.x);
@@ -187,7 +187,7 @@ public class Player : MonoBehaviour
             Quaternion prevRot = transform.rotation;
 
             float turnLerpAlpha = turnSpeed * Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);//yavaï¿½ dï¿½nï¿½ï¿½ iï¿½in.
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);//yavaþ dönüþ için.
 
             Quaternion currentRot = transform.rotation;
             float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
@@ -211,7 +211,7 @@ public class Player : MonoBehaviour
 
         if (canBariSlider != null)
         {
-            canBariSlider.value = can; // Can ï¿½ubuï¿½unun deï¿½erini gï¿½ncelle
+            canBariSlider.value = can; // Can çubuðunun deðerini güncelle
         }
 
         if (can <= 0)
@@ -227,8 +227,8 @@ public class Player : MonoBehaviour
     private void Olum()
     {
         Debug.Log("Player Oldu");
-        // Dï¿½ï¿½manï¿½n ï¿½lï¿½mï¿½yle ilgili yapï¿½lmasï¿½ gereken iï¿½lemler buraya eklenebilir.
-       // Destroy(gameObject); // Dï¿½ï¿½man nesnesini yok etmek iï¿½in kullanabilirsiniz.
+        // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
+       // Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
     }
 
 }
