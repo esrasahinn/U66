@@ -113,22 +113,31 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 
 
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/DailyScrumMeetingNotesSprint2.docx)
-- **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir. 
+- 
+- **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir. Product backloglar product owner ile birlikte oluşturulmuştur.
+- 
 - **Sprint board update**: Sprint board screenshotları:
 
 
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
-- 
+
+  ![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/1.gif)
+  ![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/2.gif)
+  ![Screenshot 3](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/3.gif)
+  ![Screenshot 4](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/4.gif)
+  ![Screenshot 5](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/5.gif)
+  ![Screenshot 6](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/6.gif)
+
 - **Sprint Review**: 
  Alınan kararlar: Takım, sprint başlangıcında belirlenen hedefleri değerlendirdi. Hangi görevlerin başarılı olduğunu, hangilerinin zorluklarla karşılaşıldığını ve nedenlerini tartışıldı. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
 
 
 - **Sprint Retrospective:**
 Her bir takım üyesi, sprint süreci hakkında kendi görüşlerini ve deneyimlerini paylaştılar.
-Takım üyeleri, sprint boyunca başarılı olan şeyleri paylaşabilir ve bunların neden iyi çalıştığını analiz ettiler.
-Sprintler'de product backloglar product owner ile birlikte oluşturulmuştur. 
+Takım üyeleri, sprint boyunca başarılı olan şeyleri paylaşıldı ve bunların neden iyi çalıştığını analiz ettiler.
+Sprint sırasında takımın karşılaştığı engelleri ve zorlukları tartışıldı.
 
 
 
