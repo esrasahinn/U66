@@ -358,6 +358,8 @@ PrefabInstance:
     - {fileID: 3838703914205916411, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     - {fileID: 4820201345627484699, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     - {fileID: 7248943105054987999, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
+    - {fileID: 6706456931123199598, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
+    - {fileID: 8709736132103765998, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5833320405798756101, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
     m_AddedGameObjects:
@@ -370,18 +372,6 @@ PrefabInstance:
         type: 3}
       insertIndex: 1
       addedObject: {fileID: 8158225502652335898}
-    - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4182137658788885278}
-    - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4348227652563027039}
-    - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8341126574950512784}
     - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       insertIndex: -1
@@ -398,6 +388,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1852677932816388689}
+    - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6040925991041661156}
     - targetCorrespondingSourceObject: {fileID: 4326855174854130034, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       insertIndex: -1
@@ -460,49 +454,6 @@ MonoBehaviour:
   testShopSystem: {fileID: 0}
   testItem: {fileID: 0}
   _playH: {fileID: 0}
---- !u!114 &4182137658788885278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6086676955139128764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff0ae1c9f8dacb498c6867a359345fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinAmount: 999
---- !u!114 &4348227652563027039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6086676955139128764}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18924b4f50e128241b53c5cb7556649c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  credits: 200
-  PurchaseListeners: []
---- !u!114 &8341126574950512784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6086676955139128764}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec40dfff5f3c2d749a3a908494ca85ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitialAbilites:
-  - {fileID: 11400000, guid: f878ac764332c6940b06b81f837290e1, type: 2}
-  stamina: 200
-  maxStamina: 200
 --- !u!114 &7960688603781717136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,6 +545,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6040925991041661156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6086676955139128764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf0ea3112c505d4f8bdb03e2e3d2df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBar: {fileID: 0}
+  popupObject: {fileID: 0}
+  Buton1: {fileID: 0}
+  Buton2: {fileID: 0}
+  Buton3: {fileID: 0}
+  Buton4: {fileID: 0}
 --- !u!114 &7320140619172592684 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3012312291251424630, guid: 68734aae3762d4c49a84ac4f0a82fae8,

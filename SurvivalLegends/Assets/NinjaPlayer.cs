@@ -51,6 +51,7 @@ public class NinjaPlayer : MonoBehaviour
     {
         moveSpeed += boostAmt;
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
+
     }
 
 

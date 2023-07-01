@@ -5,13 +5,28 @@ using UnityEngine.UI;
 
 public class expController : MonoBehaviour
 {
-
     public Image expBar;
     public GameObject popupObject;
-    private float expIncreaseAmount = 0.05f;
+    private float expIncreaseAmount = 0.9f;
     private float maxFillAmount = 1f;
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
+    public Button Buton1;
+    public Button Buton2;
+    public Button Buton3;
+    public Button Buton4;
+    private ProjectileController projectileController; // ProjectileController referansý eklendi
+  
+    private void Awake()
+    {
+        Buton1.onClick.AddListener(ActivateAbility1);
+        projectileController = GetComponent<ProjectileController>(); // ProjectileController referansý alýndý
+    }
+
+    private void Start()
+    {
+        // Diðer baþlatma iþlemleri
+    }
 
     private void Update()
     {
@@ -24,13 +39,9 @@ public class expController : MonoBehaviour
                 expBar.fillAmount = currentFillAmount; // Fill Amount'i güncelle
             }
         }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            UpdateExpBar();
-        }
     }
 
-    private void UpdateExpBar()
+    public void UpdateExpBar()
     {
         currentFillAmount += expIncreaseAmount;
         currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
@@ -44,9 +55,24 @@ public class expController : MonoBehaviour
         isPopupShowing = true;
     }
 
-    private void HidePopup()
+    public void HidePopup()
     {
         popupObject.SetActive(false);
         isPopupShowing = false;
     }
+
+    private void ActivateAbility1()
+    {
+        // Karakterin hareket hýzýný 30 saniyeliðine arttýr
+        NinjaPlayer player = FindObjectOfType<NinjaPlayer>();
+        if (player != null)
+        {
+            player.ActivateAbility1();
+        }
+        HidePopup();
+
+        Debug.Log("aa1");
+    }
+
+
 }
