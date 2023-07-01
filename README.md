@@ -19,7 +19,7 @@ Survival Legends
 
 ## Product Backlog URL
 
-[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/u66survivalegends)
+[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/u66survivalegendsgeneral)
 
 ## Ürün Açıklaması
 
