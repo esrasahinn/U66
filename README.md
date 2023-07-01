@@ -106,10 +106,10 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 ---
 
 # Sprint 2
-- **Sprint içinde tamamlanması tahmin edilen puan**: 120 Puan
+- **Sprint içinde tamamlanması tahmin edilen puan**: 130 Puan
 
 
-- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 120 ile başlaması gerektiğine karar verildi.
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 130 ile başlaması gerektiğine karar verildi.
 
 
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/DailyScrumMeetingNotesSprint2.docx)
