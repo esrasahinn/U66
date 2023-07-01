@@ -61,11 +61,7 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 # Sprint 1
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
-
-
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
-
-
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint1Documents/DailyScrumMeetingNotesSprint1.docx)
 - **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir.
 - **Sprint board update**: Sprint board screenshotları: 
@@ -107,17 +103,16 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 
 # Sprint 2
 - **Sprint içinde tamamlanması tahmin edilen puan**: 130 Puan
-
-
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 130 ile başlaması gerektiğine karar verildi.
-
-
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/DailyScrumMeetingNotesSprint2.docx)
-- 
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/DailyScrumMeetingNotesSprint2.docx) 
 - **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir. Product backloglar product owner ile birlikte oluşturulmuştur.
-- 
 - **Sprint board update**: Sprint board screenshotları:
-
+ 
+  ![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/sprintart.jpg)
+  ![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/sprintcode.jpg)
+  ![Screenshot 3](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/sprintscenedesign.jpg)
+  ![Screenshot 4](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/burndown.jpg)
+  ![Screenshot 5](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/diagram.jpg)
 
 
 
@@ -129,7 +124,11 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
   ![Screenshot 4](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/4.gif)
   ![Screenshot 5](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/5.gif)
   ![Screenshot 6](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/6.gif)
-
+  ![Screenshot 7](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/archer.jpg)
+  ![Screenshot 8](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/enemy.jpg)
+  ![Screenshot 9](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/ninja.jpg)
+  ![Screenshot 10](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/warrior.jpg)
+  
 - **Sprint Review**: 
  Alınan kararlar: Takım, sprint başlangıcında belirlenen hedefleri değerlendirdi. Hangi görevlerin başarılı olduğunu, hangilerinin zorluklarla karşılaşıldığını ve nedenlerini tartışıldı. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
 
@@ -145,7 +144,7 @@ Sprint sırasında takımın karşılaştığı engelleri ve zorlukları tartı�
 
 ## Product Backlog URL
 
-
+[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/u66survivalegendsprint2)
 ---
 
 # Sprint 3
