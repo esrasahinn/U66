@@ -106,22 +106,30 @@ Takım, gelecek sprintler için gerçekçi hedefler belirlemek için birlikte to
 ---
 
 # Sprint 2
+- **Sprint içinde tamamlanması tahmin edilen puan**: 120 Puan
 
-- **Sprint içinde tamamlanması tahmin edilen puan**: 
 
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats]()
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 120 ile başlaması gerektiğine karar verildi.
 
-- **Sprint board update**: Sprint board screenshotları: 
--
+
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint2Documents/DailyScrumMeetingNotesSprint2.docx)
+- **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir. 
+- **Sprint board update**: Sprint board screenshotları:
+
+
 
 
 - **Ürün Durumu**: Ekran görüntüleri:
+- 
 - **Sprint Review**: 
+ Alınan kararlar: Takım, sprint başlangıcında belirlenen hedefleri değerlendirdi. Hangi görevlerin başarılı olduğunu, hangilerinin zorluklarla karşılaşıldığını ve nedenlerini tartışıldı. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
 
 
 - **Sprint Retrospective:**
+Her bir takım üyesi, sprint süreci hakkında kendi görüşlerini ve deneyimlerini paylaştılar.
+Takım üyeleri, sprint boyunca başarılı olan şeyleri paylaşabilir ve bunların neden iyi çalıştığını analiz ettiler.
+Sprintler'de product backloglar product owner ile birlikte oluşturulmuştur. 
 
-  -
 
 
 ---
