@@ -83,6 +83,11 @@ public class EnemyAI : MonoBehaviour
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
         coinScript.CoinDrop();
+        expController expControllerScript = FindObjectOfType<expController>();
+        if (expControllerScript != null)
+        {
+            expControllerScript.UpdateExpBar();
+        }
     }
 
 
