@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Karakterler(Ninja)
       objectReference: {fileID: 0}
+    - target: {fileID: 576633891102901315, guid: 7b7a9d5493bd4c54188de63b627b6f38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4654490102207212554, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_RootOrder
@@ -234,12 +239,12 @@ PrefabInstance:
     - target: {fileID: 8289788176747412910, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8289788176747412910, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -525,7 +530,7 @@ PrefabInstance:
         type: 3}
       propertyPath: followTrans
       value: 
-      objectReference: {fileID: 1789898398}
+      objectReference: {fileID: 1882684815}
     - target: {fileID: 7966002264345156291, guid: e937d5c114686b44d8d9e298b4ca28f0,
         type: 3}
       propertyPath: m_Name
@@ -825,30 +830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &537112559 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2567566833197298251, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-    type: 3}
-  m_PrefabInstance: {fileID: 1340947073}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &537112562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537112559}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acf0ea3112c505d4f8bdb03e2e3d2df8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  expBar: {fileID: 756694673}
-  popupObject: {fileID: 1731017039}
-  Buton1: {fileID: 691885218}
-  Buton2: {fileID: 1760597216}
-  Buton3: {fileID: 446331763}
-  Buton4: {fileID: 1204431329}
 --- !u!114 &691885218 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6459603558349219027, guid: 89cdd6c91dc3b704488bf99e713289c1,
@@ -1093,16 +1074,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 347571515745645145, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 347571515745645145, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2403852269977475000, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_RootOrder
@@ -1158,6 +1129,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4824891303085706964, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: Buton1
+      value: 
+      objectReference: {fileID: 691885218}
+    - target: {fileID: 4824891303085706964, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: Buton2
+      value: 
+      objectReference: {fileID: 1760597216}
+    - target: {fileID: 4824891303085706964, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: Buton3
+      value: 
+      objectReference: {fileID: 446331763}
+    - target: {fileID: 4824891303085706964, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: Buton4
+      value: 
+      objectReference: {fileID: 1204431329}
+    - target: {fileID: 4824891303085706964, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: expBar
+      value: 
+      objectReference: {fileID: 756694673}
+    - target: {fileID: 4824891303085706964, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: popupObject
+      value: 
+      objectReference: {fileID: 1731017039}
     - target: {fileID: 6853133165274851442, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: aimStick
@@ -1173,21 +1174,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Karakterler(Rifle)
       objectReference: {fileID: 0}
-    - target: {fileID: 9189115443771175140, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4387388243216834786, guid: 3a76c7074ff5af64d836bee0b83a6fea, type: 3}
-    - {fileID: 4854143487917670723, guid: 3a76c7074ff5af64d836bee0b83a6fea, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2567566833197298251, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 537112562}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a76c7074ff5af64d836bee0b83a6fea, type: 3}
 --- !u!4 &1402760971 stripped
 Transform:
@@ -1432,12 +1422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1789898398 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9197059618383882992, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-    type: 3}
-  m_PrefabInstance: {fileID: 105615929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1789898412 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6252023964796201506, guid: 7b7a9d5493bd4c54188de63b627b6f38,
@@ -1450,6 +1434,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f114e9ce4003edd429d742947c964df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1882684815 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6333144558194148537, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983621978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1975506339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5279286074388585405, guid: 89cdd6c91dc3b704488bf99e713289c1,
@@ -1464,6 +1454,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 37024713489566156, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: aimStick
+      value: 
+      objectReference: {fileID: 380672555}
+    - target: {fileID: 37024713489566156, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: moveStick
+      value: 
+      objectReference: {fileID: 1475437625}
     - target: {fileID: 5097362092213472439, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1522,22 +1522,17 @@ PrefabInstance:
     - target: {fileID: 6578180129237963751, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6578180129237963751, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8896348016656826524, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_Name
       value: Karakterler(Archer)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8896348016656826524, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
