@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -23,6 +22,7 @@ public class EnemyAI : MonoBehaviour
     public float attackRange = 10.0f;
     private bool inAttackRange;
     DropCoin coinScript;
+    private bool isFrozen;
 
     void Awake()
     {
@@ -77,7 +77,7 @@ public class EnemyAI : MonoBehaviour
         go.GetComponent<TextMesh>().text = mermiHasar.ToString(); // Mermi hasarýný yazdýr
     }
 
-  private void Olum()
+    private void Olum()
     {
         Debug.Log("Dusman Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
@@ -92,36 +92,51 @@ public class EnemyAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        enemy.SetDestination(player.position);
+        if (!isFrozen)
+        {
+            enemy.SetDestination(player.position);
+        }
     }
 
     void AttackPlayer()
     {
-        enemy.SetDestination(transform.position);
-
-        if (!alreadyAttacked)
+        if (!isFrozen)
         {
-            GameObject projectile = Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
+            enemy.SetDestination(transform.position);
 
-            Vector3 direction = (player.position - transform.position).normalized;
+            if (!alreadyAttacked)
+            {
+                GameObject projectile = Instantiate(projectilePrefab, launchPoint.position, Quaternion.identity);
 
-            Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
-            projectileRb.velocity = direction * projectileSpeed;
+                Vector3 direction = (player.position - transform.position).normalized;
 
-            ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
-            projectileController.Initialize(transform.position);
-            transform.LookAt(player);
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), attackCooldown);
+                Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
+                projectileRb.velocity = direction * projectileSpeed;
 
-
-
+                ProjectileController projectileController = projectile.GetComponent<ProjectileController>();
+                projectileController.Initialize(transform.position);
+                transform.LookAt(player);
+                alreadyAttacked = true;
+                Invoke(nameof(ResetAttack), attackCooldown);
+            }
         }
     }
 
     void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    public void FreezeEnemy()
+    {
+        isFrozen = true;
+        StartCoroutine(UnfreezeEnemy());
+    }
+
+    private IEnumerator UnfreezeEnemy()
+    {
+        yield return new WaitForSeconds(3f); // Dondurma süresi (3 saniye) beklenir
+        isFrozen = false;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -19,6 +19,8 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     public GameObject ozelYetenekPrefab;
     public Transform atesNoktasi;
 
+    public GameObject frozenBulletPrefab; // FrozenBullet prefab'ý
+
     private GameObject hedef;
     private bool attackInProgress = false;
     private float sonrakiAtesZamani = 0f;
@@ -91,8 +93,6 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             attackInProgress = false;
         }
 
-        
-
         if (ozelYetenekAktif)
         {
             if (Time.time >= ozelYetenekZamani + 0.5f) // Özel yetenek süresi kontrol ediliyor
@@ -100,6 +100,19 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
                 GeriDon();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            AtisYap();
+        }
+    }
+
+    void AtisYap()
+    {
+        GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
+        // Gerekirse hedefi belirle ve hýzý ayarla
+        frozenBullet.GetComponent<FrozenBullet>().HedefBelirle(hedef.transform);
+        frozenBullet.GetComponent<FrozenBullet>().HizAyarla(hedefeGitmeHizi);
     }
 
     public void HedefSec()
@@ -179,6 +192,20 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             ozelYetenekAktif = true;
             ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
             OzelYetenek();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Dusman")) // Sadece düþman objeleriyle etkileþime girsin
+        {
+            // FrozenBullet prefab'ýný ateþ noktasýnda oluþtur
+            GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
+            // Hedefi belirle
+            FrozenBullet frozenBulletScript = frozenBullet.GetComponent<FrozenBullet>();
+            frozenBulletScript.HedefBelirle(other.gameObject.transform);
+            // Hýzý ayarla
+            frozenBulletScript.HizAyarla(hedefeGitmeHizi);
         }
     }
 }
