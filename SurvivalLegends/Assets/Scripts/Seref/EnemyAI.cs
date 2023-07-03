@@ -77,14 +77,18 @@ public class EnemyAI : MonoBehaviour
         go.GetComponent<TextMesh>().text = mermiHasar.ToString(); // Mermi hasarýný yazdýr
     }
 
-    private void Olum()
+  private void Olum()
     {
         Debug.Log("Dusman Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
         Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
         coinScript.CoinDrop();
+        expController expControllerScript = FindObjectOfType<expController>();
+        if (expControllerScript != null)
+        {
+            expControllerScript.UpdateExpBar();
+        }
     }
-
 
     void ChasePlayer()
     {

@@ -75,10 +75,17 @@ public class ArcherPlayerBehaviour : MonoBehaviour
         }
     }
 
-    private void PlayerHeal(int healing)
+    public void PlayerHeal(int healing)
     {
         GameManager.gameManager._dusmanHealth.HealUnit(healing);
         _health = GameManager.gameManager._dusmanHealth.Health;
         _healthbar.SetHealth(_health);
     }
+
+    public void PerformLeftShiftAction()
+    {
+        PlayerHeal(10);
+        Debug.Log(GameManager.gameManager._dusmanHealth.Health);
+    }
 }
+
