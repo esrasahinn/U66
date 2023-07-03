@@ -256,6 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 216111434}
   - component: {fileID: 216111433}
+  - component: {fileID: 216111435}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -290,6 +291,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216111435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216111432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e7e38413d2dc804a89f1ef2243fb18f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1975506339}
+  pauseButton: {fileID: 1626735022}
 --- !u!1001 &225258576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,6 +318,21 @@ PrefabInstance:
       propertyPath: ninjaInventory
       value: 
       objectReference: {fileID: 1789898412}
+    - target: {fileID: 1616451068235129913, guid: 89cdd6c91dc3b704488bf99e713289c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 216111435}
+    - target: {fileID: 2158922165032327304, guid: 89cdd6c91dc3b704488bf99e713289c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 216111432}
+    - target: {fileID: 5504406198615063312, guid: 89cdd6c91dc3b704488bf99e713289c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 216111435}
     - target: {fileID: 6602541967125185430, guid: 89cdd6c91dc3b704488bf99e713289c1,
         type: 3}
       propertyPath: dusmanAlan
@@ -313,6 +343,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameUI
       objectReference: {fileID: 0}
+    - target: {fileID: 8392436059220526378, guid: 89cdd6c91dc3b704488bf99e713289c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 216111435}
     - target: {fileID: 8479015218180027758, guid: 89cdd6c91dc3b704488bf99e713289c1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1255,6 +1290,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22a2116eeaa59f54396fbdb11290440d, type: 3}
+--- !u!1 &1626735022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2209719159868507002, guid: 89cdd6c91dc3b704488bf99e713289c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 225258576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1628367357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1409,6 +1450,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f114e9ce4003edd429d742947c964df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1975506339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5279286074388585405, guid: 89cdd6c91dc3b704488bf99e713289c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 225258576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1983621978
 PrefabInstance:
   m_ObjectHideFlags: 0
