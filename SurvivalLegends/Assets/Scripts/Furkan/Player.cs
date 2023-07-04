@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] JoyStick moveStick;
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
-    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] public float moveSpeed = 20f;
     [SerializeField] float maxMoveSpeed = 50f;
     [SerializeField] float minMoveSpeed = 10f;
     [SerializeField] float turnSpeed = 30f;
@@ -35,12 +35,7 @@ public class Player : MonoBehaviour
     Camera mainCam;
     CameraController cameraController;
     Animator animator;
-    private bool ability1Active = false;
 
-
-    private float ability1Duration = 30f;
-    private float ability1Timer = 0f;
-    private float ability1SpeedMultiplier = 2f;
 
     public static Player instance;
     float animatorTurnSpeed;
@@ -53,22 +48,6 @@ public class Player : MonoBehaviour
     }
 
 
-    public void ActivateAbility1()
-    {
-        ability1Active = true;
-        ability1Timer = ability1Duration;
-        moveSpeed *= ability1SpeedMultiplier;
-        StartCoroutine(DisableAbility1AfterDuration());
-    }
-
-
-
-    private IEnumerator DisableAbility1AfterDuration()
-    {
-        yield return new WaitForSeconds(ability1Duration);
-        ability1Active = false;
-        moveSpeed /= ability1SpeedMultiplier;
-    }
 
 
 

@@ -19,7 +19,6 @@ public class expController : MonoBehaviour
   
     private void Awake()
     {
-        Buton1.onClick.AddListener(ActivateAbility1);
         projectileController = GetComponent<ProjectileController>(); // ProjectileController referansý alýndý
     }
 
@@ -59,19 +58,6 @@ public class expController : MonoBehaviour
     {
         popupObject.SetActive(false);
         isPopupShowing = false;
-    }
-
-    private void ActivateAbility1()
-    {
-        // Karakterin hareket hýzýný 30 saniyeliðine arttýr
-        NinjaPlayer player = FindObjectOfType<NinjaPlayer>();
-        if (player != null)
-        {
-            player.ActivateAbility1();
-        }
-        HidePopup();
-
-        Debug.Log("aa1");
     }
 
 
