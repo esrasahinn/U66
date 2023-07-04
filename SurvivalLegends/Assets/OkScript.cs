@@ -4,19 +4,17 @@ public class OkScript : MonoBehaviour
 {
     public int damageAmount = 10; // Hasar miktarý
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Dusman"))
+        if (collision.gameObject.CompareTag("Dusman"))
         {
-            // Eðer çarpýþan obje "Dusman" tagine sahipse, ona hasar ver
-            EnemyAI enemyAI = other.GetComponent<EnemyAI>();
-            if (enemyAI != null)
+            EnemyAI dusmanHealth = collision.gameObject.GetComponent<EnemyAI>();
+            if (dusmanHealth != null)
             {
-                enemyAI.HasarAl(damageAmount);
+                dusmanHealth.HasarAl(damageAmount); // Hasarý ver
             }
 
-            // Oku yok et
-            Destroy(gameObject);
+            Destroy(gameObject); // Oku yok et
         }
     }
 }

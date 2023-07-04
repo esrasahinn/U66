@@ -241,6 +241,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameUIArcher
       objectReference: {fileID: 0}
+    - target: {fileID: 2876858961855788194, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876858961855788194, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876858961855788194, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4979920721357974799}
+    - target: {fileID: 2876858961855788194, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876858961855788194, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FireArrows
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876858961855788194, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: YaylimAtes, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876858961855788194, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7645504532530783100, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
         type: 3}
       propertyPath: player
@@ -356,8 +391,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ozelYetenekPrefab
       value: 
-      objectReference: {fileID: 4801084371277178072, guid: 341fdb51ad9218746ba0a0d6d1d2f2b5,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: donmeBitisMesafesi
@@ -473,6 +507,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4691943734767509665}
+    - targetCorrespondingSourceObject: {fileID: 1739382845504916710, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4979920721357974799}
   m_SourcePrefab: {fileID: 100100000, guid: 68734aae3762d4c49a84ac4f0a82fae8, type: 3}
 --- !u!114 &37024713489566156 stripped
 MonoBehaviour:
@@ -510,6 +548,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91c58e8554b7d447addc9246ffe43b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &6213242220771523938 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3612797839457821297, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+    type: 3}
+  m_PrefabInstance: {fileID: 7213326926430412563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6333144558194148537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3745090488537537450, guid: 68734aae3762d4c49a84ac4f0a82fae8,
@@ -536,6 +580,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _healthbar: {fileID: 5608952472982819429}
   _health: 100
+--- !u!114 &4979920721357974799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951297765646767093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8cafc44c88aa0549ac1f49a2c87c383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 3927501312971769216, guid: 3473b1bf3e26c2a449af16078b09e6b1,
+    type: 3}
+  shootPoint: {fileID: 6213242220771523938}
+  arrowCount: 5
+  arrowSpacing: 0.2
+  arrowDamage: 100
 --- !u!1001 &8110414355949814167
 PrefabInstance:
   m_ObjectHideFlags: 0

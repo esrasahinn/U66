@@ -1,27 +1,39 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class YaylimAtes : MonoBehaviour
 {
-    public GameObject arrowPrefab;  // Ok prefabýný buraya sürükleyip býrakýn
-    public Transform shootPoint;    // Okun ateþlendiði noktanýn referansý
+    public GameObject arrowPrefab;      // Ok prefabýný buraya sürükleyip býrakýn
+    public Transform shootPoint;        // Okun ateþlendiði noktanýn referansý
 
-    public float fireRate = 2f;     // Ok atma hýzý (saniyede kaç kez)
-    public int arrowCount = 5;      // Yan yana kaç ok çýkacak
-    public float arrowSpacing = 0.2f; // Oklar arasýndaki mesafe
-    public int arrowDamage = 10;    // Oklarýn verdiði hasar miktarý
+    public int arrowCount = 5;          // Yan yana kaç ok çýkacak
+    public float arrowSpacing = 0.2f;   // Oklar arasýndaki mesafe
+    public int arrowDamage = 10;        // Oklarýn verdiði hasar miktarý
 
-    private float nextFireTime = 0f; // Sonraki ateþleme zamaný
+    private bool isFiring = false;      // Yaylým ateþi durumu
+    private float fireRate = 2f;        // Ok atma hýzý (saniyede kaç kez)
+    private float nextFireTime = 0f;    // Sonraki ateþleme zamaný
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
+        if (isFiring && Time.time >= nextFireTime)
         {
             FireArrows();
             nextFireTime = Time.time + 1f / fireRate;
         }
     }
 
-    private void FireArrows()
+    public void StartFiring()
+    {
+        isFiring = true;
+    }
+
+    public void StopFiring()
+    {
+        isFiring = false;
+    }
+
+    public void FireArrows()
     {
         Vector3 spawnPosition = shootPoint.position;
 
