@@ -16,12 +16,20 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     [SerializeField] float mermiOmru = 5f;
 
     public GameObject mermiPrefab;
+    public GameObject ozelYetenekPrefab;
     public Transform atesNoktasi;
 
     private GameObject hedef;
     private bool dusmanaDonuyor = false;
     private bool menzilde = false;
     private float sonrakiAtesZamani = 0f;
+
+   
+    private bool attackInProgress = false;
+   
+    private bool ozelYetenekAktif = false;
+    private GameObject eskiPrefab;
+    private float ozelYetenekZamani = 0f;
 
     private PlayerBehaviour playerBehaviour; // PlayerBehaviour scriptine eriþmek için referans
 
@@ -47,6 +55,26 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             dusmanaDonuyor = false;
             menzilde = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!ozelYetenekAktif)
+            {
+                ozelYetenekAktif = true;
+                ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
+                OzelYetenek();
+            }
+        }
+
+        if (ozelYetenekAktif)
+        {
+            if (Time.time >= ozelYetenekZamani + 0.5f) // Özel yetenek süresi kontrol ediliyor
+            {
+                GeriDon();
+            }
+        }
+
+
 
         if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi)
         {
@@ -119,5 +147,37 @@ public class MenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         }
 
         Destroy(mermi, mermiOmru);
+    }
+
+    void OzelYetenek()
+    {
+        if (mermiPrefab != null && ozelYetenekPrefab != null)
+        {
+            eskiPrefab = mermiPrefab;
+            mermiPrefab = ozelYetenekPrefab;
+        }
+    }
+
+    void GeriDon()
+    {
+        if (eskiPrefab != null && Time.time >= ozelYetenekZamani + 0.5f) // Özel yetenek süresi kontrol ediliyor
+        {
+            mermiPrefab = eskiPrefab;
+            eskiPrefab = null;
+            ozelYetenekAktif = false;
+            ozelYetenekZamani = 0f;
+            attackInProgress = false;
+        }
+    }
+
+
+    public void AktiflestirOzelYetenek()
+    {
+        if (!ozelYetenekAktif)
+        {
+            ozelYetenekAktif = true;
+            ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
+            OzelYetenek();
+        }
     }
 }

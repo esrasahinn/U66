@@ -107,7 +107,7 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         }
     }
 
-    void AtisYap()
+    public void AtisYap()
     {
         GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
         // Gerekirse hedefi belirle ve hýzý ayarla
@@ -195,7 +195,7 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Dusman")) // Sadece düþman objeleriyle etkileþime girsin
         {
