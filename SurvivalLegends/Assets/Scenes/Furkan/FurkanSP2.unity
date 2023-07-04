@@ -136,11 +136,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Karakterler(Ninja)
       objectReference: {fileID: 0}
-    - target: {fileID: 576633891102901315, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1310453659253085799, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -241,6 +236,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111435}
+    - target: {fileID: 7355773525843178936, guid: 7b7a9d5493bd4c54188de63b627b6f38,
+        type: 3}
+      propertyPath: _object
+      value: 
+      objectReference: {fileID: 330585543}
     - target: {fileID: 7786223031014026808, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: dusmanAlan
@@ -256,16 +256,6 @@ PrefabInstance:
       propertyPath: moveStick
       value: 
       objectReference: {fileID: 1475437625}
-    - target: {fileID: 8289788176747412910, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8289788176747412910, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8912147353915935685, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -276,6 +266,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b7a9d5493bd4c54188de63b627b6f38, type: 3}
+--- !u!1 &152170328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8951297765646767093, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983621978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &152170339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152170328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8cafc44c88aa0549ac1f49a2c87c383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 3927501312971769216, guid: 3473b1bf3e26c2a449af16078b09e6b1,
+    type: 3}
+  shootPoint: {fileID: 479362556}
+  fireRate: 2
+  arrowCount: 5
+  arrowSpacing: 0.2
+  arrowDamage: 10
 --- !u!1 &216111432
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +639,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &479362556 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6213242220771523938, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1983621978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &691885218 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8812374237403539230, guid: fb985a7c5d6d75c4a936bdecdea417a3,
@@ -878,16 +899,11 @@ PrefabInstance:
       propertyPath: dusmanAlan
       value: 
       objectReference: {fileID: 1402760971}
-    - target: {fileID: 347571515745645145, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+    - target: {fileID: 1282709041760041551, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 347571515745645145, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: _object
+      value: 
+      objectReference: {fileID: 330585543}
     - target: {fileID: 2403852269977475000, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_RootOrder
@@ -1007,11 +1023,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Karakterler(Rifle)
-      objectReference: {fileID: 0}
-    - target: {fileID: 9189115443771175140, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1290,6 +1301,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111432}
+    - target: {fileID: 4898363606459735615, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: ozelYetenekPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5097362092213472439, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_RootOrder
@@ -1345,6 +1361,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5644603086914378737, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: _object
+      value: 
+      objectReference: {fileID: 330585543}
     - target: {fileID: 6312116736493094631, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1378,7 +1399,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8951297765646767093, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 152170339}
   m_SourcePrefab: {fileID: 100100000, guid: fb985a7c5d6d75c4a936bdecdea417a3, type: 3}
 --- !u!1001 &5432295632606055775
 PrefabInstance:
