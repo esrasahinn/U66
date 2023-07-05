@@ -116,7 +116,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void AttackPlayer()
+    public void AttackPlayer()
     {
         enemy.SetDestination(transform.position);
         transform.LookAt(player);
@@ -127,8 +127,15 @@ public class EnemyController : MonoBehaviour
             animator.SetBool("Attack", true);
 
             // Saldýrý animasyonu oynatýlabilir veya diðer saldýrý iþlemleri burada yapýlabilir.
-            // Oyuncuya hasar vermek için ArcherPlayerBehaviour veya benzeri bir bileþeni çaðýrabilirsiniz.
-            ArcherPlayerBehaviour playerHealth = player.GetComponent<ArcherPlayerBehaviour>();
+            // Oyuncuya hasar vermek için ArcherPlayerBehaviour veya PlayerBehaviour bileþenini çaðýrabilirsiniz.
+
+            ArcherPlayerBehaviour archerPlayerHealth = player.GetComponent<ArcherPlayerBehaviour>();
+            if (archerPlayerHealth != null)
+            {
+                archerPlayerHealth.PlayerTakeDmg(meleeDamage);
+            }
+
+            PlayerBehaviour playerHealth = player.GetComponent<PlayerBehaviour>();
             if (playerHealth != null)
             {
                 playerHealth.PlayerTakeDmg(meleeDamage);
@@ -140,7 +147,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             animator.SetBool("Running", true);
-            animator.SetBool("Attacking", false);
+            animator.SetBool("Attack", false);
         }
     }
 
@@ -163,5 +170,17 @@ public class EnemyController : MonoBehaviour
     void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Katana"))
+        {
+            Katana katana = other.GetComponent<Katana>();
+            if (katana != null)
+            {
+                TakeDamage(katana.damageAmount);
+            }
+        }
     }
 }
