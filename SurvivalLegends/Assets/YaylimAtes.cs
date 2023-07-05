@@ -51,7 +51,7 @@ public class YaylimAtes : MonoBehaviour
             OkScript okScript = arrow.GetComponent<OkScript>();
             if (okScript != null)
             {
-                okScript.damageAmount = arrowDamage; // Okun hasar miktarýný ayarla
+                okScript.DamageAmount = arrowDamage; // Okun hasar miktarýný ayarla
             }
         }
     }

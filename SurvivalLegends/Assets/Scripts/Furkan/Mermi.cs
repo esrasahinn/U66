@@ -58,10 +58,10 @@ public class Mermi : MonoBehaviour
 
         foreach (Collider collider in hedefColliders)
         {
-            EnemyAI enemyAI = collider.GetComponent<EnemyAI>();
+            EnemyController enemyAI = collider.GetComponent<EnemyController>();
             if (enemyAI != null)
             {
-                enemyAI.HasarAl(hasar);
+                enemyAI.TakeDamage(hasar);
             }
         }
 

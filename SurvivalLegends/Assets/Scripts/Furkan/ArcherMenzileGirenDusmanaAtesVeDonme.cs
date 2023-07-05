@@ -18,10 +18,9 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     public GameObject mermiPrefab;
     public GameObject ozelYetenekPrefab;
     public Transform atesNoktasi;
+    public GameObject frozenBulletPrefab;
 
-    public GameObject frozenBulletPrefab; // FrozenBullet prefab'ý
-
-    private GameObject hedef;
+    private EnemyController hedef;
     private bool attackInProgress = false;
     private float sonrakiAtesZamani = 0f;
     private bool ozelYetenekAktif = false;
@@ -48,6 +47,14 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         if (playerBehaviour._health <= 0)
             return;
 
+        if (hedef == null || hedef.currentHealth <= 0 || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
+        {
+            HedefSec();
+            attackInProgress = false;
+            animator.SetBool("Idle", true);
+            animator.SetBool("Attack", false);
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (!ozelYetenekAktif)
@@ -56,14 +63,6 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
                 ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
                 OzelYetenek();
             }
-        }
-
-        if (hedef == null || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
-        {
-            HedefSec();
-            attackInProgress = false;
-            animator.SetBool("Idle", true);
-            animator.SetBool("Attack", false);
         }
 
         if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi)
@@ -111,8 +110,9 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     {
         GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
         // Gerekirse hedefi belirle ve hýzý ayarla
-        frozenBullet.GetComponent<FrozenBullet>().HedefBelirle(hedef.transform);
-        frozenBullet.GetComponent<FrozenBullet>().HizAyarla(hedefeGitmeHizi);
+        FrozenBullet frozenBulletScript = frozenBullet.GetComponent<FrozenBullet>();
+        frozenBulletScript.HedefBelirle(hedef.transform);
+        frozenBulletScript.HizAyarla(hedefeGitmeHizi);
     }
 
     public void HedefSec()
@@ -124,6 +124,10 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 
         foreach (GameObject dusman in dusmanlar)
         {
+            // Düþmanýn caný 0 ise atla
+            if (dusman.GetComponent<EnemyController>().currentHealth <= 0)
+                continue;
+
             float mesafe = Vector3.Distance(transform.position, dusman.transform.position);
 
             if (mesafe < enYakinMesafe)
@@ -133,7 +137,7 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             }
         }
 
-        hedef = enYakinDusman;
+        hedef = enYakinDusman.GetComponent<EnemyController>();
     }
 
     void DusmanaDon()
