@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -971,6 +971,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1166212662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5586402646384554222, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 124805044113185208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1166212663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166212662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46ba79c858f0f04e9aa768f99fd02c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 4729499136020746319, guid: be0d7a1a8e7931d488863ca596dbb76e, type: 3}
+  - {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55, type: 3}
+  spawnChances:
+  - 0.7
+  - 0.3
+  currentSpawnCount: 0
+  maxSpawnCount: 10
+  startSpawnDelay: 2
+  spawnRateMultiplier: 0.99
+  spawnRate: 3
 --- !u!1001 &1166296909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -983,6 +1012,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Erika Archer With Bow Arrow Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396427128831725832, guid: 22a2116eeaa59f54396fbdb11290440d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1741428229849975730, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
@@ -1042,12 +1076,12 @@ PrefabInstance:
     - target: {fileID: 3073241923206908716, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3073241923206908716, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1210,6 +1244,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erika Archer With Bow Arrow Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1396427128831725832, guid: 22a2116eeaa59f54396fbdb11290440d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1741428229849975730, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1268,12 +1307,12 @@ PrefabInstance:
     - target: {fileID: 3073241923206908716, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3073241923206908716, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1539,6 +1578,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb985a7c5d6d75c4a936bdecdea417a3, type: 3}
+--- !u!1001 &124805044113185208
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5586402646384554222, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 102.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096849730589904335, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5586402646384554222, guid: 054ad3f2e28051445ae21c56ab5cda4c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1166212663}
+  m_SourcePrefab: {fileID: 100100000, guid: 054ad3f2e28051445ae21c56ab5cda4c, type: 3}
 --- !u!1001 &5432295632606055775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1551,6 +1667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Erika Archer With Bow Arrow Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1396427128831725832, guid: 22a2116eeaa59f54396fbdb11290440d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1741428229849975730, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
@@ -1610,12 +1731,12 @@ PrefabInstance:
     - target: {fileID: 3073241923206908716, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3073241923206908716, guid: 22a2116eeaa59f54396fbdb11290440d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
