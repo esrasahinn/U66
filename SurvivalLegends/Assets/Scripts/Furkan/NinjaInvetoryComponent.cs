@@ -109,7 +109,7 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
             ActivateInventory(); // Silahý etkinleþtir
             animator.SetBool("Spine", true); // "spine" animasyon parametresini true olarak ayarla
             isAnimationPlaying = true;
-            StartCoroutine(StopAnimationAfterDelay(0.5f));
+            StartCoroutine(StopAnimationAfterDelay(1.5f));
         }
         else
         {

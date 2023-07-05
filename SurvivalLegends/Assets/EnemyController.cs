@@ -1,135 +1,167 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public int attackDamage = 20;
-    public float attackRange = 1.5f;
-
+    public GameObject FloatingTextPrefab;
+    [SerializeField] float can = 100f;
+    [SerializeField] float maxHealth = 100f;
+    [SerializeField] Slider healthSlider; // Can çubuðu Slider bileþeni
+    [SerializeField] Transform player;
+    [SerializeField] float attackCooldown = 2.0f;
+    [SerializeField] float attackRange = 2.0f;
+    [SerializeField] int meleeDamage = 10;
+    public int currentHealth;
+    private NavMeshAgent enemy;
+    private bool alreadyAttacked;
+    private bool inAttackRange;
     private Animator animator;
-    private ArcherPlayerBehaviour playerBehaviour;
-    private bool isAttacking = false;
-    private bool isDead = false;
+    private bool isDead;
+    private bool isFrozen;
+
+    private void Awake()
+    {
+        enemy = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
-        playerBehaviour = FindObjectOfType<ArcherPlayerBehaviour>();
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = maxHealth;
     }
 
     private void Update()
     {
-        if (isAttacking || isDead)
-        {
-            return;
-        }
-
-        if (playerBehaviour != null)
-        {
-            float distanceToPlayer = Vector3.Distance(transform.position, playerBehaviour.transform.position);
-
-            if (distanceToPlayer <= attackRange)
-            {
-                Attack();
-            }
-            else
-            {
-                ChasePlayer();
-            }
-        }
-    }
-
-    private void ChasePlayer()
-    {
-        transform.LookAt(playerBehaviour.transform);
-        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        animator.SetBool("Running", true);
-    }
-
-    private void Attack()
-    {
-        transform.LookAt(playerBehaviour.transform);
-        animator.SetBool("Running", false);
-        animator.SetBool("Attack", true);
-    }
-
-    public void StartAttack()
-    {
-        isAttacking = true;
-    }
-
-    public void StopAttack()
-    {
-        animator.SetBool("Attack", false);
-        isAttacking = false;
-    }
-
-    public void Death()
-    {
         if (isDead)
+            return;
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        inAttackRange = distanceToPlayer <= attackRange;
+
+        if (isFrozen)
         {
+            enemy.isStopped = true; // Karakteri durdur
+            animator.SetBool("Running", false);
+
+            if (inAttackRange)
+            {
+                AttackPlayer();
+            }
             return;
         }
 
-        animator.SetBool("Death", true);
-        isDead = true;
-
-        // Ölüm animasyonunun süresini alýn
-        AnimationClip deathAnimation = GetAnimationClip("Death");
-
-        if (deathAnimation != null)
+        if (inAttackRange)
         {
-            // Ölüm animasyonunun süresini bekle
-            Invoke("DestroyEnemy", deathAnimation.length);
+            AttackPlayer();
         }
         else
         {
-            DestroyEnemy();
+            enemy.isStopped = false; // Karakteri hareket ettir
+            ChasePlayer();
         }
-    }
-
-    private void DestroyEnemy()
-    {
-        Destroy(gameObject);
     }
 
     public void TakeDamage(int damage)
     {
+        currentHealth -= damage;
         if (isDead)
-        {
             return;
+
+        healthSlider.value -= damage;
+
+        if (FloatingTextPrefab)
+        {
+            ShowFloatingText(damage);
         }
 
-        if (playerBehaviour != null)
+        if (healthSlider.value <= 0)
         {
-            playerBehaviour.PlayerTakeDmg(damage); // Player'a hasar verme iþlemi
+            Die();
         }
     }
 
-    private AnimationClip GetAnimationClip(string clipName)
+    void ShowFloatingText(int damage)
     {
-        // Düþmanýn animasyon bileþenini al
-        AnimatorClipInfo[] clips = animator.GetCurrentAnimatorClipInfo(0);
+        var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMesh>().text = damage.ToString();
+    }
 
-        // Ýstenen animasyon klibini bul ve döndür
-        foreach (AnimatorClipInfo clipInfo in clips)
+    void Die()
+    {
+        Debug.Log("Düþman öldü.");
+        isDead = true;
+        // Ölüm animasyonunu oynatmak veya diðer ölüm iþlemlerini burada yapabilirsiniz.
+        animator.SetTrigger("Death");
+        enemy.enabled = false;
+        // Düþmaný yok etmek veya etrafýna düþen eþyalarý burada iþleyebilirsiniz.
+        Destroy(gameObject, 2.0f); // Ýki saniye sonra düþman nesnesini yok etmek için kullanabilirsiniz.
+    }
+
+    void ChasePlayer()
+    {
+        if (!alreadyAttacked)
         {
-            if (clipInfo.clip.name == clipName)
+            enemy.SetDestination(player.position);
+            animator.SetBool("Running", true);
+            animator.SetBool("Attack", false);
+        }
+        else
+        {
+            enemy.SetDestination(transform.position);
+            animator.SetBool("Running", false);
+            animator.SetBool("Attack", false);
+        }
+    }
+
+    void AttackPlayer()
+    {
+        enemy.SetDestination(transform.position);
+        transform.LookAt(player);
+
+        if (!alreadyAttacked)
+        {
+            animator.SetBool("Running", false);
+            animator.SetBool("Attack", true);
+
+            // Saldýrý animasyonu oynatýlabilir veya diðer saldýrý iþlemleri burada yapýlabilir.
+            // Oyuncuya hasar vermek için ArcherPlayerBehaviour veya benzeri bir bileþeni çaðýrabilirsiniz.
+            ArcherPlayerBehaviour playerHealth = player.GetComponent<ArcherPlayerBehaviour>();
+            if (playerHealth != null)
             {
-                return clipInfo.clip;
+                playerHealth.PlayerTakeDmg(meleeDamage);
             }
-        }
 
-        Debug.LogError("EnemyController: Animation clip not found - " + clipName);
-        return null;
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), attackCooldown);
+        }
+        else
+        {
+            animator.SetBool("Running", true);
+            animator.SetBool("Attacking", false);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void FreezeEnemy()
     {
-        if (other.CompareTag("Player"))
-        {
-            TakeDamage(attackDamage);
-        }
+        isFrozen = true;
+        alreadyAttacked = false;
+        animator.SetBool("Running", false);
+        enemy.isStopped = true; // Karakteri durdur
+        StartCoroutine(UnfreezeEnemy());
+    }
+
+    private IEnumerator UnfreezeEnemy()
+    {
+        yield return new WaitForSeconds(3f); // Dondurma süresi (3 saniye) beklenir
+        isFrozen = false;
+        enemy.isStopped = false; // Karakteri hareket ettir
+    }
+
+    void ResetAttack()
+    {
+        alreadyAttacked = false;
     }
 }
