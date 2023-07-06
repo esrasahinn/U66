@@ -20,13 +20,14 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private bool isDead;
     private bool isFrozen;
+    private HasarVerici2 hasarVerici2;
 
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        hasarVerici2 = GetComponentInChildren<HasarVerici2>();
     }
-
     private void Start()
     {
         healthSlider.maxValue = maxHealth;
@@ -48,17 +49,24 @@ public class EnemyController : MonoBehaviour
 
             if (inAttackRange)
             {
+                animator.SetBool("Attack", true);
                 AttackPlayer();
+            }
+            else
+            {
+                animator.SetBool("Attack", false);
             }
             return;
         }
 
         if (inAttackRange)
         {
+            animator.SetBool("Attack", true);
             AttackPlayer();
         }
         else
         {
+            animator.SetBool("Attack", false);
             enemy.isStopped = false; // Karakteri hareket ettir
             ChasePlayer();
         }
@@ -99,14 +107,25 @@ public class EnemyController : MonoBehaviour
         // Düþmaný yok etmek veya etrafýna düþen eþyalarý burada iþleyebilirsiniz.
         Destroy(gameObject, 2.0f); // Ýki saniye sonra düþman nesnesini yok etmek için kullanabilirsiniz.
     }
-
     void ChasePlayer()
     {
         if (!alreadyAttacked)
         {
             enemy.SetDestination(player.position);
-            animator.SetBool("Running", true);
             animator.SetBool("Attack", false);
+
+            // Eðer attackRange içinde player tagine sahip bir nesne varsa Running animasyonuna geçmeyi engelle
+            Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.CompareTag("Player"))
+                {
+                    animator.SetBool("Running", false);
+                    return;
+                }
+            }
+
+            animator.SetBool("Running", true);
         }
         else
         {
@@ -143,12 +162,18 @@ public class EnemyController : MonoBehaviour
 
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), attackCooldown);
+            Invoke(nameof(CompleteAttackAnimation), 2.0f);
         }
         else
         {
             animator.SetBool("Running", true);
             animator.SetBool("Attack", false);
         }
+    }
+
+    void CompleteAttackAnimation()
+    {
+        animator.SetBool("Attack", false);
     }
 
     public void FreezeEnemy()
