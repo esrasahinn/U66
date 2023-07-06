@@ -9,7 +9,7 @@ public class NinjaPlayer : MonoBehaviour
     [SerializeField] JoyStick moveStick;
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
-    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] public float moveSpeed = 20f;
     [SerializeField] float maxMoveSpeed = 50f;
     [SerializeField] float minMoveSpeed = 10f;
     [SerializeField] float turnSpeed = 30f;
@@ -47,7 +47,7 @@ public class NinjaPlayer : MonoBehaviour
     float animatorTurnSpeed;
 
 
-    internal void AddMoveSpeed(float boostAmt)
+   public void AddMoveSpeed(float boostAmt)
     {
         moveSpeed += boostAmt;
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
@@ -55,22 +55,22 @@ public class NinjaPlayer : MonoBehaviour
     }
 
 
-    public void ActivateAbility1()
-    {
-        ability1Active = true;
-        ability1Timer = ability1Duration;
-        moveSpeed *= ability1SpeedMultiplier;
-        StartCoroutine(DisableAbility1AfterDuration());
-    }
-
-
-
-    private IEnumerator DisableAbility1AfterDuration()
-    {
-        yield return new WaitForSeconds(ability1Duration);
-        ability1Active = false;
-        moveSpeed /= ability1SpeedMultiplier;
-    }
+   //public void ActivateAbility1()
+   //{
+   //    ability1Active = true;
+   //    ability1Timer = ability1Duration;
+   //    moveSpeed *= ability1SpeedMultiplier;
+   //    StartCoroutine(DisableAbility1AfterDuration());
+   //}
+   //
+   //
+   //
+   //public IEnumerator DisableAbility1AfterDuration()
+   //{
+   //    yield return new WaitForSeconds(ability1Duration);
+   //    ability1Active = false;
+   //    moveSpeed /= ability1SpeedMultiplier;
+   //}
 
 
 

@@ -18,8 +18,9 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     public GameObject mermiPrefab;
     public GameObject ozelYetenekPrefab;
     public Transform atesNoktasi;
+    public GameObject frozenBulletPrefab;
 
-    private GameObject hedef;
+    private EnemyController hedef;
     private bool attackInProgress = false;
     private float sonrakiAtesZamani = 0f;
     private bool ozelYetenekAktif = false;
@@ -46,6 +47,14 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         if (playerBehaviour._health <= 0)
             return;
 
+        if (hedef == null || hedef.currentHealth <= 0 || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
+        {
+            HedefSec();
+            attackInProgress = false;
+            animator.SetBool("Idle", true);
+            animator.SetBool("Attack", false);
+        }
+
         if (Input.GetKeyDown(KeyCode.R))
         {
             if (!ozelYetenekAktif)
@@ -54,14 +63,6 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
                 ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
                 OzelYetenek();
             }
-        }
-
-        if (hedef == null || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
-        {
-            HedefSec();
-            attackInProgress = false;
-            animator.SetBool("Idle", true);
-            animator.SetBool("Attack", false);
         }
 
         if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi)
@@ -91,8 +92,6 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             attackInProgress = false;
         }
 
-        
-
         if (ozelYetenekAktif)
         {
             if (Time.time >= ozelYetenekZamani + 0.5f) // Özel yetenek süresi kontrol ediliyor
@@ -100,6 +99,20 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
                 GeriDon();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            AtisYap();
+        }
+    }
+
+    public void AtisYap()
+    {
+        GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
+        // Gerekirse hedefi belirle ve hýzý ayarla
+        FrozenBullet frozenBulletScript = frozenBullet.GetComponent<FrozenBullet>();
+        frozenBulletScript.HedefBelirle(hedef.transform);
+        frozenBulletScript.HizAyarla(hedefeGitmeHizi);
     }
 
     public void HedefSec()
@@ -111,6 +124,10 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 
         foreach (GameObject dusman in dusmanlar)
         {
+            // Düþmanýn caný 0 ise atla
+            if (dusman.GetComponent<EnemyController>().currentHealth <= 0)
+                continue;
+
             float mesafe = Vector3.Distance(transform.position, dusman.transform.position);
 
             if (mesafe < enYakinMesafe)
@@ -120,7 +137,7 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             }
         }
 
-        hedef = enYakinDusman;
+        hedef = enYakinDusman.GetComponent<EnemyController>();
     }
 
     void DusmanaDon()
@@ -179,6 +196,20 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             ozelYetenekAktif = true;
             ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
             OzelYetenek();
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Dusman")) // Sadece düþman objeleriyle etkileþime girsin
+        {
+            // FrozenBullet prefab'ýný ateþ noktasýnda oluþtur
+            GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
+            // Hedefi belirle
+            FrozenBullet frozenBulletScript = frozenBullet.GetComponent<FrozenBullet>();
+            frozenBulletScript.HedefBelirle(other.gameObject.transform);
+            // Hýzý ayarla
+            frozenBulletScript.HizAyarla(hedefeGitmeHizi);
         }
     }
 }
