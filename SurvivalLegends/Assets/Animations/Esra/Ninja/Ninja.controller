@@ -438,6 +438,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Spine
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Spine
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3769680675237260538}
   m_Solo: 0
@@ -480,6 +486,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Spine
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Idle
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -589,6 +601,12 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: Attack
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Spine
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3769680675237260538}
@@ -780,6 +798,12 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: Attack
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Idle
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Spine
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3769680675237260538}
   m_Solo: 0
@@ -838,16 +862,16 @@ AnimatorStateMachine:
     m_Position: {x: 10, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7704389861102521295}
-    m_Position: {x: 930, y: 230, z: 0}
+    m_Position: {x: 1080, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8853530397025965338}
-    m_Position: {x: 540, y: 930, z: 0}
+    m_Position: {x: 640, y: 960, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5851972356071596894}
-    m_Position: {x: 960, y: 730, z: 0}
+    m_Position: {x: 1120, y: 770, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4677997558796999814}
-    m_Position: {x: 30, y: 770, z: 0}
+    m_Position: {x: -40, y: 850, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -867,10 +891,10 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: Running
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: Attack
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: Idle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3769680675237260538}

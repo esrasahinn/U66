@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class HasarVerici2 : MonoBehaviour
 {
-    public int hasarMiktari = 10; // Verilecek hasar miktarý
+    public int vurulanHasar = 10;
+    public float hasarGecikmesi = 1f; // Hasar verme gecikmesi süresi
 
-    private void OnCollisionEnter(Collision collision)
+    private bool hasarVerebilecekDurum = true; // Hasar verebilecek durumu takip etmek için bir bayrak
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player") && hasarVerebilecekDurum)
         {
-            // Player'a hasar ver
-            ArcherPlayerBehaviour oyuncuKontrol = collision.gameObject.GetComponent<ArcherPlayerBehaviour>();
-            if (oyuncuKontrol != null)
+            ArcherPlayerBehaviour playerBehaviour = other.GetComponent<ArcherPlayerBehaviour>();
+            if (playerBehaviour != null)
             {
-                oyuncuKontrol.PlayerTakeDmg(hasarMiktari);
+                playerBehaviour.PlayerTakeDmg(vurulanHasar);
+                hasarVerebilecekDurum = false; // Hasar verme durumunu geçici olarak devre dýþý býrak
+                Invoke("ResetHasarDurumu", hasarGecikmesi); // Belirtilen süre sonunda hasar verme durumunu sýfýrla
             }
         }
+    }
+
+    private void ResetHasarDurumu()
+    {
+        hasarVerebilecekDurum = true; // Hasar verme durumunu tekrar etkinleþtir
     }
 }
