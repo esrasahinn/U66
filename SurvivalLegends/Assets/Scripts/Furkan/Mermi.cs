@@ -63,6 +63,12 @@ public class Mermi : MonoBehaviour
             {
                 enemyAI.TakeDamage(hasar);
             }
+
+            RangedEnemyController RenemyAI = collider.GetComponent<RangedEnemyController>();
+            if (RenemyAI != null)
+            {
+                RenemyAI.TakeDamage(hasar);
+            }
         }
 
         Destroy(gameObject);

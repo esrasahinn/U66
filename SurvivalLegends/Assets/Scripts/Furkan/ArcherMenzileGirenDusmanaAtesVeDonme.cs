@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     public GameObject frozenBulletPrefab;
 
     private EnemyController hedef;
+    private RangedEnemyController rangedHedef;
     private bool attackInProgress = false;
     private float sonrakiAtesZamani = 0f;
     private bool ozelYetenekAktif = false;
@@ -47,7 +49,8 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         if (playerBehaviour._health <= 0)
             return;
 
-        if (hedef == null || hedef.currentHealth <= 0 || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi)
+        if ((hedef == null || hedef.currentHealth <= 0 || Vector3.Distance(transform.position, hedef.transform.position) > menzilMesafesi) &&
+            (rangedHedef == null || rangedHedef.currentHealth <= 0 || Vector3.Distance(transform.position, rangedHedef.transform.position) > menzilMesafesi))
         {
             HedefSec();
             attackInProgress = false;
@@ -65,9 +68,11 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             }
         }
 
-        if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi)
+        if ((hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi) ||
+            (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= donmeBitisMesafesi))
         {
-            if (!attackInProgress && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBaslamaMesafesi)
+            if (!attackInProgress && ((hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBaslamaMesafesi) ||
+                (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= donmeBaslamaMesafesi)))
             {
                 attackInProgress = true;
                 animator.SetBool("Idle", false);
@@ -80,7 +85,8 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             attackInProgress = false;
         }
 
-        if (hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= atesEtmeMesafesi && Time.time >= sonrakiAtesZamani)
+        if ((hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= atesEtmeMesafesi) ||
+            (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= atesEtmeMesafesi) && Time.time >= sonrakiAtesZamani)
         {
             AtesEt();
             attackInProgress = true;
@@ -109,9 +115,11 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
     public void AtisYap()
     {
         GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
-        // Gerekirse hedefi belirle ve hýzý ayarla
         FrozenBullet frozenBulletScript = frozenBullet.GetComponent<FrozenBullet>();
-        frozenBulletScript.HedefBelirle(hedef.transform);
+        if (hedef != null)
+            frozenBulletScript.HedefBelirle(hedef.transform);
+        else if (rangedHedef != null)
+            frozenBulletScript.HedefBelirle(rangedHedef.transform);
         frozenBulletScript.HizAyarla(hedefeGitmeHizi);
     }
 
@@ -121,38 +129,66 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
 
         float enYakinMesafe = Mathf.Infinity;
         GameObject enYakinDusman = null;
+        GameObject enYakinRangedDusman = null;
 
         foreach (GameObject dusman in dusmanlar)
         {
-            // Düþmanýn caný 0 ise atla
-            if (dusman.GetComponent<EnemyController>().currentHealth <= 0)
-                continue;
+            EnemyController enemyController = dusman.GetComponent<EnemyController>();
+            RangedEnemyController rangedEnemyController = dusman.GetComponent<RangedEnemyController>();
 
-            float mesafe = Vector3.Distance(transform.position, dusman.transform.position);
-
-            if (mesafe < enYakinMesafe)
+            if (enemyController != null && enemyController.currentHealth > 0)
             {
-                enYakinMesafe = mesafe;
-                enYakinDusman = dusman;
+                float mesafe = Vector3.Distance(transform.position, dusman.transform.position);
+
+                if (mesafe < enYakinMesafe)
+                {
+                    enYakinMesafe = mesafe;
+                    enYakinDusman = dusman;
+                }
+            }
+
+            if (rangedEnemyController != null && rangedEnemyController.currentHealth > 0)
+            {
+                float mesafe = Vector3.Distance(transform.position, dusman.transform.position);
+
+                if (mesafe < enYakinMesafe)
+                {
+                    enYakinMesafe = mesafe;
+                    enYakinRangedDusman = dusman;
+                }
             }
         }
 
-        hedef = enYakinDusman.GetComponent<EnemyController>();
+        hedef = enYakinDusman?.GetComponent<EnemyController>();
+        rangedHedef = enYakinRangedDusman?.GetComponent<RangedEnemyController>();
     }
 
     void DusmanaDon()
     {
-        Vector3 hedefYonu = hedef.transform.position - transform.position;
-        hedefYonu.y = 0f;
-        Quaternion hedefRotasyonu = Quaternion.LookRotation(hedefYonu);
-        transform.rotation = Quaternion.Slerp(transform.rotation, hedefRotasyonu, donmeHizi * Time.deltaTime);
+        if (hedef != null)
+        {
+            Vector3 hedefYonu = hedef.transform.position - transform.position;
+            hedefYonu.y = 0f;
+            Quaternion hedefRotasyonu = Quaternion.LookRotation(hedefYonu);
+            transform.rotation = Quaternion.Slerp(transform.rotation, hedefRotasyonu, donmeHizi * Time.deltaTime);
+        }
+        else if (rangedHedef != null)
+        {
+            Vector3 hedefYonu = rangedHedef.transform.position - transform.position;
+            hedefYonu.y = 0f;
+            Quaternion hedefRotasyonu = Quaternion.LookRotation(hedefYonu);
+            transform.rotation = Quaternion.Slerp(transform.rotation, hedefRotasyonu, donmeHizi * Time.deltaTime);
+        }
     }
 
     void AtesEt()
     {
         GameObject mermi = Instantiate(mermiPrefab, atesNoktasi.position, atesNoktasi.rotation);
         Mermi mermiScript = mermi.GetComponent<Mermi>();
-        mermiScript.HedefBelirle(hedef.transform);
+        if (hedef != null)
+            mermiScript.HedefBelirle(hedef.transform);
+        else if (rangedHedef != null)
+            mermiScript.HedefBelirle(rangedHedef.transform);
         mermiScript.HizAyarla(hedefeGitmeHizi);
 
         RaycastHit hit;
@@ -206,10 +242,14 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             // FrozenBullet prefab'ýný ateþ noktasýnda oluþtur
             GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
             // Hedefi belirle
-            FrozenBullet frozenBulletScript = frozenBullet.GetComponent<FrozenBullet>();
-            frozenBulletScript.HedefBelirle(other.gameObject.transform);
+            EnemyController enemyController = other.GetComponent<EnemyController>();
+            RangedEnemyController rangedEnemyController = other.GetComponent<RangedEnemyController>();
+            if (enemyController != null)
+                frozenBullet.GetComponent<FrozenBullet>().HedefBelirle(enemyController.transform);
+            else if (rangedEnemyController != null)
+                frozenBullet.GetComponent<FrozenBullet>().HedefBelirle(rangedEnemyController.transform);
             // Hýzý ayarla
-            frozenBulletScript.HizAyarla(hedefeGitmeHizi);
+            frozenBullet.GetComponent<FrozenBullet>().HizAyarla(hedefeGitmeHizi);
         }
     }
 }

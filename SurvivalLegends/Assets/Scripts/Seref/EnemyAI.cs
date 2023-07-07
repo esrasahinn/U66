@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     public GameObject FloatingTextPrefab;
     [SerializeField] float can = 100f;
     [SerializeField] float maxCan = 100f;
-    [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
+    [SerializeField] Slider canBariSlider;
     [SerializeField] Transform launchPoint;
     public int currentHealth;
     private PlayerBehaviour _playerBehaviour;
@@ -23,12 +23,19 @@ public class EnemyAI : MonoBehaviour
     private bool inAttackRange;
     DropCoin coinScript;
     private bool isFrozen;
+    private Animator enemyAnimator;
+
+    private static readonly int Attack = Animator.StringToHash("Attack");
+    private static readonly int Running = Animator.StringToHash("Running");
+    private static readonly int Idle = Animator.StringToHash("Idle");
+    private static readonly int Death = Animator.StringToHash("Death");
 
     void Awake()
     {
         player = GameObject.Find("Player").transform;
         enemy = GetComponent<NavMeshAgent>();
         coinScript = GetComponent<DropCoin>();
+        enemyAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -58,7 +65,7 @@ public class EnemyAI : MonoBehaviour
 
         if (FloatingTextPrefab)
         {
-            ShowFloatingText(mermiHasar); // Hasarý gönder
+            ShowFloatingText(mermiHasar);
         }
 
         if (can <= 0)
@@ -67,21 +74,21 @@ public class EnemyAI : MonoBehaviour
         }
         else if (_playerBehaviour != null)
         {
-            _playerBehaviour.PlayerTakeDmg((int)mermiHasar); // Hasarý gönder
+            _playerBehaviour.PlayerTakeDmg((int)mermiHasar);
         }
     }
 
-    void ShowFloatingText(float mermiHasar) // Hasarý parametre olarak al
+    void ShowFloatingText(float mermiHasar)
     {
         var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TextMesh>().text = mermiHasar.ToString(); // Mermi hasarýný yazdýr
+        go.GetComponent<TextMesh>().text = mermiHasar.ToString();
     }
 
     private void Olum()
     {
         Debug.Log("Dusman Oldu");
-        // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
-        Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+        enemyAnimator.SetTrigger(Death);
+        Destroy(gameObject, 1f);
         coinScript.CoinDrop();
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
@@ -95,6 +102,7 @@ public class EnemyAI : MonoBehaviour
         if (!isFrozen)
         {
             enemy.SetDestination(player.position);
+            enemyAnimator.SetBool(Running, true);
         }
     }
 
@@ -118,6 +126,8 @@ public class EnemyAI : MonoBehaviour
                 transform.LookAt(player);
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), attackCooldown);
+
+                enemyAnimator.SetTrigger(Attack);
             }
         }
     }
@@ -135,7 +145,7 @@ public class EnemyAI : MonoBehaviour
 
     private IEnumerator UnfreezeEnemy()
     {
-        yield return new WaitForSeconds(3f); // Dondurma süresi (3 saniye) beklenir
+        yield return new WaitForSeconds(3f);
         isFrozen = false;
     }
 
