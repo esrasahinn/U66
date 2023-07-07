@@ -16,7 +16,7 @@ public class NinjaPlayer : MonoBehaviour
     [SerializeField] float animTurnSpeed = 30f;
     [SerializeField] float can = 100f;
     [SerializeField] float maxCan = 100f;
-
+    //a
     [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
 
     [Header("Inventory")]
