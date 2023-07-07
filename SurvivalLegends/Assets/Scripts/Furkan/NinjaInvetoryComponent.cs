@@ -8,7 +8,7 @@ public class NinjaInventoryComponent : MonoBehaviour, IPurchaseListener
     [SerializeField] Transform[] defaultWeaponSlots;
     [SerializeField] Transform[] weaponSlots;
     [SerializeField] private Animator animator;
-
+//a
     List<Weapon> weapons;
     int currentWeaponIndex = -1;
     bool isAnimationPlaying = false;
