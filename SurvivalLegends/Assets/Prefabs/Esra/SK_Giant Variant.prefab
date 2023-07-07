@@ -437,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
@@ -638,7 +638,6 @@ MonoBehaviour:
   maxHealth: 100
   healthSlider: {fileID: 1572071824125531658}
   player: {fileID: 0}
-  attackCooldown: 0.55
   attackRange: 2
   meleeDamage: 0
   currentHealth: 100
