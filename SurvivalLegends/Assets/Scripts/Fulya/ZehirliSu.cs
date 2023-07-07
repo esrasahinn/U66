@@ -5,8 +5,8 @@ using UnityEngine;
 public class ZehirliSu : MonoBehaviour
 {
     public float fallSpeed = 2.0f; // Düþme hýzý
-    public int dusmanHasarMiktari = 10; // Düþmana verilecek hasar miktarý
     private Rigidbody rb;
+    private int dusmanHasarMiktari;
     private bool hasHitEnemy = false;
 
     private void Awake()
@@ -15,15 +15,9 @@ public class ZehirliSu : MonoBehaviour
         rb.isKinematic = true; // Kinematic modunu etkinleþtir
     }
 
-    private void Start()
+    public void Atesle(int hasarMiktari)
     {
-        rb.velocity = Vector3.down * fallSpeed; // Aþaðý yönde düþme hýzýný ayarla
-    }
-
-    public void At(EnemyAI dusman)
-    {
-        // Zehirli suyu düþmana fýrlat
-        transform.SetParent(dusman.transform);
+        dusmanHasarMiktari = hasarMiktari;
         rb.isKinematic = false; // Kinematic modunu devre dýþý býrak
         rb.velocity = Vector3.down * fallSpeed;
     }
