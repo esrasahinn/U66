@@ -20,6 +20,14 @@ public class HasarVerici2 : MonoBehaviour
                 hasarVerebilecekDurum = false; // Hasar verme durumunu geçici olarak devre dýþý býrak
                 Invoke("ResetHasarDurumu", hasarGecikmesi); // Belirtilen süre sonunda hasar verme durumunu sýfýrla
             }
+
+            PlayerBehaviour RplayerBehaviour = other.GetComponent<PlayerBehaviour>();
+            if (RplayerBehaviour != null)
+            {
+                RplayerBehaviour.PlayerTakeDmg(vurulanHasar);
+                hasarVerebilecekDurum = false; // Hasar verme durumunu geçici olarak devre dýþý býrak
+                Invoke("ResetHasarDurumu", hasarGecikmesi); // Belirtilen süre sonunda hasar verme durumunu sýfýrla
+            }
         }
     }
 

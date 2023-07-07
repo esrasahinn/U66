@@ -11,41 +11,33 @@ public class expController : MonoBehaviour
     private float maxFillAmount = 1f;
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
-    public Button Buton1;
-    public Button Buton2;
-    public Button Buton3;
-    public Button Buton4;
-    private ProjectileController projectileController; // ProjectileController referansý eklendi
-  
-    private void Awake()
-    {
-        projectileController = GetComponent<ProjectileController>(); // ProjectileController referansý alýndý
-    }
-
-    private void Start()
-    {
-        // Diðer baþlatma iþlemleri
-    }
+    private bool isGamePaused = false;
 
     private void Update()
     {
-        if (currentFillAmount >= maxFillAmount)
+        if (!isGamePaused && currentFillAmount >= maxFillAmount)
         {
-            if (!isPopupShowing)
-            {
-                ShowPopup();
-                currentFillAmount = 0f; // EXP BAR'ý sýfýrla
-                expBar.fillAmount = currentFillAmount; // Fill Amount'i güncelle
-            }
+            PauseGame();
+            ShowPopup();
+            currentFillAmount = 0f; // Deneyim çubuðunu sýfýrla
+            expBar.fillAmount = currentFillAmount; // Fill Amount'i güncelle
+        }
+
+        if (isGamePaused && !isPopupShowing && Input.GetKeyDown(KeyCode.Space))
+        {
+            ResumeGame();
         }
     }
 
     public void UpdateExpBar()
     {
-        currentFillAmount += expIncreaseAmount;
-        currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
-        expBar.fillAmount = currentFillAmount;
-        HidePopup();
+        if (!isGamePaused)
+        {
+            currentFillAmount += expIncreaseAmount;
+            currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
+            expBar.fillAmount = currentFillAmount;
+            HidePopup();
+        }
     }
 
     private void ShowPopup()
@@ -60,5 +52,15 @@ public class expController : MonoBehaviour
         isPopupShowing = false;
     }
 
+    private void PauseGame()
+    {
+        Time.timeScale = 0f; // Oyun zamanýný duraklat
+        isGamePaused = true;
+    }
 
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f; // Oyun zamanýný devam ettir
+        isGamePaused = false;
+    }
 }
