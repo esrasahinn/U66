@@ -41,7 +41,7 @@ public class Buton1 : MonoBehaviour
             originalMoveSpeed = player.moveSpeed;
             player.moveSpeed += 10f; // Hareket hýzýný 10 birim artýr
             controller.HidePopup();
-            controller.ResumeGame(); // Oyunu devam ettir
+            //controller.ResumeGame(); // Oyunu devam ettir
             Debug.Log("Karakter 30 saniye boyunca hýzlandý.");
             Invoke(nameof(DisableSpeedBoost), speedBoostDuration);
         }
