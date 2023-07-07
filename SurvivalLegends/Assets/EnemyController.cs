@@ -8,14 +8,12 @@ public class EnemyController : MonoBehaviour
     public GameObject FloatingTextPrefab;
     [SerializeField] float can = 100f;
     [SerializeField] float maxHealth = 100f;
-    [SerializeField] Slider healthSlider; // Can çubuðu Slider bileþeni
+    [SerializeField] Slider healthSlider;
     [SerializeField] Transform player;
-    [SerializeField] float attackCooldown = 2.0f;
     [SerializeField] float attackRange = 2.0f;
     [SerializeField] int meleeDamage = 10;
     public int currentHealth;
     private NavMeshAgent enemy;
-    private bool alreadyAttacked;
     private bool inAttackRange;
     private Animator animator;
     private bool isDead;
@@ -28,6 +26,7 @@ public class EnemyController : MonoBehaviour
         animator = GetComponent<Animator>();
         hasarVerici2 = GetComponentInChildren<HasarVerici2>();
     }
+
     private void Start()
     {
         healthSlider.maxValue = maxHealth;
@@ -44,7 +43,7 @@ public class EnemyController : MonoBehaviour
 
         if (isFrozen)
         {
-            enemy.isStopped = true; // Karakteri durdur
+            enemy.isStopped = true;
             animator.SetBool("Running", false);
 
             if (inAttackRange)
@@ -67,7 +66,7 @@ public class EnemyController : MonoBehaviour
         else
         {
             animator.SetBool("Attack", false);
-            enemy.isStopped = false; // Karakteri hareket ettir
+            enemy.isStopped = false;
             ChasePlayer();
         }
     }
@@ -101,43 +100,32 @@ public class EnemyController : MonoBehaviour
     {
         Debug.Log("Düþman öldü.");
         isDead = true;
-        // Ölüm animasyonunu oynatmak veya diðer ölüm iþlemlerini burada yapabilirsiniz.
         animator.SetTrigger("Death");
         enemy.enabled = false;
-        // Düþmaný yok etmek veya etrafýna düþen eþyalarý burada iþleyebilirsiniz.
-        Destroy(gameObject, 2.0f); // Ýki saniye sonra düþman nesnesini yok etmek için kullanabilirsiniz.
+        Destroy(gameObject, 2.0f);
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
         {
             expControllerScript.UpdateExpBar();
         }
     }
+
     void ChasePlayer()
     {
-        if (!alreadyAttacked)
-        {
-            enemy.SetDestination(player.position);
-            animator.SetBool("Attack", false);
+        enemy.SetDestination(player.position);
+        animator.SetBool("Attack", false);
 
-            // Eðer attackRange içinde player tagine sahip bir nesne varsa Running animasyonuna geçmeyi engelle
-            Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
-            foreach (Collider collider in colliders)
+        Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Player"))
             {
-                if (collider.CompareTag("Player"))
-                {
-                    animator.SetBool("Running", false);
-                    return;
-                }
+                animator.SetBool("Running", false);
+                return;
             }
+        }
 
-            animator.SetBool("Running", true);
-        }
-        else
-        {
-            enemy.SetDestination(transform.position);
-            animator.SetBool("Running", false);
-            animator.SetBool("Attack", false);
-        }
+        animator.SetBool("Running", true);
     }
 
     public void AttackPlayer()
@@ -145,35 +133,22 @@ public class EnemyController : MonoBehaviour
         enemy.SetDestination(transform.position);
         transform.LookAt(player);
 
-        if (!alreadyAttacked)
+        animator.SetBool("Running", false);
+        animator.SetBool("Attack", true);
+
+        ArcherPlayerBehaviour archerPlayerHealth = player.GetComponent<ArcherPlayerBehaviour>();
+        if (archerPlayerHealth != null)
         {
-            animator.SetBool("Running", false);
-            animator.SetBool("Attack", true);
-
-            // Saldýrý animasyonu oynatýlabilir veya diðer saldýrý iþlemleri burada yapýlabilir.
-            // Oyuncuya hasar vermek için ArcherPlayerBehaviour veya PlayerBehaviour bileþenini çaðýrabilirsiniz.
-
-            ArcherPlayerBehaviour archerPlayerHealth = player.GetComponent<ArcherPlayerBehaviour>();
-            if (archerPlayerHealth != null)
-            {
-                archerPlayerHealth.PlayerTakeDmg(meleeDamage);
-            }
-
-            PlayerBehaviour playerHealth = player.GetComponent<PlayerBehaviour>();
-            if (playerHealth != null)
-            {
-                playerHealth.PlayerTakeDmg(meleeDamage);
-            }
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), attackCooldown);
-            Invoke(nameof(CompleteAttackAnimation), 2.0f);
+            archerPlayerHealth.PlayerTakeDmg(meleeDamage);
         }
-        else
+
+        PlayerBehaviour playerHealth = player.GetComponent<PlayerBehaviour>();
+        if (playerHealth != null)
         {
-            animator.SetBool("Running", true);
-            animator.SetBool("Attack", false);
+            playerHealth.PlayerTakeDmg(meleeDamage);
         }
+
+        Invoke(nameof(CompleteAttackAnimation), 2.0f);
     }
 
     void CompleteAttackAnimation()
@@ -184,22 +159,16 @@ public class EnemyController : MonoBehaviour
     public void FreezeEnemy()
     {
         isFrozen = true;
-        alreadyAttacked = false;
         animator.SetBool("Running", false);
-        enemy.isStopped = true; // Karakteri durdur
+        enemy.isStopped = true;
         StartCoroutine(UnfreezeEnemy());
     }
 
     private IEnumerator UnfreezeEnemy()
     {
-        yield return new WaitForSeconds(3f); // Dondurma süresi (3 saniye) beklenir
+        yield return new WaitForSeconds(3f);
         isFrozen = false;
-        enemy.isStopped = false; // Karakteri hareket ettir
-    }
-
-    void ResetAttack()
-    {
-        alreadyAttacked = false;
+        enemy.isStopped = false;
     }
 
     private void OnTriggerEnter(Collider other)
