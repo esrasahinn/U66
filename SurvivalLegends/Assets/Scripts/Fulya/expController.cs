@@ -17,7 +17,7 @@ public class expController : MonoBehaviour
     {
         if (!isGamePaused && currentFillAmount >= maxFillAmount)
         {
-            PauseGame();
+            //PauseGame();
             ShowPopup();
             currentFillAmount = 0f; // Deneyim çubuðunu sýfýrla
             expBar.fillAmount = currentFillAmount; // Fill Amount'i güncelle
@@ -25,7 +25,7 @@ public class expController : MonoBehaviour
 
         if (isGamePaused && !isPopupShowing && Input.GetKeyDown(KeyCode.Space))
         {
-            ResumeGame();
+           // ResumeGame();
         }
     }
 
@@ -52,15 +52,15 @@ public class expController : MonoBehaviour
         isPopupShowing = false;
     }
 
-    private void PauseGame()
-    {
-        Time.timeScale = 0f; // Oyun zamanýný duraklat
-        isGamePaused = true;
-    }
-
-    public void ResumeGame()
-    {
-        Time.timeScale = 1f; // Oyun zamanýný devam ettir
-        isGamePaused = false;
-    }
+   // private void PauseGame()
+   // {
+   //     Time.timeScale = 0f; // Oyun zamanýný duraklat
+   //     isGamePaused = true;
+   // }
+   //
+   // public void ResumeGame()
+   // {
+   //     Time.timeScale = 1f; // Oyun zamanýný devam ettir
+   //     isGamePaused = false;
+   // }
 }

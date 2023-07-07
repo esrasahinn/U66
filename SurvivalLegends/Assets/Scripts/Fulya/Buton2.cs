@@ -33,7 +33,7 @@ public class Buton2 : MonoBehaviour
         {
             hasarAlmamaAktif = true;
             controller.HidePopup();
-            controller.ResumeGame(); // Oyunu devam ettir
+            //controller.ResumeGame(); // Oyunu devam ettir
             hasarAlmamaSure = 30f;
             Debug.Log("Hasar almama süresi baþladý.");
         }

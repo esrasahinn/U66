@@ -17,7 +17,7 @@ public class Buton3 : MonoBehaviour
     {
         ArcherPlayerBehaviour.GetInstance().PerformLeftShiftAction();
         controller.HidePopup();
-        controller.ResumeGame(); // Oyunu devam ettir
+        //controller.ResumeGame(); // Oyunu devam ettir
         Debug.Log("Karakterin caný dolduruldu.");
     }
 
