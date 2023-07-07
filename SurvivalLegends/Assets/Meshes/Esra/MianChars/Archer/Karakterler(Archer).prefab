@@ -236,6 +236,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2031174974459397081, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 363.2756
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149178497444332804, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 502
+      objectReference: {fileID: 0}
     - target: {fileID: 2262787741219165900, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
         type: 3}
       propertyPath: m_Name
@@ -276,6 +286,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 4192256952751924174, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 411.48807
+      objectReference: {fileID: 0}
+    - target: {fileID: 6775506612383068286, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 456.69852
+      objectReference: {fileID: 0}
     - target: {fileID: 7645504532530783100, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
         type: 3}
       propertyPath: player
@@ -298,30 +318,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 204d3ab2c9b9bad4eae2e01321a9c544, type: 3}
---- !u!114 &913968494413415821 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4771079353807204023, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5663653543841229626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1589510992539734244 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6383365626372635614, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5663653543841229626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1986005771179153412 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6131337935754867518, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
@@ -358,30 +354,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5663653543841229626}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7897896110827162936 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2523036477240321538, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5663653543841229626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8812374237403539230 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3806246789300096036, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5663653543841229626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9016490085089076464 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3726824426622750666, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
@@ -682,10 +654,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expBar: {fileID: 9016490085089076464}
   popupObject: {fileID: 2509906239220998662}
-  Buton1: {fileID: 8812374237403539230}
-  Buton2: {fileID: 7897896110827162936}
-  Buton3: {fileID: 1589510992539734244}
-  Buton4: {fileID: 913968494413415821}
 --- !u!1001 &8110414355949814167
 PrefabInstance:
   m_ObjectHideFlags: 0
