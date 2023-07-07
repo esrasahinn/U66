@@ -20,7 +20,8 @@ public class Buton4 : MonoBehaviour
         Vector3 randomPosition = RandomPositionInArea(dusmanAlan);
         randomPosition.y += 5f; // Yükseklik ekleyerek prefab'ý yukarý taþý
         GameObject zehirliSu = Instantiate(zehirliSuPrefab, randomPosition, Quaternion.identity);
-
+        controller.HidePopup();
+        controller.ResumeGame(); // Oyunu devam ettir
         // Zehirli suyu düþmana at
         ZehirliSu suScript = zehirliSu.GetComponent<ZehirliSu>();
         suScript.Atesle(dusmanHasarMiktari);
