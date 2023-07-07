@@ -106,6 +106,11 @@ public class EnemyController : MonoBehaviour
         enemy.enabled = false;
         // Düþmaný yok etmek veya etrafýna düþen eþyalarý burada iþleyebilirsiniz.
         Destroy(gameObject, 2.0f); // Ýki saniye sonra düþman nesnesini yok etmek için kullanabilirsiniz.
+        expController expControllerScript = FindObjectOfType<expController>();
+        if (expControllerScript != null)
+        {
+            expControllerScript.UpdateExpBar();
+        }
     }
     void ChasePlayer()
     {
