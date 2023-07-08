@@ -26,12 +26,12 @@ PrefabInstance:
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8171803596384634123, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
@@ -355,7 +355,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 03941d4dd54c616428ea8ce74d191d19,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 71.92
+      value: 65.869995
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 03941d4dd54c616428ea8ce74d191d19,
         type: 3}
@@ -802,6 +802,7 @@ MonoBehaviour:
   healthSlider: {fileID: 1239592316719713356}
   player: {fileID: 0}
   attackRange: 3
+  detectionRange: 10
   meleeDamage: 0
   currentHealth: 100
 --- !u!54 &6249696827889346034
