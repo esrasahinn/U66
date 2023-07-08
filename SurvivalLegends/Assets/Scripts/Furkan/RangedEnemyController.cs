@@ -11,6 +11,7 @@ public class RangedEnemyController : MonoBehaviour
     public Transform player;
     public float attackRange = 10.0f;
     public float attackCooldown = 2.0f;
+    public float detectionRange = 15.0f; // Fark etme menzili
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 10f;
@@ -21,6 +22,7 @@ public class RangedEnemyController : MonoBehaviour
     private Animator animator;
     private bool isDead;
     private bool isFrozen;
+    private bool hasDetectedPlayer; // Fark edildi mi kontrolü
 
     private float nextAttackTime;
 
@@ -70,7 +72,12 @@ public class RangedEnemyController : MonoBehaviour
         {
             animator.SetBool("Attack", false);
             enemy.isStopped = false;
-            ChasePlayer();
+
+            if (distanceToPlayer <= detectionRange || hasDetectedPlayer) // Düþman fark etme menziline girdiðinde veya oyuncu fark edildikten sonra takip eder
+            {
+                hasDetectedPlayer = true;
+                ChasePlayer();
+            }
         }
     }
 
@@ -116,8 +123,7 @@ public class RangedEnemyController : MonoBehaviour
 
     void ChasePlayer()
     {
-        Vector3 playerPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
-        enemy.SetDestination(playerPosition);
+        enemy.SetDestination(player.position);
         animator.SetBool("Running", true);
     }
 
@@ -157,6 +163,7 @@ public class RangedEnemyController : MonoBehaviour
 
         animator.SetBool("Attack", false);
     }
+
     public void FreezeEnemy()
     {
         isFrozen = true;
@@ -172,21 +179,17 @@ public class RangedEnemyController : MonoBehaviour
         enemy.isStopped = false;
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag(playerTag))
-    //    {
-    //        PlayerBehaviour playerController = other.GetComponent<PlayerBehaviour>();
-    //        if (playerController != null)
-    //        {
-    //            playerController.PlayerTakeDmg(rangedDamage);
-    //        }
-    //    }
-    //}
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Katana"))
+        if (other.CompareTag(playerTag))
+        {
+            if (!hasDetectedPlayer)
+            {
+                hasDetectedPlayer = true;
+                ChasePlayer();
+            }
+        }
+        else if (other.CompareTag("Katana"))
         {
             Katana katana = other.GetComponent<Katana>();
             if (katana != null)
