@@ -15,19 +15,30 @@ public class ZehirliSu : MonoBehaviour
         rb.isKinematic = true; // Kinematic modunu etkinleþtir
     }
 
-    public void Atesle(int hasarMiktari)
+    public void Atesle(int hasarMiktari, EnemyAI dusman)
     {
         dusmanHasarMiktari = hasarMiktari;
         rb.isKinematic = false; // Kinematic modunu devre dýþý býrak
         rb.velocity = Vector3.down * fallSpeed;
+
+        // Zehirli suyu düþmana at
+        dusman.HasarAl(dusmanHasarMiktari);
+    }
+
+    public void Atesle(int hasarMiktari, EnemyController dusman)
+    {
+        dusmanHasarMiktari = hasarMiktari;
+        rb.isKinematic = false; // Kinematic modunu devre dýþý býrak
+        rb.velocity = Vector3.down * fallSpeed;
+
+        // Zehirli suyu düþmana at
+        dusman.TakeDamage(dusmanHasarMiktari);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Dusman") && !hasHitEnemy)
         {
-            EnemyAI dusman = collision.gameObject.GetComponent<EnemyAI>();
-            dusman.HasarAl(dusmanHasarMiktari); // Düþmana hasar ver
             hasHitEnemy = true;
             Destroy(gameObject); // Zehirli suyu yok et
         }

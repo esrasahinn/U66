@@ -1,21 +1,21 @@
 using UnityEngine;
 
-public class Buton3 : MonoBehaviour
+public class Buton3Rifle : MonoBehaviour
 {
     private bool canDoldurmaAktif = false; // Can doldurma durumu
     private expController controller;
-    private ArcherPlayerBehaviour player;
+    private PlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
 
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
-        player = ArcherPlayerBehaviour.GetInstance();
+        player = PlayerBehaviour.GetInstance();
         _healthbar = FindObjectOfType<Healthbar>(); // _healthbar referansý alýndý
     }
     public void ButonTiklama()
     {
-        ArcherPlayerBehaviour.GetInstance().PerformLeftShiftAction();
+        PlayerBehaviour.GetInstance().PerformLeftShiftAction();
         controller.HidePopup();
         controller.ResumeGame(); // Oyunu devam ettir
         Debug.Log("Karakterin caný dolduruldu.");
