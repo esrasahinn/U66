@@ -14,6 +14,12 @@ public class RangedAttack : MonoBehaviour
             {
                 arcplayerController.PlayerTakeDmg(damageAmount);
             }
+
+            PlayerBehaviour playerController = other.GetComponent<PlayerBehaviour>();
+            if (playerController != null)
+            {
+                playerController.PlayerTakeDmg(damageAmount);
+            }
         }
 
         Destroy(gameObject);

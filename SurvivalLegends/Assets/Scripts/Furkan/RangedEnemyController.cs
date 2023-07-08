@@ -162,14 +162,26 @@ public class RangedEnemyController : MonoBehaviour
         enemy.isStopped = false;
     }
 
-    private void OnTriggerExit(Collider other)
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag(playerTag))
+    //    {
+    //        PlayerBehaviour playerController = other.GetComponent<PlayerBehaviour>();
+    //        if (playerController != null)
+    //        {
+    //            playerController.PlayerTakeDmg(rangedDamage);
+    //        }
+    //    }
+    //}
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(playerTag))
+        if (other.CompareTag("Katana"))
         {
-            PlayerBehaviour playerController = other.GetComponent<PlayerBehaviour>();
-            if (playerController != null)
+            Katana katana = other.GetComponent<Katana>();
+            if (katana != null)
             {
-                playerController.PlayerTakeDmg(rangedDamage);
+                TakeDamage(katana.damageAmount);
             }
         }
     }

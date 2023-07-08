@@ -58,18 +58,8 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             animator.SetBool("Attack", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            if (!ozelYetenekAktif)
-            {
-                ozelYetenekAktif = true;
-                ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
-                OzelYetenek();
-            }
-        }
-
         if ((hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBitisMesafesi) ||
-            (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= donmeBitisMesafesi))
+     (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= donmeBitisMesafesi))
         {
             if (!attackInProgress && ((hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= donmeBaslamaMesafesi) ||
                 (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= donmeBaslamaMesafesi)))
@@ -83,19 +73,25 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         else
         {
             attackInProgress = false;
+            animator.SetBool("Attack", false);
         }
 
         if ((hedef != null && Vector3.Distance(transform.position, hedef.transform.position) <= atesEtmeMesafesi) ||
-            (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= atesEtmeMesafesi) && Time.time >= sonrakiAtesZamani)
+            (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= atesEtmeMesafesi))
         {
-            AtesEt();
             attackInProgress = true;
-            sonrakiAtesZamani = Time.time + 1f / atesHizi;
             animator.SetBool("Running", attackInProgress);
+
+            if (Time.time >= sonrakiAtesZamani)
+            {
+                AtesEt();
+                sonrakiAtesZamani = Time.time + 1f / atesHizi;
+            }
         }
         else
         {
             attackInProgress = false;
+            animator.SetBool("Running", attackInProgress);
         }
 
         if (ozelYetenekAktif)
@@ -106,12 +102,21 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (!ozelYetenekAktif)
+            {
+                ozelYetenekAktif = true;
+                ozelYetenekZamani = Time.time; // Özel yetenek süresini baþlat
+                OzelYetenek();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.B))
         {
             AtisYap();
         }
     }
-
     public void AtisYap()
     {
         GameObject frozenBullet = Instantiate(frozenBulletPrefab, atesNoktasi.position, atesNoktasi.rotation);
