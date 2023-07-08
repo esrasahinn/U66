@@ -5,8 +5,8 @@ using UnityEngine;
 public class ZehirliSu : MonoBehaviour
 {
     public float fallSpeed = 2.0f; // Düþme hýzý
+    public int dusmanHasarMiktari = 10; // Düþmana verilecek hasar miktarý
     private Rigidbody rb;
-    private int dusmanHasarMiktari;
     private bool hasHitEnemy = false;
 
     private void Awake()
@@ -22,7 +22,7 @@ public class ZehirliSu : MonoBehaviour
         rb.velocity = Vector3.down * fallSpeed;
 
         // Zehirli suyu düþmana at
-        dusman.HasarAl(dusmanHasarMiktari);
+        transform.SetParent(dusman.transform);
     }
 
     public void Atesle(int hasarMiktari, EnemyController dusman)
@@ -32,15 +32,28 @@ public class ZehirliSu : MonoBehaviour
         rb.velocity = Vector3.down * fallSpeed;
 
         // Zehirli suyu düþmana at
-        dusman.TakeDamage(dusmanHasarMiktari);
+        transform.SetParent(dusman.transform);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Dusman") && !hasHitEnemy)
+        if (other.CompareTag("Dusman") && !hasHitEnemy)
         {
             hasHitEnemy = true;
+
+            if (other.GetComponent<EnemyAI>() != null)
+            {
+                EnemyAI dusman = other.GetComponent<EnemyAI>();
+                dusman.HasarAl(dusmanHasarMiktari); // Düþmana hasar ver
+            }
+            else if (other.GetComponent<EnemyController>() != null)
+            {
+                EnemyController dusman = other.GetComponent<EnemyController>();
+                dusman.TakeDamage(dusmanHasarMiktari); // Düþmana hasar ver
+            }
+
             Destroy(gameObject); // Zehirli suyu yok et
         }
     }
 }
+

@@ -18,7 +18,7 @@ public class Buton4 : MonoBehaviour
     {
         // Düþmanlarý bul
         dusmanlar = GameObject.FindGameObjectsWithTag("Dusman");
-        
+
         if (dusmanlar.Length > 0)
         {
             // Rastgele 3 düþman seç
@@ -35,7 +35,7 @@ public class Buton4 : MonoBehaviour
                     rastgeleDusmanlar.Add(rastgeleDusman);
 
                     // Zehirli suyu düþmana at
-                    Vector3 spawnPosition = rastgeleDusman.transform.position + Vector3.up * 2f;
+                    Vector3 spawnPosition = rastgeleDusman.transform.position + Vector3.up * 6f;
                     GameObject zehirliSu = Instantiate(zehirliSuPrefab, spawnPosition, Quaternion.identity);
 
                     // Düþmana zarar verme iþlemini yap
@@ -52,10 +52,12 @@ public class Buton4 : MonoBehaviour
                         suScript.Atesle(dusmanHasarMiktari, dusmanController);
                     }
                 }
+                
             }
+            controller.HidePopup();
+            controller.ResumeGame(); // Oyunu devam ettir
         }
-        controller.HidePopup();
-        controller.ResumeGame(); // Oyunu devam ettir
     }
 }
+
 
