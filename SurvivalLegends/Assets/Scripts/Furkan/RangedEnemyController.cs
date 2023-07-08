@@ -132,13 +132,24 @@ public class RangedEnemyController : MonoBehaviour
         StartCoroutine(ShootProjectile());
     }
 
+
     IEnumerator ShootProjectile()
     {
         yield return new WaitForSeconds(0.5f);
 
-        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+        // Oyuncunun pozisyonunu hesapla
+        Vector3 playerPosition = new Vector3(player.position.x, projectileSpawnPoint.position.y, player.position.z);
+        // Oyuncuya doðru bir vektör oluþtur
+        Vector3 directionToPlayer = playerPosition - projectileSpawnPoint.position;
+        // Yatay rotasyonu ayarla
+        Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+
+        // Okun rotasyonunu ayarla
+        projectileSpawnPoint.rotation = rotationToPlayer;
+
+        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, rotationToPlayer);
         Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
-        projectileRigidbody.velocity = transform.forward * projectileSpeed;
+        projectileRigidbody.velocity = projectileSpawnPoint.forward * projectileSpeed;
 
         Destroy(projectile, projectileDestroyTime);
 
@@ -146,7 +157,6 @@ public class RangedEnemyController : MonoBehaviour
 
         animator.SetBool("Attack", false);
     }
-
     public void FreezeEnemy()
     {
         isFrozen = true;
