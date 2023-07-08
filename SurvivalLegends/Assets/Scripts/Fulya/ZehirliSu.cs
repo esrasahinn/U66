@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ZehirliSu : MonoBehaviour
 {
+    public GameObject silindirPrefab; // Silindir prefab nesnesi
     public float fallSpeed = 2.0f; // Düþme hýzý
     public int dusmanHasarMiktari = 10; // Düþmana verilecek hasar miktarý
     private Rigidbody rb;
@@ -51,6 +52,9 @@ public class ZehirliSu : MonoBehaviour
                 EnemyController dusman = other.GetComponent<EnemyController>();
                 dusman.TakeDamage(dusmanHasarMiktari); // Düþmana hasar ver
             }
+
+            // Silindir prefabini düþmanýn yerine yerleþtir
+            Instantiate(silindirPrefab, other.transform.position, other.transform.rotation);
 
             Destroy(gameObject); // Zehirli suyu yok et
         }
