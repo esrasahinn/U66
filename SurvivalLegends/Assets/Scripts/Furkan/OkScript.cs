@@ -16,6 +16,12 @@ public class OkScript : MonoBehaviour
                 dusmanHealth.TakeDamage(damageAmount); // Hasarý ver
             }
 
+            RangedEnemyController RdusmanHealth = other.gameObject.GetComponent<RangedEnemyController>();
+            if (RdusmanHealth != null)
+            {
+                RdusmanHealth.TakeDamage(damageAmount); // Hasarý ver
+            }
+
             Destroy(gameObject); // Oku hemen yok et
         }
         else
