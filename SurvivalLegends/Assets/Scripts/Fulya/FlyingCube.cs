@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class FlyingCube : MonoBehaviour
 {
-    public Transform target; // Hedef transform (oyuncu transformu)
+    public Transform target; // Hedef transformu (oyuncu transformu)
     public float rotationSpeed = 10f; // Küpün dönme hýzý
+    public float followSpeed = 5f; // Takip hýzý
 
     private void Update()
     {
@@ -14,11 +15,13 @@ public class FlyingCube : MonoBehaviour
             return;
         }
 
-        // Küpün hedefe doðru dönmesi
-        Vector3 direction = target.position - transform.position;
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        // Küpün kendi etrafýnda dönme iþlemi
+        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+
+        // Hedefin pozisyonunu takip etme
+        Vector3 targetPosition = target.position;
+        Vector3 currentPosition = transform.position;
+        Vector3 newPosition = Vector3.Lerp(currentPosition, targetPosition, followSpeed * Time.deltaTime);
+        transform.position = newPosition;
     }
 }
-
-
