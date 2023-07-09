@@ -16,6 +16,12 @@ public class FrozenBullet : MonoBehaviour
             enemyAI.FreezeEnemy(); // Düþmaný dondur
         }
 
+        RangedEnemyController RenemyAI = other.GetComponent<RangedEnemyController>();
+        if (RenemyAI != null && other.CompareTag("Dusman")) // Sadece Dusman tag'ine sahip objeleri etkile
+        {
+            RenemyAI.FreezeEnemy(); // Düþmaný dondur
+        }
+
         Destroy(gameObject); // Mermiyi yok et
     }
 

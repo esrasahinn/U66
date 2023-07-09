@@ -5,6 +5,8 @@ public class OkScript : MonoBehaviour
     public int damageAmount = 10; // Hasar miktarý
     public int DamageAmount { get { return damageAmount; } set { damageAmount = value; } }
 
+    private bool hitEnemy = false; // Düþmana çarptý mý kontrolü için bool deðiþken
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Dusman"))
@@ -22,11 +24,23 @@ public class OkScript : MonoBehaviour
                 RdusmanHealth.TakeDamage(damageAmount); // Hasarý ver
             }
 
+            hitEnemy = true; // Düþmana çarptý olarak iþaretle
             Destroy(gameObject); // Oku hemen yok et
         }
-        else
+    }
+
+    private void Update()
+    {
+        if (!hitEnemy)
         {
-            Destroy(gameObject, 3f); // Oku 3 saniye sonra yok et
+            // Düþmana çarpmadýysa zamanlayýcýyý baþlat
+            StartCoroutine(DestroyAfterDelay(2f));
         }
+    }
+
+    private System.Collections.IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 }

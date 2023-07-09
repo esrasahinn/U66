@@ -200,7 +200,7 @@ Transform:
   - {fileID: 1929109869241100475}
   - {fileID: 6216458359680054947}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &5663653543841229626
 PrefabInstance:
@@ -722,13 +722,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
+      propertyPath: menzilMesafesi
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
       propertyPath: hedefeGitmeHizi
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: atesEtmeMesafesi
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -738,7 +743,7 @@ PrefabInstance:
     - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: donmeBitisMesafesi
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -749,7 +754,7 @@ PrefabInstance:
     - target: {fileID: 2873464927079547180, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: donmeBaslamaMesafesi
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3745090488537537450, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -824,13 +829,18 @@ PrefabInstance:
     - target: {fileID: 7248943105054987999, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: moveSpeed
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7248943105054987999, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: moveStick
       value: 
       objectReference: {fileID: 1986005771179153412}
+    - target: {fileID: 7248943105054987999, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8092452868149120290, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_Controller
