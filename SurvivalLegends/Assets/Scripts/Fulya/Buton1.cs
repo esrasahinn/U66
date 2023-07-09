@@ -6,7 +6,7 @@ using UnityEngine;
 public class Buton1 : MonoBehaviour
 {
     private bool isSpeedBoostActive = false;
-    private float speedBoostDuration = 30f;
+    private float speedBoostDuration = 20f;
     private float originalMoveSpeed;
     private Player player;
     private expController controller;
@@ -42,7 +42,6 @@ public class Buton1 : MonoBehaviour
             player.moveSpeed += 10f; // Hareket hýzýný 10 birim artýr
             controller.HidePopup();
             controller.ResumeGame(); // Oyunu devam ettir
-            Debug.Log("Karakter 30 saniye boyunca hýzlandý.");
             Invoke(nameof(DisableSpeedBoost), speedBoostDuration);
         }
     }

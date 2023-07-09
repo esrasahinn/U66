@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Buton6 : MonoBehaviour
@@ -7,19 +5,29 @@ public class Buton6 : MonoBehaviour
     public GameObject flyingCubePrefab; // Uçan küp prefabý
     public Transform playerTransform; // Oyuncu transformu
     public float rotationSpeed = 10f; // Küpün dönme hýzý
-
+    public float destroyDelay = 5f; // Kaybolma gecikmesi süresi
+    private expController controller;
     private GameObject flyingCubeInstance; // Oluþturulan uçan küp
 
+
+
+    private void Awake()
+    {
+        controller = FindObjectOfType<expController>();
+    }
     public void ButonTiklama()
     {
         if (flyingCubeInstance == null)
         {
             SpawnFlyingCube();
+            Invoke("DestroyFlyingCube", destroyDelay);
         }
         else
         {
             DestroyFlyingCube();
         }
+        controller.HidePopup();
+        controller.ResumeGame(); // Oyunu devam ettir
     }
 
     private void SpawnFlyingCube()
@@ -47,5 +55,13 @@ public class Buton6 : MonoBehaviour
         }
     }
 }
+
+
+
+
+
+
+
+
 
 
