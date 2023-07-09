@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 216111434}
   - component: {fileID: 216111433}
   - component: {fileID: 216111435}
+  - component: {fileID: 216111436}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -310,6 +311,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1975506339}
   pauseButton: {fileID: 1626735022}
+--- !u!114 &216111436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216111432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa176d605de10446aecfb767c2432ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons: []
+  confirmationPopup: {fileID: 0}
+  confirmationText: {fileID: 0}
 --- !u!1001 &225258576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -991,15 +1007,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 4729499136020746319, guid: be0d7a1a8e7931d488863ca596dbb76e, type: 3}
-  - {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55, type: 3}
   spawnChances:
-  - 0.7
-  - 0.3
+  - 1
   currentSpawnCount: 0
-  maxSpawnCount: 10
+  maxSpawnCount: 2
   startSpawnDelay: 2
   spawnRateMultiplier: 0.99
   spawnRate: 3
+  levelMenu: {fileID: 216111436}
 --- !u!1001 &1166296909
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -10,8 +10,8 @@ public class EnemySpawner : MonoBehaviour
     public int maxSpawnCount = 10;
     public float startSpawnDelay = 2f;
     public float spawnRateMultiplier = 0.9f;
-
     public float spawnRate;
+    public LevelMenu levelMenu;
 
     private void Start()
     {
@@ -23,6 +23,10 @@ public class EnemySpawner : MonoBehaviour
         if (currentSpawnCount >= maxSpawnCount)
         {
             CancelInvoke("SpawnEnemy");
+            if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+            {
+                levelMenu.UnlockNextLevel();
+            }
             return;
         }
 
