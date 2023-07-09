@@ -80,7 +80,7 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
             (rangedHedef != null && Vector3.Distance(transform.position, rangedHedef.transform.position) <= atesEtmeMesafesi))
         {
             attackInProgress = true;
-            animator.SetBool("Running", attackInProgress);
+            // animator.SetBool("Running", attackInProgress);
 
             if (Time.time >= sonrakiAtesZamani)
             {
@@ -91,7 +91,7 @@ public class ArcherMenzileGirenDusmanaAtesVeDonme : MonoBehaviour
         else
         {
             attackInProgress = false;
-            animator.SetBool("Running", attackInProgress);
+            //animator.SetBool("Running", attackInProgress);
         }
 
         if (ozelYetenekAktif)
