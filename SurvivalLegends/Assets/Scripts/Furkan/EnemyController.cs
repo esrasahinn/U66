@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Slider healthSlider;
     [SerializeField] Transform player;
     [SerializeField] float attackRange = 2.0f;
+    [SerializeField] float detectionRange = 10.0f; // Fark etme menzili
     [SerializeField] int meleeDamage = 10;
     public int currentHealth;
     private NavMeshAgent enemy;
@@ -18,13 +19,12 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private bool isDead;
     private bool isFrozen;
-    private HasarVerici2 hasarVerici2;
+    private bool hasDetectedPlayer; // Fark edildi mi kontrolü
 
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        hasarVerici2 = GetComponentInChildren<HasarVerici2>();
     }
 
     private void Start()
@@ -67,7 +67,12 @@ public class EnemyController : MonoBehaviour
         {
             animator.SetBool("Attack", false);
             enemy.isStopped = false;
-            ChasePlayer();
+
+            if (distanceToPlayer <= detectionRange || hasDetectedPlayer) // Düþman fark etme menziline girdiðinde veya oyuncu fark edildikten sonra takip eder
+            {
+                hasDetectedPlayer = true;
+                ChasePlayer();
+            }
         }
     }
 
@@ -113,18 +118,6 @@ public class EnemyController : MonoBehaviour
     void ChasePlayer()
     {
         enemy.SetDestination(player.position);
-        animator.SetBool("Attack", false);
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.CompareTag("Player"))
-            {
-                animator.SetBool("Running", false);
-                return;
-            }
-        }
-
         animator.SetBool("Running", true);
     }
 

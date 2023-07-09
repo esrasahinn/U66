@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3980eea23667eaf4e8d93ca756136835,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3980eea23667eaf4e8d93ca756136835,
         type: 3}
@@ -631,17 +631,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a420bc0820db1a14cb72488be213a1a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloatingTextPrefab: {fileID: 0}
+  FloatingTextPrefab: {fileID: 4784822073853918286, guid: 3907a904068512e43aa49f91469f9601,
+    type: 3}
   maxHealth: 100
   healthSlider: {fileID: 8236408086097688180}
   player: {fileID: 0}
   attackRange: 10
   attackCooldown: 0.7
+  detectionRange: 20
   projectilePrefab: {fileID: 8236003343204586823, guid: a12a00cdf22f04a4abd10ba1b364c0d6,
     type: 3}
   projectileSpawnPoint: {fileID: 3130390101371108725}
   projectileSpeed: 20
-  projectileDestroyTime: 4
+  projectileDestroyTime: 7
   rangedDamage: 0
   currentHealth: 100
   playerTag: Player
@@ -677,12 +679,12 @@ PrefabInstance:
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8171803596384634123, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] float animTurnSpeed = 30f;
     [SerializeField] float can = 100f;
     [SerializeField] float maxCan = 100f;
+    private float rotationCorrectionFactor = 50f;
 
     [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
 
@@ -157,21 +158,24 @@ public class Player : MonoBehaviour
             cameraController.AddYawInput(moveInput.x);
         }
     }
-
     private void RotateTowards(Vector3 AimDir)
     {
         float currentTurnSpeed = 0;
         if (AimDir.magnitude != 0)
         {
             Quaternion prevRot = transform.rotation;
+            Quaternion targetRot = Quaternion.LookRotation(AimDir, Vector3.up);
 
-            float turnLerpAlpha = turnSpeed * Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);//yavaþ dönüþ için.
+            float smoothTime = 0.1f; // Dönüþün hýzýný kontrol etmek için kullanýlan bir süre
+            Quaternion currentRot = Quaternion.Slerp(prevRot, targetRot, smoothTime);
 
-            Quaternion currentRot = transform.rotation;
+            // Düzeltme faktörü uygulayýn
+            currentRot = Quaternion.Lerp(prevRot, currentRot, rotationCorrectionFactor);
+
             float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
             float rotationDelta = Quaternion.Angle(prevRot, currentRot) * Dir;
             currentTurnSpeed = rotationDelta / Time.deltaTime;
+            transform.rotation = currentRot;
         }
         animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
         animator.SetFloat("turnSpeed", animatorTurnSpeed);

@@ -9,6 +9,7 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     private static ArcherPlayerBehaviour _instance;
     private Animator _animator;
     private ArcherMenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme; // MenzileGirenDusmanaAtesVeDonme scriptine eriþmek için referans
+    private bool isDead = false;
 
     public static ArcherPlayerBehaviour GetInstance()
     {
@@ -31,37 +32,38 @@ public class ArcherPlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!isDead)
         {
-            PlayerTakeDmg(20);
-            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
-
-            if (GameManager.gameManager._dusmanHealth.Health <= 0)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Destroy(gameObject);
-            }
-        }
+                PlayerTakeDmg(20);
+                Debug.Log(GameManager.gameManager._dusmanHealth.Health);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            PlayerHeal(10);
-            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
+                if (GameManager.gameManager._dusmanHealth.Health <= 0)
+                {
+                    DestroyPlayer();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                PlayerHeal(10);
+                Debug.Log(GameManager.gameManager._dusmanHealth.Health);
+            }
         }
     }
 
     public void DestroyPlayer()
     {
+        isDead = true;
         _animator.SetBool("Death", true);
         StartCoroutine(ResetAfterAnimation());
     }
 
     private IEnumerator ResetAfterAnimation()
     {
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-        _health = 0; // Can deðerini sýfýrla
-        _healthbar.SetHealth(_health);
-        gameObject.SetActive(true);
-        menzileGirenDusmanaAtesVeDonme.enabled = false; // MenzileGirenDusmanaAtesVeDonme scriptini devre dýþý býrak
+        yield return new WaitForSeconds(3f);
+        Time.timeScale = 0f; // Sahneyi duraklat
     }
 
     public void PlayerTakeDmg(int dmg)
@@ -88,4 +90,3 @@ public class ArcherPlayerBehaviour : MonoBehaviour
         Debug.Log(GameManager.gameManager._dusmanHealth.Health);
     }
 }
-

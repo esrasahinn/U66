@@ -355,7 +355,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 03941d4dd54c616428ea8ce74d191d19,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 71.92
+      value: 65.869995
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 03941d4dd54c616428ea8ce74d191d19,
         type: 3}
@@ -795,12 +795,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ece9e49883cb144a2bafb7412fc66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FloatingTextPrefab: {fileID: 0}
+  FloatingTextPrefab: {fileID: 4784822073853918286, guid: 3907a904068512e43aa49f91469f9601,
+    type: 3}
   can: 100
   maxHealth: 100
   healthSlider: {fileID: 1239592316719713356}
   player: {fileID: 0}
   attackRange: 3
+  detectionRange: 10
   meleeDamage: 0
   currentHealth: 100
 --- !u!54 &6249696827889346034

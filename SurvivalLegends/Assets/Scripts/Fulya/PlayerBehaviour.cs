@@ -9,7 +9,7 @@ public class PlayerBehaviour : MonoBehaviour
     private static PlayerBehaviour _instance;
     private Animator _animator;
     private MenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme; // MenzileGirenDusmanaAtesVeDonme scriptine eriþmek için referans
-
+    private bool isDead = false;
     public static PlayerBehaviour GetInstance()
     {
         return _instance;
@@ -31,38 +31,54 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!isDead)
         {
-            PlayerTakeDmg(20);
-            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
-
-            if (GameManager.gameManager._dusmanHealth.Health <= 0)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Destroy(gameObject);
-            }
-        }
+                PlayerTakeDmg(20);
+                Debug.Log(GameManager.gameManager._dusmanHealth.Health);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            PlayerHeal(10);
-            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
+                if (GameManager.gameManager._dusmanHealth.Health <= 0)
+                {
+                    DestroyPlayer();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                PlayerHeal(10);
+                Debug.Log(GameManager.gameManager._dusmanHealth.Health);
+            }
         }
     }
 
     public void DestroyPlayer()
     {
-        _animator.SetBool("Death",true);
+        isDead = true;
+        _animator.SetBool("Death", true);
         StartCoroutine(ResetAfterAnimation());
     }
-
     private IEnumerator ResetAfterAnimation()
     {
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-        _health = 0; // Can deðerini sýfýrla
-        _healthbar.SetHealth(_health);
-        gameObject.SetActive(true);
-        menzileGirenDusmanaAtesVeDonme.enabled = false; // MenzileGirenDusmanaAtesVeDonme scriptini devre dýþý býrak
+        yield return new WaitForSeconds(3f);
+        Time.timeScale = 0f; // Sahneyi duraklat
     }
+
+    //  private IEnumerator PauseAfterDeath()
+    //  {
+    //      yield return new WaitForSeconds(3f); // 3 saniye bekle
+    //      Time.timeScale = 0f; // Oyun zamanýný durdur
+    //      Debug.Log("Sahne duraklatýldý!");
+    //  }
+
+    //  private IEnumerator ResetAfterAnimation()
+    //  {
+    //      yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+    //      _health = 0; // Can deðerini sýfýrla
+    //      _healthbar.SetHealth(_health);
+    //      gameObject.SetActive(true);
+    //      menzileGirenDusmanaAtesVeDonme.enabled = false; // MenzileGirenDusmanaAtesVeDonme scriptini devre dýþý býrak
+    //  }
 
     public void PlayerTakeDmg(int dmg)
     {
