@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
@@ -437,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
@@ -641,6 +641,7 @@ MonoBehaviour:
   attackRange: 2
   detectionRange: 10
   meleeDamage: 0
+  expAmount: 10
   currentHealth: 100
 --- !u!54 &1024865875505099260
 Rigidbody:
