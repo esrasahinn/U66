@@ -37,7 +37,7 @@ public class Buton1 : MonoBehaviour
             else
             {
                 int remainingTime = Mathf.CeilToInt(speedBoostDuration);
-                countdownText.text = "Kalan Süre: " + remainingTime.ToString(); // Metin öðesini güncelle
+                countdownText.text =  remainingTime.ToString(); // Metin öðesini güncelle
             }
         }
     }
@@ -49,7 +49,7 @@ public class Buton1 : MonoBehaviour
             isSpeedBoostActive = true;
             originalMoveSpeed = player.moveSpeed;
             player.moveSpeed += 10f; // Hareket hýzýný 10 birim artýr
-            countdownText.text = "Kalan Süre: " + Mathf.CeilToInt(speedBoostDuration).ToString(); // Metin öðesini güncelle
+            countdownText.text =  Mathf.CeilToInt(speedBoostDuration).ToString(); // Metin öðesini güncelle
             countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
             buton1.gameObject.SetActive(true);
             controller.HidePopup();
@@ -62,7 +62,7 @@ public class Buton1 : MonoBehaviour
     private void UpdateCountdown()
     {
         int remainingTime = Mathf.CeilToInt(speedBoostDuration);
-        countdownText.text = "Kalan Süre: " + remainingTime.ToString(); // Metin öðesini güncelle
+        countdownText.text =  remainingTime.ToString(); // Metin öðesini güncelle
         speedBoostDuration -= 1f;
 
         if (speedBoostDuration <= 0)
