@@ -6,6 +6,9 @@ public class PlayerScripts : MonoBehaviour
 {
     public int health;
     public int level;
+  
+    public int XP;
+   
 
     public void SavePlayer()
     {
@@ -20,6 +23,7 @@ public class PlayerScripts : MonoBehaviour
 
         level = data.level;
         health = data.health;
+        XP = data.XP;
 
         Vector3 position = new Vector3(data.position[0], data.position[1], data.position[2]);
         transform.position = position;
