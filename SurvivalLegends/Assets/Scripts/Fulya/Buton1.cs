@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Buton1 : MonoBehaviour
 {
@@ -11,6 +11,7 @@ public class Buton1 : MonoBehaviour
     private Player player;
     private expController controller;
 
+    public Text countdownText; // UI metin öðesi
 
     private void Awake()
     {
@@ -24,11 +25,18 @@ public class Buton1 : MonoBehaviour
         {
             speedBoostDuration -= Time.deltaTime;
 
-            if (speedBoostDuration <= 0f)
+            if (speedBoostDuration <= 0)
             {
                 isSpeedBoostActive = false;
                 player.moveSpeed = originalMoveSpeed;
                 Debug.Log("Hýzlanma süresi bitti, hareket hýzý normale döndü.");
+                countdownText.text = ""; // Metin öðesini temizle
+                countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
+            }
+            else
+            {
+                int remainingTime = Mathf.CeilToInt(speedBoostDuration);
+                countdownText.text = "Kalan Süre: " + remainingTime.ToString(); // Metin öðesini güncelle
             }
         }
     }
@@ -40,9 +48,24 @@ public class Buton1 : MonoBehaviour
             isSpeedBoostActive = true;
             originalMoveSpeed = player.moveSpeed;
             player.moveSpeed += 10f; // Hareket hýzýný 10 birim artýr
+            countdownText.text = "Kalan Süre: " + Mathf.CeilToInt(speedBoostDuration).ToString(); // Metin öðesini güncelle
+            countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
             controller.HidePopup();
             controller.ResumeGame(); // Oyunu devam ettir
+            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
             Invoke(nameof(DisableSpeedBoost), speedBoostDuration);
+        }
+    }
+
+    private void UpdateCountdown()
+    {
+        int remainingTime = Mathf.CeilToInt(speedBoostDuration);
+        countdownText.text = "Kalan Süre: " + remainingTime.ToString(); // Metin öðesini güncelle
+        speedBoostDuration -= 1f;
+
+        if (speedBoostDuration <= 0)
+        {
+            CancelInvoke(nameof(UpdateCountdown));
         }
     }
 
@@ -51,5 +74,8 @@ public class Buton1 : MonoBehaviour
         isSpeedBoostActive = false;
         player.moveSpeed = originalMoveSpeed;
         Debug.Log("Hýzlanma süresi bitti, hareket hýzý normale döndü.");
+        countdownText.text = ""; // Metin öðesini temizle
+        countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
     }
 }
+
