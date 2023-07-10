@@ -10,6 +10,8 @@ public class PlayerBehaviour : MonoBehaviour
     private Animator _animator;
     private MenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme; // MenzileGirenDusmanaAtesVeDonme scriptine eriþmek için referans
     private bool isDead = false;
+    private bool isImmuneToDamage = false; // Hasar almama durumu
+
     public static PlayerBehaviour GetInstance()
     {
         return _instance;
@@ -31,7 +33,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && !isImmuneToDamage)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -58,6 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
         _animator.SetBool("Death", true);
         StartCoroutine(ResetAfterAnimation());
     }
+
     private IEnumerator ResetAfterAnimation()
     {
         yield return new WaitForSeconds(3f);
@@ -82,12 +85,15 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void PlayerTakeDmg(int dmg)
     {
-        _health -= dmg;
-        _healthbar.SetHealth(_health);
-
-        if (_health <= 0)
+        if (!isImmuneToDamage)
         {
-            DestroyPlayer();
+            _health -= dmg;
+            _healthbar.SetHealth(_health);
+
+            if (_health <= 0)
+            {
+                DestroyPlayer();
+            }
         }
     }
 
@@ -97,6 +103,30 @@ public class PlayerBehaviour : MonoBehaviour
         _health = GameManager.gameManager._dusmanHealth.Health;
         _healthbar.SetHealth(_health);
     }
+
+    public void ActivateImmunity(float duration)
+    {
+        StartCoroutine(ImmuneToDamage(duration));
+    }
+
+    private IEnumerator ImmuneToDamage(float duration)
+    {
+        isImmuneToDamage = true;
+        yield return new WaitForSeconds(duration);
+        isImmuneToDamage = false;
+        Debug.Log("Hasar almama süresi doldu.");
+    }
+
+    public void DeactivateImmunity()
+    {
+        isImmuneToDamage = false;
+    }
+
+    public bool IsImmuneToDamage
+    {
+        get { return isImmuneToDamage; }
+    }
+
     public void PerformLeftShiftAction()
     {
         PlayerHeal(10);
