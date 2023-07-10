@@ -19,6 +19,12 @@ public class HasarVerenKup : MonoBehaviour
             {
                 enemyController.TakeDamage(50);
             }
+
+            RangedEnemyController RenemyController = other.GetComponent<RangedEnemyController>();
+            if (RenemyController != null)
+            {
+                RenemyController.TakeDamage(50);
+            }
         }
     }
 }

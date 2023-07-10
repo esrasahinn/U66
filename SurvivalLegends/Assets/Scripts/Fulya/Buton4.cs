@@ -39,9 +39,9 @@ public class Buton4 : MonoBehaviour
                     GameObject zehirliSu = Instantiate(zehirliSuPrefab, spawnPosition, Quaternion.identity);
 
                     // Düþmana zarar verme iþlemini yap
-                    if (rastgeleDusman.GetComponent<EnemyAI>() != null)
+                    if (rastgeleDusman.GetComponent<RangedEnemyController>() != null)
                     {
-                        EnemyAI dusmanAI = rastgeleDusman.GetComponent<EnemyAI>();
+                        RangedEnemyController dusmanAI = rastgeleDusman.GetComponent<RangedEnemyController>();
                         ZehirliSu suScript = zehirliSu.GetComponent<ZehirliSu>();
                         suScript.Atesle(dusmanHasarMiktari, dusmanAI);
                     }
