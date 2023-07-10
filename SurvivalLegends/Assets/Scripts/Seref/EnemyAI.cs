@@ -91,10 +91,10 @@ public class EnemyAI : MonoBehaviour
         Destroy(gameObject, 1f);
         coinScript.CoinDrop();
         expController expControllerScript = FindObjectOfType<expController>();
-        if (expControllerScript != null)
-        {
-            expControllerScript.UpdateExpBar();
-        }
+      //  if (expControllerScript != null)
+      //  {
+      //      expControllerScript.UpdateExpBar();
+      //  }
     }
 
     void ChasePlayer()

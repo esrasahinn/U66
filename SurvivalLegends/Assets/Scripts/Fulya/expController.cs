@@ -7,7 +7,6 @@ public class expController : MonoBehaviour
 {
     public Image expBar;
     public GameObject popupObject;
-    private float expIncreaseAmount = 0.9f;
     private float maxFillAmount = 1f;
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
@@ -29,11 +28,11 @@ public class expController : MonoBehaviour
         }
     }
 
-    public void UpdateExpBar()
+    public void UpdateExpBar(float expIncreaseAmount)
     {
         if (!isGamePaused)
         {
-            currentFillAmount += expIncreaseAmount;
+            currentFillAmount += expIncreaseAmount * maxFillAmount; // Deneyim miktarýný doðru bir þekilde hesapla
             currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
             expBar.fillAmount = currentFillAmount;
             HidePopup();
@@ -57,7 +56,7 @@ public class expController : MonoBehaviour
         Time.timeScale = 0f; // Oyun zamanýný duraklat
         isGamePaused = true;
     }
-   
+
     public void ResumeGame()
     {
         Time.timeScale = 1f; // Oyun zamanýný devam ettir

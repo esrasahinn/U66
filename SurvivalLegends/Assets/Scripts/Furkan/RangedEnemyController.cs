@@ -23,6 +23,7 @@ public class RangedEnemyController : MonoBehaviour
     private bool isDead;
     private bool isFrozen;
     private bool hasDetectedPlayer; // Fark edildi mi kontrolü
+    [SerializeField] float expAmount = 0.1f;
 
     private float nextAttackTime;
 
@@ -117,7 +118,7 @@ public class RangedEnemyController : MonoBehaviour
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
         {
-            expControllerScript.UpdateExpBar();
+            expControllerScript.UpdateExpBar(expAmount);
         }
     }
 

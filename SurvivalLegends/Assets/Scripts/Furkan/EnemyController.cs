@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float attackRange = 2.0f;
     [SerializeField] float detectionRange = 10.0f; // Fark etme menzili
     [SerializeField] int meleeDamage = 10;
+    [SerializeField] float expAmount = 0.1f; // Düþmandan kazanýlan deneyim miktarý
     public int currentHealth;
     private NavMeshAgent enemy;
     private bool inAttackRange;
@@ -111,7 +112,7 @@ public class EnemyController : MonoBehaviour
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
         {
-            expControllerScript.UpdateExpBar();
+            expControllerScript.UpdateExpBar(expAmount);
         }
     }
 
