@@ -10,7 +10,7 @@ public class Buton1 : MonoBehaviour
     private float originalMoveSpeed;
     private Player player;
     private expController controller;
-
+    public Image buton1;
     public Text countdownText; // UI metin öðesi
 
     private void Awake()
@@ -32,6 +32,7 @@ public class Buton1 : MonoBehaviour
                 Debug.Log("Hýzlanma süresi bitti, hareket hýzý normale döndü.");
                 countdownText.text = ""; // Metin öðesini temizle
                 countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
+                buton1.gameObject.SetActive(false);
             }
             else
             {
@@ -50,6 +51,7 @@ public class Buton1 : MonoBehaviour
             player.moveSpeed += 10f; // Hareket hýzýný 10 birim artýr
             countdownText.text = "Kalan Süre: " + Mathf.CeilToInt(speedBoostDuration).ToString(); // Metin öðesini güncelle
             countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
+            buton1.gameObject.SetActive(true);
             controller.HidePopup();
             controller.ResumeGame(); // Oyunu devam ettir
             InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
@@ -76,6 +78,7 @@ public class Buton1 : MonoBehaviour
         Debug.Log("Hýzlanma süresi bitti, hareket hýzý normale döndü.");
         countdownText.text = ""; // Metin öðesini temizle
         countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
+        buton1.gameObject.SetActive(false);
     }
 }
 
