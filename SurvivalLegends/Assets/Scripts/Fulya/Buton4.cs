@@ -5,9 +5,9 @@ using UnityEngine;
 public class Buton4 : MonoBehaviour
 {
     public GameObject zehirliSuPrefab;
-    public Transform dusmanAlan;
     public int dusmanHasarMiktari = 10;
     private expController controller;
+    private GameObject[] dusmanlar;
 
     private void Awake()
     {
@@ -16,43 +16,48 @@ public class Buton4 : MonoBehaviour
 
     public void ButonTiklama()
     {
-        // Zehirli suyu rastgele bir konuma yerleþtir
-        Vector3 randomPosition = RandomPositionInArea(dusmanAlan);
-        randomPosition.y += 5f; // Yükseklik ekleyerek prefab'ý yukarý taþý
-        GameObject zehirliSu = Instantiate(zehirliSuPrefab, randomPosition, Quaternion.identity);
+        // Düþmanlarý bul
+        dusmanlar = GameObject.FindGameObjectsWithTag("Dusman");
 
-        // Rastgele düþmana zarar ver
-        DusmanlaraZararVer(zehirliSu.GetComponent<ZehirliSu>());
-    }
-
-    private Vector3 RandomPositionInArea(Transform area)
-    {
-        // Alanýn sýnýrlarýný kullanarak rastgele bir konum üret
-        Vector3 min = area.position - area.localScale / 2f;
-        Vector3 max = area.position + area.localScale / 2f;
-
-        return new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), Random.Range(min.z, max.z));
-    }
-
-    private void DusmanlaraZararVer(ZehirliSu zehirliSu)
-    {
-        // Tüm düþmanlarý seç
-        EnemyAI[] dusmanlar = FindObjectsOfType<EnemyAI>();
-
-        // Rastgele düþmana zarar ver
         if (dusmanlar.Length > 0)
         {
-            // Rastgele bir düþman seç
-            int rastgeleDusmanIndex = Random.Range(0, dusmanlar.Length);
-            EnemyAI rastgeleDusman = dusmanlar[rastgeleDusmanIndex];
+            // Rastgele 3 düþman seç
+            List<GameObject> rastgeleDusmanlar = new List<GameObject>();
+            int maxDusmanSayisi = Mathf.Min(dusmanlar.Length, 3);
 
-            // Seçilen düþmana zarar ver
-            rastgeleDusman.HasarAl(dusmanHasarMiktari);
+            while (rastgeleDusmanlar.Count < maxDusmanSayisi)
+            {
+                int rastgeleIndex = Random.Range(0, dusmanlar.Length);
+                GameObject rastgeleDusman = dusmanlar[rastgeleIndex];
 
-            // Zehirli suyu düþmana at
-            zehirliSu.At(rastgeleDusman);
+                if (!rastgeleDusmanlar.Contains(rastgeleDusman))
+                {
+                    rastgeleDusmanlar.Add(rastgeleDusman);
+
+                    // Zehirli suyu düþmana at
+                    Vector3 spawnPosition = rastgeleDusman.transform.position + Vector3.up * 6f;
+                    GameObject zehirliSu = Instantiate(zehirliSuPrefab, spawnPosition, Quaternion.identity);
+
+                    // Düþmana zarar verme iþlemini yap
+                    if (rastgeleDusman.GetComponent<RangedEnemyController>() != null)
+                    {
+                        RangedEnemyController dusmanAI = rastgeleDusman.GetComponent<RangedEnemyController>();
+                        ZehirliSu suScript = zehirliSu.GetComponent<ZehirliSu>();
+                        suScript.Atesle(dusmanHasarMiktari, dusmanAI);
+                    }
+                    else if (rastgeleDusman.GetComponent<EnemyController>() != null)
+                    {
+                        EnemyController dusmanController = rastgeleDusman.GetComponent<EnemyController>();
+                        ZehirliSu suScript = zehirliSu.GetComponent<ZehirliSu>();
+                        suScript.Atesle(dusmanHasarMiktari, dusmanController);
+                    }
+                }
+                
+            }
+            controller.HidePopup();
+            controller.ResumeGame(); // Oyunu devam ettir
         }
-
-        controller.HidePopup();
     }
 }
+
+

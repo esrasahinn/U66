@@ -8,70 +8,43 @@ public class Player : MonoBehaviour
     [SerializeField] JoyStick moveStick;
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
-    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] public float moveSpeed = 20f;
     [SerializeField] float maxMoveSpeed = 50f;
     [SerializeField] float minMoveSpeed = 10f;
     [SerializeField] float turnSpeed = 30f;
     [SerializeField] float animTurnSpeed = 30f;
     [SerializeField] float can = 100f;
     [SerializeField] float maxCan = 100f;
+    private float rotationCorrectionFactor = 50f;
 
     [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
 
-
-   [SerializeField] ShopSystem testShopSystem;
-   [SerializeField] ShopItem testItem;
+    [SerializeField] ShopSystem testShopSystem;
+    [SerializeField] ShopItem testItem;
 
     void TestPurchase()
     {
         testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
-}
+    }
+
     Vector2 moveInput;
     Vector2 aimInput;
     public PlayerBehaviour _playH;
     Camera mainCam;
     CameraController cameraController;
     Animator animator;
-    private bool ability1Active = false;
-
-
-    private float ability1Duration = 30f;
-    private float ability1Timer = 0f;
-    private float ability1SpeedMultiplier = 2f;
 
     public static Player instance;
     float animatorTurnSpeed;
-
 
     internal void AddMoveSpeed(float boostAmt)
     {
         moveSpeed += boostAmt;
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
     }
-
-
-    public void ActivateAbility1()
-    {
-        ability1Active = true;
-        ability1Timer = ability1Duration;
-        moveSpeed *= ability1SpeedMultiplier;
-        StartCoroutine(DisableAbility1AfterDuration());
-    }
-
-
-
-    private IEnumerator DisableAbility1AfterDuration()
-    {
-        yield return new WaitForSeconds(ability1Duration);
-        ability1Active = false;
-        moveSpeed /= ability1SpeedMultiplier;
-    }
-
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -81,14 +54,14 @@ public class Player : MonoBehaviour
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
+
         if (canBariSlider != null)
         {
             canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
             canBariSlider.value = can; // Can çubuðunun deðerini ayarla
         }
 
-
-        //        Invoke("TestPurchase", 3);
+        // Invoke("TestPurchase", 3);
     }
 
     public void AttackPoint()
@@ -118,16 +91,11 @@ public class Player : MonoBehaviour
     {
         PerformMoveAndAim();
         UpdateCamera();
-        //SetRunningAnimation((Math.Abs(Horizontal) > 0 || Math.Abs(Vertical) > 0));
+        // SetRunningAnimation((Mathf.Abs(Horizontal) > 0 || Mathf.Abs(Vertical) > 0));
     }
 
     private void PerformMoveAndAim()
     {
-        // Hareket giriþini al
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        moveInput = new Vector2(horizontalInput, verticalInput);
-
         Vector3 MoveDir = StickInputToWorldDir(moveInput);
         characterController.Move(MoveDir * Time.deltaTime * moveSpeed);
 
@@ -145,7 +113,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("rforward", rforward);
 
         // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
-        if (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0)
+        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
         {
             animator.SetBool("Running", true);
         }
@@ -155,10 +123,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    //private void SetRunningAnimation(bool run) //yeni karakter için(warrior)
-    //{
-    //    animator.SetBool("Running", run);
-    //}
+    // private void SetRunningAnimation(bool run) //yeni karakter için(warrior)
+    // {
+    //     animator.SetBool("Running", run);
+    // }
 
     private void UpdateAim(Vector3 currentMoveDir)
     {
@@ -185,14 +153,18 @@ public class Player : MonoBehaviour
         if (AimDir.magnitude != 0)
         {
             Quaternion prevRot = transform.rotation;
+            Quaternion targetRot = Quaternion.LookRotation(AimDir, Vector3.up);
 
-            float turnLerpAlpha = turnSpeed * Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);//yavaþ dönüþ için.
+            float smoothTime = 0.1f; // Dönüþün hýzýný kontrol etmek için kullanýlan bir süre
+            Quaternion currentRot = Quaternion.Slerp(prevRot, targetRot, smoothTime);
 
-            Quaternion currentRot = transform.rotation;
+            // Düzeltme faktörü uygulayýn
+            currentRot = Quaternion.Lerp(prevRot, currentRot, rotationCorrectionFactor);
+
             float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
             float rotationDelta = Quaternion.Angle(prevRot, currentRot) * Dir;
             currentTurnSpeed = rotationDelta / Time.deltaTime;
+            transform.rotation = currentRot;
         }
         animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
         animator.SetFloat("turnSpeed", animatorTurnSpeed);
@@ -205,8 +177,6 @@ public class Player : MonoBehaviour
 
     public void HasarAl(int hasar)
     {
-
-
         can -= hasar;
 
         if (canBariSlider != null)
@@ -218,17 +188,12 @@ public class Player : MonoBehaviour
         {
             Olum();
         }
-
-
     }
-
-
 
     private void Olum()
     {
         Debug.Log("Player Oldu");
         // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
-       // Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+        // Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
     }
-
 }

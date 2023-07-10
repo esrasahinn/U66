@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Buton3 : MonoBehaviour
 {
-    //private bool canDoldurmaAktif = false; // Can doldurma durumu
+    private bool canDoldurmaAktif = false; // Can doldurma durumu
     private expController controller;
     private ArcherPlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
@@ -17,7 +17,7 @@ public class Buton3 : MonoBehaviour
     {
         ArcherPlayerBehaviour.GetInstance().PerformLeftShiftAction();
         controller.HidePopup();
-
+        controller.ResumeGame(); // Oyunu devam ettir
         Debug.Log("Karakterin caný dolduruldu.");
     }
 

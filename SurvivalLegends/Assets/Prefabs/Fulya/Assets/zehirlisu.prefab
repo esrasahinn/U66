@@ -30,11 +30,11 @@ Transform:
   m_GameObject: {fileID: 7909621034655877892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.8290677, y: 1, z: 2.7343683}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2200267923959745209
 MeshFilter:
@@ -101,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -119,8 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c55356b438b6c424c842eb803007a65e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallSpeed: 2
-  dusmanHasarMiktari: 10
+  silindirPrefab: {fileID: 5979907953843216533, guid: 296552b677a2fc3468caf2887ba1329f,
+    type: 3}
+  fallSpeed: 0.5
+  dusmanHasarMiktari: 100
 --- !u!54 &-8973088483867670977
 Rigidbody:
   m_ObjectHideFlags: 0

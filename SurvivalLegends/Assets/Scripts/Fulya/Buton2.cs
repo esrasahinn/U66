@@ -2,29 +2,48 @@ using UnityEngine;
 
 public class Buton2 : MonoBehaviour
 {
-    public float hasarAlmamaSure = 30f; // Hasar almama süresi (saniye)
+    public float hasarAlmamaSure = 10f; // Hasar almama süresi (saniye)
     private bool hasarAlmamaAktif = false; // Hasar almama durumu
+    private float hasarAlmamaSureKalan = 0f; // Geriye kalan hasar almama süresi
     private expController controller;
+    private ArcherPlayerBehaviour arcPlayerBehaviour;
+    private PlayerBehaviour PlayerBehaviour;
 
 
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
+        arcPlayerBehaviour = FindObjectOfType<ArcherPlayerBehaviour>();
+        PlayerBehaviour = FindObjectOfType<PlayerBehaviour>();
     }
 
     private void Update()
     {
         if (hasarAlmamaAktif)
         {
-            // Hasar almama süresini azalt
-            hasarAlmamaSure -= Time.deltaTime;
-
-            if (hasarAlmamaSure <= 0f)
+            if (hasarAlmamaSureKalan > 0f)
             {
-                hasarAlmamaAktif = false;
-                Debug.Log("Hasar alma süresi doldu.");
+                hasarAlmamaSureKalan -= Time.deltaTime;
+
+                if (hasarAlmamaSureKalan <= 0f)
+                {
+                    hasarAlmamaAktif = false;
+                    arcPlayerBehaviour.DeactivateImmunity();
+                    // PlayerBehaviour.DeactivateImmunity();
+                    Debug.Log("Hasar alma süresi doldu.");
+                }
+                if (hasarAlmamaSureKalan <= 0f)
+                {
+                    hasarAlmamaAktif = false;
+                    PlayerBehaviour.DeactivateImmunity();
+                    Debug.Log("Hasar alma süresi doldu.");
+                }
             }
+
+
+
         }
+
     }
 
     public void ButonTiklama()
@@ -33,8 +52,28 @@ public class Buton2 : MonoBehaviour
         {
             hasarAlmamaAktif = true;
             controller.HidePopup();
-            hasarAlmamaSure = 30f;
+            controller.ResumeGame();
+            hasarAlmamaSureKalan = hasarAlmamaSure;
             Debug.Log("Hasar almama süresi baþladý.");
+
+            arcPlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
+            //PlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
+        }
+
+    }
+
+    public void ButonTiklamaRifle()
+    {
+        if (!hasarAlmamaAktif)
+        {
+            hasarAlmamaAktif = true;
+            controller.HidePopup();
+            controller.ResumeGame();
+            hasarAlmamaSureKalan = hasarAlmamaSure;
+            Debug.Log("Hasar almama süresi baþladý.");
+
+            //arcPlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
+            PlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
         }
     }
 }
