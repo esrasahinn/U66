@@ -16,7 +16,7 @@ public class Meteor : MonoBehaviour
         rb.isKinematic = true; // Kinematic modunu etkinleþtir
     }
 
-    public void Atesle(int hasarMiktari, EnemyAI dusman)
+    public void Atesle(int hasarMiktari, RangedEnemyController dusman)
     {
         dusmanHasarMiktari = hasarMiktari;
         rb.isKinematic = false; // Kinematic modunu devre dýþý býrak
@@ -42,10 +42,10 @@ public class Meteor : MonoBehaviour
         {
             hasHitEnemy = true;
 
-            if (other.GetComponent<EnemyAI>() != null)
+            if (other.GetComponent<RangedEnemyController>() != null)
             {
-                EnemyAI dusman = other.GetComponent<EnemyAI>();
-                dusman.HasarAl(dusmanHasarMiktari); // Düþmana hasar ver
+                RangedEnemyController dusman = other.GetComponent<RangedEnemyController>();
+                dusman.TakeDamage(dusmanHasarMiktari); // Düþmana hasar ver
             }
             else if (other.GetComponent<EnemyController>() != null)
             {

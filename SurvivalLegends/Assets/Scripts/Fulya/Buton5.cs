@@ -39,9 +39,9 @@ public class Buton5 : MonoBehaviour
                     GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
 
                     // Düþmana zarar verme iþlemini yap
-                    if (rastgeleDusman.GetComponent<EnemyAI>() != null)
+                    if (rastgeleDusman.GetComponent<RangedEnemyController>() != null)
                     {
-                        EnemyAI dusmanAI = rastgeleDusman.GetComponent<EnemyAI>();
+                        RangedEnemyController dusmanAI = rastgeleDusman.GetComponent<RangedEnemyController>();
                         Meteor suScript = meteor.GetComponent<Meteor>();
                         suScript.Atesle(dusmanHasarMiktari, dusmanAI);
                     }
