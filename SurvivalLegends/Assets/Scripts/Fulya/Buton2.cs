@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Buton2 : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class Buton2 : MonoBehaviour
     private expController controller;
     private ArcherPlayerBehaviour arcPlayerBehaviour;
     private PlayerBehaviour PlayerBehaviour;
-
+    public Image buton2;
+    public Text countdownText; // UI metin öðesi
 
     private void Awake()
     {
@@ -39,11 +41,7 @@ public class Buton2 : MonoBehaviour
                     Debug.Log("Hasar alma süresi doldu.");
                 }
             }
-
-
-
         }
-
     }
 
     public void ButonTiklama()
@@ -58,22 +56,29 @@ public class Buton2 : MonoBehaviour
 
             arcPlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
             //PlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
-        }
 
+            countdownText.text = "10"; // Metin öðesini güncelle
+            countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
+            buton2.gameObject.SetActive(true); // Resmi etkinleþtir
+
+            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
+        }
     }
 
-    public void ButonTiklamaRifle()
+    private void UpdateCountdown()
     {
-        if (!hasarAlmamaAktif)
-        {
-            hasarAlmamaAktif = true;
-            controller.HidePopup();
-            controller.ResumeGame();
-            hasarAlmamaSureKalan = hasarAlmamaSure;
-            Debug.Log("Hasar almama süresi baþladý.");
+        int remainingTime = int.Parse(countdownText.text); // Geri sayým süresini al
 
-            //arcPlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
-            PlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
+        remainingTime--; // Geri sayým süresini azalt
+        countdownText.text = remainingTime.ToString(); // Metin öðesini güncelle
+
+        if (remainingTime <= 0)
+        {
+            CancelInvoke(nameof(UpdateCountdown));
+            countdownText.text = ""; // Metin öðesini temizle
+            countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
+            buton2.gameObject.SetActive(false); // Resmi devre dýþý býrak
+            Debug.Log("Geri sayým tamamlandý.");
         }
     }
 }
