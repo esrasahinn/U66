@@ -1180,7 +1180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Rotation Knife
 --- !u!1 &6073747165306933738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,7 +1600,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Meteor
 --- !u!1 &6747243826373042638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,6 +2992,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2403852269977475000}
     m_Modifications:
+    - target: {fileID: 176509673666772545, guid: a885877d0d6277843a0d9994d6018f5e,
+        type: 3}
+      propertyPath: m_Text
+      value: Poison Pool
+      objectReference: {fileID: 0}
     - target: {fileID: 367487488019107013, guid: a885877d0d6277843a0d9994d6018f5e,
         type: 3}
       propertyPath: buton2
@@ -3024,6 +3029,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 6c757b4f3ba54df499b9cebed823067e,
         type: 3}
+    - target: {fileID: 910471640227643541, guid: a885877d0d6277843a0d9994d6018f5e,
+        type: 3}
+      propertyPath: m_Text
+      value: Speed
+      objectReference: {fileID: 0}
     - target: {fileID: 1805159088460495613, guid: a885877d0d6277843a0d9994d6018f5e,
         type: 3}
       propertyPath: m_Delegates.Array.size
@@ -3133,6 +3143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Buton3Rifle, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643515437507975480, guid: a885877d0d6277843a0d9994d6018f5e,
+        type: 3}
+      propertyPath: m_Text
+      value: Heal
       objectReference: {fileID: 0}
     - target: {fileID: 3732389902008571193, guid: a885877d0d6277843a0d9994d6018f5e,
         type: 3}
@@ -3356,6 +3371,11 @@ PrefabInstance:
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 2231733705359438315}
+    - target: {fileID: 9057573417220197700, guid: a885877d0d6277843a0d9994d6018f5e,
+        type: 3}
+      propertyPath: m_Text
+      value: Armor
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8664912133745818897, guid: a885877d0d6277843a0d9994d6018f5e, type: 3}
     m_RemovedGameObjects:
