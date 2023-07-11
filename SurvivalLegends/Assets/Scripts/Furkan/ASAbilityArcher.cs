@@ -8,7 +8,7 @@ public class ASAbilityArcher : MonoBehaviour
     public float boostAmount = 10f;
     public float cooldownDuration = 2f;
     public float abilityDuration = 2f;
-
+    public AudioClip atesSesi;
     private bool isAbilityReady = true;
 
     void Start()
@@ -24,6 +24,7 @@ public class ASAbilityArcher : MonoBehaviour
             isAbilityReady = false;
             Invoke("ResetAbility", abilityDuration);
             Invoke("ResetCooldown", cooldownDuration);
+            AudioSource.PlayClipAtPoint(atesSesi, transform.position);
         }
     }
 
