@@ -53,10 +53,9 @@ public class ShopManager : MonoBehaviour
     {
         if (coinScript.coinAmount >= shopItemSO[btnNo].baseCost)
         {
-            int spentCoin = coinScript.coinAmount - shopItemSO[btnNo].baseCost;
-            
+            coinScript.coinAmount = coinScript.coinAmount - shopItemSO[btnNo].baseCost;       
             coinUI.text = "Coins: " + coinScript.coinAmount.ToString();
-            PlayerPrefs.SetInt("CoinAmount", spentCoin);
+            PlayerPrefs.SetInt("CoinAmount", coinScript.coinAmount);
             CheckPurchasable();
         }
     }

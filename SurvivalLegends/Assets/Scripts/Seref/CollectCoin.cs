@@ -18,8 +18,8 @@ public class CollectCoin : MonoBehaviour
     {
         if (other.CompareTag("Coin"))
         {
-            int addCoin = coinAmount + 1;
-            PlayerPrefs.SetInt("CoinAmount", addCoin);
+            coinAmount++;
+            PlayerPrefs.SetInt("CoinAmount", coinAmount);
             Debug.Log(coinAmount + "coins.");
             coinUI.text = "Coins: " + coinAmount.ToString();
             Destroy(other.gameObject);
