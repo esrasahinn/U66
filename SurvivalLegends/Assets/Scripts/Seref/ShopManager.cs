@@ -13,9 +13,13 @@ public class ShopManager : MonoBehaviour
     public ShopTemplate[] shopPanels;
     public GameObject[] shopPanelsGO;
     public Button[] purchaseBtns;
+    public TMP_Text priceText; // Reference to the text component showing the price
+
+    private int selectedItemIndex = -1; // Index of the currently selected item
+
     void Start()
     {
-        for (int i = 0; i<shopItemSO.Length; i++)
+        for (int i = 0; i < shopItemSO.Length; i++)
         {
             shopPanelsGO[i].gameObject.SetActive(true);
         }
@@ -29,12 +33,12 @@ public class ShopManager : MonoBehaviour
 
     }
 
- 
-   public void LoadPanels()
+
+    public void LoadPanels()
     {
-        for (int i=0; i<shopItemSO.Length; i++)
+        for (int i = 0; i < shopItemSO.Length; i++)
         {
-            shopPanels[i].costTxt.text = shopItemSO[i].baseCost.ToString();
+            shopPanels[i].itemCost.text = shopItemSO[i].baseCost.ToString();
         }
     }
 
@@ -43,17 +47,23 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopItemSO.Length; i++)
         {
             if (coinScript.coinAmount >= shopItemSO[i].baseCost)
-                purchaseBtns[i].interactable= true;
+                purchaseBtns[i].interactable = true;
             else
-                purchaseBtns[i].interactable= false;
+                purchaseBtns[i].interactable = false;
         }
     }
 
-    public void PurchaseItem(int btnNo)
+    public void ShowPrice(int itemIndex)
     {
-        if (coinScript.coinAmount >= shopItemSO[btnNo].baseCost)
+        selectedItemIndex = itemIndex;
+        priceText.text = "Price: " + shopItemSO[itemIndex].baseCost.ToString();
+    }
+
+    public void PurchaseItem()
+    {
+        if (selectedItemIndex != -1 && coinScript.coinAmount >= shopItemSO[selectedItemIndex].baseCost)
         {
-            coinScript.coinAmount = coinScript.coinAmount - shopItemSO[btnNo].baseCost;       
+            coinScript.coinAmount -= shopItemSO[selectedItemIndex].baseCost;
             coinUI.text = "Coins: " + coinScript.coinAmount.ToString();
             PlayerPrefs.SetInt("CoinAmount", coinScript.coinAmount);
             CheckPurchasable();
