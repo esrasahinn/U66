@@ -24,6 +24,7 @@ public class RangedEnemyController : MonoBehaviour
     private bool isFrozen;
     private bool hasDetectedPlayer; // Fark edildi mi kontrolü
     [SerializeField] float expAmount = 0.1f;
+    private LevelManager levelManager;
 
     private float nextAttackTime;
 
@@ -33,6 +34,7 @@ public class RangedEnemyController : MonoBehaviour
     {
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     private void Start()
@@ -99,6 +101,7 @@ public class RangedEnemyController : MonoBehaviour
         if (healthSlider.value <= 0)
         {
             Die();
+            levelManager.EnemyDied();
         }
     }
 
@@ -120,6 +123,7 @@ public class RangedEnemyController : MonoBehaviour
         {
             expControllerScript.UpdateExpBar(expAmount);
         }
+        FindObjectOfType<LevelManager>().EnemyDied();
     }
 
     void ChasePlayer()

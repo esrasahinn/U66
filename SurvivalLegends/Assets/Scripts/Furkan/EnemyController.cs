@@ -21,11 +21,15 @@ public class EnemyController : MonoBehaviour
     private bool isDead;
     private bool isFrozen;
     private bool hasDetectedPlayer; // Fark edildi mi kontrolü
+    private LevelManager levelManager; // LevelManager bileþeni referansý
 
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+
+        // LevelManager bileþenini bulma
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     private void Start()
@@ -93,6 +97,9 @@ public class EnemyController : MonoBehaviour
         if (healthSlider.value <= 0)
         {
             Die();
+
+            // Düþman ölümünde LevelManager'a bilgi gönderme
+            levelManager.EnemyDied();
         }
     }
 
@@ -114,6 +121,9 @@ public class EnemyController : MonoBehaviour
         {
             expControllerScript.UpdateExpBar(expAmount);
         }
+
+        // Düþman öldüðünde LevelManager'a bilgi gönderme
+        FindObjectOfType<LevelManager>().EnemyDied();
     }
 
     void ChasePlayer()
