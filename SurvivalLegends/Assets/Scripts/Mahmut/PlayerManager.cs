@@ -20,21 +20,21 @@ public class PlayerManager : MonoBehaviour
         cameraFollowTransform = currentPlayer.transform;
     }
 
- //  void Update()
- //  {
- //
- //      LookAtObject lookAtObject = currentPlayer.GetComponentInChildren<LookAtObject>();
- //      if (lookAtObject != null)
- //      {
- //          //lookAtObject.SetObjectToLookAt(cameraFollowTransform);
- //      }
- //      // Kamera kontrolünü güncel karakterin rotasyonuna bağlamak için gerekli kodlar
- //      CameraController cameraController = FindObjectOfType<CameraController>();
- //      if (cameraController != null)
- //      {
- //        //  cameraController.followTrans = cameraFollowTransform;
- //      }
- //  }
+    void Update()
+    {
+
+        // LookAtObject lookAtObject = currentPlayer.GetComponentInChildren<LookAtObject>();
+        // if (lookAtObject != null)
+        // {
+        //     lookAtObject.SetObjectToLookAt(cameraFollowTransform);
+        // }
+        // // Kamera kontrolünü güncel karakterin rotasyonuna bağlamak için gerekli kodlar
+        // CameraController cameraController = FindObjectOfType<CameraController>();
+        // if (cameraController != null)
+        // {
+        //     cameraController.followTrans = cameraFollowTransform;
+        // }
+    }
 
 
 }
