@@ -25,6 +25,7 @@ public class RangedEnemyController : MonoBehaviour
     private bool hasDetectedPlayer; // Fark edildi mi kontrolü
     [SerializeField] float expAmount = 0.1f;
     private LevelManager levelManager;
+    DropCoin coinScript;
 
     private float nextAttackTime;
 
@@ -35,6 +36,7 @@ public class RangedEnemyController : MonoBehaviour
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         levelManager = FindObjectOfType<LevelManager>();
+        coinScript = GetComponent<DropCoin>();
     }
 
     private void Start()
@@ -117,6 +119,7 @@ public class RangedEnemyController : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Death");
         enemy.enabled = false;
+        coinScript.CoinDrop();
         Destroy(gameObject, 2.0f);
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
@@ -124,6 +127,16 @@ public class RangedEnemyController : MonoBehaviour
             expControllerScript.UpdateExpBar(expAmount);
         }
         FindObjectOfType<LevelManager>().EnemyDied();
+
+        // Düþman öldüðünde LevelManager'a bilgi gönderme
+        levelManager.EnemyDied();
+
+        // Düþman öldüðünde EndCube bileþenine bilgi gönderme
+        EndCube endCube = FindObjectOfType<EndCube>();
+        if (endCube != null)
+        {
+            endCube.EnemyDied();
+        }
     }
 
     void ChasePlayer()

@@ -22,11 +22,13 @@ public class EnemyController : MonoBehaviour
     private bool isFrozen;
     private bool hasDetectedPlayer; // Fark edildi mi kontrolü
     private LevelManager levelManager; // LevelManager bileþeni referansý
+    DropCoin coinScript;
 
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        coinScript = GetComponent<DropCoin>();
 
         // LevelManager bileþenini bulma
         levelManager = FindObjectOfType<LevelManager>();
@@ -97,9 +99,6 @@ public class EnemyController : MonoBehaviour
         if (healthSlider.value <= 0)
         {
             Die();
-
-            // Düþman ölümünde LevelManager'a bilgi gönderme
-            levelManager.EnemyDied();
         }
     }
 
@@ -115,6 +114,7 @@ public class EnemyController : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Death");
         enemy.enabled = false;
+        coinScript.CoinDrop();
         Destroy(gameObject, 2.0f);
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
@@ -123,7 +123,14 @@ public class EnemyController : MonoBehaviour
         }
 
         // Düþman öldüðünde LevelManager'a bilgi gönderme
-        FindObjectOfType<LevelManager>().EnemyDied();
+        levelManager.EnemyDied();
+
+        // Düþman öldüðünde EndCube bileþenine bilgi gönderme
+        EndCube endCube = FindObjectOfType<EndCube>();
+        if (endCube != null)
+        {
+            endCube.EnemyDied();
+        }
     }
 
     void ChasePlayer()

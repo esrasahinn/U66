@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndCube : MonoBehaviour
 {
@@ -21,5 +22,18 @@ public class EndCube : MonoBehaviour
     public void SetCanEnterNextLevel(bool canEnter)
     {
         canEnterNextLevel = canEnter;
+        if (canEnter)
+        {
+            FindObjectOfType<UIManager>().SetStatusText("Kapýya Koþ!");
+        }
+        else
+        {
+            FindObjectOfType<UIManager>().SetStatusText("Düþmanlarý Temizle!");
+        }
+    }
+
+    public void EnemyDied()
+    {
+        // Bu fonksiyonu boþ býrakabilirsiniz veya baþka bir iþlem yapabilirsiniz
     }
 }
