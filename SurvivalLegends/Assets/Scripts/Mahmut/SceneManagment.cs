@@ -16,7 +16,7 @@ public class SceneManagment : MonoBehaviour
 
         public void Ready()
     {
-        SceneManager.LoadScene("Ready");
+        SceneManager.LoadScene("Birlestirme");
     }
 
             public void MainMenu()
