@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8706799842228023409}
   - component: {fileID: 5838982533074295795}
   - component: {fileID: 2291792978762907921}
+  - component: {fileID: 6966758548240848029}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -35,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 428.12817}
-  m_SizeDelta: {x: 1429.9595, y: 185.7435}
+  m_AnchoredPosition: {x: 36.667603, y: 428.12817}
+  m_SizeDelta: {x: 2633.3555, y: 185.7435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5838982533074295795
 CanvasRenderer:
@@ -79,7 +80,20 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Dusmanlar\u0131 Temizle"
+  m_Text: 
+--- !u!114 &6966758548240848029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079423751879434026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62ba566256ecb7c448adacf4da95376d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statusText: {fileID: 2291792978762907921}
 --- !u!1 &7270549221965235804
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +127,7 @@ RectTransform:
   m_Children:
   - {fileID: 8706799842228023409}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
