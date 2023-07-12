@@ -505,12 +505,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!4 &416486067 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9197059618383882992, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-    type: 3}
-  m_PrefabInstance: {fileID: 105615929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &511592286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -729,16 +723,6 @@ PrefabInstance:
       propertyPath: _object
       value: 
       objectReference: {fileID: 330585543}
-    - target: {fileID: 7861945384807057678, guid: 5277bfd015db00e4599176862fa3239a,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 416486067}
-    - target: {fileID: 7861945384807057678, guid: 5277bfd015db00e4599176862fa3239a,
-        type: 3}
-      propertyPath: expAmount
-      value: 0.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -757,11 +741,16 @@ PrefabInstance:
       propertyPath: _object
       value: 
       objectReference: {fileID: 330585543}
-    - target: {fileID: 2386801450841879697, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
+    - target: {fileID: 3454773096316054055, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
         type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1116455622}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454773096316054055, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4775526356277193280, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
         type: 3}
       propertyPath: m_Name
@@ -968,12 +957,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1116455622 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6333144558194148537, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1983621978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1166296909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1233,16 +1216,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4588257297508452861, guid: dd4c6df486e876941ae1bab07562c8f5,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 416486067}
-    - target: {fileID: 4588257297508452861, guid: dd4c6df486e876941ae1bab07562c8f5,
-        type: 3}
-      propertyPath: expAmount
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 5516807234658406431, guid: dd4c6df486e876941ae1bab07562c8f5,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1492,16 +1465,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SK_Troll Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2966262624203804427, guid: fa3cd151b77d48a40885e7ff3e49660e,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 416486067}
-    - target: {fileID: 2966262624203804427, guid: fa3cd151b77d48a40885e7ff3e49660e,
-        type: 3}
-      propertyPath: expAmount
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 2980865049386706091, guid: fa3cd151b77d48a40885e7ff3e49660e,
         type: 3}
@@ -1956,16 +1919,6 @@ PrefabInstance:
       propertyPath: _object
       value: 
       objectReference: {fileID: 330585543}
-    - target: {fileID: 4035674429623288258, guid: 2244be5fd32a49b46a5e2cf0bbbb63f2,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 416486067}
-    - target: {fileID: 4035674429623288258, guid: 2244be5fd32a49b46a5e2cf0bbbb63f2,
-        type: 3}
-      propertyPath: expAmount
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 4369729161457359973, guid: 2244be5fd32a49b46a5e2cf0bbbb63f2,
         type: 3}
       propertyPath: m_AnchorMax.x

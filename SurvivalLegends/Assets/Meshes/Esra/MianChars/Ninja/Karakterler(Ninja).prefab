@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4654490102207212554
 Transform:
   m_ObjectHideFlags: 0
@@ -2434,12 +2434,12 @@ PrefabInstance:
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4820201345627484699, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -2604,7 +2604,7 @@ MonoBehaviour:
   moveStick: {fileID: 8799196178859061487}
   aimStick: {fileID: 1007701237731635623}
   characterController: {fileID: 2113475380203567816}
-  moveSpeed: 12
+  moveSpeed: 7
   maxMoveSpeed: 50
   minMoveSpeed: 10
   turnSpeed: 10
