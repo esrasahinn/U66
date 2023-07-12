@@ -79,7 +79,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Meteor (1 coin)
 --- !u!1 &558477416075660344
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4654490102207212554
 Transform:
   m_ObjectHideFlags: 0
@@ -1093,6 +1093,7 @@ MonoBehaviour:
   dusmanHasarMiktari: 50
   buton5: {fileID: 2926723624186272461}
   countdownText: {fileID: 2956036849469442389}
+  coinCost: 1
 --- !u!114 &5248175338469055868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,7 +1202,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: "3 l\xFC top (25 coin)"
 --- !u!1 &4167837799120577807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,6 +2167,7 @@ MonoBehaviour:
   destroyDelay: 20
   buton6: {fileID: 279678275411789437}
   countdownText: {fileID: 2238316515482912032}
+  coinCost: 10
 --- !u!114 &1068001750495266445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2432,12 +2434,12 @@ PrefabInstance:
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4820201345627484699, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -2753,6 +2755,11 @@ PrefabInstance:
       objectReference: {fileID: 5500499832153370723}
     - target: {fileID: 186870247997639705, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
+      propertyPath: coinCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 186870247997639705, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 6898492196854354922}
@@ -2863,6 +2870,11 @@ PrefabInstance:
       objectReference: {fileID: 5620955764626431683}
     - target: {fileID: 1928216924342377458, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
+      propertyPath: coinCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1928216924342377458, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 4914323678020680899}
@@ -2895,6 +2907,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256131573698571175, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_Text
+      value: Hasar Almama (10 coin)
       objectReference: {fileID: 0}
     - target: {fileID: 2731070242991173650, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
@@ -3005,10 +3022,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameUINinja
       objectReference: {fileID: 0}
+    - target: {fileID: 5795509583735062491, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_Text
+      value: Can doldurma (20 coin)
+      objectReference: {fileID: 0}
     - target: {fileID: 6344770989038448196, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957641557862586530, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_Text
+      value: Zehirli Su (2 coin)
       objectReference: {fileID: 0}
     - target: {fileID: 7015851406422191337, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
@@ -3059,6 +3086,11 @@ PrefabInstance:
       objectReference: {fileID: 3463341949375982124}
     - target: {fileID: 7486116531688008230, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
+      propertyPath: coinCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7486116531688008230, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 7265126881949421527}
@@ -3066,6 +3098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 407
+      objectReference: {fileID: 0}
+    - target: {fileID: 7953130016557033078, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_Text
+      value: "H\u0131zlanma (15 Coin)"
       objectReference: {fileID: 0}
     - target: {fileID: 8031500560608637462, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
@@ -3269,6 +3306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buton1: {fileID: 1983029961919174422}
   countdownText: {fileID: 6798679937212897947}
+  coinCost: 15
 --- !u!1 &3933043866045008997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6344770989038448196, guid: f3044f3a14b3dba41a45b6d8b092251c,

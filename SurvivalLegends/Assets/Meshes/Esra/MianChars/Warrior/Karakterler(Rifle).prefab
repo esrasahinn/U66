@@ -431,6 +431,7 @@ MonoBehaviour:
   destroyDelay: 20
   buton6: {fileID: 4822415501858587650}
   countdownText: {fileID: 7281330369747594215}
+  coinCost: 5
 --- !u!114 &3772017392191047606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +862,7 @@ MonoBehaviour:
   dusmanHasarMiktari: 50
   buton5: {fileID: 7603080992630915289}
   countdownText: {fileID: 2203376526764210058}
+  coinCost: 5
 --- !u!114 &6078189876469362228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2327,12 +2329,12 @@ PrefabInstance:
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4820201345627484699, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -3468,6 +3470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buton4: {fileID: 2887699763975150439}
   countdownText: {fileID: 1856381630236758732}
+  coinCost: 5
 --- !u!114 &2807569780680867052 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5100071086486417135, guid: a885877d0d6277843a0d9994d6018f5e,

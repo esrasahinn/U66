@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class Buton3 : MonoBehaviour
 {
     private bool canDoldurmaAktif = false; // Can doldurma durumu
@@ -9,47 +10,70 @@ public class Buton3 : MonoBehaviour
     private ArcherPlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
     public Image buton4;
-    public Text countdownText; // UI metin öðesi
+    public Text countdownText;
+
+    [SerializeField]
+    private int coinCost = 5; // Alým için gereken coin miktarý
 
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
         player = ArcherPlayerBehaviour.GetInstance();
-        _healthbar = FindObjectOfType<Healthbar>(); // _healthbar referansý alýndý
+        _healthbar = FindObjectOfType<Healthbar>();
     }
+
     public void ButonTiklama()
     {
-        ArcherPlayerBehaviour.GetInstance().PerformLeftShiftAction();
-        controller.HidePopup();
-        controller.ResumeGame(); // Oyunu devam ettir
-        Debug.Log("Karakterin caný dolduruldu.");
-        countdownText.text = "5"; // Metin öðesini güncelle
-        countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
-        buton4.gameObject.SetActive(true); // Resmi etkinleþtir
+        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
 
-        InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
+        if (playerCoins >= coinCost && !canDoldurmaAktif)
+        {
+            playerCoins -= coinCost; // Coinlerden düþülüyor
+            PlayerPrefs.SetInt("CoinAmount", playerCoins);
+
+            canDoldurmaAktif = true;
+            controller.HidePopup();
+            controller.ResumeGame();
+            Debug.Log("Karakterin caný dolduruldu.");
+
+            // Coin sayýsýný güncelle
+            CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+            if (collectCoinScript != null)
+            {
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
+            }
+
+            countdownText.text = "5";
+            countdownText.gameObject.SetActive(true);
+            buton4.gameObject.SetActive(true);
+
+            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
+        }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok veya can doldurma zaten aktif.");
+        }
     }
 
     public void PlayerHeal(int healing)
     {
-        player.PlayerHeal(healing); // PlayerBehaviour sýnýfýndaki PlayerHeal metodunu çaðýr
+        player.PlayerHeal(healing);
         _healthbar.SetHealth(player._health);
         controller.HidePopup();
     }
 
     private void UpdateCountdown()
     {
-        int remainingTime = int.Parse(countdownText.text); // Geri sayým süresini al
+        int remainingTime = int.Parse(countdownText.text);
+        countdownText.text = (remainingTime - 1).ToString();
 
-        remainingTime--; // Geri sayým süresini azalt
-        countdownText.text = remainingTime.ToString(); // Metin öðesini güncelle
-
-        if (remainingTime <= 0)
+        if (remainingTime <= 1)
         {
             CancelInvoke(nameof(UpdateCountdown));
-            countdownText.text = ""; // Metin öðesini temizle
-            countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
-            buton4.gameObject.SetActive(false); // Resmi devre dýþý býrak
+            countdownText.text = "";
+            countdownText.gameObject.SetActive(false);
+            buton4.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
         }
     }
