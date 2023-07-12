@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3980eea23667eaf4e8d93ca756136835,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3980eea23667eaf4e8d93ca756136835,
         type: 3}
@@ -635,7 +635,7 @@ MonoBehaviour:
     type: 3}
   maxHealth: 100
   healthSlider: {fileID: 8236408086097688180}
-  player: {fileID: 0}
+  playerTag: Player
   attackRange: 5
   attackCooldown: 0.7
   detectionRange: 10
@@ -647,7 +647,6 @@ MonoBehaviour:
   rangedDamage: 0
   currentHealth: 100
   expAmount: 1
-  playerTag: Player
 --- !u!4 &5264078252596179194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3980eea23667eaf4e8d93ca756136835,
@@ -680,12 +679,12 @@ PrefabInstance:
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8171803596384634123, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}

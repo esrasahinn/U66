@@ -8,7 +8,8 @@ public class RangedEnemyController : MonoBehaviour
     public GameObject FloatingTextPrefab;
     public float maxHealth = 100f;
     public Slider healthSlider;
-    public Transform player;
+    [SerializeField] string playerTag = "Player"; // Oyuncu tagi
+    private GameObject player;
     public float attackRange = 10.0f;
     public float attackCooldown = 2.0f;
     public float detectionRange = 15.0f; // Fark etme menzili
@@ -29,8 +30,6 @@ public class RangedEnemyController : MonoBehaviour
 
     private float nextAttackTime;
 
-    [SerializeField] private string playerTag = "Player";
-
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
@@ -43,6 +42,7 @@ public class RangedEnemyController : MonoBehaviour
     {
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
+        player = GameObject.FindGameObjectWithTag(playerTag); // Oyuncuyu tagi kullanarak bulma
     }
 
     private void Update()
@@ -58,7 +58,13 @@ public class RangedEnemyController : MonoBehaviour
             return;
         }
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (player == null)
+        {
+            Debug.LogWarning("Oyuncu bulunamadý.");
+            return;
+        }
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
 
         if (distanceToPlayer <= attackRange)
         {
@@ -141,14 +147,14 @@ public class RangedEnemyController : MonoBehaviour
 
     void ChasePlayer()
     {
-        enemy.SetDestination(player.position);
+        enemy.SetDestination(player.transform.position);
         animator.SetBool("Running", true);
     }
 
     public void AttackPlayer()
     {
         enemy.SetDestination(transform.position);
-        transform.LookAt(player);
+        transform.LookAt(player.transform);
 
         animator.SetBool("Running", false);
         animator.SetBool("Attack", true);
@@ -162,7 +168,7 @@ public class RangedEnemyController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Oyuncunun pozisyonunu hesapla
-        Vector3 playerPosition = new Vector3(player.position.x, projectileSpawnPoint.position.y, player.position.z);
+        Vector3 playerPosition = new Vector3(player.transform.position.x, projectileSpawnPoint.position.y, player.transform.position.z);
         // Oyuncuya doðru bir vektör oluþtur
         Vector3 directionToPlayer = playerPosition - projectileSpawnPoint.position;
         // Yatay rotasyonu ayarla

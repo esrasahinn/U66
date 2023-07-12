@@ -9,7 +9,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float can = 100f;
     [SerializeField] float maxHealth = 100f;
     [SerializeField] Slider healthSlider;
-    [SerializeField] Transform player;
+    [SerializeField] string playerTag = "Player"; // Oyuncu tagi
+    private GameObject player;
     [SerializeField] float attackRange = 2.0f;
     [SerializeField] float detectionRange = 10.0f; // Fark etme menzili
     [SerializeField] int meleeDamage = 10;
@@ -38,6 +39,7 @@ public class EnemyController : MonoBehaviour
     {
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
+        player = GameObject.FindGameObjectWithTag(playerTag); // Oyuncuyu tagi kullanarak bulma
     }
 
     private void Update()
@@ -45,7 +47,13 @@ public class EnemyController : MonoBehaviour
         if (isDead)
             return;
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (player == null)
+        {
+            Debug.LogWarning("Oyuncu bulunamadý.");
+            return;
+        }
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         inAttackRange = distanceToPlayer <= attackRange;
 
         if (isFrozen)
@@ -135,14 +143,14 @@ public class EnemyController : MonoBehaviour
 
     void ChasePlayer()
     {
-        enemy.SetDestination(player.position);
+        enemy.SetDestination(player.transform.position);
         animator.SetBool("Running", true);
     }
 
     public void AttackPlayer()
     {
         enemy.SetDestination(transform.position);
-        transform.LookAt(player);
+        transform.LookAt(player.transform);
 
         animator.SetBool("Running", false);
         animator.SetBool("Attack", true);
