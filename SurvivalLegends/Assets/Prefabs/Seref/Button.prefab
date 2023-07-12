@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 5057158493404000357}
   - component: {fileID: 3618065769060478905}
   - component: {fileID: 8102820825558053726}
+  - component: {fileID: 825070258180623325}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7551509171905905809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -68,8 +69,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -122,6 +123,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &825070258180623325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892022793885899676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e5a6da59b674c47bbbe15d617efad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCost: {fileID: 0}
+  itemButton: {fileID: 8102820825558053726}
 --- !u!1 &7044731519333571677
 GameObject:
   m_ObjectHideFlags: 0

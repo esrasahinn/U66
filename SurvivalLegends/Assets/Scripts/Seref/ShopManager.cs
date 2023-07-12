@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,19 +11,21 @@ public class ShopManager : MonoBehaviour
     public ShopItemSO[] shopItemSO;
     public ShopTemplate[] shopPanels;
     public GameObject[] shopPanelsGO;
-    public Button[] purchaseBtns;
-    public TMP_Text priceText; // Reference to the text component showing the price
-
-    private int selectedItemIndex = -1; // Index of the currently selected item
+    public Button purchaseBtn;
+    public Button equipBtn;
+    public Button unequipBtn;
+    public TMP_Text priceText;
+    private int selectedItemIndex = -1;
 
     void Start()
     {
         for (int i = 0; i < shopItemSO.Length; i++)
         {
-            shopPanelsGO[i].gameObject.SetActive(true);
+            shopPanelsGO[i].SetActive(true);
         }
         coinUI.text = "Coins: " + coinScript.coinAmount.ToString();
         LoadPanels();
+        LoadEquippedItems();
         CheckPurchasable();
     }
 
@@ -33,31 +34,84 @@ public class ShopManager : MonoBehaviour
 
     }
 
-
     public void LoadPanels()
     {
         for (int i = 0; i < shopItemSO.Length; i++)
         {
+            int index = i;
             shopPanels[i].itemCost.text = shopItemSO[i].baseCost.ToString();
+            shopPanels[i].itemButton.onClick.AddListener(() => ShowPrice(index));
+
+            if (IsItemPurchased(index))
+            {
+                shopPanels[i].equipButton.gameObject.SetActive(true);
+                shopPanels[i].unequipButton.gameObject.SetActive(false);
+               // shopPanels[i].purchaseButton.gameObject.SetActive(false);
+
+                if (IsItemEquipped(index))
+                {
+                    ShowUnequipButton(index);
+                }
+            }
+            else
+            {
+                shopPanels[i].equipButton.gameObject.SetActive(false);
+                shopPanels[i].unequipButton.gameObject.SetActive(false);
+                //shopPanels[i].purchaseButton.gameObject.SetActive(true);
+            }
         }
     }
 
+
+
     public void CheckPurchasable()
     {
-        for (int i = 0; i < shopItemSO.Length; i++)
-        {
-            if (coinScript.coinAmount >= shopItemSO[i].baseCost)
-                purchaseBtns[i].interactable = true;
-            else
-                purchaseBtns[i].interactable = false;
-        }
+        if (selectedItemIndex != -1 && coinScript.coinAmount >= shopItemSO[selectedItemIndex].baseCost)
+            purchaseBtn.interactable = true;
+        else
+            purchaseBtn.interactable = false;
     }
 
     public void ShowPrice(int itemIndex)
     {
         selectedItemIndex = itemIndex;
-        priceText.text = "Price: " + shopItemSO[itemIndex].baseCost.ToString();
+        if (selectedItemIndex != -1)
+        {
+            priceText.text = "Price: " + shopItemSO[itemIndex].baseCost.ToString();
+
+            if (IsItemPurchased(itemIndex))
+            {
+                purchaseBtn.gameObject.SetActive(false);
+
+                if (IsItemEquipped(itemIndex))
+                {
+                    equipBtn.gameObject.SetActive(false);
+                    unequipBtn.gameObject.SetActive(true);
+                }
+                else
+                {
+                    equipBtn.gameObject.SetActive(true);
+                    unequipBtn.gameObject.SetActive(false);
+                }
+            }
+            else
+            {
+                purchaseBtn.gameObject.SetActive(true);
+                equipBtn.gameObject.SetActive(false);
+                unequipBtn.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            purchaseBtn.gameObject.SetActive(false);
+            equipBtn.gameObject.SetActive(false);
+            unequipBtn.gameObject.SetActive(false);
+        }
+        CheckPurchasable();
     }
+
+
+
 
     public void PurchaseItem()
     {
@@ -66,7 +120,106 @@ public class ShopManager : MonoBehaviour
             coinScript.coinAmount -= shopItemSO[selectedItemIndex].baseCost;
             coinUI.text = "Coins: " + coinScript.coinAmount.ToString();
             PlayerPrefs.SetInt("CoinAmount", coinScript.coinAmount);
+
+            MarkItemAsPurchased(selectedItemIndex);
+
+            shopPanels[selectedItemIndex].equipButton.gameObject.SetActive(true);
+            shopPanels[selectedItemIndex].unequipButton.gameObject.SetActive(false);
+            purchaseBtn.gameObject.SetActive(false);
+
+            if (IsItemEquipped(selectedItemIndex))
+            {
+                ShowUnequipButton(selectedItemIndex);
+            }
+
             CheckPurchasable();
         }
     }
+
+
+    public void LoadEquippedItems()
+    {
+        for (int i = 0; i < shopItemSO.Length; i++)
+        {
+            if (IsItemEquipped(i))
+            {
+                EquipItem(i);
+            }
+            else
+            {
+                UnequipItem(i);
+            }
+        }
+    }
+
+    public void EquipItem(int itemIndex)
+    {
+        shopPanels[itemIndex].itemObject.SetActive(true);
+
+        shopPanels[itemIndex].equipButton.gameObject.SetActive(false);
+        shopPanels[itemIndex].unequipButton.gameObject.SetActive(true);
+
+        MarkItemAsEquipped(itemIndex);
+    }
+
+    public void UnequipItem(int itemIndex)
+    {
+        shopPanels[itemIndex].itemObject.SetActive(false);
+
+        shopPanels[itemIndex].equipButton.gameObject.SetActive(true);
+        shopPanels[itemIndex].unequipButton.gameObject.SetActive(false);
+
+        MarkItemAsUnequipped(itemIndex);
+    }
+
+    private void UnequipAllItems()
+    {
+        for (int i = 0; i < shopItemSO.Length; i++)
+        {
+            if (IsItemEquipped(i))
+            {
+                shopPanels[i].itemObject.SetActive(false);
+
+                shopPanels[i].equipButton.gameObject.SetActive(true);
+                shopPanels[i].unequipButton.gameObject.SetActive(false);
+
+                MarkItemAsUnequipped(i);
+            }
+        }
+    }
+
+
+
+    private bool IsItemEquipped(int itemIndex)
+    {
+        return PlayerPrefs.GetInt("ItemEquipped_" + itemIndex, 0) == 1;
+    }
+
+
+    private void ShowUnequipButton(int itemIndex)
+    {
+        shopPanels[itemIndex].equipButton.gameObject.SetActive(false);
+        shopPanels[itemIndex].unequipButton.gameObject.SetActive(true);
+    }
+
+    private bool IsItemPurchased(int itemIndex)
+    {
+        return PlayerPrefs.GetInt("Item_" + itemIndex, 0) == 1;
+    }
+
+    private void MarkItemAsPurchased(int itemIndex)
+    {
+        PlayerPrefs.SetInt("Item_" + itemIndex, 1);
+    }
+
+    private void MarkItemAsEquipped(int itemIndex)
+    {
+        PlayerPrefs.SetInt("ItemEquipped_" + itemIndex, 1);
+    }
+
+    private void MarkItemAsUnequipped(int itemIndex)
+    {
+        PlayerPrefs.SetInt("ItemEquipped_" + itemIndex, 0);
+    }
+
 }

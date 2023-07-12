@@ -6,4 +6,7 @@ using UnityEngine;
 public class ShopItemSO : ScriptableObject
 {
     public int baseCost;
+    public bool isEquipped = false;
+    public bool isPurchased = false;
+    public GameObject itemObject;
 }

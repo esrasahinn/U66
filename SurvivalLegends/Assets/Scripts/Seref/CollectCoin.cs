@@ -11,7 +11,7 @@ public class CollectCoin : MonoBehaviour
 
     private void Awake()
     {
-        coinAmount = PlayerPrefs.GetInt("CoinAmount", 0);
+        coinAmount = PlayerPrefs.GetInt("CoinAmount", 20);
         coinUI.text = "Coins: " + coinAmount.ToString();
     }
     private void OnTriggerEnter(Collider other)
