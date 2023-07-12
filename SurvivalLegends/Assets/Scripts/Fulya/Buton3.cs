@@ -24,6 +24,11 @@ public class Buton3 : MonoBehaviour
 
     public void ButonTiklama()
     {
+        ArcherPlayerBehaviour.GetInstance().PerformLeftShiftAction();
+        controller.HidePopup();
+        controller.ResumeGame(); // Oyunu devam ettir
+        Debug.Log("Karakterin caný dolduruldu.");
+
         int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
 
         if (playerCoins >= coinCost && !canDoldurmaAktif)
