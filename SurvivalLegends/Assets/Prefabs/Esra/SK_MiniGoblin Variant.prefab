@@ -671,12 +671,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55,
     type: 3}
-  minCollectibles: 1
-  maxCollectibles: 1
-  minSplashForce: 1
-  maxSplashForce: 1
-  verticalForceMultiplier: 1
-  splashRadius: 0.1
+  minCollectibles: 50
+  maxCollectibles: 50
+  minSplashForce: 50
+  maxSplashForce: 50
+  verticalForceMultiplier: 50
+  splashRadius: 50
 --- !u!195 &895691536875644974
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -770,7 +770,7 @@ MonoBehaviour:
   attackRange: 1
   detectionRange: 10
   meleeDamage: 0
-  expAmount: 0.1
+  expAmount: 1
   currentHealth: 100
 --- !u!4 &6999603273065552901 stripped
 Transform:

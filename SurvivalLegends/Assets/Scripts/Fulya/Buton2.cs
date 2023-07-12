@@ -8,15 +8,18 @@ public class Buton2 : MonoBehaviour
     private float hasarAlmamaSureKalan = 0f; // Geriye kalan hasar almama süresi
     private expController controller;
     private ArcherPlayerBehaviour arcPlayerBehaviour;
-    private PlayerBehaviour PlayerBehaviour;
+    private PlayerBehaviour playerBehaviour;
     public Image buton2;
-    public Text countdownText; // UI metin öðesi
+    public Text countdownText;
+
+    [SerializeField]
+    private int coinCost = 5; // Alým için gereken coin miktarý
 
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
         arcPlayerBehaviour = FindObjectOfType<ArcherPlayerBehaviour>();
-        PlayerBehaviour = FindObjectOfType<PlayerBehaviour>();
+        playerBehaviour = FindObjectOfType<PlayerBehaviour>();
     }
 
     private void Update()
@@ -31,13 +34,6 @@ public class Buton2 : MonoBehaviour
                 {
                     hasarAlmamaAktif = false;
                     arcPlayerBehaviour.DeactivateImmunity();
-                    // PlayerBehaviour.DeactivateImmunity();
-                    Debug.Log("Hasar alma süresi doldu.");
-                }
-                if (hasarAlmamaSureKalan <= 0f)
-                {
-                    hasarAlmamaAktif = false;
-                    PlayerBehaviour.DeactivateImmunity();
                     Debug.Log("Hasar alma süresi doldu.");
                 }
             }
@@ -46,8 +42,13 @@ public class Buton2 : MonoBehaviour
 
     public void ButonTiklama()
     {
-        if (!hasarAlmamaAktif)
+        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
+
+        if (playerCoins >= coinCost && !hasarAlmamaAktif)
         {
+            playerCoins -= coinCost; // Coinlerden düþülüyor
+            PlayerPrefs.SetInt("CoinAmount", playerCoins);
+
             hasarAlmamaAktif = true;
             controller.HidePopup();
             controller.ResumeGame();
@@ -55,29 +56,38 @@ public class Buton2 : MonoBehaviour
             Debug.Log("Hasar almama süresi baþladý.");
 
             arcPlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
-            //PlayerBehaviour.ActivateImmunity(hasarAlmamaSure);
+            countdownText.text = Mathf.CeilToInt(hasarAlmamaSure).ToString();
+            countdownText.gameObject.SetActive(true);
+            buton2.gameObject.SetActive(true);
 
-            countdownText.text = "10"; // Metin öðesini güncelle
-            countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
-            buton2.gameObject.SetActive(true); // Resmi etkinleþtir
+            // Coin sayýsýný güncelle
+            CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+            if (collectCoinScript != null)
+            {
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
+            }
 
-            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
+            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
+        }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok veya hasar almama zaten aktif.");
         }
     }
 
     private void UpdateCountdown()
     {
-        int remainingTime = int.Parse(countdownText.text); // Geri sayým süresini al
+        int remainingTime = Mathf.CeilToInt(hasarAlmamaSureKalan);
+        countdownText.text = remainingTime.ToString();
+        hasarAlmamaSureKalan -= 1f;
 
-        remainingTime--; // Geri sayým süresini azalt
-        countdownText.text = remainingTime.ToString(); // Metin öðesini güncelle
-
-        if (remainingTime <= 0)
+        if (hasarAlmamaSureKalan <= 0)
         {
             CancelInvoke(nameof(UpdateCountdown));
-            countdownText.text = ""; // Metin öðesini temizle
-            countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
-            buton2.gameObject.SetActive(false); // Resmi devre dýþý býrak
+            countdownText.text = "";
+            countdownText.gameObject.SetActive(false);
+            buton2.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
         }
     }

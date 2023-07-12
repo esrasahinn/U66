@@ -1089,6 +1089,7 @@ MonoBehaviour:
   dusmanHasarMiktari: 50
   buton5: {fileID: 6724497135419809178}
   countdownText: {fileID: 1434861587325874008}
+  coinCost: 5
 --- !u!114 &8529146385117801135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,6 +1262,7 @@ MonoBehaviour:
   destroyDelay: 20
   buton6: {fileID: 6035970106884027196}
   countdownText: {fileID: 3497250599424450503}
+  coinCost: 5
 --- !u!114 &1427351031331664974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2245,7 +2247,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5097362092213472439
 Transform:
   m_ObjectHideFlags: 0
@@ -3094,12 +3096,12 @@ PrefabInstance:
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7248943105054987999, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
