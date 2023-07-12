@@ -44,20 +44,32 @@ public class ShopManager : MonoBehaviour
 
             if (IsItemPurchased(index))
             {
+                shopPanels[i].equipButton.onClick.RemoveAllListeners();
+                shopPanels[i].unequipButton.onClick.RemoveAllListeners();
+
+                shopPanels[i].equipButton.onClick.AddListener(() => EquipItem(index));
+                shopPanels[i].unequipButton.onClick.AddListener(() => UnequipItem(index));
+
                 shopPanels[i].equipButton.gameObject.SetActive(true);
                 shopPanels[i].unequipButton.gameObject.SetActive(false);
-               // shopPanels[i].purchaseButton.gameObject.SetActive(false);
 
                 if (IsItemEquipped(index))
                 {
-                    ShowUnequipButton(index);
+                    shopPanels[i].itemObject.SetActive(true);
+                    shopPanels[i].equipButton.gameObject.SetActive(false);
+                    shopPanels[i].unequipButton.gameObject.SetActive(true);
+                }
+                else
+                {
+                    shopPanels[i].itemObject.SetActive(false);
+                    shopPanels[i].equipButton.gameObject.SetActive(true);
+                    shopPanels[i].unequipButton.gameObject.SetActive(false);
                 }
             }
             else
             {
                 shopPanels[i].equipButton.gameObject.SetActive(false);
                 shopPanels[i].unequipButton.gameObject.SetActive(false);
-                //shopPanels[i].purchaseButton.gameObject.SetActive(true);
             }
         }
     }
@@ -113,6 +125,7 @@ public class ShopManager : MonoBehaviour
 
 
 
+
     public void PurchaseItem()
     {
         if (selectedItemIndex != -1 && coinScript.coinAmount >= shopItemSO[selectedItemIndex].baseCost)
@@ -137,38 +150,43 @@ public class ShopManager : MonoBehaviour
     }
 
 
-    public void LoadEquippedItems()
-    {
-        for (int i = 0; i < shopItemSO.Length; i++)
-        {
-            if (IsItemEquipped(i))
-            {
-                EquipItem(i);
-            }
-            else
-            {
-                UnequipItem(i);
-            }
-        }
-    }
+    //public void LoadEquippedItems()
+    //{
+    //    for (int i = 0; i < shopItemSO.Length; i++)
+    //    {
+    //        if (IsItemEquipped(i))
+    //        {
+    //            shopPanels[i].itemObject.SetActive(true);
+    //            shopPanels[i].equipButton.gameObject.SetActive(false);
+    //            shopPanels[i].unequipButton.gameObject.SetActive(true);
+    //        }
+    //        else
+    //        {
+    //            shopPanels[i].itemObject.SetActive(false);
+    //            shopPanels[i].equipButton.gameObject.SetActive(true);
+    //            shopPanels[i].unequipButton.gameObject.SetActive(false);
+    //        }
+    //    }
+    //}
+
 
     public void EquipItem(int itemIndex)
     {
-        shopPanels[itemIndex].itemObject.SetActive(true);
+        // Unequip all items first
+        UnequipAllItems();
 
+        // Equip the selected item
+        shopPanels[itemIndex].itemObject.SetActive(true);
         shopPanels[itemIndex].equipButton.gameObject.SetActive(false);
         shopPanels[itemIndex].unequipButton.gameObject.SetActive(true);
-
         MarkItemAsEquipped(itemIndex);
     }
 
     public void UnequipItem(int itemIndex)
     {
         shopPanels[itemIndex].itemObject.SetActive(false);
-
         shopPanels[itemIndex].equipButton.gameObject.SetActive(true);
         shopPanels[itemIndex].unequipButton.gameObject.SetActive(false);
-
         MarkItemAsUnequipped(itemIndex);
     }
 
@@ -179,16 +197,31 @@ public class ShopManager : MonoBehaviour
             if (IsItemEquipped(i))
             {
                 shopPanels[i].itemObject.SetActive(false);
-
                 shopPanels[i].equipButton.gameObject.SetActive(true);
                 shopPanels[i].unequipButton.gameObject.SetActive(false);
-
                 MarkItemAsUnequipped(i);
             }
         }
     }
 
-
+    public void LoadEquippedItems()
+    {
+        for (int i = 0; i < shopItemSO.Length; i++)
+        {
+            if (IsItemEquipped(i))
+            {
+                shopPanels[i].itemObject.SetActive(true);
+                shopPanels[i].equipButton.gameObject.SetActive(false);
+                shopPanels[i].unequipButton.gameObject.SetActive(true);
+            }
+            else
+            {
+                shopPanels[i].itemObject.SetActive(false);
+                shopPanels[i].equipButton.gameObject.SetActive(true);
+                shopPanels[i].unequipButton.gameObject.SetActive(false);
+            }
+        }
+    }
 
     private bool IsItemEquipped(int itemIndex)
     {

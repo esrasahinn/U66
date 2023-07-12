@@ -119,7 +119,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 3618065769060478905}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -135,8 +135,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28e5a6da59b674c47bbbe15d617efad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemObject: {fileID: 2409341079546776251, guid: 9d33c6cd01ae32b4eb5ee30ec43adf82,
+    type: 3}
   itemCost: {fileID: 0}
   itemButton: {fileID: 8102820825558053726}
+  equipButton: {fileID: 0}
+  unequipButton: {fileID: 0}
+  purchaseButton: {fileID: 0}
 --- !u!1 &7044731519333571677
 GameObject:
   m_ObjectHideFlags: 0

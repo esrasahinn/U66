@@ -8,5 +8,5 @@ public class ShopItemSO : ScriptableObject
     public int baseCost;
     public bool isEquipped = false;
     public bool isPurchased = false;
-    public Mesh itemObject;
+    public GameObject itemObject;
 }
