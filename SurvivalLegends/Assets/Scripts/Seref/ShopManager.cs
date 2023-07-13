@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,15 +12,24 @@ public class ShopManager : MonoBehaviour
     public ShopTemplate[] shopPanels;
     public GameObject[] shopPanelsGO;
     public Button[] purchaseBtns;
+    public Button[] equipBtns;
+    public Button[] unequipBtns;
+
+    private const string DiamondAmountKey = "DiamondAmount";
+
     void Start()
     {
-        for (int i = 0; i<shopItemSO.Length; i++)
+        diamondScript.diamondAmount = PlayerPrefs.GetInt("Diamond", 10);
+        for (int i = 0; i < shopItemSO.Length; i++)
         {
             shopPanelsGO[i].gameObject.SetActive(true);
         }
+
+        LoadDiamondCount();
         diamondUI.text = diamondScript.diamondAmount.ToString();
         LoadPanels();
         CheckPurchasable();
+        CheckEquipped();
     }
 
     void Update()
@@ -29,10 +37,9 @@ public class ShopManager : MonoBehaviour
 
     }
 
- 
-   public void LoadPanels()
+    public void LoadPanels()
     {
-        for (int i=0; i<shopItemSO.Length; i++)
+        for (int i = 0; i < shopItemSO.Length; i++)
         {
             shopPanels[i].costTxt.text = shopItemSO[i].baseCost.ToString();
         }
@@ -42,10 +49,10 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < shopItemSO.Length; i++)
         {
-            if (diamondScript.diamondAmount >= shopItemSO[i].baseCost)
-                purchaseBtns[i].interactable= true;
+            if (diamondScript.diamondAmount >= shopItemSO[i].baseCost && !shopItemSO[i].IsPurchased)
+                purchaseBtns[i].interactable = true;
             else
-                purchaseBtns[i].interactable= false;
+                purchaseBtns[i].interactable = false;
         }
     }
 
@@ -53,72 +60,114 @@ public class ShopManager : MonoBehaviour
     {
         ShopItemSO currentItem = shopItemSO[btnNo];
 
-        if (diamondScript.diamondAmount >= currentItem.baseCost && !currentItem.isPurchased)
+        if (diamondScript.diamondAmount >= currentItem.baseCost)
         {
-            int spentDiamond = diamondScript.diamondAmount - currentItem.baseCost;
-            diamondScript.diamondAmount = spentDiamond; // Update the diamond count
+            diamondScript.diamondAmount = diamondScript.diamondAmount - currentItem.baseCost;
 
-            diamondUI.text = spentDiamond.ToString(); // Update the UI text
+            SaveDiamondCount();
+            diamondUI.text = diamondScript.diamondAmount.ToString();
+            currentItem.IsPurchased = true;
 
-            PlayerPrefs.SetInt("DiamondAmount", spentDiamond);
+            purchaseBtns[btnNo].gameObject.SetActive(false);
+            equipBtns[btnNo].gameObject.SetActive(true);
 
-            // Update item status
-            currentItem.isPurchased = true;
-            currentItem.isEquipped = true;
+            shopPanelsGO[btnNo].SetActive(true);
 
-            // Update button text and functionality
-            purchaseBtns[btnNo].GetComponentInChildren<TMP_Text>().text = "Unequip";
-            purchaseBtns[btnNo].onClick.RemoveAllListeners();
-            purchaseBtns[btnNo].onClick.AddListener(() => UnequipItem(btnNo));
-
-            // Equip the purchased item
-            EquipItem(btnNo);
+            CheckPurchasable();
+            CheckEquipped();
         }
     }
 
-    private void EquipItem(int btnNo)
+    public void CheckEquipped()
     {
-        ShopItemSO currentItem = shopItemSO[btnNo];
-
-        // Activate the mesh or perform the necessary actions
-        // to visually indicate that the item is equipped
-
-        // Disable the meshes of other equipped items
         for (int i = 0; i < shopItemSO.Length; i++)
         {
-            if (i != btnNo && shopItemSO[i].isEquipped)
+            bool isPurchased = shopItemSO[i].IsPurchased;
+            bool isEquipped = shopItemSO[i].IsEquipped;
+
+            if (isPurchased && isEquipped)
             {
-                UnequipItem(i);
+                purchaseBtns[i].gameObject.SetActive(false);
+                equipBtns[i].gameObject.SetActive(false);
+                unequipBtns[i].gameObject.SetActive(true);
+                shopPanelsGO[i].SetActive(true);
             }
-        }
-
-        // Update button text and functionality for other items
-        for (int i = 0; i < shopItemSO.Length; i++)
-        {
-            if (i != btnNo)
+            else if (isPurchased)
             {
-                Button button = purchaseBtns[i];
-                button.GetComponentInChildren<TMP_Text>().text = "Equip";
-                button.onClick.RemoveAllListeners();
-                button.onClick.AddListener(() => EquipItem(i));
+                purchaseBtns[i].gameObject.SetActive(false);
+                equipBtns[i].gameObject.SetActive(true);
+                unequipBtns[i].gameObject.SetActive(false);
+                shopPanelsGO[i].SetActive(true);
+            }
+            else
+            {
+                purchaseBtns[i].gameObject.SetActive(true);
+                equipBtns[i].gameObject.SetActive(false);
+                unequipBtns[i].gameObject.SetActive(false);
+                shopPanelsGO[i].SetActive(false);
             }
         }
     }
 
-    private void UnequipItem(int btnNo)
+    public void EquipItem(int btnNo)
     {
         ShopItemSO currentItem = shopItemSO[btnNo];
 
-        // Deactivate the mesh or perform the necessary actions
-        // to visually indicate that the item is unequipped
+        if (!currentItem.IsEquipped)
+        {
+            currentItem.IsEquipped = true;
 
-        currentItem.isEquipped = false;
+            purchaseBtns[btnNo].gameObject.SetActive(false);
+            equipBtns[btnNo].gameObject.SetActive(false);
+            unequipBtns[btnNo].gameObject.SetActive(true);
 
-        // Update button text and functionality
-        purchaseBtns[btnNo].GetComponentInChildren<TMP_Text>().text = "Equip";
-        purchaseBtns[btnNo].onClick.RemoveAllListeners();
-        purchaseBtns[btnNo].onClick.AddListener(() => EquipItem(btnNo));
+            shopPanelsGO[btnNo].SetActive(true);
+
+            CheckEquipped();
+        }
     }
 
+    public void UnequipItem(int btnNo)
+    {
+        ShopItemSO currentItem = shopItemSO[btnNo];
 
+        if (currentItem.IsEquipped)
+        {
+            currentItem.IsEquipped = false;
+
+            purchaseBtns[btnNo].gameObject.SetActive(false);
+            equipBtns[btnNo].gameObject.SetActive(true);
+            unequipBtns[btnNo].gameObject.SetActive(false);
+
+            shopPanelsGO[btnNo].SetActive(false);
+
+            CheckEquipped();
+        }
+    }
+
+    public void AdDia()
+    {
+        diamondScript.diamondAmount += 5;
+        diamondUI.text = diamondScript.diamondAmount.ToString();
+        SaveDiamondCount();
+        CheckPurchasable();
+    }
+
+    private void LoadDiamondCount()
+    {
+        if (PlayerPrefs.HasKey(DiamondAmountKey))
+        {
+            diamondScript.diamondAmount = PlayerPrefs.GetInt(DiamondAmountKey);
+        }
+        else
+        {
+            diamondScript.diamondAmount = 0;
+            SaveDiamondCount();
+        }
+    }
+
+    private void SaveDiamondCount()
+    {
+        PlayerPrefs.SetInt(DiamondAmountKey, diamondScript.diamondAmount);
+    }
 }

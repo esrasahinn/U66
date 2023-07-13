@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShopItemSO : ScriptableObject
 {
     public int baseCost;
-    [SerializeField] GameObject itemMesh;
-    public bool isPurchased;
-    public bool isEquipped;
+    public Mesh itemMesh;
+    public bool IsPurchased;
+    public bool IsEquipped;
 }
