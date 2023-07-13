@@ -9,20 +9,24 @@ public class LevelManager : MonoBehaviour
     private int deadEnemyCount;
     private UIManager uiManager;
 
+
+    public GameObject victory;
+    public GameObject defaited;
+
     private void Start()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
         enemyCount = enemies.Length;
         deadEnemyCount = 0;
 
-        // EndCube bileþenini bulma
+        // EndCube bileï¿½enini bulma
         endCube = FindObjectOfType<EndCube>();
 
-        // UIManager bileþenini bulma
+        // UIManager bileï¿½enini bulma
         uiManager = FindObjectOfType<UIManager>();
 
-        // Baþlangýçta düþmanlarý temizle mesajýný güncelleyin
-        uiManager.SetStatusText("Düþmanlarý Temizle!");
+        // Baï¿½langï¿½ï¿½ta dï¿½ï¿½manlarï¿½ temizle mesajï¿½nï¿½ gï¿½ncelleyin
+        uiManager.SetStatusText("Dï¿½ï¿½manlarï¿½ Temizle!");
     }
 
     public void EnemyDied()
@@ -31,23 +35,34 @@ public class LevelManager : MonoBehaviour
 
         if (deadEnemyCount >= enemyCount && enemyCount > 0)
         {
-            // Bütün düþmanlar öldü, son küpten geçiþe izin ver
+            // Bï¿½tï¿½n dï¿½ï¿½manlar ï¿½ldï¿½, son kï¿½pten geï¿½iï¿½e izin ver
             endCube.SetCanEnterNextLevel(true);
-            // Kapýya koþ mesajýný güncelle
-            uiManager.SetStatusText("Kapýya Koþ!");
+            // Kapï¿½ya koï¿½ mesajï¿½nï¿½ gï¿½ncelle
+            uiManager.SetStatusText("Kapï¿½ya Koï¿½!");
         }
         else if (deadEnemyCount < enemyCount)
         {
-            // Henüz tüm düþmanlar ölmediyse, mesajý "Düþmanlarý Temizle!" olarak güncelle
-            uiManager.SetStatusText("Düþmanlarý Temizle!");
+            // Henï¿½z tï¿½m dï¿½ï¿½manlar ï¿½lmediyse, mesajï¿½ "Dï¿½ï¿½manlarï¿½ Temizle!" olarak gï¿½ncelle
+            uiManager.SetStatusText("Dï¿½ï¿½manlarï¿½ Temizle!");
         }
     }
 
+    public void Victory() {
 
+
+      victory.SetActive(true);
+
+    }
+
+     public void Defaited() {
+
+        defaited.SetActive(false);
+
+
+    }
     public void EndLevel()
     {
-        // Bölümün bitmesini saðlayacak kodlarý buraya yazabilirsiniz.
-        // Örneðin, yeni bir bölüm yüklemek için:
-        SceneManager.LoadScene("Birlestirme");
+        
+        SceneManager.LoadScene("LevelSelector");
     }
 }

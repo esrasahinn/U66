@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManagerMulti : MonoBehaviour
 {
-    public GameObject[] playerPrefabs;
+     public GameObject[] playerPrefabs;
     public int characterIndex;
     public Vector3 lastCheckPointPos;
+    
 
     private GameObject currentPlayer;
 

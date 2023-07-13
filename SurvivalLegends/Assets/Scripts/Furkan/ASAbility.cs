@@ -25,7 +25,7 @@ public class ASAbility : MonoBehaviour
             isAbilityReady = false;
             Invoke("ResetAbility", abilityDuration);
             Invoke("ResetCooldown", cooldownDuration);
-            audiosource.Play();
+            // audiosource.Play();
         }
     }
 
