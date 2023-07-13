@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
@@ -437,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
@@ -592,12 +592,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55,
     type: 3}
-  minCollectibles: 1
-  maxCollectibles: 2
-  minSplashForce: 1
-  maxSplashForce: 2
-  verticalForceMultiplier: 2
-  splashRadius: 2
+  minCollectibles: 50
+  maxCollectibles: 50
+  minSplashForce: 50
+  maxSplashForce: 50
+  verticalForceMultiplier: 50
+  splashRadius: 50
 --- !u!195 &2001691956013763785
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -637,10 +637,11 @@ MonoBehaviour:
   can: 100
   maxHealth: 100
   healthSlider: {fileID: 1572071824125531658}
-  player: {fileID: 0}
+  playerTag: Player
   attackRange: 2
   detectionRange: 10
   meleeDamage: 0
+  expAmount: 0.25
   currentHealth: 100
 --- !u!54 &1024865875505099260
 Rigidbody:

@@ -3,14 +3,17 @@ using UnityEngine.UI;
 
 public class Buton6 : MonoBehaviour
 {
-    public GameObject flyingCubePrefab; // Uçan küp prefabý
-    public Transform playerTransform; // Oyuncu transformu
-    public float rotationSpeed = 10f; // Küpün dönme hýzý
-    public float destroyDelay = 20f; // Kaybolma gecikmesi süresi
+    public GameObject flyingCubePrefab;
+    public Transform playerTransform;
+    public float rotationSpeed = 10f;
+    public float destroyDelay = 20f;
     private expController controller;
-    private GameObject flyingCubeInstance; // Oluþturulan uçan küp
+    private GameObject flyingCubeInstance;
     public Image buton6;
-    public Text countdownText; // UI metin öðesi
+    public Text countdownText;
+
+    [SerializeField]
+    private int coinCost = 5; // Alým için gereken coin miktarý
 
     private void Awake()
     {
@@ -19,27 +22,47 @@ public class Buton6 : MonoBehaviour
 
     public void ButonTiklama()
     {
-        if (flyingCubeInstance == null)
+        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
+
+        if (playerCoins >= coinCost)
         {
-            SpawnFlyingCube();
-            Invoke("DestroyFlyingCube", destroyDelay);
+            playerCoins -= coinCost; // Coinlerden düþülüyor
+            PlayerPrefs.SetInt("CoinAmount", playerCoins);
 
-            countdownText.text = "20"; // Metin öðesini güncelle
-            countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
-            buton6.gameObject.SetActive(true); // Resmi etkinleþtir
+            if (flyingCubeInstance == null)
+            {
+                SpawnFlyingCube();
+                Invoke("DestroyFlyingCube", destroyDelay);
 
-            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
+                countdownText.text = "20";
+                countdownText.gameObject.SetActive(true);
+                buton6.gameObject.SetActive(true);
+
+                InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
+
+                // Coin sayýsýný güncelle
+                CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+                if (collectCoinScript != null)
+                {
+                    collectCoinScript.coinAmount = playerCoins;
+                    collectCoinScript.coinUI.text = playerCoins.ToString();
+                }
+            }
+            else
+            {
+                DestroyFlyingCube();
+
+                countdownText.text = "";
+                countdownText.gameObject.SetActive(false);
+                buton6.gameObject.SetActive(false);
+            }
         }
         else
         {
-            DestroyFlyingCube();
-
-            countdownText.text = ""; // Metin öðesini temizle
-            countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
-            buton6.gameObject.SetActive(false); // Resmi devre dýþý býrak
+            Debug.Log("Yeterli coininiz yok.");
         }
         controller.HidePopup();
-        controller.ResumeGame(); // Oyunu devam ettir
+        controller.ResumeGame();
     }
 
     private void SpawnFlyingCube()
@@ -69,27 +92,16 @@ public class Buton6 : MonoBehaviour
 
     private void UpdateCountdown()
     {
-        int remainingTime = int.Parse(countdownText.text); // Geri sayým süresini al
+        int remainingTime = int.Parse(countdownText.text);
+        countdownText.text = (remainingTime - 1).ToString();
 
-        remainingTime--; // Geri sayým süresini azalt
-        countdownText.text = remainingTime.ToString(); // Metin öðesini güncelle
-
-        if (remainingTime <= 0)
+        if (remainingTime <= 1)
         {
             CancelInvoke(nameof(UpdateCountdown));
-            countdownText.text = ""; // Metin öðesini temizle
-            countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
-            buton6.gameObject.SetActive(false); // Resmi devre dýþý býrak
-
+            countdownText.text = "";
+            countdownText.gameObject.SetActive(false);
+            buton6.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
         }
     }
 }
-
-
-
-
-
-
-
-

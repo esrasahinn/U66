@@ -11,23 +11,39 @@ public class Buton3Rifle : MonoBehaviour
     private Healthbar _healthbar; // _healthbar referansý eklendi
     public Image buton4;
     public Text countdownText; // UI metin öðesi
+    [SerializeField]
+    private int coinCost = 5; // Alým için gereken coin miktarý
+
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
         player = PlayerBehaviour.GetInstance();
         _healthbar = FindObjectOfType<Healthbar>(); // _healthbar referansý alýndý
     }
+
     public void ButonTiklama()
     {
-        PlayerBehaviour.GetInstance().PerformLeftShiftAction();
-        controller.HidePopup();
-        controller.ResumeGame(); // Oyunu devam ettir
-        Debug.Log("Karakterin caný dolduruldu.");
-        countdownText.text = "5"; // Metin öðesini güncelle
-        countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
-        buton4.gameObject.SetActive(true); // Resmi etkinleþtir
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
+        {
+            collectCoinScript.coinAmount -= coinCost; // Coin miktarýndan düþülüyor
+            PlayerPrefs.SetInt("CoinAmount", collectCoinScript.coinAmount);
+            collectCoinScript.coinUI.text = collectCoinScript.coinAmount.ToString();
 
-        InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
+            PlayerBehaviour.GetInstance().PerformLeftShiftAction();
+            controller.HidePopup();
+            controller.ResumeGame(); // Oyunu devam ettir
+            Debug.Log("Karakterin caný dolduruldu.");
+            countdownText.text = "5"; // Metin öðesini güncelle
+            countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
+            buton4.gameObject.SetActive(true); // Resmi etkinleþtir
+
+            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
+        }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok.");
+        }
     }
 
     public void PlayerHeal(int healing)
@@ -36,6 +52,7 @@ public class Buton3Rifle : MonoBehaviour
         _healthbar.SetHealth(player._health);
         controller.HidePopup();
     }
+
     private void UpdateCountdown()
     {
         int remainingTime = int.Parse(countdownText.text); // Geri sayým süresini al

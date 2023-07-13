@@ -136,7 +136,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: da5ff950004c1b34abb3140a76badbb5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: da5ff950004c1b34abb3140a76badbb5,
         type: 3}
@@ -416,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: da5ff950004c1b34abb3140a76badbb5,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: da5ff950004c1b34abb3140a76badbb5,
         type: 3}
@@ -571,12 +571,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55,
     type: 3}
-  minCollectibles: 1
-  maxCollectibles: 2
-  minSplashForce: 1
-  maxSplashForce: 2
-  verticalForceMultiplier: 2
-  splashRadius: 2
+  minCollectibles: 50
+  maxCollectibles: 50
+  minSplashForce: 50
+  maxSplashForce: 50
+  verticalForceMultiplier: 50
+  splashRadius: 50
 --- !u!195 &430956554209972072
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -616,11 +616,11 @@ MonoBehaviour:
   can: 100
   maxHealth: 100
   healthSlider: {fileID: 6985224906779217201}
-  player: {fileID: 0}
+  playerTag: Player
   attackRange: 1.5
   detectionRange: 15
   meleeDamage: 0
-  expAmount: 0.3
+  expAmount: 0.25
   currentHealth: 100
 --- !u!54 &6308549623256570211
 Rigidbody:
@@ -710,12 +710,12 @@ PrefabInstance:
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5722728718972021786, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8171803596384634123, guid: b189690947baae94285b65d94d82ebc0,
         type: 3}

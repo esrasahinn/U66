@@ -126,12 +126,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 3980eea23667eaf4e8d93ca756136835,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3980eea23667eaf4e8d93ca756136835,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.7
+      value: 28.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3980eea23667eaf4e8d93ca756136835,
         type: 3}
@@ -635,7 +635,7 @@ MonoBehaviour:
     type: 3}
   maxHealth: 100
   healthSlider: {fileID: 8236408086097688180}
-  player: {fileID: 0}
+  playerTag: Player
   attackRange: 5
   attackCooldown: 0.7
   detectionRange: 10
@@ -647,7 +647,6 @@ MonoBehaviour:
   rangedDamage: 0
   currentHealth: 100
   expAmount: 1
-  playerTag: Player
 --- !u!4 &5264078252596179194 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3980eea23667eaf4e8d93ca756136835,
