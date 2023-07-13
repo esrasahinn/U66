@@ -16,6 +16,6 @@ public class RifleFire : MonoBehaviour
     private void Aktiflestir()
     {
         rifleScript.AktiflestirOzelYetenek();
-        // audiosource.Play();
+         audiosource.Play();
     }
 }
