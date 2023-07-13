@@ -14,11 +14,13 @@ public class expController : MonoBehaviour
     private bool isPopupShowing = false;
     private bool isGamePaused = false;
     private float buttonSpacing = 200f; // Butonlar arasýndaki yatay boþluk
+    AudioSource audiosource;
 
     private List<Button> activeButtons = new List<Button>();
 
     private void Update()
     {
+        audiosource = GetComponent<AudioSource>();
         if (!isGamePaused && currentFillAmount >= maxFillAmount)
         {
             PauseGame();
@@ -26,6 +28,7 @@ public class expController : MonoBehaviour
             currentFillAmount = 0f;
             expBar.fillAmount = currentFillAmount;
             SetRandomButtons();
+            
         }
 
         if (isGamePaused && !isPopupShowing && Input.GetKeyDown(KeyCode.Space))
@@ -41,6 +44,7 @@ public class expController : MonoBehaviour
             currentFillAmount += expIncreaseAmount * maxFillAmount;
             currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
             expBar.fillAmount = currentFillAmount;
+            audiosource.Play();
             HidePopup();
         }
     }
