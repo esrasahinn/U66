@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class EndCube : MonoBehaviour
 {
     private LevelManager levelManager;
+
     private bool canEnterNextLevel = false;
 
     private void Start()
@@ -15,7 +16,11 @@ public class EndCube : MonoBehaviour
     {
         if (other.CompareTag("Player") && canEnterNextLevel)
         {
-            levelManager.EndLevel();
+          
+            other.gameObject.SetActive(false); 
+            levelManager.Victory();
+
+        
         }
     }
 
@@ -24,16 +29,16 @@ public class EndCube : MonoBehaviour
         canEnterNextLevel = canEnter;
         if (canEnter)
         {
-            FindObjectOfType<UIManager>().SetStatusText("Kapýya Koþ!");
+            FindObjectOfType<UIManager>().SetStatusText("Kapï¿½ya Koï¿½!");
         }
         else
         {
-            FindObjectOfType<UIManager>().SetStatusText("Düþmanlarý Temizle!");
+            FindObjectOfType<UIManager>().SetStatusText("Dï¿½ï¿½manlarï¿½ Temizle!");
         }
     }
 
     public void EnemyDied()
     {
-        // Bu fonksiyonu boþ býrakabilirsiniz veya baþka bir iþlem yapabilirsiniz
+        // Bu fonksiyonu boï¿½ bï¿½rakabilirsiniz veya baï¿½ka bir iï¿½lem yapabilirsiniz
     }
 }

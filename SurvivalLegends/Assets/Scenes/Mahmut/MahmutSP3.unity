@@ -217,7 +217,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1020806965}
   - {fileID: 248065725}
   - {fileID: 2024909241}
   - {fileID: 879095591}
@@ -504,7 +503,7 @@ GameObject:
   - component: {fileID: 248065727}
   - component: {fileID: 248065726}
   m_Layer: 5
-  m_Name: "Men\xFC"
+  m_Name: Backgrond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -823,11 +822,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_GoblinArcher Variant (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 4775526356277193280, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5264078252596179194, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
         type: 3}
       propertyPath: m_RootOrder
@@ -977,11 +971,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_Giant Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 2758495140057025979, guid: 5277bfd015db00e4599176862fa3239a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3243704550805067521, guid: 5277bfd015db00e4599176862fa3239a,
         type: 3}
       propertyPath: m_RootOrder
@@ -1094,11 +1083,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SK_GoblinArcher Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 4775526356277193280, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5264078252596179194, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
         type: 3}
@@ -1798,7 +1782,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1556005847}
   - {fileID: 1369874311}
   - {fileID: 488259471}
   - {fileID: 1516324529}
@@ -1813,82 +1796,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1020806964
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1020806965}
-  - component: {fileID: 1020806967}
-  - component: {fileID: 1020806966}
-  m_Layer: 5
-  m_Name: background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1020806965
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020806964}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 29.609999, y: 14.37188, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 62826008}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1020806966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020806964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 90e28b5fd3fdeef49b5d3dd2bdfb0fe7, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1020806967
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020806964}
-  m_CullTransparentMesh: 1
 --- !u!1 &1022734883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2374,11 +2281,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_Boss Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 2539993419141418170, guid: dd4c6df486e876941ae1bab07562c8f5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2914970399038068224, guid: dd4c6df486e876941ae1bab07562c8f5,
         type: 3}
       propertyPath: m_RootOrder
@@ -2471,7 +2373,7 @@ GameObject:
   - component: {fileID: 1369874313}
   - component: {fileID: 1369874312}
   m_Layer: 5
-  m_Name: "men\xFC"
+  m_Name: Backgrond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2724,7 +2626,7 @@ GameObject:
   - component: {fileID: 1516324531}
   - component: {fileID: 1516324530}
   m_Layer: 5
-  m_Name: Contiune
+  m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2832,82 +2734,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516324528}
   m_CullTransparentMesh: 1
---- !u!1 &1556005846
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1556005847}
-  - component: {fileID: 1556005849}
-  - component: {fileID: 1556005848}
-  m_Layer: 5
-  m_Name: background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1556005847
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556005846}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 29.61, y: 14.371876, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 888079340}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1556005848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556005846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 90e28b5fd3fdeef49b5d3dd2bdfb0fe7, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1556005849
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556005846}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1575462201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2940,11 +2766,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SK_GoblinArcher Variant (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4775526356277193280, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5264078252596179194, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
         type: 3}
@@ -3163,11 +2984,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_GoblinArcher Variant (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4775526356277193280, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5264078252596179194, guid: 3c7f4a3e79dd1fc46ba03e39f3b02f7a,
         type: 3}
       propertyPath: m_RootOrder
@@ -3381,11 +3197,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SK_Troll Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 2456142213653085713, guid: fa3cd151b77d48a40885e7ff3e49660e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2966262624203804427, guid: fa3cd151b77d48a40885e7ff3e49660e,
         type: 3}
       propertyPath: player
@@ -3479,11 +3290,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CanvasCoin
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701655913548567968, guid: 37589c072f8e7f6458662e7382c1162a,
-        type: 3}
-      propertyPath: m_text
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5727935764201314186, guid: 37589c072f8e7f6458662e7382c1162a,
         type: 3}
@@ -3737,16 +3543,6 @@ PrefabInstance:
       propertyPath: endCube
       value: 
       objectReference: {fileID: 732818716}
-    - target: {fileID: 6723454425767068648, guid: 6ea79925aec8d2a48872d96fa66035a1,
-        type: 3}
-      propertyPath: victory
-      value: 
-      objectReference: {fileID: 888079336}
-    - target: {fileID: 6723454425767068648, guid: 6ea79925aec8d2a48872d96fa66035a1,
-        type: 3}
-      propertyPath: defaited
-      value: 
-      objectReference: {fileID: 62826004}
     - target: {fileID: 6723454425767068648, guid: 6ea79925aec8d2a48872d96fa66035a1,
         type: 3}
       propertyPath: statusText
@@ -4078,11 +3874,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SK_MiniGoblin Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 1729650864040205940, guid: 2244be5fd32a49b46a5e2cf0bbbb63f2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1857499644080932751, guid: 2244be5fd32a49b46a5e2cf0bbbb63f2,
         type: 3}
