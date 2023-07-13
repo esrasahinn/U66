@@ -15,9 +15,16 @@ public class LevelMenu : MonoBehaviour
 
     private int selectedLevel;
 
-    private void Awake()
+    private PlayerScripts playerScripts;
+
+private void Awake()
+{
+    playerScripts = FindObjectOfType<PlayerScripts>();
+    playerScripts.LoadPlayer();
+    Debug.Log(playerScripts.level);
+    if (playerScripts != null)
     {
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", playerScripts.level);
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].image.sprite = kilitliSprite; // Tüm butonların görüntüsünü kilitli sprite ile başlat
@@ -29,7 +36,11 @@ public class LevelMenu : MonoBehaviour
             buttons[i].interactable = true;
         }
     }
-
+    else
+    {
+        Debug.LogError("PlayerScripts component not found in the scene!");
+    }
+}
     public void OpenMap(int mapId)
     {
         selectedLevel = mapId;

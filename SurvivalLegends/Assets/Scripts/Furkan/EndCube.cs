@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 public class EndCube : MonoBehaviour
 {
     private LevelManager levelManager;
+    private PlayerScripts playerScripts;
 
     private bool canEnterNextLevel = false;
 
     private void Start()
     {
         levelManager = FindObjectOfType<LevelManager>();
+        playerScripts = FindObjectOfType<PlayerScripts>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +21,8 @@ public class EndCube : MonoBehaviour
           
             other.gameObject.SetActive(false); 
             levelManager.Victory();
+            playerScripts.LoadPlayer();
+
 
         
         }
