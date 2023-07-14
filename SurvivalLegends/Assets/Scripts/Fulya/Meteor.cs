@@ -9,6 +9,7 @@ public class Meteor : MonoBehaviour
     public int dusmanHasarMiktari = 10; // Düþmana verilecek hasar miktarý
     private Rigidbody rb;
     private bool hasHitEnemy = false;
+    private GameObject silindir;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class Meteor : MonoBehaviour
         rb.isKinematic = false; // Kinematic modunu devre dýþý býrak
         rb.velocity = Vector3.down * fallSpeed;
 
-        // Meteoru düsmana at
+        // Meteoru düþmana at
         transform.SetParent(dusman.transform);
     }
 
@@ -54,10 +55,15 @@ public class Meteor : MonoBehaviour
             }
 
             // Silindir prefabini düþmanýn yerine yerleþtir
-            Instantiate(silindirPrefab, other.transform.position, other.transform.rotation);
+            silindir = Instantiate(silindirPrefab, other.transform.position, other.transform.rotation);
 
             Destroy(gameObject); // Meteoru yok et
+
+            // Silindir prefabini belirli bir süre sonra yok et
+            Destroy(silindir, 5f);
         }
     }
 }
+
+
 

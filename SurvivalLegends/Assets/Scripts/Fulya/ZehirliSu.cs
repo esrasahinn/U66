@@ -54,9 +54,12 @@ public class ZehirliSu : MonoBehaviour
             }
 
             // Silindir prefabini düþmanýn yerine yerleþtir
-            Instantiate(silindirPrefab, other.transform.position, other.transform.rotation);
+            GameObject silindir = Instantiate(silindirPrefab, other.transform.position, other.transform.rotation);
 
             Destroy(gameObject); // Zehirli suyu yok et
+
+            // Silindir prefabini belirli bir süre sonra yok et
+            Destroy(silindir, 5f);
         }
     }
 }
