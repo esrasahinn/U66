@@ -76,6 +76,42 @@ public class Buton2 : MonoBehaviour
         }
     }
 
+    public void ButonTiklamaRifle()
+    {
+        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
+
+        if (playerCoins >= coinCost && !hasarAlmamaAktif)
+        {
+            playerCoins -= coinCost; // Coinlerden düþülüyor
+            PlayerPrefs.SetInt("CoinAmount", playerCoins);
+
+            hasarAlmamaAktif = true;
+            controller.HidePopup();
+            controller.ResumeGame();
+            hasarAlmamaSureKalan = hasarAlmamaSure;
+            Debug.Log("Hasar almama süresi baþladý.");
+
+            playerBehaviour.ActivateImmunity(hasarAlmamaSure);
+            countdownText.text = Mathf.CeilToInt(hasarAlmamaSure).ToString();
+            countdownText.gameObject.SetActive(true);
+            buton2.gameObject.SetActive(true);
+
+            // Coin sayýsýný güncelle
+            CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+            if (collectCoinScript != null)
+            {
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
+            }
+
+            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
+        }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok veya hasar almama zaten aktif.");
+        }
+    }
+
     private void UpdateCountdown()
     {
         int remainingTime = Mathf.CeilToInt(hasarAlmamaSureKalan);

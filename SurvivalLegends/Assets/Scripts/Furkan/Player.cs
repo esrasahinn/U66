@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] JoyStick moveStick;
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
-    [SerializeField] public float moveSpeed = 20f;
+    public float moveSpeed = 20f;
     [SerializeField] float maxMoveSpeed = 50f;
     [SerializeField] float minMoveSpeed = 10f;
     [SerializeField] float turnSpeed = 30f;
@@ -39,6 +39,11 @@ public class Player : MonoBehaviour
 
     public static Player instance;
     float animatorTurnSpeed;
+
+    // Hýzlandýrma özelliði için deðiþkenler
+    public bool isSpeedBoostActive = false;
+    public float originalMoveSpeed;
+    public float speedBoostDuration;
 
     internal void AddMoveSpeed(float boostAmt)
     {
@@ -173,6 +178,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        originalMoveSpeed = moveSpeed; // Ýlk hýzý kaydet
     }
 
     public void HasarAl(int hasar)

@@ -56,13 +56,13 @@ public class Buton6 : MonoBehaviour
                 countdownText.gameObject.SetActive(false);
                 buton6.gameObject.SetActive(false);
             }
+            controller.HidePopup();
+            controller.ResumeGame();
         }
         else
         {
             Debug.Log("Yeterli coininiz yok.");
         }
-        controller.HidePopup();
-        controller.ResumeGame();
     }
 
     private void SpawnFlyingCube()

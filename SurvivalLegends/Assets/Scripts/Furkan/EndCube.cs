@@ -33,11 +33,11 @@ public class EndCube : MonoBehaviour
         canEnterNextLevel = canEnter;
         if (canEnter)
         {
-            FindObjectOfType<UIManager>().SetStatusText("Kap�ya Ko�!");
+            FindObjectOfType<UIManager>().SetStatusText("Enemies cleared. Find the exit!");
         }
         else
         {
-            FindObjectOfType<UIManager>().SetStatusText("D��manlar� Temizle!");
+            FindObjectOfType<UIManager>().SetStatusText("Kill the Enemies!");
         }
     }
 
