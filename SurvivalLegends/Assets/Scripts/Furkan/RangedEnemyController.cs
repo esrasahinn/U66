@@ -27,7 +27,7 @@ public class RangedEnemyController : MonoBehaviour
     [SerializeField] float expAmount = 0.1f;
     private LevelManager levelManager;
     DropCoin coinScript;
-    AudioSource audiosource;
+
     private float nextAttackTime;
 
     private void Awake()
@@ -43,7 +43,6 @@ public class RangedEnemyController : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
         player = GameObject.FindGameObjectWithTag(playerTag); // Oyuncuyu tagi kullanarak bulma
-        audiosource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -123,7 +122,6 @@ public class RangedEnemyController : MonoBehaviour
     void Die()
     {
         Debug.Log("Düþman öldü.");
-        audiosource.Play();
         isDead = true;
         animator.SetTrigger("Death");
         enemy.enabled = false;
