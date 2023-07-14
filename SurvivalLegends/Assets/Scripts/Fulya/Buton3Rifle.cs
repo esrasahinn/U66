@@ -10,6 +10,8 @@ public class Buton3Rifle : MonoBehaviour
     private PlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
     public Image buton4;
+    public GameObject healPrefab; // Heal prefabý eklendi
+    private GameObject healInstance; // Heal prefabý örneði eklendi
     public Text countdownText; // UI metin öðesi
     [SerializeField]
     private int coinCost = 5; // Alým için gereken coin miktarý
@@ -37,6 +39,13 @@ public class Buton3Rifle : MonoBehaviour
             countdownText.text = "5"; // Metin öðesini güncelle
             countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
             buton4.gameObject.SetActive(true); // Resmi etkinleþtir
+
+            // Heal prefabýný oluþtur ve player'ýn alt nesnesi yap
+            healInstance = Instantiate(healPrefab, player.transform.position, Quaternion.identity);
+            healInstance.transform.parent = player.transform;
+
+            // Heal prefabýný aktifleþtir
+            healInstance.SetActive(true);
 
             InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
         }
@@ -67,6 +76,14 @@ public class Buton3Rifle : MonoBehaviour
             countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
             buton4.gameObject.SetActive(false); // Resmi devre dýþý býrak
             Debug.Log("Geri sayým tamamlandý.");
+
+            // Heal prefabýný kapat
+            if (healInstance != null)
+            {
+                healInstance.SetActive(false);
+                Destroy(healInstance);
+            }
         }
     }
 }
+

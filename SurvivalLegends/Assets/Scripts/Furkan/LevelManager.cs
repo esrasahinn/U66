@@ -26,7 +26,7 @@ public class LevelManager : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
 
         // Ba�lang��ta d��manlar� temizle mesaj�n� g�ncelleyin
-        uiManager.SetStatusText("D��manlar� Temizle!");
+        uiManager.SetStatusText("Kill the Enemies!");
     }
 
     public void EnemyDied()
@@ -38,12 +38,12 @@ public class LevelManager : MonoBehaviour
             // B�t�n d��manlar �ld�, son k�pten ge�i�e izin ver
             endCube.SetCanEnterNextLevel(true);
             // Kap�ya ko� mesaj�n� g�ncelle
-            uiManager.SetStatusText("Kap�ya Ko�!");
+            uiManager.SetStatusText("Enemies cleared. Find the exit!");
         }
         else if (deadEnemyCount < enemyCount)
         {
             // Hen�z t�m d��manlar �lmediyse, mesaj� "D��manlar� Temizle!" olarak g�ncelle
-            uiManager.SetStatusText("D��manlar� Temizle!");
+            uiManager.SetStatusText("Kill the Enemies!");
         }
     }
 
