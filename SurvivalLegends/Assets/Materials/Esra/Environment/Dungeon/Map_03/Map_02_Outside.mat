@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Obstacle 1
+  m_Name: Map_02_Outside
   m_Shader: {fileID: 4800000, guid: e88aeddd2ef1f934d805981244872e27, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _EMISSION
   - _HALFTONESHAPE_DOT
   - _OUTLINE
   - _RECEIVE_SHADOWS_OFF
@@ -20,10 +19,9 @@ Material:
   - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_InvalidKeywords:
   - _METALLICSPECGLOSSMAP
-  - _OVERRIDESHADOWCOLOR_ON
   - _RECEIVESHADOWS_OFF
   - _STEPVIARAMPTEXTURE_ON
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2050
@@ -111,7 +109,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RampTex:
-        m_Texture: {fileID: 2800000, guid: 45f3aaac46d6648e3894fd466a4115f3, type: 3}
+        m_Texture: {fileID: 2800000, guid: e2407df28cf36d440afe93d2a43517f2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RimLightSampler:
@@ -155,7 +153,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _DiffuseStep: 0.171
+    - _DiffuseStep: -0.488
     - _DitherTexelSize: 1
     - _DitherThreshold: 1
     - _DstBlend: 0
@@ -199,14 +197,14 @@ Material:
     - _OutlineEnabled: 1
     - _OutlineMode: 0
     - _OutlineWidth: 2.5
-    - _OverrideShadowColor: 1
+    - _OverrideShadowColor: 0
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 0
     - _RimEnabled: 1
-    - _RimLightAlign: 0.4
+    - _RimLightAlign: -0.18
     - _RimLightSmoothness: 1
-    - _RimPower: 0.376
+    - _RimPower: 0.596
     - _Shininess: 0
     - _SizeFalloff: 0
     - _Smoothness: 0.281
@@ -228,14 +226,14 @@ Material:
     - _Surface: 0
     - _ToonBlending: 1
     - _ToonEnabled: 0
-    - _UseRampColor: 1
+    - _UseRampColor: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     - _brushScale: 8
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.07227322, b: 0, a: 1}
+    - _BaseColor: {r: 0.120016016, g: 0.13415016, b: 0.2924528, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0.6886792, g: 0.022517633, b: 0.0032484946, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FaceFrontDirection: {r: 0, g: 0, b: 1, a: 0}
     - _FaceRightDirection: {r: 1, g: 0, b: 0, a: 0}
     - _HairSpecColor: {r: 0, g: 0, b: 0, a: 1}
@@ -243,7 +241,7 @@ Material:
     - _HatchingColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineDistancFade: {r: -25, g: 50, b: 0, a: 0}
-    - _RimColor: {r: 0.9716981, g: 0.038842294, b: 0, a: 0.933}
+    - _RimColor: {r: 1, g: 0.5373238, b: 0.25943398, a: 0.809}
     - _ShadowColor: {r: 0, g: 0, b: 0, a: 0.022}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 0.281}
     - _SpherizeNormalOrigin: {r: 0, g: 0, b: 0, a: 0}
