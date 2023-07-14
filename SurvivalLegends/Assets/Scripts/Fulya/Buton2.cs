@@ -17,11 +17,16 @@ public class Buton2 : MonoBehaviour
     [SerializeField]
     private int coinCost = 5; // Alým için gereken coin miktarý
 
+    private Button button;
+
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
         arcPlayerBehaviour = FindObjectOfType<ArcherPlayerBehaviour>();
         playerBehaviour = FindObjectOfType<PlayerBehaviour>();
+
+        button = GetComponent<Button>();
+        UpdateButtonInteractivity();
     }
 
     private void Update()
@@ -89,6 +94,8 @@ public class Buton2 : MonoBehaviour
         {
             Debug.Log("Yeterli coininiz yok veya hasar almama zaten aktif.");
         }
+
+        UpdateButtonInteractivity();
     }
 
     public void ButonTiklamaRifle()
@@ -132,6 +139,8 @@ public class Buton2 : MonoBehaviour
         {
             Debug.Log("Yeterli coininiz yok veya hasar almama zaten aktif.");
         }
+
+        UpdateButtonInteractivity();
     }
 
     private void UpdateCountdown()
@@ -156,6 +165,17 @@ public class Buton2 : MonoBehaviour
             }
         }
     }
+
+    public void UpdateButtonInteractivity()
+    {
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost && !hasarAlmamaAktif)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
+    }
 }
-
-
