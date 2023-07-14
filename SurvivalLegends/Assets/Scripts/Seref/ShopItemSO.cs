@@ -6,7 +6,10 @@ using UnityEngine;
 public class ShopItemSO : ScriptableObject
 {
     public int baseCost;
-    public Mesh itemMesh;
+    public SkinnedMeshRenderer itemMesh;
     public bool IsPurchased;
     public bool IsEquipped;
+    public int characterIndex;
+
+
 }

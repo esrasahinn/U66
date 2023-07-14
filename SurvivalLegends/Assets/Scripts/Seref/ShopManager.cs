@@ -14,6 +14,7 @@ public class ShopManager : MonoBehaviour
     public Button[] purchaseBtns;
     public Button[] equipBtns;
     public Button[] unequipBtns;
+    public CharachterSelectShop chrctrSlct;
 
     private const string DiamondAmountKey = "DiamondAmount";
 
@@ -22,7 +23,9 @@ public class ShopManager : MonoBehaviour
         diamondScript.diamondAmount = PlayerPrefs.GetInt("Diamond", 10);
         for (int i = 0; i < shopItemSO.Length; i++)
         {
-            shopPanelsGO[i].gameObject.SetActive(true);
+            {
+                shopPanelsGO[i].gameObject.SetActive(true);
+            }
         }
 
         LoadDiamondCount();
@@ -34,16 +37,22 @@ public class ShopManager : MonoBehaviour
 
     void Update()
     {
-
+        LoadPanels();
     }
 
     public void LoadPanels()
     {
+        int selectedCharacter = chrctrSlct.SelectedCharacter;
+
         for (int i = 0; i < shopItemSO.Length; i++)
         {
+            bool isActive = (shopItemSO[i].characterIndex == selectedCharacter);
+
+            shopPanelsGO[i].SetActive(isActive);
             shopPanels[i].costTxt.text = shopItemSO[i].baseCost.ToString();
         }
     }
+
 
     public void CheckPurchasable()
     {
@@ -104,10 +113,11 @@ public class ShopManager : MonoBehaviour
                 purchaseBtns[i].gameObject.SetActive(true);
                 equipBtns[i].gameObject.SetActive(false);
                 unequipBtns[i].gameObject.SetActive(false);
-                shopPanelsGO[i].SetActive(false);
+                shopPanelsGO[i].SetActive(true);
             }
         }
     }
+
 
     public void EquipItem(int btnNo)
     {
@@ -116,11 +126,14 @@ public class ShopManager : MonoBehaviour
         if (!currentItem.IsEquipped)
         {
             currentItem.IsEquipped = true;
+            if (currentItem.itemMesh != null)
+            {
+                currentItem.itemMesh.enabled = true;
+            }
 
             purchaseBtns[btnNo].gameObject.SetActive(false);
             equipBtns[btnNo].gameObject.SetActive(false);
             unequipBtns[btnNo].gameObject.SetActive(true);
-
             shopPanelsGO[btnNo].SetActive(true);
 
             CheckEquipped();
@@ -134,6 +147,10 @@ public class ShopManager : MonoBehaviour
         if (currentItem.IsEquipped)
         {
             currentItem.IsEquipped = false;
+            if (currentItem.itemMesh != null)
+            {
+                currentItem.itemMesh.enabled = false;
+            }
 
             purchaseBtns[btnNo].gameObject.SetActive(false);
             equipBtns[btnNo].gameObject.SetActive(true);
@@ -144,6 +161,7 @@ public class ShopManager : MonoBehaviour
             CheckEquipped();
         }
     }
+
 
     public void AdDia()
     {
