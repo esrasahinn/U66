@@ -9,18 +9,23 @@ public class Buton3Rifle : MonoBehaviour
     private expController controller;
     private PlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
-    public Image buton4;
+    public Image buton3;
     public GameObject healPrefab; // Heal prefabý eklendi
     private GameObject healInstance; // Heal prefabý örneði eklendi
     public Text countdownText; // UI metin öðesi
     [SerializeField]
     private int coinCost = 5; // Alým için gereken coin miktarý
 
+    private Button button;
+
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
         player = PlayerBehaviour.GetInstance();
         _healthbar = FindObjectOfType<Healthbar>(); // _healthbar referansý alýndý
+
+        button = GetComponent<Button>();
+        UpdateButtonInteractivity();
     }
 
     public void ButonTiklama()
@@ -38,7 +43,7 @@ public class Buton3Rifle : MonoBehaviour
             Debug.Log("Karakterin caný dolduruldu.");
             countdownText.text = "5"; // Metin öðesini güncelle
             countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
-            buton4.gameObject.SetActive(true); // Resmi etkinleþtir
+            buton3.gameObject.SetActive(true); // Resmi etkinleþtir
 
             // Heal prefabýný oluþtur ve player'ýn alt nesnesi yap
             healInstance = Instantiate(healPrefab, player.transform.position, Quaternion.identity);
@@ -53,6 +58,8 @@ public class Buton3Rifle : MonoBehaviour
         {
             Debug.Log("Yeterli coininiz yok.");
         }
+
+        UpdateButtonInteractivity();
     }
 
     public void PlayerHeal(int healing)
@@ -74,7 +81,7 @@ public class Buton3Rifle : MonoBehaviour
             CancelInvoke(nameof(UpdateCountdown));
             countdownText.text = ""; // Metin öðesini temizle
             countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
-            buton4.gameObject.SetActive(false); // Resmi devre dýþý býrak
+            buton3.gameObject.SetActive(false); // Resmi devre dýþý býrak
             Debug.Log("Geri sayým tamamlandý.");
 
             // Heal prefabýný kapat
@@ -85,5 +92,17 @@ public class Buton3Rifle : MonoBehaviour
             }
         }
     }
-}
 
+    public void UpdateButtonInteractivity()
+    {
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
+    }
+}

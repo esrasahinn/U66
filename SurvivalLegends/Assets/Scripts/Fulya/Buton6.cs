@@ -15,17 +15,22 @@ public class Buton6 : MonoBehaviour
     [SerializeField]
     private int coinCost = 5; // Alým için gereken coin miktarý
 
+    private Button button;
+
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
+        button = GetComponent<Button>();
+        UpdateButtonInteractivity();
     }
 
     public void ButonTiklama()
     {
-        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
-
-        if (playerCoins >= coinCost)
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
         {
+            int playerCoins = collectCoinScript.coinAmount;
+
             playerCoins -= coinCost; // Coinlerden düþülüyor
             PlayerPrefs.SetInt("CoinAmount", playerCoins);
 
@@ -41,12 +46,8 @@ public class Buton6 : MonoBehaviour
                 InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
 
                 // Coin sayýsýný güncelle
-                CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
-                if (collectCoinScript != null)
-                {
-                    collectCoinScript.coinAmount = playerCoins;
-                    collectCoinScript.coinUI.text = playerCoins.ToString();
-                }
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
             }
             else
             {
@@ -56,8 +57,11 @@ public class Buton6 : MonoBehaviour
                 countdownText.gameObject.SetActive(false);
                 buton6.gameObject.SetActive(false);
             }
+
             controller.HidePopup();
             controller.ResumeGame();
+
+            UpdateButtonInteractivity();
         }
         else
         {
@@ -102,6 +106,19 @@ public class Buton6 : MonoBehaviour
             countdownText.gameObject.SetActive(false);
             buton6.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
+        }
+    }
+
+    public void UpdateButtonInteractivity()
+    {
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
         }
     }
 }

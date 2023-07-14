@@ -9,7 +9,7 @@ public class NinjaPlayer : MonoBehaviour
     [SerializeField] JoyStick moveStick;
     [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
-    [SerializeField] public float moveSpeed = 20f;
+    public float moveSpeed = 20f;
     [SerializeField] float maxMoveSpeed = 50f;
     [SerializeField] float minMoveSpeed = 10f;
     [SerializeField] float turnSpeed = 30f;
@@ -45,9 +45,11 @@ public class NinjaPlayer : MonoBehaviour
 
     public static NinjaPlayer instance;
     float animatorTurnSpeed;
+    public bool isSpeedBoostActive = false;
+    public float originalMoveSpeed;
+    public float speedBoostDuration;
 
-
-   public void AddMoveSpeed(float boostAmt)
+    public void AddMoveSpeed(float boostAmt)
     {
         moveSpeed += boostAmt;
         moveSpeed = Mathf.Clamp(moveSpeed, minMoveSpeed, maxMoveSpeed);
