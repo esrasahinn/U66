@@ -44,7 +44,7 @@ private void Awake()
     public void OpenMap(int mapId)
     {
         selectedLevel = mapId;
-        // confirmationText.text = "Are you sure you want to access Level " + mapId + "?";
+
         confirmationPopup.SetActive(true);
     }
 
