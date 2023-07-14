@@ -8,10 +8,29 @@ public class CollectCoin : MonoBehaviour
 {
     public int coinAmount;
     public TMP_Text coinUI;
+    public Buton1 buton1;
+    public Buton2 buton2;
+
+    private const string CoinAmountKey = "CoinAmount";
+
+    private void OnEnable()
+    {
+        ADController.OnGaveReward += GiveCoin;
+    }
+
+    private void OnDisable()
+    {
+        ADController.OnGaveReward -= GiveCoin;
+    }
+
+    private void GiveCoin()
+    {
+        coinAmount += 50;
+    }
 
     private void Awake()
     {
-        coinAmount = PlayerPrefs.GetInt("CoinAmount", 0);
+        ResetCoinAmount();
         coinUI.text = coinAmount.ToString();
     }
 
@@ -20,10 +39,26 @@ public class CollectCoin : MonoBehaviour
         if (other.CompareTag("Coin"))
         {
             coinAmount++;
-            PlayerPrefs.SetInt("CoinAmount", coinAmount);
+            PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
             Debug.Log(coinAmount + " coins.");
             coinUI.text = coinAmount.ToString();
             Destroy(other.gameObject);
+
+            // Butonlarýn durumunu kontrol et ve pasif hale getir
+            buton1.UpdateButtonInteractivity();
+            //buton2.UpdateButtonInteractivity();
         }
+    }
+
+    private void ResetCoinAmount()
+    {
+        coinAmount = 0; // Oyun baþýnda coin miktarýný sýfýrla
+        PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
+    }
+
+    private void Start()
+    {
+        ResetCoinAmount();
+        coinUI.text = coinAmount.ToString();
     }
 }

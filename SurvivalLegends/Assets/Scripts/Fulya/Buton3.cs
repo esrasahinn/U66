@@ -9,7 +9,7 @@ public class Buton3 : MonoBehaviour
     private expController controller;
     private ArcherPlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
-    public Image buton4;
+    public Image buton3;
     public Text countdownText;
 
     [SerializeField]
@@ -49,7 +49,7 @@ public class Buton3 : MonoBehaviour
 
             countdownText.text = "5";
             countdownText.gameObject.SetActive(true);
-            buton4.gameObject.SetActive(true);
+            buton3.gameObject.SetActive(true);
 
             InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
         }
@@ -76,7 +76,7 @@ public class Buton3 : MonoBehaviour
             CancelInvoke(nameof(UpdateCountdown));
             countdownText.text = "";
             countdownText.gameObject.SetActive(false);
-            buton4.gameObject.SetActive(false);
+            buton3.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
         }
     }
