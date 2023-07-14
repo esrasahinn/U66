@@ -10,6 +10,8 @@ public class Buton2 : MonoBehaviour
     private ArcherPlayerBehaviour arcPlayerBehaviour;
     private PlayerBehaviour playerBehaviour;
     public Image buton2;
+    public GameObject kalkanPrefab;
+    private GameObject kalkanInstance;
     public Text countdownText;
 
     [SerializeField]
@@ -35,6 +37,12 @@ public class Buton2 : MonoBehaviour
                     hasarAlmamaAktif = false;
                     arcPlayerBehaviour.DeactivateImmunity();
                     Debug.Log("Hasar alma süresi doldu.");
+
+                    // Kalkan prefabýný kapat
+                    if (kalkanInstance != null)
+                    {
+                        kalkanInstance.SetActive(false);
+                    }
                 }
             }
         }
@@ -59,6 +67,13 @@ public class Buton2 : MonoBehaviour
             countdownText.text = Mathf.CeilToInt(hasarAlmamaSure).ToString();
             countdownText.gameObject.SetActive(true);
             buton2.gameObject.SetActive(true);
+
+            // Kalkan prefabýný oluþtur ve player'ýn alt nesnesi yap
+            kalkanInstance = Instantiate(kalkanPrefab, playerBehaviour.transform.position, Quaternion.identity);
+            kalkanInstance.transform.parent = playerBehaviour.transform;
+
+            // Kalkan prefabýný aktifleþtir
+            kalkanInstance.SetActive(true);
 
             // Coin sayýsýný güncelle
             CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
@@ -96,6 +111,13 @@ public class Buton2 : MonoBehaviour
             countdownText.gameObject.SetActive(true);
             buton2.gameObject.SetActive(true);
 
+            // Kalkan prefabýný oluþtur ve player'ýn alt nesnesi yap
+            kalkanInstance = Instantiate(kalkanPrefab, playerBehaviour.transform.position, Quaternion.identity);
+            kalkanInstance.transform.parent = playerBehaviour.transform;
+
+            // Kalkan prefabýný aktifleþtir
+            kalkanInstance.SetActive(true);
+
             // Coin sayýsýný güncelle
             CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
             if (collectCoinScript != null)
@@ -125,6 +147,15 @@ public class Buton2 : MonoBehaviour
             countdownText.gameObject.SetActive(false);
             buton2.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
+
+            // Kalkan prefabýný kapat
+            if (kalkanInstance != null)
+            {
+                kalkanInstance.SetActive(false);
+                Destroy(kalkanInstance);
+            }
         }
     }
 }
+
+

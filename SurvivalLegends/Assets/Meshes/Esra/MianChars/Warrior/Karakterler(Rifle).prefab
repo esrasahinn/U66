@@ -2355,7 +2355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2403852269977475000
 Transform:
   m_ObjectHideFlags: 0
@@ -2548,12 +2548,12 @@ PrefabInstance:
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4820201345627484699, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -3330,6 +3330,12 @@ PrefabInstance:
       objectReference: {fileID: 6720844358271496058}
     - target: {fileID: 367487488019107013, guid: a885877d0d6277843a0d9994d6018f5e,
         type: 3}
+      propertyPath: kalkanPrefab
+      value: 
+      objectReference: {fileID: 5919487051006943488, guid: b593386595f2c6d47b71bc15a64410ff,
+        type: 3}
+    - target: {fileID: 367487488019107013, guid: a885877d0d6277843a0d9994d6018f5e,
+        type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 5156763672764231459}
@@ -3826,6 +3832,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buton4: {fileID: 2887699763975150439}
+  healPrefab: {fileID: 8805847706772148129, guid: 0b47225004899754981e24620d8e4f2c,
+    type: 3}
   countdownText: {fileID: 1856381630236758732}
   coinCost: 5
 --- !u!114 &2807569780680867052 stripped

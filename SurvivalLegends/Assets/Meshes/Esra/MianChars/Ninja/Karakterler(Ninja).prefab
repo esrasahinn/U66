@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4654490102207212554
 Transform:
   m_ObjectHideFlags: 0
@@ -3194,6 +3194,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1928216924342377458, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
+      propertyPath: healPrefab
+      value: 
+      objectReference: {fileID: 8805847706772148129, guid: 0b47225004899754981e24620d8e4f2c,
+        type: 3}
+    - target: {fileID: 1928216924342377458, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
       propertyPath: countdownText
       value: 
       objectReference: {fileID: 4914323678020680899}
@@ -3408,6 +3414,12 @@ PrefabInstance:
       propertyPath: coinCost
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7486116531688008230, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: kalkanPrefab
+      value: 
+      objectReference: {fileID: 5919487051006943488, guid: b593386595f2c6d47b71bc15a64410ff,
+        type: 3}
     - target: {fileID: 7486116531688008230, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: countdownText

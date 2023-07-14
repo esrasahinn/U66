@@ -10,6 +10,8 @@ public class Buton3 : MonoBehaviour
     private ArcherPlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
     public Image buton3;
+    public GameObject healPrefab; // Heal prefabý eklendi
+    private GameObject healInstance; // Heal prefabý örneði eklendi
     public Text countdownText;
 
     [SerializeField]
@@ -24,8 +26,6 @@ public class Buton3 : MonoBehaviour
 
     public void ButonTiklama()
     {
-       
-
         int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
 
         if (playerCoins >= coinCost && !canDoldurmaAktif)
@@ -50,6 +50,13 @@ public class Buton3 : MonoBehaviour
             countdownText.text = "5";
             countdownText.gameObject.SetActive(true);
             buton3.gameObject.SetActive(true);
+
+            // Heal prefabýný oluþtur ve player'ýn alt nesnesi yap
+            healInstance = Instantiate(healPrefab, player.transform.position, Quaternion.identity);
+            healInstance.transform.parent = player.transform;
+
+            // Heal prefabýný aktifleþtir
+            healInstance.SetActive(true);
 
             InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
         }
@@ -78,6 +85,13 @@ public class Buton3 : MonoBehaviour
             countdownText.gameObject.SetActive(false);
             buton3.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
+
+            // Heal prefabýný kapat
+            if (healInstance != null)
+            {
+                healInstance.SetActive(false);
+                Destroy(healInstance);
+            }
         }
     }
 }
