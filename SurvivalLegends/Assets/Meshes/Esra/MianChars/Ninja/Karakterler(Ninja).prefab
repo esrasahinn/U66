@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4654490102207212554
 Transform:
   m_ObjectHideFlags: 0
@@ -2897,12 +2897,12 @@ PrefabInstance:
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4562288700387888372, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4820201345627484699, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
@@ -3103,7 +3103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff0ae1c9f8dacb498c6867a359345fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinAmount: 0
+  coinAmount: 5
   coinUI: {fileID: 0}
   buton1: {fileID: 6182383001508181697}
   buton2: {fileID: 683942710012413959}
