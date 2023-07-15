@@ -131,5 +131,5 @@ public class PlayerBehaviour : MonoBehaviour
     {
         PlayerHeal(10);
         Debug.Log(GameManager.gameManager._dusmanHealth.Health);
-    }
+    } 
 }

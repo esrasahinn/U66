@@ -12,7 +12,7 @@ public class PlayerScripts : MonoBehaviour
     public int XP;
     public TMP_Text levelText;
     public TMP_Text levelText2;
-    private int previousLevel; // Önceki seviyeyi saklamak için değişken
+  
 
 
     private void Start()
@@ -23,22 +23,18 @@ public class PlayerScripts : MonoBehaviour
 
   public void SavePlayer()
 {
-    previousLevel = level; // Önceki seviyeyi sakla
+
 
     level++;
 
     // Diğer kaydetme işlemleri
     SaveSystem.SavePlayer(this);
-    SceneManager.LoadScene(4);
+    SceneManager.LoadScene(5);
     Debug.Log("Kayıt Başarılı!");
     Debug.Log(SaveSystem.LoadPlayer());
 }
 
-public void LoadPreviousLevel()
-{
-    level = previousLevel; 
-    SceneManager.LoadScene(previousLevel); 
-}
+
 
     public void LoadPlayer()
     {
