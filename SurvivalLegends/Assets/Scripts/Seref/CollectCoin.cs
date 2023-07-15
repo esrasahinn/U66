@@ -9,13 +9,7 @@ public class CollectCoin : MonoBehaviour
     public int coinAmount;
     public TMP_Text coinUI;
     public Buton1 buton1;
-    //public Buton1Ninja buton1N;
     public Buton2 buton2;
-    public Buton3 buton3;
-    //public Buton3Rifle buton3R;   
-    public Buton4 buton4;
-    public Buton5 buton5;
-    public Buton6 buton6;
 
     private const string CoinAmountKey = "CoinAmount";
 
@@ -32,14 +26,12 @@ public class CollectCoin : MonoBehaviour
     private void GiveCoin()
     {
         coinAmount += 50;
-        UpdateButtonInteractivity();
     }
 
     private void Awake()
     {
         ResetCoinAmount();
         coinUI.text = coinAmount.ToString();
-        UpdateButtonInteractivity();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,20 +46,13 @@ public class CollectCoin : MonoBehaviour
 
             // Butonlarýn durumunu kontrol et ve pasif hale getir
             buton1.UpdateButtonInteractivity();
-            //buton1N.UpdateButtonInteractivity();
-            buton2.UpdateButtonInteractivity();
-            buton3.UpdateButtonInteractivity();
-            //buton3R.UpdateButtonInteractivity();
-            buton4.UpdateButtonInteractivity();
-            buton5.UpdateButtonInteractivity();
-            buton6.UpdateButtonInteractivity();
+            //buton2.UpdateButtonInteractivity();
         }
     }
 
     private void ResetCoinAmount()
     {
-        coinAmount = 0;
-        //coinAmount = PlayerPrefs.GetInt(CoinAmountKey, 0);
+        coinAmount = 0; // Oyun baþýnda coin miktarýný sýfýrla
         PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
     }
 
@@ -75,25 +60,5 @@ public class CollectCoin : MonoBehaviour
     {
         ResetCoinAmount();
         coinUI.text = coinAmount.ToString();
-        buton1.UpdateButtonInteractivity();
-       // buton1N.UpdateButtonInteractivity();
-        buton2.UpdateButtonInteractivity();
-        buton3.UpdateButtonInteractivity();
-        //buton3R.UpdateButtonInteractivity();
-        buton4.UpdateButtonInteractivity();
-        buton5.UpdateButtonInteractivity();
-        buton6.UpdateButtonInteractivity();
-    }
-
-    public void UpdateButtonInteractivity()
-    {
-        buton1.UpdateButtonInteractivity();
-        //buton1N.UpdateButtonInteractivity();
-        buton2.UpdateButtonInteractivity();
-        buton3.UpdateButtonInteractivity();
-        //buton3R.UpdateButtonInteractivity();
-        buton4.UpdateButtonInteractivity();
-        buton5.UpdateButtonInteractivity();
-        buton6.UpdateButtonInteractivity();
     }
 }

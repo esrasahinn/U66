@@ -16,14 +16,10 @@ public class Buton1Ninja : MonoBehaviour
     [SerializeField]
     private int coinCost = 5; // Alým için gereken coin miktarý
 
-    private Button button;
-
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
         player = FindObjectOfType<NinjaPlayer>();
-        button = GetComponent<Button>();
-        UpdateButtonInteractivity();
     }
 
     private void Update()
@@ -34,7 +30,12 @@ public class Buton1Ninja : MonoBehaviour
 
             if (speedBoostDuration <= 0f)
             {
-                DisableSpeedBoost();
+                isSpeedBoostActive = false;
+                player.moveSpeed = originalMoveSpeed;
+                Debug.Log("Hýzlanma süresi bitti, hareket hýzý normale döndü.");
+                countdownText.text = "";
+                countdownText.gameObject.SetActive(false);
+                buton1.gameObject.SetActive(false);
             }
             else
             {
@@ -46,11 +47,10 @@ public class Buton1Ninja : MonoBehaviour
 
     public void ButonTiklama()
     {
-        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
-        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost && !isSpeedBoostActive)
-        {
-            int playerCoins = collectCoinScript.coinAmount;
+        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
 
+        if (playerCoins >= coinCost && !isSpeedBoostActive)
+        {
             playerCoins -= coinCost; // Coinlerden düþülüyor
             PlayerPrefs.SetInt("CoinAmount", playerCoins);
 
@@ -66,10 +66,12 @@ public class Buton1Ninja : MonoBehaviour
             Invoke(nameof(DisableSpeedBoost), speedBoostDuration);
 
             // Coin sayýsýný güncelle
-            collectCoinScript.coinAmount = playerCoins;
-            collectCoinScript.coinUI.text = playerCoins.ToString();
-
-            UpdateButtonInteractivity();
+            CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+            if (collectCoinScript != null)
+            {
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
+            }
         }
         else
         {
@@ -97,20 +99,5 @@ public class Buton1Ninja : MonoBehaviour
         countdownText.text = "";
         countdownText.gameObject.SetActive(false);
         buton1.gameObject.SetActive(false);
-
-        UpdateButtonInteractivity();
-    }
-
-    public void UpdateButtonInteractivity()
-    {
-        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
-        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost && !isSpeedBoostActive)
-        {
-            button.interactable = true;
-        }
-        else
-        {
-            button.interactable = false;
-        }
     }
 }

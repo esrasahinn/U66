@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,8 +7,7 @@ public class Buton3 : MonoBehaviour
 {
     private bool canDoldurmaAktif = false; // Can doldurma durumu
     private expController controller;
-    private ArcherPlayerBehaviour arcPlayer;
-    private PlayerBehaviour player;
+    private ArcherPlayerBehaviour player;
     private Healthbar _healthbar; // _healthbar referansý eklendi
     public Image buton3;
     public GameObject healPrefab; // Heal prefabý eklendi
@@ -16,79 +17,35 @@ public class Buton3 : MonoBehaviour
     [SerializeField]
     private int coinCost = 5; // Alým için gereken coin miktarý
 
-    private Button button;
-
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
-        arcPlayer = ArcherPlayerBehaviour.GetInstance();
-        player = PlayerBehaviour.GetInstance();
-
+        player = ArcherPlayerBehaviour.GetInstance();
         _healthbar = FindObjectOfType<Healthbar>();
-        button = GetComponent<Button>();
-        UpdateButtonInteractivity();
     }
 
     public void ButonTiklama()
     {
-        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
-        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost && !canDoldurmaAktif)
-        {
-            int playerCoins = collectCoinScript.coinAmount;
+        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
 
+        if (playerCoins >= coinCost && !canDoldurmaAktif)
+        {
             playerCoins -= coinCost; // Coinlerden düþülüyor
             PlayerPrefs.SetInt("CoinAmount", playerCoins);
 
             canDoldurmaAktif = true;
-            arcPlayer.PerformLeftShiftAction();
+            ArcherPlayerBehaviour.GetInstance().PerformLeftShiftAction();
             controller.HidePopup();
             controller.ResumeGame();
             Debug.Log("Karakterin caný dolduruldu.");
 
             // Coin sayýsýný güncelle
-            collectCoinScript.coinAmount = playerCoins;
-            collectCoinScript.coinUI.text = playerCoins.ToString();
-
-            countdownText.text = "5";
-            countdownText.gameObject.SetActive(true);
-            buton3.gameObject.SetActive(true);
-
-            // Heal prefabýný oluþtur ve player'ýn alt nesnesi yap
-            healInstance = Instantiate(healPrefab, arcPlayer.transform.position, Quaternion.identity);
-            healInstance.transform.parent = arcPlayer.transform;
-
-            // Heal prefabýný aktifleþtir
-            healInstance.SetActive(true);
-
-            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
-
-            UpdateButtonInteractivity();
-        }
-        else
-        {
-            Debug.Log("Yeterli coininiz yok veya can doldurma zaten aktif.");
-        }
-    }
-
-    public void ButonTiklamaRifle()
-    {
-        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
-        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost && !canDoldurmaAktif)
-        {
-            int playerCoins = collectCoinScript.coinAmount;
-
-            playerCoins -= coinCost; // Coinlerden düþülüyor
-            PlayerPrefs.SetInt("CoinAmount", playerCoins);
-
-            canDoldurmaAktif = true;
-            player.PerformLeftShiftAction();
-            controller.HidePopup();
-            controller.ResumeGame();
-            Debug.Log("Karakterin caný dolduruldu.");
-
-            // Coin sayýsýný güncelle
-            collectCoinScript.coinAmount = playerCoins;
-            collectCoinScript.coinUI.text = playerCoins.ToString();
+            CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+            if (collectCoinScript != null)
+            {
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
+            }
 
             countdownText.text = "5";
             countdownText.gameObject.SetActive(true);
@@ -102,13 +59,18 @@ public class Buton3 : MonoBehaviour
             healInstance.SetActive(true);
 
             InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
-
-            UpdateButtonInteractivity();
         }
         else
         {
             Debug.Log("Yeterli coininiz yok veya can doldurma zaten aktif.");
         }
+    }
+
+    public void PlayerHeal(int healing)
+    {
+        player.PlayerHeal(healing);
+        _healthbar.SetHealth(player._health);
+        controller.HidePopup();
     }
 
     private void UpdateCountdown()
@@ -130,19 +92,6 @@ public class Buton3 : MonoBehaviour
                 healInstance.SetActive(false);
                 Destroy(healInstance);
             }
-        }
-    }
-
-    public void UpdateButtonInteractivity()
-    {
-        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
-        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost && !canDoldurmaAktif)
-        {
-            button.interactable = true;
-        }
-        else
-        {
-            button.interactable = false;
         }
     }
 }
