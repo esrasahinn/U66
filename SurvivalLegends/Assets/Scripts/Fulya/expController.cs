@@ -43,7 +43,7 @@ public class expController : MonoBehaviour
             currentFillAmount += expIncreaseAmount * maxFillAmount;
             currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
             expBar.fillAmount = currentFillAmount;
-            audiosource.Play();
+            
             HidePopup();
         }
     }
@@ -52,6 +52,7 @@ public class expController : MonoBehaviour
     {
         popupObject.SetActive(true);
         isPopupShowing = true;
+        audiosource.Play();
     }
 
     public void HidePopup()
