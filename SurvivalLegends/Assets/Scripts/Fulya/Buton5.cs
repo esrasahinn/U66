@@ -10,7 +10,10 @@ public class Buton5 : MonoBehaviour
     private expController controller;
     private GameObject[] dusmanlar;
     public Image buton5;
-    public Text countdownText; // UI metin öðesi
+    public Text countdownText;
+
+    [SerializeField]
+    private int coinCost = 5; // Alým için gereken coin miktarý
 
     private void Awake()
     {
@@ -19,68 +22,86 @@ public class Buton5 : MonoBehaviour
 
     public void ButonTiklama()
     {
-        // Düþmanlarý bul
-        dusmanlar = GameObject.FindGameObjectsWithTag("Dusman");
+        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
 
-        if (dusmanlar.Length > 0)
+        if (playerCoins >= coinCost)
         {
-            // Rastgele 3 düþman seç
-            List<GameObject> rastgeleDusmanlar = new List<GameObject>();
-            int maxDusmanSayisi = Mathf.Min(dusmanlar.Length, 3);
+            playerCoins -= coinCost; // Coinlerden düþülüyor
+            PlayerPrefs.SetInt("CoinAmount", playerCoins);
 
-            while (rastgeleDusmanlar.Count < maxDusmanSayisi)
+            // Düþmanlarý bul
+            dusmanlar = GameObject.FindGameObjectsWithTag("Dusman");
+
+            if (dusmanlar.Length > 0)
             {
-                int rastgeleIndex = Random.Range(0, dusmanlar.Length);
-                GameObject rastgeleDusman = dusmanlar[rastgeleIndex];
+                // Rastgele 3 düþman seç
+                List<GameObject> rastgeleDusmanlar = new List<GameObject>();
+                int maxDusmanSayisi = Mathf.Min(dusmanlar.Length, 3);
 
-                if (!rastgeleDusmanlar.Contains(rastgeleDusman))
+                while (rastgeleDusmanlar.Count < maxDusmanSayisi)
                 {
-                    rastgeleDusmanlar.Add(rastgeleDusman);
+                    int rastgeleIndex = Random.Range(0, dusmanlar.Length);
+                    GameObject rastgeleDusman = dusmanlar[rastgeleIndex];
 
-                    // Meteoru düþmana at
-                    Vector3 spawnPosition = rastgeleDusman.transform.position + Vector3.up * 6f;
-                    GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
+                    if (!rastgeleDusmanlar.Contains(rastgeleDusman))
+                    {
+                        rastgeleDusmanlar.Add(rastgeleDusman);
 
-                    // Düþmana zarar verme iþlemini yap
-                    if (rastgeleDusman.GetComponent<RangedEnemyController>() != null)
-                    {
-                        RangedEnemyController dusmanAI = rastgeleDusman.GetComponent<RangedEnemyController>();
-                        Meteor suScript = meteor.GetComponent<Meteor>();
-                        suScript.Atesle(dusmanHasarMiktari, dusmanAI);
-                    }
-                    else if (rastgeleDusman.GetComponent<EnemyController>() != null)
-                    {
-                        EnemyController dusmanController = rastgeleDusman.GetComponent<EnemyController>();
-                        Meteor suScript = meteor.GetComponent<Meteor>();
-                        suScript.Atesle(dusmanHasarMiktari, dusmanController);
+                        // Meteoru düþmana at
+                        Vector3 spawnPosition = rastgeleDusman.transform.position + Vector3.up * 6f;
+                        GameObject meteor = Instantiate(meteorPrefab, spawnPosition, Quaternion.identity);
+
+                        // Düþmana zarar verme iþlemini yap
+                        if (rastgeleDusman.GetComponent<RangedEnemyController>() != null)
+                        {
+                            RangedEnemyController dusmanAI = rastgeleDusman.GetComponent<RangedEnemyController>();
+                            Meteor suScript = meteor.GetComponent<Meteor>();
+                            suScript.Atesle(dusmanHasarMiktari, dusmanAI);
+                        }
+                        else if (rastgeleDusman.GetComponent<EnemyController>() != null)
+                        {
+                            EnemyController dusmanController = rastgeleDusman.GetComponent<EnemyController>();
+                            Meteor suScript = meteor.GetComponent<Meteor>();
+                            suScript.Atesle(dusmanHasarMiktari, dusmanController);
+                        }
                     }
                 }
+
+                controller.HidePopup();
+                controller.ResumeGame();
+
+                // Coin sayýsýný güncelle
+                CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+                if (collectCoinScript != null)
+                {
+                    collectCoinScript.coinAmount = playerCoins;
+                    collectCoinScript.coinUI.text = playerCoins.ToString();
+                }
+
+                countdownText.text = "5";
+                countdownText.gameObject.SetActive(true);
+                buton5.gameObject.SetActive(true);
+
+                InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
             }
-
-            controller.HidePopup();
-            controller.ResumeGame(); // Oyunu devam ettir
-
-            countdownText.text = "5"; // Metin öðesini güncelle
-            countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
-            buton5.gameObject.SetActive(true); // Resmi etkinleþtir
-
-            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
+        }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok.");
         }
     }
 
     private void UpdateCountdown()
     {
-        int remainingTime = int.Parse(countdownText.text); // Geri sayým süresini al
+        int remainingTime = int.Parse(countdownText.text);
+        countdownText.text = (remainingTime - 1).ToString();
 
-        remainingTime--; // Geri sayým süresini azalt
-        countdownText.text = remainingTime.ToString(); // Metin öðesini güncelle
-
-        if (remainingTime <= 0)
+        if (remainingTime <= 1)
         {
             CancelInvoke(nameof(UpdateCountdown));
-            countdownText.text = ""; // Metin öðesini temizle
-            countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
-            buton5.gameObject.SetActive(false); // Resmi devre dýþý býrak
+            countdownText.text = "";
+            countdownText.gameObject.SetActive(false);
+            buton5.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
         }
     }

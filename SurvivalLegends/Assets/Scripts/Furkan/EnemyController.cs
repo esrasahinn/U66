@@ -9,7 +9,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float can = 100f;
     [SerializeField] float maxHealth = 100f;
     [SerializeField] Slider healthSlider;
-    [SerializeField] Transform player;
+    [SerializeField] string playerTag = "Player"; // Oyuncu tagi
+    private GameObject player;
     [SerializeField] float attackRange = 2.0f;
     [SerializeField] float detectionRange = 10.0f; // Fark etme menzili
     [SerializeField] int meleeDamage = 10;
@@ -21,17 +22,24 @@ public class EnemyController : MonoBehaviour
     private bool isDead;
     private bool isFrozen;
     private bool hasDetectedPlayer; // Fark edildi mi kontrolü
+    private LevelManager levelManager; // LevelManager bileþeni referansý
+    DropCoin coinScript;
 
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        coinScript = GetComponent<DropCoin>();
+
+        // LevelManager bileþenini bulma
+        levelManager = FindObjectOfType<LevelManager>();
     }
 
     private void Start()
     {
         healthSlider.maxValue = maxHealth;
         healthSlider.value = maxHealth;
+        player = GameObject.FindGameObjectWithTag(playerTag); // Oyuncuyu tagi kullanarak bulma
     }
 
     private void Update()
@@ -39,7 +47,13 @@ public class EnemyController : MonoBehaviour
         if (isDead)
             return;
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        if (player == null)
+        {
+            Debug.LogWarning("Oyuncu bulunamadý.");
+            return;
+        }
+
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         inAttackRange = distanceToPlayer <= attackRange;
 
         if (isFrozen)
@@ -108,24 +122,35 @@ public class EnemyController : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Death");
         enemy.enabled = false;
+        coinScript.CoinDrop();
         Destroy(gameObject, 2.0f);
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
         {
             expControllerScript.UpdateExpBar(expAmount);
         }
+
+        // Düþman öldüðünde LevelManager'a bilgi gönderme
+        levelManager.EnemyDied();
+
+        // Düþman öldüðünde EndCube bileþenine bilgi gönderme
+        EndCube endCube = FindObjectOfType<EndCube>();
+        if (endCube != null)
+        {
+            endCube.EnemyDied();
+        }
     }
 
     void ChasePlayer()
     {
-        enemy.SetDestination(player.position);
+        enemy.SetDestination(player.transform.position);
         animator.SetBool("Running", true);
     }
 
     public void AttackPlayer()
     {
         enemy.SetDestination(transform.position);
-        transform.LookAt(player);
+        transform.LookAt(player.transform);
 
         animator.SetBool("Running", false);
         animator.SetBool("Attack", true);

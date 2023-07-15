@@ -8,12 +8,14 @@ public class ASAbilityArcher : MonoBehaviour
     public float boostAmount = 10f;
     public float cooldownDuration = 2f;
     public float abilityDuration = 2f;
-
+    AudioSource audiosource;
+   
     private bool isAbilityReady = true;
 
     void Start()
     {
         abilityButton.onClick.AddListener(UseAbility);
+        audiosource = GetComponent<AudioSource>();
     }
 
     void UseAbility()
@@ -24,6 +26,8 @@ public class ASAbilityArcher : MonoBehaviour
             isAbilityReady = false;
             Invoke("ResetAbility", abilityDuration);
             Invoke("ResetCooldown", cooldownDuration);
+            audiosource.Play();
+            
         }
     }
 
