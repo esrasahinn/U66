@@ -3125,18 +3125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9556df93b79043147a3b735e6b05cee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2107080609542940260 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6027096418695662942, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5663653543841229626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e600d207a5f0467409e96a4004b92b48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2509906239220998662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7804083434716137788, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
@@ -3263,18 +3251,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5663653543841229626}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6925334355993171888 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3351500572833479818, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5663653543841229626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1963cfaf7d66f234da82d1a4cd1f4b0d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6962727566282145864 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3330910212916292466, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
@@ -3407,18 +3383,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5663653543841229626}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8668928404011597915 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3951748763129621345, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
-    type: 3}
-  m_PrefabInstance: {fileID: 5663653543841229626}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4de1f46fcbf5764981a86d688c5f761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8812374237403539230 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3806246789300096036, guid: 204d3ab2c9b9bad4eae2e01321a9c544,
@@ -3732,12 +3696,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinAmount: 4
   coinUI: {fileID: 0}
-  buton1: {fileID: 6962727566282145864}
-  buton2: {fileID: 2107080609542940260}
-  buton3: {fileID: 6925334355993171888}
-  buton4: {fileID: 8668928404011597915}
-  buton5: {fileID: 1977428283800475015}
-  buton6: {fileID: 2605445554009492739}
+  allButtons:
+  - {fileID: 8812374237403539230}
+  - {fileID: 7897896110827162936}
+  - {fileID: 1589510992539734244}
+  - {fileID: 913968494413415821}
+  - {fileID: 4443492240186202174}
+  - {fileID: 2515520358150199689}
+  buton1: {fileID: 8812374237403539230}
+  buton2: {fileID: 7897896110827162936}
+  buton3: {fileID: 1589510992539734244}
+  buton4: {fileID: 913968494413415821}
+  buton5: {fileID: 4443492240186202174}
+  buton6: {fileID: 2515520358150199689}
 --- !u!114 &4691943734767509665
 MonoBehaviour:
   m_ObjectHideFlags: 0

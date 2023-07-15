@@ -168,4 +168,9 @@ public class Buton1 : MonoBehaviour
             button.interactable = false;
         }
     }
+
+    public void SetInteractable(bool interactable)
+    {
+        button.interactable = interactable;
+    }
 }
