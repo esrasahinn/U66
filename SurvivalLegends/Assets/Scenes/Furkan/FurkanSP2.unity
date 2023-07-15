@@ -136,11 +136,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Karakterler(Ninja)
       objectReference: {fileID: 0}
+    - target: {fileID: 576633891102901315, guid: 7b7a9d5493bd4c54188de63b627b6f38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 781944493548241092, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: coinUI
       value: 
       objectReference: {fileID: 546704255}
+    - target: {fileID: 781944493548241092, guid: 7b7a9d5493bd4c54188de63b627b6f38,
+        type: 3}
+      propertyPath: coinAmount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1310453659253085799, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -225,7 +235,7 @@ PrefabInstance:
         type: 3}
       propertyPath: coinInsufficientText
       value: 
-      objectReference: {fileID: 1919865069}
+      objectReference: {fileID: 0}
     - target: {fileID: 6990702321799920316, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -239,12 +249,12 @@ PrefabInstance:
     - target: {fileID: 8289788176747412910, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8289788176747412910, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8912147353915935685, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
@@ -1073,12 +1083,12 @@ PrefabInstance:
     - target: {fileID: 347571515745645145, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 347571515745645145, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 827150210533101199, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
@@ -1094,7 +1104,7 @@ PrefabInstance:
         type: 3}
       propertyPath: coinInsufficientText
       value: 
-      objectReference: {fileID: 1919865069}
+      objectReference: {fileID: 0}
     - target: {fileID: 2403852269977475000, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_RootOrder
@@ -1155,6 +1165,11 @@ PrefabInstance:
       propertyPath: coinUI
       value: 
       objectReference: {fileID: 546704255}
+    - target: {fileID: 3519504447313354668, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: coinAmount
+      value: 61
+      objectReference: {fileID: 0}
     - target: {fileID: 4095065664937830748, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1165,6 +1180,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111435}
+    - target: {fileID: 4824891303085706964, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: allButtons.Array.data[3]
+      value: 
+      objectReference: {fileID: 2124017167}
     - target: {fileID: 5914643891055973713, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1184,6 +1204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Karakterler(Rifle)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189115443771175140, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1514,18 +1539,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa3cd151b77d48a40885e7ff3e49660e, type: 3}
---- !u!114 &1919865069 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8969028736782218520, guid: 37589c072f8e7f6458662e7382c1162a,
-    type: 3}
-  m_PrefabInstance: {fileID: 337647138455150401}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1975506339 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7686802532745992304, guid: fb985a7c5d6d75c4a936bdecdea417a3,
@@ -1545,6 +1558,11 @@ PrefabInstance:
       propertyPath: coinUI
       value: 
       objectReference: {fileID: 546704255}
+    - target: {fileID: 1275252957638284413, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: coinAmount
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1818020284644114782, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1645,6 +1663,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Karakterler(Archer)
       objectReference: {fileID: 0}
+    - target: {fileID: 8896348016656826524, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1660,6 +1683,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2124017167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8411091039713819951, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+    type: 3}
+  m_PrefabInstance: {fileID: 1340947073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &337647138455150401
@@ -1781,7 +1816,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7263922791124675812, guid: 37589c072f8e7f6458662e7382c1162a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37589c072f8e7f6458662e7382c1162a, type: 3}

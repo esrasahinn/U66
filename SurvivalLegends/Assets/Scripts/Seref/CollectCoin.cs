@@ -68,7 +68,7 @@ public class CollectCoin : MonoBehaviour
     {
         coinAmount = 0;
         //coinAmount = PlayerPrefs.GetInt(CoinAmountKey, 0);
-        PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
+       // PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
     }
 
     private void Start()
