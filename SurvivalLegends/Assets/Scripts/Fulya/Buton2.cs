@@ -74,8 +74,8 @@ public class Buton2 : MonoBehaviour
             buton2.gameObject.SetActive(true);
 
             // Kalkan prefabýný oluþtur ve player'ýn alt nesnesi yap
-            kalkanInstance = Instantiate(kalkanPrefab, playerBehaviour.transform.position, Quaternion.identity);
-            kalkanInstance.transform.parent = playerBehaviour.transform;
+            kalkanInstance = Instantiate(kalkanPrefab, arcPlayerBehaviour.transform.position, Quaternion.identity);
+            kalkanInstance.transform.parent = arcPlayerBehaviour.transform;
 
             // Kalkan prefabýný aktifleþtir
             kalkanInstance.SetActive(true);
