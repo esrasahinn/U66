@@ -11,7 +11,7 @@ public class PlayerBehaviour : MonoBehaviour
     private MenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme; // MenzileGirenDusmanaAtesVeDonme scriptine eriþmek için referans
     private bool isDead = false;
     private bool isImmuneToDamage = false; // Hasar almama durumu
-
+    public AudioSource audiosource;
     public static PlayerBehaviour GetInstance()
     {
         return _instance;
@@ -56,6 +56,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void DestroyPlayer()
     {
+        audiosource.Play();
         isDead = true;
         _animator.SetBool("Death", true);
         StartCoroutine(ResetAfterAnimation());
