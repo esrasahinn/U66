@@ -1246,7 +1246,7 @@ MonoBehaviour:
   dusmanHasarMiktari: 50
   buton5: {fileID: 7603080992630915289}
   countdownText: {fileID: 2203376526764210058}
-  coinCost: 5
+  coinCost: 15
 --- !u!114 &6078189876469362228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,7 +2605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2403852269977475000
 Transform:
   m_ObjectHideFlags: 0
@@ -2647,32 +2647,72 @@ PrefabInstance:
         type: 3}
       propertyPath: buton1
       value: 
-      objectReference: {fileID: 1505840616709053614}
+      objectReference: {fileID: 170842742158008252}
     - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: buton2
       value: 
-      objectReference: {fileID: 7289350439976197830}
+      objectReference: {fileID: 1553695239644853658}
     - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: buton3
       value: 
-      objectReference: {fileID: 7531772486985810901}
+      objectReference: {fileID: 1366151701905542480}
     - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: buton4
       value: 
-      objectReference: {fileID: 25644220384688377}
+      objectReference: {fileID: 8411091039713819951}
     - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: buton5
       value: 
-      objectReference: {fileID: 6387849066896382693}
+      objectReference: {fileID: 9181872919973754717}
     - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: buton6
       value: 
-      objectReference: {fileID: 4302268972332984645}
+      objectReference: {fileID: 2306580944070651928}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: coinAmount
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: allButtons.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: allButtons.Array.data[0]
+      value: 
+      objectReference: {fileID: 170842742158008252}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: allButtons.Array.data[1]
+      value: 
+      objectReference: {fileID: 1553695239644853658}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: allButtons.Array.data[2]
+      value: 
+      objectReference: {fileID: 1366151701905542480}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: allButtons.Array.data[3]
+      value: 
+      objectReference: {fileID: 8411091039713819951}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: allButtons.Array.data[4]
+      value: 
+      objectReference: {fileID: 9181872919973754717}
+    - target: {fileID: 816727892136501505, guid: 68734aae3762d4c49a84ac4f0a82fae8,
+        type: 3}
+      propertyPath: allButtons.Array.data[5]
+      value: 
+      objectReference: {fileID: 2306580944070651928}
     - target: {fileID: 1432394747960590130, guid: 68734aae3762d4c49a84ac4f0a82fae8,
         type: 3}
       propertyPath: m_Layer
@@ -4042,18 +4082,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3849662832417902928}
   m_SourcePrefab: {fileID: 100100000, guid: a885877d0d6277843a0d9994d6018f5e, type: 3}
---- !u!114 &25644220384688377 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6947489889668295418, guid: a885877d0d6277843a0d9994d6018f5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6931438359170109955}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4de1f46fcbf5764981a86d688c5f761, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &170842742158008252 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7093062653141175743, guid: a885877d0d6277843a0d9994d6018f5e,
@@ -4142,18 +4170,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9556df93b79043147a3b735e6b05cee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7289350439976197830 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 367487488019107013, guid: a885877d0d6277843a0d9994d6018f5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6931438359170109955}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e600d207a5f0467409e96a4004b92b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8411091039713819951 stripped

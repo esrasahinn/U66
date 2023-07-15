@@ -8,16 +8,16 @@ public class CollectCoin : MonoBehaviour
 {
     public int coinAmount;
     public TMP_Text coinUI;
-    public Buton1 buton1;
-    //public Buton1Ninja buton1N;
-    public Buton2 buton2;
-    public Buton3 buton3;
-    //public Buton3Rifle buton3R;   
-    public Buton4 buton4;
-    public Buton5 buton5;
-    public Buton6 buton6;
+    public List<Button> allButtons;
+    public Button buton1;
+    public Button buton2;
+    public Button buton3;
+    public Button buton4;
+    public Button buton5;
+    public Button buton6;
 
     private const string CoinAmountKey = "CoinAmount";
+    private expController expController;
 
     private void OnEnable()
     {
@@ -31,9 +31,13 @@ public class CollectCoin : MonoBehaviour
 
     private void GiveCoin()
     {
-        coinAmount += 50;
-        UpdateButtonInteractivity();
+        coinAmount++;
+        PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
+        Debug.Log(coinAmount + " coins.");
+        coinUI.text = coinAmount.ToString();
+        UpdateButtonInteractivity(); // Butonlarýn etkinlik durumunu güncelle
     }
+
 
     private void Awake()
     {
@@ -53,14 +57,7 @@ public class CollectCoin : MonoBehaviour
             Destroy(other.gameObject);
 
             // Butonlarýn durumunu kontrol et ve pasif hale getir
-            buton1.UpdateButtonInteractivity();
-            //buton1N.UpdateButtonInteractivity();
-            buton2.UpdateButtonInteractivity();
-            buton3.UpdateButtonInteractivity();
-            //buton3R.UpdateButtonInteractivity();
-            buton4.UpdateButtonInteractivity();
-            buton5.UpdateButtonInteractivity();
-            buton6.UpdateButtonInteractivity();
+            UpdateButtonInteractivity();
         }
     }
 
@@ -68,32 +65,48 @@ public class CollectCoin : MonoBehaviour
     {
         coinAmount = 0;
         //coinAmount = PlayerPrefs.GetInt(CoinAmountKey, 0);
-        PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
     }
 
     private void Start()
     {
         ResetCoinAmount();
         coinUI.text = coinAmount.ToString();
-        buton1.UpdateButtonInteractivity();
-       // buton1N.UpdateButtonInteractivity();
-        buton2.UpdateButtonInteractivity();
-        buton3.UpdateButtonInteractivity();
-        //buton3R.UpdateButtonInteractivity();
-        buton4.UpdateButtonInteractivity();
-        buton5.UpdateButtonInteractivity();
-        buton6.UpdateButtonInteractivity();
+
+        // expController örneðini al
+        expController = FindObjectOfType<expController>();
+
+        // Buton örneklerini atama
+        foreach (Button button in allButtons)
+        {
+            if (button.name == "Buton1")
+                buton1 = button;
+            else if (button.name == "Buton2")
+                buton2 = button;
+            else if (button.name == "Buton3")
+                buton3 = button;
+            else if (button.name == "Buton4")
+                buton4 = button;
+            else if (button.name == "Buton5")
+                buton5 = button;
+            else if (button.name == "Buton6")
+                buton6 = button;
+        }
+
+        // Butonlarýn etkinlik durumunu güncelle
+        UpdateButtonInteractivity();
+        expController.SetRandomButtons(); // Rastgele butonlarý güncelle
     }
 
     public void UpdateButtonInteractivity()
     {
-        buton1.UpdateButtonInteractivity();
-        //buton1N.UpdateButtonInteractivity();
-        buton2.UpdateButtonInteractivity();
-        buton3.UpdateButtonInteractivity();
-        //buton3R.UpdateButtonInteractivity();
-        buton4.UpdateButtonInteractivity();
-        buton5.UpdateButtonInteractivity();
-        buton6.UpdateButtonInteractivity();
+        int collectedCoinCount = coinAmount;
+
+        // Butonlarýn etkinlik durumunu güncelle
+        buton1.interactable = collectedCoinCount >= 5;
+        buton2.interactable = collectedCoinCount >= 5;
+        buton3.interactable = collectedCoinCount >= 5;
+        buton4.interactable = collectedCoinCount >= 5;
+        buton5.interactable = collectedCoinCount >= 5;
+        buton6.interactable = collectedCoinCount >= 5;
     }
 }

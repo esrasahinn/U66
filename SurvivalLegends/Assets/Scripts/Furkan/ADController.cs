@@ -30,17 +30,17 @@ public class ADController : MonoBehaviour
         {
             //interstitial.LoadInterstitialAd();
             reward.LoadRewardedAd();
-            ShowBanner();
+            //ShowBanner();
         });
     }
-    public void ShowBanner()
-    {
-       // banner.LoadAd();
-    }
-    public void ShowInterstitial()
-    {
-        //interstitial.ShowAd();
-    }
+  // public void ShowBanner()
+  // {
+  //    // banner.LoadAd();
+  // }
+  // public void ShowInterstitial()
+  // {
+  //     //interstitial.ShowAd();
+  // }
     public void ShowRewardAd()
     {
         reward.ShowRewardedAd();
