@@ -10,7 +10,7 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     private ArcherMenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme;
     private bool isDead = false;
     private bool isImmuneToDamage = false; // Hasar almama durumu
-
+    public AudioSource audiosource;
     public static ArcherPlayerBehaviour GetInstance()
     {
         return _instance;
@@ -55,6 +55,7 @@ public class ArcherPlayerBehaviour : MonoBehaviour
 
     public void DestroyPlayer()
     {
+        audiosource.Play();
         isDead = true;
         _animator.SetBool("Death", true);
         StartCoroutine(ResetAfterAnimation());
