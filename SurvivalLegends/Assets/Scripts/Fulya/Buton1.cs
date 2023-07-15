@@ -5,67 +5,67 @@ using UnityEngine.UI;
 
 public class Buton1 : MonoBehaviour
 {
-    private bool isSpeedBoostActive = false;
-    private float speedBoostDuration = 20f;
-    private float originalMoveSpeed;
     private Player player;
     private expController controller;
     public Image buton1;
-    public Text countdownText; // UI metin öðesi
+    public Text countdownText;
+    public Text coinInsufficientText;
+    private Button button;
+    private CollectCoin collectCoinScript;
+    public int coinCost = 5; // Alým için gereken coin miktarý
 
-    private void Awake()
+    private void Start()
     {
+        button = GetComponent<Button>();
+        collectCoinScript = FindObjectOfType<CollectCoin>();
         controller = FindObjectOfType<expController>();
         player = FindObjectOfType<Player>();
-    }
-
-    private void Update()
-    {
-        if (isSpeedBoostActive)
-        {
-            speedBoostDuration -= Time.deltaTime;
-
-            if (speedBoostDuration <= 0)
-            {
-                isSpeedBoostActive = false;
-                player.moveSpeed = originalMoveSpeed;
-                Debug.Log("Hýzlanma süresi bitti, hareket hýzý normale döndü.");
-                countdownText.text = ""; // Metin öðesini temizle
-                countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
-                buton1.gameObject.SetActive(false);
-            }
-            else
-            {
-                int remainingTime = Mathf.CeilToInt(speedBoostDuration);
-                countdownText.text =  remainingTime.ToString(); // Metin öðesini güncelle
-            }
-        }
+        UpdateButtonInteractivity();
     }
 
     public void ButonTiklama()
     {
-        if (!isSpeedBoostActive)
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
         {
-            isSpeedBoostActive = true;
-            originalMoveSpeed = player.moveSpeed;
-            player.moveSpeed += 10f; // Hareket hýzýný 10 birim artýr
-            countdownText.text =  Mathf.CeilToInt(speedBoostDuration).ToString(); // Metin öðesini güncelle
-            countdownText.gameObject.SetActive(true); // Metin öðesini etkinleþtir
-            buton1.gameObject.SetActive(true);
-            controller.HidePopup();
-            controller.ResumeGame(); // Oyunu devam ettir
-            InvokeRepeating(nameof(UpdateCountdown), 1f, 1f); // Saniyede bir geri sayýmý güncelle
-            Invoke(nameof(DisableSpeedBoost), speedBoostDuration);
+            collectCoinScript.coinAmount -= coinCost;
+            PlayerPrefs.SetInt("CoinAmount", collectCoinScript.coinAmount);
+            collectCoinScript.coinUI.text = collectCoinScript.coinAmount.ToString();
+
+            if (!player.isSpeedBoostActive)
+            {
+                collectCoinScript.coinUI.text = collectCoinScript.coinAmount.ToString();
+                collectCoinScript.coinUI.gameObject.SetActive(true);
+
+                player.isSpeedBoostActive = true;
+                player.originalMoveSpeed = player.moveSpeed;
+                player.moveSpeed += 10f;
+                player.speedBoostDuration = 20f; // Hýzlanma süresini belirle
+
+                countdownText.text = Mathf.CeilToInt(player.speedBoostDuration).ToString();
+                countdownText.gameObject.SetActive(true);
+
+                button.interactable = false; // Butonu interactable durumunu pasif yap
+
+                controller.HidePopup();
+                controller.ResumeGame();
+                InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
+                Invoke(nameof(DisableSpeedBoost), player.speedBoostDuration);
+            }
+        }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok.");
+            StartCoroutine(ShowCoinInsufficientText());
         }
     }
 
     private void UpdateCountdown()
     {
-        int remainingTime = Mathf.CeilToInt(speedBoostDuration);
-        countdownText.text =  remainingTime.ToString(); // Metin öðesini güncelle
-        speedBoostDuration -= 1f;
+        int remainingTime = Mathf.CeilToInt(player.speedBoostDuration);
+        countdownText.text = remainingTime.ToString();
+        player.speedBoostDuration -= 1f;
 
-        if (speedBoostDuration <= 0)
+        if (player.speedBoostDuration <= 0)
         {
             CancelInvoke(nameof(UpdateCountdown));
         }
@@ -73,12 +73,31 @@ public class Buton1 : MonoBehaviour
 
     private void DisableSpeedBoost()
     {
-        isSpeedBoostActive = false;
-        player.moveSpeed = originalMoveSpeed;
+        player.isSpeedBoostActive = false;
+        player.moveSpeed = player.originalMoveSpeed;
         Debug.Log("Hýzlanma süresi bitti, hareket hýzý normale döndü.");
-        countdownText.text = ""; // Metin öðesini temizle
-        countdownText.gameObject.SetActive(false); // Metin öðesini devre dýþý býrak
+        countdownText.text = "";
+        countdownText.gameObject.SetActive(false);
         buton1.gameObject.SetActive(false);
+        UpdateButtonInteractivity();
+    }
+
+    private IEnumerator ShowCoinInsufficientText()
+    {
+        coinInsufficientText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        coinInsufficientText.gameObject.SetActive(false);
+    }
+
+    public void UpdateButtonInteractivity()
+    {
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
     }
 }
-
