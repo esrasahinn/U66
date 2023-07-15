@@ -126,10 +126,6 @@ public class ShopManager : MonoBehaviour
         if (!currentItem.IsEquipped)
         {
             currentItem.IsEquipped = true;
-            if (currentItem.itemMesh != null)
-            {
-                currentItem.itemMesh.enabled = true;
-            }
 
             purchaseBtns[btnNo].gameObject.SetActive(false);
             equipBtns[btnNo].gameObject.SetActive(false);
@@ -147,16 +143,13 @@ public class ShopManager : MonoBehaviour
         if (currentItem.IsEquipped)
         {
             currentItem.IsEquipped = false;
-            if (currentItem.itemMesh != null)
-            {
-                currentItem.itemMesh.enabled = false;
-            }
 
             purchaseBtns[btnNo].gameObject.SetActive(false);
             equipBtns[btnNo].gameObject.SetActive(true);
             unequipBtns[btnNo].gameObject.SetActive(false);
 
             shopPanelsGO[btnNo].SetActive(false);
+
 
             CheckEquipped();
         }

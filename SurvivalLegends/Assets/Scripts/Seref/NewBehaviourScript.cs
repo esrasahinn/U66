@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkinManager : MonoBehaviour
+public class NewBehaviourScript : MonoBehaviour
 {
-public ShopManager shopScript;
-
+    // Start is called before the first frame update
     void Start()
     {
         
