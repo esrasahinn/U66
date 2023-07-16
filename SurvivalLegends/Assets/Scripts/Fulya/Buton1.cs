@@ -45,7 +45,7 @@ public class Buton1 : MonoBehaviour
 
                 countdownText.text = Mathf.CeilToInt(player.speedBoostDuration).ToString();
                 countdownText.gameObject.SetActive(true);
-
+                buton1.gameObject.SetActive(true);
                 button.interactable = false; // Butonu interactable durumunu pasif yap
 
                 controller.HidePopup();
