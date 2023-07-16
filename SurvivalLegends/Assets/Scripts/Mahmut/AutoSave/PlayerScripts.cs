@@ -29,7 +29,7 @@ public class PlayerScripts : MonoBehaviour
 
     // Diğer kaydetme işlemleri
     SaveSystem.SavePlayer(this);
-    SceneManager.LoadScene(5);
+    SceneManager.LoadScene(8);
     Debug.Log("Kayıt Başarılı!");
     Debug.Log(SaveSystem.LoadPlayer());
 }
