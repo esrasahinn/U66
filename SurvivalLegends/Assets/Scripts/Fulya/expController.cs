@@ -8,16 +8,16 @@ public class expController : MonoBehaviour
     public Image expBar;
     public GameObject popupObject;
     public List<Button> allButtons;
+    public List<Image> allImages;
     public int maxButtonCount = 3;
+    public int maxImageCount = 3;
     private float maxFillAmount = 1f;
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
     private bool isGamePaused = false;
-    private float buttonSpacing = 200f; // Butonlar arasýndaki yatay boþluk
-    AudioSource audiosource;
+    private float buttonSpacing = 200f;
+    private AudioSource audiosource;
     private List<Button> activeButtons = new List<Button>();
-
-
 
     private void Update()
     {
@@ -43,15 +43,14 @@ public class expController : MonoBehaviour
             currentFillAmount += expIncreaseAmount * maxFillAmount;
             currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
             expBar.fillAmount = currentFillAmount;
-            
+
             HidePopup();
         }
     }
 
     private void ShowPopup()
     {
-        popupObject.SetActive(true);
-        isPopupShowing = true;
+        SetPopupShowing(true);
         audiosource.Play();
     }
 
@@ -75,40 +74,62 @@ public class expController : MonoBehaviour
 
     public void SetRandomButtons()
     {
-        List<Button> availableButtons = new List<Button>(allButtons);
-        activeButtons.Clear();
-
-        int buttonCount = Mathf.Min(maxButtonCount, availableButtons.Count);
-        for (int i = 0; i < buttonCount; i++)
+        foreach (Image image in allImages)
         {
-            int randomIndex = Random.Range(0, availableButtons.Count);
-            Button randomButton = availableButtons[randomIndex];
-            activeButtons.Add(randomButton);
-            availableButtons.RemoveAt(randomIndex);
+            image.gameObject.SetActive(false);
         }
 
-        float totalButtonWidth = activeButtons.Count * activeButtons[0].GetComponent<RectTransform>().sizeDelta.x;
-        float totalSpacing = (activeButtons.Count - 1) * buttonSpacing;
-        float totalWidth = totalButtonWidth + totalSpacing;
-        float startX = -totalWidth / 2f;
+        activeButtons.Clear();
 
-        for (int i = 0; i < allButtons.Count; i++)
+        int imageCount = Mathf.Min(maxButtonCount, maxImageCount, allImages.Count);
+        List<Image> availableImages = new List<Image>(allImages);
+
+        float totalButtonWidth = imageCount * buttonSpacing;
+        float startX = -totalButtonWidth / 2f;
+
+        for (int i = 0; i < imageCount; i++)
         {
-            Button button = allButtons[i];
-            RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
+            int randomIndex = Random.Range(0, availableImages.Count);
+            Image randomImage = availableImages[randomIndex];
+            availableImages.RemoveAt(randomIndex);
 
-            bool isActive = activeButtons.Contains(button);
-            button.gameObject.SetActive(isActive);
-
-            if (isActive)
+            Button button = randomImage.GetComponentInChildren<Button>();
+            if (button != null)
             {
-                float buttonX = startX + (activeButtons.IndexOf(button) * (buttonRectTransform.sizeDelta.x + buttonSpacing));
-                buttonRectTransform.anchoredPosition = new Vector2(buttonX, 0f);
+                activeButtons.Add(button);
+                randomImage.gameObject.SetActive(true);
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() => OnButtonClick(randomImage));
+
+                RectTransform imageRectTransform = randomImage.GetComponent<RectTransform>();
+                float imageX = startX + (i * buttonSpacing);
+                imageRectTransform.anchoredPosition = new Vector2(imageX, 0f);
+            }
+        }
+
+        foreach (Button button in allButtons)
+        {
+            if (!activeButtons.Contains(button))
+            {
+                button.gameObject.SetActive(false);
             }
         }
     }
 
+    private void OnButtonClick(Image clickedImage)
+    {
+        Debug.Log("Button clicked: " + clickedImage.name);
+        SetPopupShowing(false);
+    }
 
+    public void SetPopupShowing(bool showing)
+    {
+        isPopupShowing = showing;
+        popupObject.SetActive(showing);
 
-
+        if (!showing)
+        {
+            ResumeGame();
+        }
+    }
 }
