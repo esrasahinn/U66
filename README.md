@@ -147,7 +147,7 @@ Sprint sırasında takımın karşılaştığı engelleri ve zorlukları tartı�
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 110
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 130 ile başlaması gerektiğine karar verildi.
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/DailyScrumMeetingNotesSprint3.docx) 
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/DailyScrumMeetingNotesSprint3.docx)  
 - **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir. Product backloglar product owner ile birlikte oluşturulmuştur.
 
 - **Sprint board update**: Sprint board screenshotları: 
