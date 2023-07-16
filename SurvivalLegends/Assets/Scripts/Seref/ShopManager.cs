@@ -23,7 +23,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
 
-        diamondScript.diamondAmount = PlayerPrefs.GetInt("Diamond", 10);
+        diamondScript.diamondAmount = PlayerPrefs.GetInt("DiamondAmount", 10);
         for (int i = 0; i < shopItemSO.Length; i++)
         {
             {
@@ -181,7 +181,7 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    private void SaveDiamondCount()
+    public void SaveDiamondCount()
     {
         PlayerPrefs.SetInt(DiamondAmountKey, diamondScript.diamondAmount);
     }
