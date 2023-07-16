@@ -23,11 +23,11 @@ Survival Legends
 
 ## Ürün Açıklaması
 
-Dungeon/arena gibi bir alanda arkadaşlarımızla enemyleri tuzaklara takılmadan temizleyip bölüm bölüm kapı gibi alanlardan geçerek bölüm sonu daha güçlü  enemyler ile savaşıyoruz. 
+Dungeon/arena gibi bir alanda enemyleri tuzaklara takılmadan temizleyip bölüm bölüm kapı gibi alanlardan geçerek bölüm sonu daha güçlü  enemyler ile savaşıyoruz. 
 Control: Joystick + Tab Skill Use
 Camera: TPS
 
-- **Oyunun birincil fonksiyonu**: Oyuncuların dungeon/arena gibi bir alanda arkadaşlarıyla birlikte enemyleri tuzaklara takılmadan temizlemek ve bölümleri geçmek olduğunu söyleyebiliriz. Oyuncular, joystick ve tab tuşunu kullanarak karakterlerini kontrol ederler ve tuzaklardan kaçınarak düşmanları yenmeye çalışırlar. Oyunun temel amacı, bölüm sonlarına ulaşmak ve daha güçlü düşmanlarla savaşmaktır.
+- **Oyunun birincil fonksiyonu**: Oyuncuların dungeon/arena gibi bir alanda enemyleri tuzaklara takılmadan temizlemek ve bölümleri geçmek olduğunu söyleyebiliriz. Oyuncular, joystick ve tab tuşunu kullanarak karakterlerini kontrol ederler ve tuzaklardan kaçınarak düşmanları yenmeye çalışırlar. Oyunun temel amacı, bölüm sonlarına ulaşmak ve daha güçlü düşmanlarla savaşmaktır.
 
 - **Oyunun ikincil fonksiyonu**: Oyuncuların kaçıncı bölümde olduklarını görmelerini sağlamaktır. Bu, oyuncuların ilerleme kaydetmelerine ve oyunun zorluk seviyesinin artmasına olanak tanır. Böylece oyuncular, kendilerini meydan okuyucu düşmanlarla savaşırken sürekli olarak geliştirebilirler.
 
