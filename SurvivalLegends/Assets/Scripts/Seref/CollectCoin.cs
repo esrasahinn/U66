@@ -15,7 +15,7 @@ public class CollectCoin : MonoBehaviour
     public Button buton4;
     public Button buton5;
     public Button buton6;
-    public AudioSource audiosource;
+
     private const string CoinAmountKey = "CoinAmount";
     private expController expController;
 
@@ -31,7 +31,6 @@ public class CollectCoin : MonoBehaviour
 
     private void GiveCoin()
     {
-        audiosource.Play();
         coinAmount++;
         PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
         Debug.Log(coinAmount + " coins.");
@@ -49,16 +48,14 @@ public class CollectCoin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        
         if (other.CompareTag("Coin"))
         {
-            audiosource.Play();
             coinAmount++;
             PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
             Debug.Log(coinAmount + " coins.");
             coinUI.text = coinAmount.ToString();
             Destroy(other.gameObject);
-            
+
             // Butonlarýn durumunu kontrol et ve pasif hale getir
             UpdateButtonInteractivity();
         }
