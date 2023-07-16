@@ -3225,7 +3225,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1126990531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1521948879}
+        m_TargetAssemblyTypeName: SceneManagment, Assembly-CSharp
+        m_MethodName: Back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1126990531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3940,6 +3952,7 @@ GameObject:
   - component: {fileID: 1521948877}
   - component: {fileID: 1521948876}
   - component: {fileID: 1521948875}
+  - component: {fileID: 1521948879}
   m_Layer: 5
   m_Name: UIElements
   m_TagString: Untagged
@@ -4034,6 +4047,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1521948879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521948874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8dfa4ee24826ef409da00219acb78fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1615293200 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1174872640076079897, guid: bc51e68ae6829204f958d01de9040f35,
