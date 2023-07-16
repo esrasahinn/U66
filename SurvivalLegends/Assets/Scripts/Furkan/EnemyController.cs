@@ -123,7 +123,7 @@ public class EnemyController : MonoBehaviour
         isDead = true;
         animator.SetTrigger("Death");
         enemy.enabled = false;
-        coinScript.CoinDrop();
+        //coinScript.CoinDrop();
         Destroy(gameObject, 2.0f);
         expController expControllerScript = FindObjectOfType<expController>();
         if (expControllerScript != null)
@@ -201,5 +201,10 @@ public class EnemyController : MonoBehaviour
                 TakeDamage(katana.damageAmount);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        coinScript.CoinDrop();
     }
 }
