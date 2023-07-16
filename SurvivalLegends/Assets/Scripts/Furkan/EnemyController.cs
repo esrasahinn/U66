@@ -24,13 +24,13 @@ public class EnemyController : MonoBehaviour
     private bool hasDetectedPlayer; // Fark edildi mi kontrolü
     private LevelManager levelManager; // LevelManager bileþeni referansý
     DropCoin coinScript;
-
+    AudioSource audiosource;
     private void Awake()
     {
         enemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         coinScript = GetComponent<DropCoin>();
-
+        audiosource = GetComponent<AudioSource>();
         // LevelManager bileþenini bulma
         levelManager = FindObjectOfType<LevelManager>();
     }
@@ -119,6 +119,7 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         Debug.Log("Düþman öldü.");
+        audiosource.Play();
         isDead = true;
         animator.SetTrigger("Death");
         enemy.enabled = false;

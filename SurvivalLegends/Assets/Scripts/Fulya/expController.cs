@@ -15,8 +15,9 @@ public class expController : MonoBehaviour
     private bool isGamePaused = false;
     private float buttonSpacing = 200f; // Butonlar arasýndaki yatay boþluk
     AudioSource audiosource;
-
     private List<Button> activeButtons = new List<Button>();
+
+
 
     private void Update()
     {
@@ -27,8 +28,6 @@ public class expController : MonoBehaviour
             ShowPopup();
             currentFillAmount = 0f;
             expBar.fillAmount = currentFillAmount;
-            SetRandomButtons();
-            
         }
 
         if (isGamePaused && !isPopupShowing && Input.GetKeyDown(KeyCode.Space))
@@ -44,7 +43,7 @@ public class expController : MonoBehaviour
             currentFillAmount += expIncreaseAmount * maxFillAmount;
             currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
             expBar.fillAmount = currentFillAmount;
-            audiosource.Play();
+            
             HidePopup();
         }
     }
@@ -53,6 +52,7 @@ public class expController : MonoBehaviour
     {
         popupObject.SetActive(true);
         isPopupShowing = true;
+        audiosource.Play();
     }
 
     public void HidePopup()
@@ -73,25 +73,18 @@ public class expController : MonoBehaviour
         isGamePaused = false;
     }
 
-    private void SetRandomButtons()
+    public void SetRandomButtons()
     {
+        List<Button> availableButtons = new List<Button>(allButtons);
         activeButtons.Clear();
 
-        int buttonCount = allButtons.Count;
-
-        if (buttonCount <= maxButtonCount)
+        int buttonCount = Mathf.Min(maxButtonCount, availableButtons.Count);
+        for (int i = 0; i < buttonCount; i++)
         {
-            activeButtons.AddRange(allButtons);
-        }
-        else
-        {
-            List<Button> availableButtons = new List<Button>(allButtons);
-            while (activeButtons.Count < maxButtonCount)
-            {
-                int randomIndex = Random.Range(0, availableButtons.Count);
-                activeButtons.Add(availableButtons[randomIndex]);
-                availableButtons.RemoveAt(randomIndex);
-            }
+            int randomIndex = Random.Range(0, availableButtons.Count);
+            Button randomButton = availableButtons[randomIndex];
+            activeButtons.Add(randomButton);
+            availableButtons.RemoveAt(randomIndex);
         }
 
         float totalButtonWidth = activeButtons.Count * activeButtons[0].GetComponent<RectTransform>().sizeDelta.x;
@@ -99,21 +92,23 @@ public class expController : MonoBehaviour
         float totalWidth = totalButtonWidth + totalSpacing;
         float startX = -totalWidth / 2f;
 
-        for (int i = 0; i < buttonCount; i++)
+        for (int i = 0; i < allButtons.Count; i++)
         {
             Button button = allButtons[i];
             RectTransform buttonRectTransform = button.GetComponent<RectTransform>();
 
-            if (activeButtons.Contains(button))
+            bool isActive = activeButtons.Contains(button);
+            button.gameObject.SetActive(isActive);
+
+            if (isActive)
             {
                 float buttonX = startX + (activeButtons.IndexOf(button) * (buttonRectTransform.sizeDelta.x + buttonSpacing));
                 buttonRectTransform.anchoredPosition = new Vector2(buttonX, 0f);
-                button.gameObject.SetActive(true);
-            }
-            else
-            {
-                button.gameObject.SetActive(false);
             }
         }
     }
+
+
+
+
 }

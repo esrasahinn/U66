@@ -10,6 +10,7 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     private ArcherMenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme;
     private bool isDead = false;
     private bool isImmuneToDamage = false; // Hasar almama durumu
+    public AudioSource audiosource;
 
     public static ArcherPlayerBehaviour GetInstance()
     {
@@ -42,6 +43,11 @@ public class ArcherPlayerBehaviour : MonoBehaviour
                 if (GameManager.gameManager._dusmanHealth.Health <= 0)
                 {
                     DestroyPlayer();
+                    LevelManager levelManager = FindObjectOfType<LevelManager>();
+                    if (levelManager != null)
+                    {
+                        levelManager.Defaited();
+                    }
                 }
             }
 
@@ -55,6 +61,7 @@ public class ArcherPlayerBehaviour : MonoBehaviour
 
     public void DestroyPlayer()
     {
+        audiosource.Play();
         isDead = true;
         _animator.SetBool("Death", true);
         StartCoroutine(ResetAfterAnimation());
@@ -64,6 +71,11 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Time.timeScale = 0f;
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager != null)
+        {
+            levelManager.Defaited();
+        }
     }
 
     public void PlayerTakeDmg(int dmg)

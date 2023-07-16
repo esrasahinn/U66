@@ -15,17 +15,22 @@ public class Buton4 : MonoBehaviour
     [SerializeField]
     private int coinCost = 5; // Alým için gereken coin miktarý
 
+    private Button button;
+
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
+        button = GetComponent<Button>();
+        UpdateButtonInteractivity();
     }
 
     public void ButonTiklama()
     {
-        int playerCoins = PlayerPrefs.GetInt("CoinAmount", 0); // Oyuncunun sahip olduðu coin miktarý
-
-        if (playerCoins >= coinCost)
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
         {
+            int playerCoins = collectCoinScript.coinAmount;
+
             playerCoins -= coinCost; // Coinlerden düþülüyor
             PlayerPrefs.SetInt("CoinAmount", playerCoins);
 
@@ -71,12 +76,8 @@ public class Buton4 : MonoBehaviour
                 controller.ResumeGame();
 
                 // Coin sayýsýný güncelle
-                CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
-                if (collectCoinScript != null)
-                {
-                    collectCoinScript.coinAmount = playerCoins;
-                    collectCoinScript.coinUI.text = playerCoins.ToString();
-                }
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
 
                 countdownText.text = "5";
                 countdownText.gameObject.SetActive(true);
@@ -89,6 +90,8 @@ public class Buton4 : MonoBehaviour
         {
             Debug.Log("Yeterli coininiz yok.");
         }
+
+        UpdateButtonInteractivity();
     }
 
     private void UpdateCountdown()
@@ -104,5 +107,22 @@ public class Buton4 : MonoBehaviour
             buton4.gameObject.SetActive(false);
             Debug.Log("Geri sayým tamamlandý.");
         }
+    }
+
+    public void UpdateButtonInteractivity()
+    {
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
+    }
+    public void SetInteractable(bool interactable)
+    {
+        button.interactable = interactable;
     }
 }
