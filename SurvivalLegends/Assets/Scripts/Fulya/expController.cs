@@ -15,7 +15,7 @@ public class expController : MonoBehaviour
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
     private bool isGamePaused = false;
-    private float buttonSpacing = 200f;
+    private float buttonSpacing = 300f;
     private AudioSource audiosource;
     private List<Button> activeButtons = new List<Button>();
 
