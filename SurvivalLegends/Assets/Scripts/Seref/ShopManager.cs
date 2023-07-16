@@ -15,11 +15,13 @@ public class ShopManager : MonoBehaviour
     public Button[] equipBtns;
     public Button[] unequipBtns;
     public CharachterSelectShop chrctrSlct;
+    public MeshActivation archerSkin;
 
     private const string DiamondAmountKey = "DiamondAmount";
 
     void Start()
     {
+        if (shopItemSO[0].IsEquipped) { archerSkin.ActivateMesh();}
         diamondScript.diamondAmount = PlayerPrefs.GetInt("Diamond", 10);
         for (int i = 0; i < shopItemSO.Length; i++)
         {
