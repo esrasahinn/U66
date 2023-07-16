@@ -155,11 +155,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 26621974450471576, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 576633891102901315, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_Name
@@ -195,11 +190,6 @@ PrefabInstance:
       propertyPath: audiosource
       value: 
       objectReference: {fileID: 1154887624}
-    - target: {fileID: 3933043866045008997, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4540083128616148405, guid: 7b7a9d5493bd4c54188de63b627b6f38,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1255,12 +1245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &664752735 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9197059618383882992, guid: 7b7a9d5493bd4c54188de63b627b6f38,
-    type: 3}
-  m_PrefabInstance: {fileID: 105615929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &677770857 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 559727479241910635, guid: 152cf5354b637dc4da3c2b326c037334,
@@ -2196,31 +2180,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 692370546198274533, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: buton2
-      value: 
-      objectReference: {fileID: 652560905}
-    - target: {fileID: 692370546198274533, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 173899616}
-    - target: {fileID: 739915580126172400, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: buton6
-      value: 
-      objectReference: {fileID: 1411237530}
-    - target: {fileID: 739915580126172400, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 1012928494}
-    - target: {fileID: 739915580126172400, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 664752735}
     - target: {fileID: 1282709041760041551, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: _object
@@ -2281,31 +2240,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2424921133984250892, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+    - target: {fileID: 2925363737574153433, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
-      propertyPath: buton3
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 472734511}
-    - target: {fileID: 2424921133984250892, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 621883572}
+      objectReference: {fileID: 1686350784}
     - target: {fileID: 3519504447313354668, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: coinUI
       value: 
       objectReference: {fileID: 546704255}
-    - target: {fileID: 3685983356538546297, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: buton5
-      value: 
-      objectReference: {fileID: 90498568}
-    - target: {fileID: 3685983356538546297, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 960991663}
     - target: {fileID: 4095065664937830748, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2316,36 +2260,81 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111435}
+    - target: {fileID: 4706738184592027807, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: buton6
+      value: 
+      objectReference: {fileID: 1411237530}
+    - target: {fileID: 4706738184592027807, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 1012928494}
+    - target: {fileID: 5191311558078530236, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: buton4
+      value: 
+      objectReference: {fileID: 114844019}
+    - target: {fileID: 5191311558078530236, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 51855945}
+    - target: {fileID: 5362140916611483043, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: buton2
+      value: 
+      objectReference: {fileID: 652560905}
+    - target: {fileID: 5362140916611483043, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 173899616}
     - target: {fileID: 5914643891055973713, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111432}
-    - target: {fileID: 6111970932046473826, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1686350784}
     - target: {fileID: 6453034446951016928, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111435}
+    - target: {fileID: 6814087614766475437, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: buton3
+      value: 
+      objectReference: {fileID: 472734511}
+    - target: {fileID: 6814087614766475437, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 621883572}
+    - target: {fileID: 7068888385323293809, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: buton5
+      value: 
+      objectReference: {fileID: 90498568}
+    - target: {fileID: 7068888385323293809, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 960991663}
+    - target: {fileID: 8665047537573565059, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665047537573565059, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8747847005101509814, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: audiosource
       value: 
       objectReference: {fileID: 1154887624}
-    - target: {fileID: 8856703254413406883, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: buton4
-      value: 
-      objectReference: {fileID: 114844019}
-    - target: {fileID: 8856703254413406883, guid: 3a76c7074ff5af64d836bee0b83a6fea,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 51855945}
     - target: {fileID: 9189115443771175140, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_Name
@@ -3429,26 +3418,81 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 975276208723972588, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+    - target: {fileID: 539177959334638234, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
-      propertyPath: buton1
+      propertyPath: buton2
       value: 
-      objectReference: {fileID: 1397144294}
-    - target: {fileID: 975276208723972588, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+      objectReference: {fileID: 652560905}
+    - target: {fileID: 539177959334638234, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: countdownText
       value: 
-      objectReference: {fileID: 856854695}
+      objectReference: {fileID: 173899616}
+    - target: {fileID: 983611311722758308, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 983611311722758308, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1275252957638284413, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: coinUI
       value: 
       objectReference: {fileID: 546704255}
+    - target: {fileID: 1357766236003989121, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: buton3
+      value: 
+      objectReference: {fileID: 472734511}
+    - target: {fileID: 1357766236003989121, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 621883572}
+    - target: {fileID: 1725219885149544658, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: buton5
+      value: 
+      objectReference: {fileID: 90498568}
+    - target: {fileID: 1725219885149544658, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 960991663}
+    - target: {fileID: 3586847939806801834, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: buton6
+      value: 
+      objectReference: {fileID: 1411237530}
+    - target: {fileID: 3586847939806801834, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 1012928494}
+    - target: {fileID: 3749672926922165605, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1686350784}
     - target: {fileID: 3855082609441269748, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111435}
+    - target: {fileID: 4302258428541096659, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: buton4
+      value: 
+      objectReference: {fileID: 114844019}
+    - target: {fileID: 4302258428541096659, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: countdownText
+      value: 
+      objectReference: {fileID: 51855945}
     - target: {fileID: 4474538292276419397, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3524,76 +3568,21 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111435}
-    - target: {fileID: 7331593048469818722, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: buton4
-      value: 
-      objectReference: {fileID: 114844019}
-    - target: {fileID: 7331593048469818722, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 51855945}
-    - target: {fileID: 7488327716180879029, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: buton3
-      value: 
-      objectReference: {fileID: 472734511}
-    - target: {fileID: 7488327716180879029, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 621883572}
-    - target: {fileID: 7999273136775383456, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: buton6
-      value: 
-      objectReference: {fileID: 1411237530}
-    - target: {fileID: 7999273136775383456, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 1012928494}
-    - target: {fileID: 7999273136775383456, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 664752735}
-    - target: {fileID: 8005310693379070603, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: buton5
-      value: 
-      objectReference: {fileID: 90498568}
-    - target: {fileID: 8005310693379070603, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 960991663}
     - target: {fileID: 8038183017582459101, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 216111435}
-    - target: {fileID: 8849062465682544585, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+    - target: {fileID: 8554672761868645296, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: countdownText
       value: 
-      objectReference: {fileID: 1686350784}
+      objectReference: {fileID: 856854695}
     - target: {fileID: 8896348016656826524, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_Name
       value: Karakterler(Archer)
       objectReference: {fileID: 0}
-    - target: {fileID: 8937076338004280985, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: buton2
-      value: 
-      objectReference: {fileID: 652560905}
-    - target: {fileID: 8937076338004280985, guid: fb985a7c5d6d75c4a936bdecdea417a3,
-        type: 3}
-      propertyPath: countdownText
-      value: 
-      objectReference: {fileID: 173899616}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
