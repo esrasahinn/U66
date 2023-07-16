@@ -23,17 +23,15 @@ Survival Legends
 
 ## Ürün Açıklaması
 
-Multiplayer olarak dungeon/arena gibi bir alanda arkadaşlarımızla enemyleri tuzaklara takılmadan temizleyip bölüm bölüm kapı gibi alanlardan geçerek bölüm sonu daha güçlü  enemyler ile savaşıyoruz. Oyun sonu  kaçıncı olduğumuzu görüyoruz.
+Dungeon/arena gibi bir alanda arkadaşlarımızla enemyleri tuzaklara takılmadan temizleyip bölüm bölüm kapı gibi alanlardan geçerek bölüm sonu daha güçlü  enemyler ile savaşıyoruz. 
 Control: Joystick + Tab Skill Use
 Camera: TPS
 
-
-- **Oyunun birincil fonksiyonu**: Oyuncuların multiplayer olarak dungeon/arena gibi bir alanda arkadaşlarıyla birlikte enemyleri tuzaklara takılmadan temizlemek ve bölümleri geçmek olduğunu söyleyebiliriz. Oyuncular, joystick ve tab tuşunu kullanarak karakterlerini kontrol ederler ve tuzaklardan kaçınarak düşmanları yenmeye çalışırlar. Oyunun temel amacı, bölüm sonlarına ulaşmak ve daha güçlü düşmanlarla savaşmaktır.
+- **Oyunun birincil fonksiyonu**: Oyuncuların dungeon/arena gibi bir alanda arkadaşlarıyla birlikte enemyleri tuzaklara takılmadan temizlemek ve bölümleri geçmek olduğunu söyleyebiliriz. Oyuncular, joystick ve tab tuşunu kullanarak karakterlerini kontrol ederler ve tuzaklardan kaçınarak düşmanları yenmeye çalışırlar. Oyunun temel amacı, bölüm sonlarına ulaşmak ve daha güçlü düşmanlarla savaşmaktır.
 
 - **Oyunun ikincil fonksiyonu**: Oyuncuların kaçıncı bölümde olduklarını görmelerini sağlamaktır. Bu, oyuncuların ilerleme kaydetmelerine ve oyunun zorluk seviyesinin artmasına olanak tanır. Böylece oyuncular, kendilerini meydan okuyucu düşmanlarla savaşırken sürekli olarak geliştirebilirler.
 
 ## Ürün Özellikleri
-- Multiplayer Modu: Arkadaşlarınızla veya diğer oyuncularla online olarak oynama imkanı sağlayan bir çok oyunculu mod.
 - Dungeon/Arena Ortamı: Oyunda, oyuncuların düşmanlarla savaşmak için dungeon veya arena gibi bir ortamda gezinmeleri gerekebilir.
 - Bölüm Tabanlı İlerleme: Oyun, oyuncuların bölüm bölüm ilerleyerek daha zorlu düşmanlarla karşılaştığı bir ilerleme sistemi sunabilir.
 - Güçlü Düşmanlar: Oyun ilerledikçe, oyuncular daha güçlü düşmanlarla karşılaşabilir ve onlarla savaşmak zorunda kalabilir.
@@ -44,8 +42,6 @@ Camera: TPS
 
 
 ## Hedef Kitle
-
-Çok oyunculu deneyimi seven oyuncular: Oyunun multiplayer modu ve arkadaşlarla birlikte oynama özelliği, çok oyunculu deneyimi seven oyuncuları hedefleyebilir. Bu, oyuncuların birlikte oynayarak eğlenmelerini ve takım çalışması becerilerini kullanmalarını sağlar.
 
 Aksiyon ve macera seven oyuncular: Dungeon/arena ortamı, düşmanlarla savaşma, tuzaklardan kaçma ve zorlu bölümleri geçme gibi aksiyon ve macera unsurları içeriyor olabilir. Bu da aksiyon dolu oyunları seven oyuncuları hedefleyebilir.
 
@@ -149,10 +145,10 @@ Sprint sırasında takımın karşılaştığı engelleri ve zorlukları tartı�
 
 # Sprint 3
 
-- **Sprint içinde tamamlanması tahmin edilen puan**: 
-
-
-- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](
+- **Sprint içinde tamamlanması tahmin edilen puan**: 110
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in 130 ile başlaması gerektiğine karar verildi.
+- **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/DailyScrumMeetingNotesSprint3.docx) 
+- **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir. Product backloglar product owner ile birlikte oluşturulmuştur.
 
 - **Sprint board update**: Sprint board screenshotları: 
 
@@ -160,7 +156,7 @@ Sprint sırasında takımın karşılaştığı engelleri ve zorlukları tartı�
 - **Ürün Durumu**: Ekran görüntüleri:
 
 
-- **Sprint Review**: 
+- **Sprint Review**:  Alınan kararlar: Takım, oyun teslim süresine göre neleri yetiştirebilirizi konuştuk. Multiplayer'ın yetişemeyeceği düşünülerek zaten test aşamasında olan multiplayer'ı oyunumuza katmamaya karar verdik. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
 
 - **Sprint Retrospective:**
 
