@@ -2816,6 +2816,7 @@ GameObject:
   - component: {fileID: 1076507136}
   - component: {fileID: 1076507135}
   - component: {fileID: 1076507134}
+  - component: {fileID: 1076507138}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -2946,6 +2947,7 @@ MonoBehaviour:
   - {fileID: 2006537356}
   - {fileID: 1369068766}
   chrctrSlct: {fileID: 1076507131}
+  skinCheck: {fileID: 0}
 --- !u!114 &1076507130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,6 +3070,26 @@ MonoBehaviour:
   characterObject: {fileID: 404591126}
   childMeshName: Jacket
   childMeshName1: Gloves
+--- !u!114 &1076507138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076507124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f0d317091c15e4c981600c9f289691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopMngr: {fileID: 1076507129}
+  shopItemSO:
+  - {fileID: 11400000, guid: 333f80238b9558043a65b396f80948b4, type: 2}
+  - {fileID: 11400000, guid: a5fc812b5208d5d4f91d01e67cbfaf01, type: 2}
+  - {fileID: 11400000, guid: c1f88b79b6d5366488d8fcd0cc14380e, type: 2}
+  archerSkin: {fileID: 1076507132}
+  ninjaSkin: {fileID: 1076507135}
+  marksmanSkin: {fileID: 1076507136}
 --- !u!1 &1126990527
 GameObject:
   m_ObjectHideFlags: 0
