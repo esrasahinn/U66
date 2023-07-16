@@ -51,28 +51,28 @@ Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuza
 Karakterleri Product Ownerımız kendisi yapmıştır. Oyunu bilgisayarda WASD ile oynayabilirisiniz ayrıca apk için joystick scriptimiz var ayrıca test edildi. Multiplayer testleri başarılı olsada Sprint 2 bitiminden sonra zaman yetersizliği karşısında olası buglar sebebiyle eklenmemeye karar verilmiştir.
 
 ## Kullanılan Ücretsiz Assetler
-https://kaylousberg.itch.io/kaykit-dungeon-remastered
-https://kaylousberg.itch.io/kaykit-medieval-builder-pack
-https://www.freepik.com/free-vector/hand-drawn-video-game-set-elements_40484561.htm#query=game%20UI&position=15&from_view=search&track=ais
-https://www.freepik.com/free-vector/huge-set-fantasy-planets-dark-background_36102396.htm#query=set%20space%20game&position=8&from_view=search&track=ais
-https://www.freepik.com/free-vector/icons-game-about-hiking-camping-tourism_27923153.htm#query=game-icons-with-heart&position=17&from_view=search&track=sph
-https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565
-https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933
-https://assetstore.unity.com/packages/vfx/particles/little-enchant-mesh-vfx-247587
-https://assetstore.unity.com/packages/2d/textures-materials/sky/free-stylized-skybox-212257
-Ücretsiz Sesler
-https://freesound.org/people/MATRIXXX_/sounds/523763/
-https://freesound.org/people/vox_artist/sounds/512160/ -Karakter öldüğünde kullanılmıştır ve archer karakterinde ise Unityde bulunan pitch özelliğiyle ses tizleştirilmiştir.
-https://freesound.org/people/dkiller2204/sounds/422966/
-https://freesound.org/people/robbeman/sounds/495643/
-https://freesound.org/people/thecrow_br/sounds/574044/
-https://freesound.org/people/kdemani/sounds/635328/
-https://freesound.org/people/iscence/sounds/647702/
-https://freesound.org/people/mywhats/sounds/175520/
-https://freesound.org/people/MAbdurrahman/sounds/459116/
-https://freesound.org/people/malatestinic.com/sounds/481583/
-https://freesound.org/people/Fupicat/sounds/538149/
-background müziği ücretsiz loop birleştirilerek ücretsiz olarak soundtrap.com ile yapılmıştır https://www.soundtrap.com/signup?ref=45d1120e2687c7edf9afaeeed7d09328
+- https://kaylousberg.itch.io/kaykit-dungeon-remastered
+- https://kaylousberg.itch.io/kaykit-medieval-builder-pack
+- https://www.freepik.com/free-vector/hand-drawn-video-game-set-elements_40484561.htm#query=game%20UI&position=15&from_view=search&track=ais
+- https://www.freepik.com/free-vector/huge-set-fantasy-planets-dark-background_36102396.htm#query=set%20space%20game&position=8&from_view=search&track=ais
+- https://www.freepik.com/free-vector/icons-game-about-hiking-camping-tourism_27923153.htm#query=game-icons-with-heart&position=17&from_view=search&track=sph
+- https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565
+- https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933
+- https://assetstore.unity.com/packages/vfx/particles/little-enchant-mesh-vfx-247587
+- https://assetstore.unity.com/packages/2d/textures-materials/sky/free-stylized-skybox-212257
+- Ücretsiz Sesler
+- https://freesound.org/people/MATRIXXX_/sounds/523763/
+- https://freesound.org/people/vox_artist/sounds/512160/ -Karakter öldüğünde kullanılmıştır ve archer karakterinde ise Unityde bulunan pitch özelliğiyle ses tizleştirilmiştir.
+- https://freesound.org/people/dkiller2204/sounds/422966/
+- https://freesound.org/people/robbeman/sounds/495643/
+- https://freesound.org/people/thecrow_br/sounds/574044/
+- https://freesound.org/people/kdemani/sounds/635328/
+- https://freesound.org/people/iscence/sounds/647702/
+- https://freesound.org/people/mywhats/sounds/175520/
+- https://freesound.org/people/MAbdurrahman/sounds/459116/
+- https://freesound.org/people/malatestinic.com/sounds/481583/
+- https://freesound.org/people/Fupicat/sounds/538149/
+- background müziği ücretsiz loop birleştirilerek ücretsiz olarak soundtrap.com ile yapılmıştır https://www.soundtrap.com/signup?ref=45d1120e2687c7edf9afaeeed7d09328
 
 
 
