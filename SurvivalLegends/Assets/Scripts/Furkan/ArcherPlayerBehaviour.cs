@@ -11,6 +11,7 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     private bool isDead = false;
     private bool isImmuneToDamage = false; // Hasar almama durumu
     public AudioSource audiosource;
+
     public static ArcherPlayerBehaviour GetInstance()
     {
         return _instance;
@@ -42,6 +43,11 @@ public class ArcherPlayerBehaviour : MonoBehaviour
                 if (GameManager.gameManager._dusmanHealth.Health <= 0)
                 {
                     DestroyPlayer();
+                    LevelManager levelManager = FindObjectOfType<LevelManager>();
+                    if (levelManager != null)
+                    {
+                        levelManager.Defaited();
+                    }
                 }
             }
 
@@ -65,6 +71,11 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Time.timeScale = 0f;
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager != null)
+        {
+            levelManager.Defaited();
+        }
     }
 
     public void PlayerTakeDmg(int dmg)
