@@ -85,7 +85,7 @@ public class expController : MonoBehaviour
         List<Image> availableImages = new List<Image>(allImages);
 
         float totalButtonWidth = imageCount * buttonSpacing;
-        float startX = -totalButtonWidth / 2f;
+        float startX = -totalButtonWidth / 2f + (buttonSpacing / 2f); // Saða kaydýrma eklendi
 
         for (int i = 0; i < imageCount; i++)
         {
@@ -103,7 +103,7 @@ public class expController : MonoBehaviour
 
                 RectTransform imageRectTransform = randomImage.GetComponent<RectTransform>();
                 float imageX = startX + (i * buttonSpacing);
-                imageRectTransform.anchoredPosition = new Vector2(imageX, 0f);
+                imageRectTransform.anchoredPosition = new Vector2(imageX, -10f);
             }
         }
 
