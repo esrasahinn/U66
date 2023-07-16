@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
     private int deadEnemyCount;
     private UIManager uiManager;
 
-
     public GameObject victory;
     public GameObject defaited;
 
@@ -19,13 +18,13 @@ public class LevelManager : MonoBehaviour
         enemyCount = enemies.Length;
         deadEnemyCount = 0;
 
-        // EndCube bile�enini bulma
+        // EndCube bileşenini bulma
         endCube = FindObjectOfType<EndCube>();
 
-        // UIManager bile�enini bulma
+        // UIManager bileşenini bulma
         uiManager = FindObjectOfType<UIManager>();
 
-        // Ba�lang��ta d��manlar� temizle mesaj�n� g�ncelleyin
+        // Başlangıçta düşmanları temizle mesajını güncelleyin
         uiManager.SetStatusText("Kill the Enemies!");
     }
 
@@ -35,34 +34,30 @@ public class LevelManager : MonoBehaviour
 
         if (deadEnemyCount >= enemyCount && enemyCount > 0)
         {
-            // B�t�n d��manlar �ld�, son k�pten ge�i�e izin ver
+            // Bütün düşmanlar öldü, son kaptan geçişe izin ver
             endCube.SetCanEnterNextLevel(true);
-            // Kap�ya ko� mesaj�n� g�ncelle
+            // Kapıya koş mesajını güncelle
             uiManager.SetStatusText("Enemies cleared. Find the exit!");
         }
         else if (deadEnemyCount < enemyCount)
         {
-            // Hen�z t�m d��manlar �lmediyse, mesaj� "D��manlar� Temizle!" olarak g�ncelle
+            // Henüz tüm düşmanlar ölmediyse, mesajı "Düşmanları Temizle!" olarak güncelle
             uiManager.SetStatusText("Kill the Enemies!");
         }
     }
 
-    public void Victory() {
-
-
-      victory.SetActive(true);
-
+    public void Victory()
+    {
+        victory.SetActive(true);
     }
 
-     public void Defaited() {
-
-        defaited.SetActive(false);
-
-
+    public void Defaited()
+    {
+        defaited.SetActive(true);
     }
+
     public void EndLevel()
     {
-        
         SceneManager.LoadScene("LevelSelector");
     }
 }
