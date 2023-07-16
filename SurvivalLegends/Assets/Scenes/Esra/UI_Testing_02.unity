@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2148,12 +2148,12 @@ PrefabInstance:
     - target: {fileID: 8665047537573565059, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8665047537573565059, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8747847005101509814, guid: 3a76c7074ff5af64d836bee0b83a6fea,
         type: 3}
@@ -2164,6 +2164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Karakterler(Rifle)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189115443771175140, guid: 3a76c7074ff5af64d836bee0b83a6fea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3222,12 +3227,12 @@ PrefabInstance:
     - target: {fileID: 983611311722758308, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 983611311722758308, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1275252957638284413, guid: fb985a7c5d6d75c4a936bdecdea417a3,
         type: 3}
@@ -3328,6 +3333,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Karakterler(Archer)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8896348016656826524, guid: fb985a7c5d6d75c4a936bdecdea417a3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
