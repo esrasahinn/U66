@@ -11,12 +11,13 @@ public class CoinBehaviour : MonoBehaviour
     public float stopY = 0.5f;
     private Rigidbody rb;
     Transform target;
-
+    AudioSource audiosource;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         // animator = GetComponent<Animator>();
+        
     }
 
     private void FixedUpdate()
@@ -28,6 +29,7 @@ public class CoinBehaviour : MonoBehaviour
             StartCoroutine(FlyToPlayer());
             // animator.SetBool("landed", true);
         }
+        audiosource.Play();
     }
 
     void Update()
