@@ -159,7 +159,8 @@ Sprint sırasında takımın karşılaştığı engelleri ve zorlukları tartı�
 - **Sprint Review**:  Alınan kararlar: Takım, oyun teslim süresine göre neleri yetiştirebilirizi konuştuk. Multiplayer'ın yetişemeyeceği düşünülerek zaten test aşamasında olan multiplayer'ı oyunumuza katmamaya karar verdik. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
 
 - **Sprint Retrospective:**
-
+-Takım üye
+-Takım üyeleri Sprint boyunca öğrendikleri olumlu ve olumsuz deneyimleri paylaşır. Bu deneyimleri "Olumlu Öğrenmeler" ve "Geliştirilmesi Gereken Alanlar" şeklinde kategorilere ayırarak, gelecek sprintlerdeki gelişim fırsatlarını belirledik.
 
 
 ---
