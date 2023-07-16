@@ -43,11 +43,6 @@ public class PlayerBehaviour : MonoBehaviour
                 if (GameManager.gameManager._dusmanHealth.Health <= 0)
                 {
                     DestroyPlayer();
-                    LevelManager levelManager = FindObjectOfType<LevelManager>();
-                    if (levelManager != null)
-                    {
-                        levelManager.Defaited();
-                    }
                 }
             }
 
@@ -71,11 +66,6 @@ public class PlayerBehaviour : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         Time.timeScale = 0f; // Sahneyi duraklat
-        LevelManager levelManager = FindObjectOfType<LevelManager>();
-        if (levelManager != null)
-        {
-            levelManager.Defaited();
-        }
     }
 
     //  private IEnumerator PauseAfterDeath()
