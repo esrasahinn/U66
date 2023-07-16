@@ -45,11 +45,38 @@ Camera: TPS
 
 Aksiyon ve macera seven oyuncular: Dungeon/arena ortamı, düşmanlarla savaşma, tuzaklardan kaçma ve zorlu bölümleri geçme gibi aksiyon ve macera unsurları içeriyor olabilir. Bu da aksiyon dolu oyunları seven oyuncuları hedefleyebilir.
 
-Rekabetçi oyuncular: Oyunun ilerleme kaydetme ve daha zorlu düşmanlarla karşılaşma mekanikleri, rekabetçi oyuncuları cezbetebilir. Kendi ilerlemelerini takip etmek ve diğer oyuncularla yarışmak isteyen oyuncular, bu tarz oyunlardan keyif alabilir.
-
 Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuzaklardan kaçma ve düşmanları yenme gibi yetenek gerektiren mekaniklere sahip olması, yetenek tabanlı oyunları seven oyuncuları hedefleyebilir.
 
 ## Juriye Not
+Karakterleri Product Ownerımız kendisi yapmıştır. Oyunu bilgisayarda WASD ile oynayabilirisniz apk için joystick scriptimiz var ve test edildi. Multiplayer testleri başarılı olsada Sprint 2 bitiminden sonra zaman yetersizliği karşısında olası buglar sebebiyle eklenmemeye karar verilmiştir.
+
+## Kullanılan Ücretsiz Assetler
+https://kaylousberg.itch.io/kaykit-dungeon-remastered
+https://kaylousberg.itch.io/kaykit-medieval-builder-pack
+https://www.freepik.com/free-vector/hand-drawn-video-game-set-elements_40484561.htm#query=game%20UI&position=15&from_view=search&track=ais
+https://www.freepik.com/free-vector/huge-set-fantasy-planets-dark-background_36102396.htm#query=set%20space%20game&position=8&from_view=search&track=ais
+https://www.freepik.com/free-vector/icons-game-about-hiking-camping-tourism_27923153.htm#query=game-icons-with-heart&position=17&from_view=search&track=sph
+https://assetstore.unity.com/packages/vfx/particles/cartoon-fx-remaster-free-109565
+https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933
+https://assetstore.unity.com/packages/vfx/particles/little-enchant-mesh-vfx-247587
+https://assetstore.unity.com/packages/2d/textures-materials/sky/free-stylized-skybox-212257
+Ücretsiz Sesler
+https://freesound.org/people/MATRIXXX_/sounds/523763/
+https://freesound.org/people/vox_artist/sounds/512160/ -Karakter öldüğünde kullanılmıştır ve archer karakterinde ise Unityde bulunan pitch özelliğiyle ses tizleştirilmiştir.
+https://freesound.org/people/dkiller2204/sounds/422966/
+https://freesound.org/people/robbeman/sounds/495643/
+https://freesound.org/people/thecrow_br/sounds/574044/
+https://freesound.org/people/kdemani/sounds/635328/
+https://freesound.org/people/iscence/sounds/647702/
+https://freesound.org/people/mywhats/sounds/175520/
+https://freesound.org/people/MAbdurrahman/sounds/459116/
+https://freesound.org/people/malatestinic.com/sounds/481583/
+https://freesound.org/people/Fupicat/sounds/538149/
+background müziği ücretsiz loop birleştirilerek ücretsiz olarak soundtrap.com ile yapılmıştır https://www.soundtrap.com/signup?ref=45d1120e2687c7edf9afaeeed7d09328
+
+
+
+
 
 
 ---
@@ -150,17 +177,38 @@ Sprint sırasında takımın karşılaştığı engelleri ve zorlukları tartı�
 - **Daily Scrum**: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp ve Discord üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği jpeg veya word olarak Readme'de tarafımızdan paylaşılmaktadır: [Sprint 3 Daily Scrum Chats](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/DailyScrumMeetingNotesSprint3.docx)  
 - **Sprint Notları**: User Story'ler product backlog'ların  kartlarına atanmıştır.  Product backlog kartlarına tıklandığında hikayelerin detayları okunabilir. Product backloglar product owner ile birlikte oluşturulmuştur.
 
-- **Sprint board update**: Sprint board screenshotları: 
+- **Sprint board update**: Sprint board screenshotları:
 
+  ![Screenshot 6](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/code.png)
+  ![Screenshot 7](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/bugfix.png)
+  ![Screenshot 8](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/art.png)
+  ![Screenshot 9](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/music.png)
+  ![Screenshot 10](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/animation.png)
+  ![Screenshot 11](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/leveldesign.png)
+  ![Screenshot 12](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/polish.png)
+  ![Screenshot 13](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/ux.png)
+  ![Screenshot 14](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/burndown.png)
+  ![Screenshot 15](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/diagram.png)
 
 - **Ürün Durumu**: Ekran görüntüleri:
 
+  ![Screenshot 1](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/4.gif)
+  ![Screenshot 2](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/ninja.gif)
+  ![Screenshot 3](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/rifle.gif)
+  ![Screenshot 4](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/archer.gif)
+  ![Screenshot 5](SurvivalLegends/Assets/ProjectManagement/Sprint3Documents/shop.gif)
 
-- **Sprint Review**:  Alınan kararlar: Takım, oyun teslim süresine göre neleri yetiştirebilirizi konuştuk. Multiplayer'ın yetişemeyeceği düşünülerek zaten test aşamasında olan multiplayer'ı oyunumuza katmamaya karar verdik. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
+
+- **Sprint Review**:  Alınan kararlar: Takım, oyun teslim süresine göre neleri yetiştirebilirizi konuştuk. Multiplayer'ın yetişemeyeceği düşünülerek zaten test aşamasında olan multiplayerı oyunumuza katmamaya karar verdik. Sprint Review katılımcıları: Esra , Şeref , Furkan, Mahmut, Fulya
 
 - **Sprint Retrospective:**
--Takım üye
--Takım üyeleri Sprint boyunca öğrendikleri olumlu ve olumsuz deneyimleri paylaşır. Bu deneyimleri "Olumlu Öğrenmeler" ve "Geliştirilmesi Gereken Alanlar" şeklinde kategorilere ayırarak, gelecek sprintlerdeki gelişim fırsatlarını belirledik.
+-Takım üyeleri ürün teslim tarihine kadar neleri yetiştirebiliriz diye toplatılar yaptı. Zamana ve çıkan sorunlara göre hedefte bitmesi gereken bazı özellikler oyundan çıkarılmaya karar verildi.
+-Takım üyeleri Sprint boyunca öğrendikleri olumlu ve olumsuz deneyimleri paylaştı. Bu deneyimleri "Olumlu Öğrenmeler" ve "Geliştirilmesi Gereken Alanlar" şeklinde kategorilere ayırarak, gelecek sprintlerdeki gelişim fırsatlarını belirledik.
+-Takım üyeleri Sprint sürecinde birbirlerine olan takdirlerini paylaştı. 
 
+---
 
+## Product Backlog URL
+
+[Unity Team 66 Codecks Backlog Board](https://open.codecks.io/sp3)
 ---
