@@ -29,7 +29,10 @@ public class SceneManagment : MonoBehaviour
         SceneManager.LoadScene("MainMenu"); 
     }
 
-    
+    public void Shop()
+    {
+        SceneManager.LoadScene("Shop");
+    }
 
 
     public void QuitGame()

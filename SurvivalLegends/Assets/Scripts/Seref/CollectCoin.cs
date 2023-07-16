@@ -95,6 +95,7 @@ public class CollectCoin : MonoBehaviour
         // Butonlarýn etkinlik durumunu güncelle
         UpdateButtonInteractivity();
         expController.SetRandomButtons(); // Rastgele butonlarý güncelle
+        //expController.SetRandomImages();
     }
 
     public void UpdateButtonInteractivity()

@@ -6,6 +6,6 @@ using UnityEngine.UI;
 
 public class ShopTemplate : MonoBehaviour
 {
-    public Image itemImage;
-    public TMP_Text itemCost;
+    public TMP_Text costTxt;
+    [SerializeField] Image itemImage;
 }
