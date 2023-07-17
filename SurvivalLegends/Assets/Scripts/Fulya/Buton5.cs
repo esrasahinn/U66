@@ -79,7 +79,7 @@ public class Buton5 : MonoBehaviour
                 collectCoinScript.coinAmount = playerCoins;
                 collectCoinScript.coinUI.text = playerCoins.ToString();
 
-                countdownText.text = "5";
+                countdownText.text = "8";
                 countdownText.gameObject.SetActive(true);
                 buton5.gameObject.SetActive(true);
 

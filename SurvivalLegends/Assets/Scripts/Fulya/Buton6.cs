@@ -39,7 +39,7 @@ public class Buton6 : MonoBehaviour
                 SpawnFlyingCube();
                 Invoke("DestroyFlyingCube", destroyDelay);
 
-                countdownText.text = "20";
+                countdownText.text = "10";
                 countdownText.gameObject.SetActive(true);
                 buton6.gameObject.SetActive(true);
 

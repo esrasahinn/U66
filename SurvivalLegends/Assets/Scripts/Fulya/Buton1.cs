@@ -41,7 +41,7 @@ public class Buton1 : MonoBehaviour
                 player.isSpeedBoostActive = true;
                 player.originalMoveSpeed = player.moveSpeed;
                 player.moveSpeed += 10f;
-                player.speedBoostDuration = 20f; // Hýzlanma süresini belirle
+                player.speedBoostDuration = 10f; // Hýzlanma süresini belirle
 
                 countdownText.text = Mathf.CeilToInt(player.speedBoostDuration).ToString();
                 countdownText.gameObject.SetActive(true);
@@ -77,7 +77,7 @@ public class Buton1 : MonoBehaviour
                 Nplayer.isSpeedBoostActive = true;
                 Nplayer.originalMoveSpeed = Nplayer.moveSpeed;
                 Nplayer.moveSpeed += 10f;
-                Nplayer.speedBoostDuration = 20f; // Hýzlanma süresini belirle
+                Nplayer.speedBoostDuration = 10f; // Hýzlanma süresini belirle
 
                 countdownText.text = Mathf.CeilToInt(Nplayer.speedBoostDuration).ToString();
                 countdownText.gameObject.SetActive(true);
