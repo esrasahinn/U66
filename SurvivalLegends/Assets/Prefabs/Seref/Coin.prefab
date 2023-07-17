@@ -108,7 +108,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.3
+  m_Radius: 0.8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8756561721362618945
 Rigidbody:
@@ -177,9 +177,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 333
-  minFolSpeed: 5
-  maxFolSpeed: 6
-  stopY: 0.5
+  minFolSpeed: 10
+  maxFolSpeed: 13
+  stopY: 0.7
 --- !u!1001 &5604216464334722118
 PrefabInstance:
   m_ObjectHideFlags: 0
