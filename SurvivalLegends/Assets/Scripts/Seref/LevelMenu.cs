@@ -17,30 +17,33 @@ public class LevelMenu : MonoBehaviour
 
     private PlayerScripts playerScripts;
 
-private void Awake()
-{
-    playerScripts = FindObjectOfType<PlayerScripts>();
-    playerScripts.LoadPlayer();
-    Debug.Log(playerScripts.level);
-    if (playerScripts != null)
+    private void Awake()
     {
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", playerScripts.level);
-        for (int i = 0; i < buttons.Length; i++)
+        playerScripts = FindObjectOfType<PlayerScripts>();
+        playerScripts.LoadPlayer();
+        Debug.Log(playerScripts.level);
+        if (playerScripts != null)
         {
-            buttons[i].image.sprite = kilitliSprite; // Tüm butonların görüntüsünü kilitli sprite ile başlat
-            buttons[i].interactable = false;
+            int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", playerScripts.level);
+            for (int i = 0; i < buttons.Length; i++)
+            {
+                buttons[i].image.sprite = kilitliSprite; // Tüm butonların görüntüsünü kilitli sprite ile başlat
+                buttons[i].interactable = false;
+            }
+            for (int i = 0; i < unlockedLevel; i++)
+            {
+                if (i < buttons.Length)
+                {
+                    buttons[i].image.sprite = aktifSprites[i];
+                    buttons[i].interactable = true;
+                }
+            }
         }
-        for (int i = 0; i < unlockedLevel; i++)
+        else
         {
-            buttons[i].image.sprite = aktifSprites[i]; // Açık olan butonların görüntüsünü ilgili aktif sprite ile değiştir
-            buttons[i].interactable = true;
+            Debug.LogError("PlayerScripts component not found in the scene!");
         }
     }
-    else
-    {
-        Debug.LogError("PlayerScripts component not found in the scene!");
-    }
-}
     public void OpenMap(int mapId)
     {
         selectedLevel = mapId;
