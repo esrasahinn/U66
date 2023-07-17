@@ -94,7 +94,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9022195100389546859
 RectTransform:
   m_ObjectHideFlags: 0
@@ -195,7 +195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4654490102207212554
 Transform:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "5\x03"
+  m_Text: 10
 --- !u!1 &1004829517695396184
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,7 +318,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5682745803858920177
 RectTransform:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4033690743750099651
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1457,7 +1457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1416447983534132733
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1641,7 +1641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4906024780921392873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2198,7 +2198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7825726416110920081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2693,7 +2693,7 @@ MonoBehaviour:
   buton1: {fileID: 1983029961919174422}
   countdownText: {fileID: 6798679937212897947}
   coinInsufficientText: {fileID: 0}
-  coinCost: 5
+  coinCost: 10
 --- !u!82 &4558890869456897441
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4424,7 +4424,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -36.817642, y: -0.29977417}
   m_SizeDelta: {x: 14.7, y: 7.5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5198,15 +5198,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menzilMesafesi: 5
-  donmeHizi: 100
-  atesHizi: 5
+  donmeHizi: 150
+  atesHizi: 2
   maxAtesHizi: 80
   minAtesHizi: 1
   atesEtmeMesafesi: 5
   hedefeGitmeHizi: 20
   donmeBaslamaMesafesi: 5
   donmeBitisMesafesi: 5
-  mermiOmru: 5
+  mermiOmru: 1
   mermiPrefab: {fileID: 8845588119558217951, guid: eb3ccf0e65b1bc14e8808e29f1f465ad,
     type: 3}
   ozelYetenekPrefab: {fileID: 0}
@@ -5659,10 +5659,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -112.48001
       objectReference: {fileID: 0}
+    - target: {fileID: 445618525633859455, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 469012255085612221, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: m_Text
-      value: "1\x03"
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 469012255085612221, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
@@ -5703,7 +5708,7 @@ PrefabInstance:
     - target: {fileID: 676426494144220833, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: m_Text
-      value: "2\x03"
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 676426494144220833, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
@@ -6032,6 +6037,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2206274766173485128, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: cooldownTime
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2256131573698571175, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: m_Text
@@ -6121,6 +6131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Maskable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3033114988315714263, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3107717531934257399, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
@@ -6327,6 +6342,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 4ed98b68700614f3f81e8c467924dc24,
         type: 3}
+    - target: {fileID: 5222243791698726743, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5295830290258325648, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6553,6 +6573,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6577745082445031913, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6724930009652027639, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: m_IsActive
@@ -6612,7 +6637,7 @@ PrefabInstance:
     - target: {fileID: 7453149020666825598, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
       propertyPath: m_Text
-      value: "10\x03"
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7453149020666825598, guid: f3044f3a14b3dba41a45b6d8b092251c,
         type: 3}
@@ -6872,6 +6897,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703903499809125002, guid: f3044f3a14b3dba41a45b6d8b092251c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1805588620840461514, guid: f3044f3a14b3dba41a45b6d8b092251c, type: 3}
@@ -7218,7 +7248,7 @@ MonoBehaviour:
   dusmanHasarMiktari: 100
   buton4: {fileID: 5500499832153370723}
   countdownText: {fileID: 6898492196854354922}
-  coinCost: 2
+  coinCost: 30
 --- !u!114 &6273208544740794458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7663,7 +7693,7 @@ MonoBehaviour:
   destroyDelay: 10
   buton6: {fileID: 279678275411789437}
   countdownText: {fileID: 2238316515482912032}
-  coinCost: 10
+  coinCost: 30
 --- !u!114 &6401216040401635241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8059,7 +8089,7 @@ MonoBehaviour:
   dusmanHasarMiktari: 50
   buton5: {fileID: 2926723624186272461}
   countdownText: {fileID: 2956036849469442389}
-  coinCost: 1
+  coinCost: 30
 --- !u!114 &1389836669054635092
 MonoBehaviour:
   m_ObjectHideFlags: 0

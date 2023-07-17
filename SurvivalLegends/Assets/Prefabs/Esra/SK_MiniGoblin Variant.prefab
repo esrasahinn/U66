@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696154bb8196e0c4095c20bd69d6e4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vurulanHasar: 10
+  vurulanHasar: 5
   hasarGecikmesi: 1
 --- !u!1 &4922473832692676217
 GameObject:
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696154bb8196e0c4095c20bd69d6e4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vurulanHasar: 10
+  vurulanHasar: 5
   hasarGecikmesi: 1
 --- !u!1001 &1495649836494316325
 PrefabInstance:
@@ -642,7 +642,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0acbf6421d69d7b4c9790b348c5ff83a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.63
+      value: 13.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0acbf6421d69d7b4c9790b348c5ff83a,
         type: 3}
@@ -1060,11 +1060,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55,
     type: 3}
-  minCollectibles: 1
-  maxCollectibles: 1
-  minSplashForce: 1
-  maxSplashForce: 1
-  verticalForceMultiplier: 1
+  minCollectibles: 3
+  maxCollectibles: 5
+  minSplashForce: 888
+  maxSplashForce: 940
+  verticalForceMultiplier: 2.5
   splashRadius: 1
 --- !u!195 &895691536875644974
 NavMeshAgent:
@@ -1159,7 +1159,7 @@ MonoBehaviour:
   attackRange: 1
   detectionRange: 10
   meleeDamage: 0
-  expAmount: 0.25
+  expAmount: 0.1
   currentHealth: 100
 --- !u!82 &5217195520801219517
 AudioSource:

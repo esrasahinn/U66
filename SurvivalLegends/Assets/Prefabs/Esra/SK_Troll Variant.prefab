@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696154bb8196e0c4095c20bd69d6e4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vurulanHasar: 25
+  vurulanHasar: 10
   hasarGecikmesi: 1
 --- !u!1001 &3374482022946767680
 PrefabInstance:
@@ -960,12 +960,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55,
     type: 3}
-  minCollectibles: 50
-  maxCollectibles: 50
-  minSplashForce: 50
-  maxSplashForce: 50
-  verticalForceMultiplier: 50
-  splashRadius: 50
+  minCollectibles: 5
+  maxCollectibles: 10
+  minSplashForce: 888
+  maxSplashForce: 940
+  verticalForceMultiplier: 2.5
+  splashRadius: 1
 --- !u!195 &430956554209972072
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1009,7 +1009,7 @@ MonoBehaviour:
   attackRange: 1.5
   detectionRange: 15
   meleeDamage: 0
-  expAmount: 0.25
+  expAmount: 0.2
   currentHealth: 100
 --- !u!54 &6308549623256570211
 Rigidbody:
