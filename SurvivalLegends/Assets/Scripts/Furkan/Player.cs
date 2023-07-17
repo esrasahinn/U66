@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] JoyStick moveStick;
-    [SerializeField] JoyStick aimStick;
     [SerializeField] CharacterController characterController;
     public float moveSpeed = 20f;
     [SerializeField] float maxMoveSpeed = 50f;
@@ -31,7 +29,6 @@ public class Player : MonoBehaviour
     }
 
     Vector2 moveInput;
-    Vector2 aimInput;
     public PlayerBehaviour _playH;
     Camera mainCam;
     CameraController cameraController;
@@ -54,8 +51,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moveStick.onStickValueUpdated += moveStickUpdated;
-        aimStick.onStickValueUpdated += aimStickUpdated;
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
@@ -74,42 +69,25 @@ public class Player : MonoBehaviour
         inventoryComponent.GetActiveWeapon().Attack();
     }
 
-    void aimStickUpdated(Vector2 inputValue)
-    {
-        aimInput = inputValue;
-    }
-
-    void moveStickUpdated(Vector2 inputValue)
-    {
-        moveInput = inputValue;
-    }
-
-    Vector3 StickInputToWorldDir(Vector3 inputVal)
-    {
-        Vector3 rightDir = mainCam.transform.right;
-        Vector3 upDir = Vector3.Cross(rightDir, Vector3.up);
-        return rightDir * inputVal.x + upDir * inputVal.y;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        PerformMoveAndAim();
+        HandleMovement();
+        HandleAim();
         UpdateCamera();
         // SetRunningAnimation((Mathf.Abs(Horizontal) > 0 || Mathf.Abs(Vertical) > 0));
     }
 
-    private void PerformMoveAndAim()
+    private void HandleMovement()
     {
-        Vector3 MoveDir = StickInputToWorldDir(moveInput);
-        characterController.Move(MoveDir * Time.deltaTime * moveSpeed);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+        characterController.Move(moveDirection * Time.deltaTime * moveSpeed);
 
-        UpdateAim(MoveDir);
-
-        float aim = Vector3.Dot(MoveDir, transform.forward);
-        float rforward = Vector3.Dot(MoveDir, transform.forward);
-        float forward = Vector3.Dot(MoveDir, transform.forward);
-        float right = Vector3.Dot(MoveDir, transform.right);
+        float aim = Vector3.Dot(moveDirection, transform.forward);
+        float rforward = Vector3.Dot(moveDirection, transform.forward);
+        float forward = Vector3.Dot(moveDirection, transform.forward);
+        float right = Vector3.Dot(moveDirection, transform.right);
 
         animator.SetFloat("forwardSpeed", forward);
         animator.SetFloat("rightSpeed", right);
@@ -118,7 +96,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("rforward", rforward);
 
         // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
-        if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
+        if (moveDirection.magnitude > 0)
         {
             animator.SetBool("Running", true);
         }
@@ -133,46 +111,33 @@ public class Player : MonoBehaviour
     //     animator.SetBool("Running", run);
     // }
 
-    private void UpdateAim(Vector3 currentMoveDir)
+    private void HandleAim()
     {
-        Vector3 AimDir = currentMoveDir;
-        if (aimInput.magnitude != 0)
+        Vector3 mousePosition = Input.mousePosition;
+        Ray mouseRay = mainCam.ScreenPointToRay(mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, transform.position);
+        if (groundPlane.Raycast(mouseRay, out float rayDistance))
         {
-            AimDir = StickInputToWorldDir(aimInput);
+            Vector3 targetPosition = mouseRay.GetPoint(rayDistance);
+            RotateTowards(targetPosition - transform.position);
         }
-        RotateTowards(AimDir);
     }
 
     private void UpdateCamera()
     {
         // Oyuncu hareket ediyor ama niþan almýyor ve cameraController var
-        if (moveInput.magnitude != 0 && aimInput.magnitude == 0 && cameraController != null)
+        if (characterController.velocity.magnitude > 0 && Input.GetAxis("Mouse X") == 0 && cameraController != null)
         {
-            cameraController.AddYawInput(moveInput.x);
+            float horizontalInput = Input.GetAxis("Horizontal");
+            cameraController.AddYawInput(horizontalInput);
         }
     }
 
-    private void RotateTowards(Vector3 AimDir)
+    private void RotateTowards(Vector3 targetPosition)
     {
-        float currentTurnSpeed = 0;
-        if (AimDir.magnitude != 0)
-        {
-            Quaternion prevRot = transform.rotation;
-            Quaternion targetRot = Quaternion.LookRotation(AimDir, Vector3.up);
-
-            float smoothTime = 0.1f; // Dönüþün hýzýný kontrol etmek için kullanýlan bir süre
-            Quaternion currentRot = Quaternion.Slerp(prevRot, targetRot, smoothTime);
-
-            // Düzeltme faktörü uygulayýn
-            currentRot = Quaternion.Lerp(prevRot, currentRot, rotationCorrectionFactor);
-
-            float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
-            float rotationDelta = Quaternion.Angle(prevRot, currentRot) * Dir;
-            currentTurnSpeed = rotationDelta / Time.deltaTime;
-            transform.rotation = currentRot;
-        }
-        animatorTurnSpeed = Mathf.Lerp(animatorTurnSpeed, currentTurnSpeed, Time.deltaTime * animTurnSpeed);
-        animator.SetFloat("turnSpeed", animatorTurnSpeed);
+        Vector3 targetDirection = targetPosition - transform.position;
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
     }
 
     private void Awake()

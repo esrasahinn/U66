@@ -195,7 +195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4654490102207212554
 Transform:
   m_ObjectHideFlags: 0
@@ -4424,7 +4424,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -36.817642, y: -0.29977417}
   m_SizeDelta: {x: 14.7, y: 7.5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5147,13 +5147,12 @@ MonoBehaviour:
   minMoveSpeed: 10
   turnSpeed: 10
   animTurnSpeed: 5
-  can: 100
-  maxCan: 100
-  canBariSlider: {fileID: 5371448224431230716}
+  health: 100
+  maxHealth: 100
+  healthSlider: {fileID: 0}
   inventoryComponent: {fileID: 6252023964796201506}
   testShopSystem: {fileID: 0}
   testItem: {fileID: 0}
-  _playH: {fileID: 0}
   isSpeedBoostActive: 0
   originalMoveSpeed: 0
   speedBoostDuration: 0
