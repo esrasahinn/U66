@@ -6,7 +6,7 @@ public class CharachterSelectShop : MonoBehaviour
 {
     public GameObject[] skins;
     public int SelectedCharacter;
-    public float spacing = 2f;
+    public float spacing = 1f;
     public float testx;
 
     private void Awake()
@@ -46,7 +46,7 @@ public class CharachterSelectShop : MonoBehaviour
     private void ArrangeCharacters()
     {
         float startX = testx; // Başlangıç noktasını değiştirin
-        float startZ = -2.7f;
+        float startZ = -2;
 
         Vector3[] targetPositions = new Vector3[skins.Length];
 
@@ -63,7 +63,7 @@ public class CharachterSelectShop : MonoBehaviour
 
             if (i == 0)
             {
-                characterX -= 2.3f; // Sadece 0. karakterin x pozisyonunu sola kaydırın
+                characterX -= 1.5f; // Sadece 0. karakterin x pozisyonunu sola kaydırın
             }
 
             if (i == 2)
