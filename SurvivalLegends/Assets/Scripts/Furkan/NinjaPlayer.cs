@@ -55,7 +55,7 @@ public class NinjaPlayer : MonoBehaviour
     void Start()
     {
         moveStick.onStickValueUpdated += moveStickUpdated;
-      //  aimStick.onStickValueUpdated += aimStickUpdated;
+        //  aimStick.onStickValueUpdated += aimStickUpdated;
         mainCam = Camera.main;
         cameraController = FindObjectOfType<CameraController>();
         animator = GetComponent<Animator>();
