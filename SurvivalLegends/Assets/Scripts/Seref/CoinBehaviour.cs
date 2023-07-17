@@ -36,7 +36,7 @@ public class CoinBehaviour : MonoBehaviour
     IEnumerator FlyToPlayer()
     {
         yield return new WaitForSeconds(1f);
-        Vector3 targetPosition = target.transform.position + new Vector3(0, yOffset, 0);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
+        Vector3 targetPosition = target.position + new Vector3(0, yOffset, 0);
+        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref velocity, Time.deltaTime * Random.Range(minFolSpeed, maxFolSpeed));
     }
 }
