@@ -18,12 +18,12 @@ public class ShopManager : MonoBehaviour
     public SkinCheck skinCheck;
    
 
-    private const string DiamondAmountKey = "DiamondAmount";
+    private const string DiamondAmountKey = "Diamond";
 
     void Start()
     {
 
-        diamondScript.diamondAmount = PlayerPrefs.GetInt("DiamondAmount", 10);
+        diamondScript.diamondAmount = PlayerPrefs.GetInt("Diamond", 10);
         for (int i = 0; i < shopItemSO.Length; i++)
         {
             {
@@ -42,6 +42,7 @@ public class ShopManager : MonoBehaviour
     void Update()
     {
         LoadPanels();
+        diamondUI.text = diamondScript.diamondAmount.ToString();
     }
 
     public void LoadPanels()
