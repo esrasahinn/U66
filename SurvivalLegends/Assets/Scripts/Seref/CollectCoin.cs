@@ -31,7 +31,7 @@ public class CollectCoin : MonoBehaviour
 
     private void GiveCoin()
     {
-        coinAmount++;
+        coinAmount = 30;
         PlayerPrefs.SetInt(CoinAmountKey, coinAmount);
         Debug.Log(coinAmount + " coins.");
         coinUI.text = coinAmount.ToString();
