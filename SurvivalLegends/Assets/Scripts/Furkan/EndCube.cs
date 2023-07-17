@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,10 @@ public class EndCube : MonoBehaviour
     private PlayerScripts playerScripts;
 
     private bool canEnterNextLevel = false;
+
+    public ShopManager shopManager;
+    public int earnedDiamonds;
+    public TMP_Text earnedDiamonsText;
 
     private void Start()
     {
@@ -22,9 +27,11 @@ public class EndCube : MonoBehaviour
             other.gameObject.SetActive(false); 
             levelManager.Victory();
             playerScripts.LoadPlayer();
+            earnedDiamonsText.text = earnedDiamonds.ToString();
+            EarnDiamonds();
 
 
-        
+
         }
     }
 
@@ -44,5 +51,12 @@ public class EndCube : MonoBehaviour
     public void EnemyDied()
     {
         // Bu fonksiyonu bo� b�rakabilirsiniz veya ba�ka bir i�lem yapabilirsiniz
+    }
+
+    public void EarnDiamonds()
+    {
+        shopManager.diamondScript.diamondAmount += earnedDiamonds;
+        shopManager.diamondUI.text = shopManager.diamondScript.diamondAmount.ToString();
+        shopManager.SaveDiamondCount();
     }
 }
