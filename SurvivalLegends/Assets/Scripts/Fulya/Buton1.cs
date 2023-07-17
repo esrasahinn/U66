@@ -10,7 +10,7 @@ public class Buton1 : MonoBehaviour
     private expController controller;
     public Image buton1;
     public Text countdownText;
-    
+    public Text coinInsufficientText;
     private Button button;
     private CollectCoin collectCoinScript;
     public int coinCost = 5; // Alým için gereken coin miktarý
@@ -54,11 +54,11 @@ public class Buton1 : MonoBehaviour
                 Invoke(nameof(DisableSpeedBoost), player.speedBoostDuration);
             }
         }
-       // else
-       // {
-       //     Debug.Log("Yeterli coininiz yok.");
-       //     StartCoroutine(ShowCoinInsufficientText());
-       // }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok.");
+            StartCoroutine(ShowCoinInsufficientText());
+        }
     }
 
     public void ButonTiklamaNinja()
@@ -90,11 +90,11 @@ public class Buton1 : MonoBehaviour
                 Invoke(nameof(DisableSpeedBoost), Nplayer.speedBoostDuration);
             }
         }
-       // else
-       // {
-       //     Debug.Log("Yeterli coininiz yok.");
-       //     StartCoroutine(ShowCoinInsufficientText());
-       // }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok.");
+            StartCoroutine(ShowCoinInsufficientText());
+        }
     }
 
     private void UpdateCountdown()
@@ -150,12 +150,12 @@ public class Buton1 : MonoBehaviour
         }
     }
 
-    //private IEnumerator ShowCoinInsufficientText()
-    //{
-    //    coinInsufficientText.gameObject.SetActive(true);
-    //    yield return new WaitForSeconds(1f);
-    //    coinInsufficientText.gameObject.SetActive(false);
-    //}
+    private IEnumerator ShowCoinInsufficientText()
+    {
+        coinInsufficientText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        coinInsufficientText.gameObject.SetActive(false);
+    }
 
     public void UpdateButtonInteractivity()
     {

@@ -1211,7 +1211,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -36.817642, y: -0.29977417}
   m_SizeDelta: {x: 14.7, y: 7.5}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5346,6 +5346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buton1: {fileID: 4160293798679775698}
   countdownText: {fileID: 2231733705359438315}
+  coinInsufficientText: {fileID: 2231733705359438315}
   coinCost: 5
 --- !u!82 &842277378378076137
 AudioSource:
@@ -5482,8 +5483,8 @@ MonoBehaviour:
   meteorPrefab: {fileID: 7599963777264991170, guid: 0825687f465513842bcd29855165a905,
     type: 3}
   dusmanHasarMiktari: 50
-  buton5: {fileID: 7603080992630915289}
-  countdownText: {fileID: 2203376526764210058}
+  buton5: {fileID: 0}
+  countdownText: {fileID: 0}
   coinCost: 1
 --- !u!114 &3390441228859596014
 MonoBehaviour:
@@ -5726,10 +5727,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasarAlmamaSure: 30
-  buton2: {fileID: 6720844358271496058}
+  buton2: {fileID: 0}
   kalkanPrefab: {fileID: 5919487051006943488, guid: b593386595f2c6d47b71bc15a64410ff,
     type: 3}
-  countdownText: {fileID: 5156763672764231459}
+  countdownText: {fileID: 0}
   coinCost: 10
 --- !u!82 &2882731822771332637
 AudioSource:
@@ -5922,8 +5923,8 @@ MonoBehaviour:
   playerTransform: {fileID: 611197493833590023}
   rotationSpeed: 100
   destroyDelay: 20
-  buton6: {fileID: 4822415501858587650}
-  countdownText: {fileID: 7281330369747594215}
+  buton6: {fileID: 0}
+  countdownText: {fileID: 0}
   coinCost: 10
 --- !u!114 &1264819588960433248
 MonoBehaviour:
@@ -6084,10 +6085,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1963cfaf7d66f234da82d1a4cd1f4b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buton3: {fileID: 2887699763975150439}
+  buton3: {fileID: 0}
   healPrefab: {fileID: 8805847706772148129, guid: 0b47225004899754981e24620d8e4f2c,
     type: 3}
-  countdownText: {fileID: 1856381630236758732}
+  countdownText: {fileID: 0}
   coinCost: 20
 --- !u!114 &3895422899294231084
 MonoBehaviour:
@@ -6257,8 +6258,8 @@ MonoBehaviour:
   zehirliSuPrefab: {fileID: 7909621034655877892, guid: d0bde5e6dc9fcd74896256b202add286,
     type: 3}
   dusmanHasarMiktari: 100
-  buton4: {fileID: 5894071258809205075}
-  countdownText: {fileID: 4170008127742721225}
+  buton4: {fileID: 0}
+  countdownText: {fileID: 0}
   coinCost: 2
 --- !u!114 &7210159684844476428
 MonoBehaviour:
