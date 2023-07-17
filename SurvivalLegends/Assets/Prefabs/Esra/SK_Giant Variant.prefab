@@ -561,7 +561,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 22.21
+      value: 27.109999
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0b447f42089ced44ba4eec8d247e3ec5,
         type: 3}
@@ -974,12 +974,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectiblePrefab: {fileID: 4336167481356998226, guid: 4a8a8d7209fa37b46ba48c03f7853c55,
     type: 3}
-  minCollectibles: 50
-  maxCollectibles: 50
-  minSplashForce: 50
-  maxSplashForce: 50
-  verticalForceMultiplier: 50
-  splashRadius: 50
+  minCollectibles: 10
+  maxCollectibles: 15
+  minSplashForce: 888
+  maxSplashForce: 940
+  verticalForceMultiplier: 2.5
+  splashRadius: 1
 --- !u!195 &2001691956013763785
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   attackRange: 2
   detectionRange: 10
   meleeDamage: 0
-  expAmount: 0.25
+  expAmount: 0.3
   currentHealth: 100
 --- !u!54 &1024865875505099260
 Rigidbody:
@@ -1260,6 +1260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hasarMiktari
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629665567667441770, guid: edc44a0849d838543b1a6e6e469a5dd6,
+        type: 3}
+      propertyPath: vurulanHasar
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
