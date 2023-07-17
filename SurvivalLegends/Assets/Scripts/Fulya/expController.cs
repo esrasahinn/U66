@@ -18,7 +18,7 @@ public class expController : MonoBehaviour
     private float buttonSpacing = 300f;
     private AudioSource audiosource;
     private List<Button> activeButtons = new List<Button>();
-    
+
     private void Update()
     {
         audiosource = GetComponent<AudioSource>();
@@ -50,8 +50,8 @@ public class expController : MonoBehaviour
 
     private void ShowPopup()
     {
-        audiosource.Play();
         SetPopupShowing(true);
+        audiosource.Play();
     }
 
     public void HidePopup()
