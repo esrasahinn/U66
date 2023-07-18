@@ -7,51 +7,51 @@ public class expController : MonoBehaviour
 {
     public Image expBar;
     public GameObject popupObject;
-    private float expIncreaseAmount = 0.9f;
+    public List<Button> allButtons;
+    public List<Image> allImages;
+    public int maxButtonCount = 3;
+    public int maxImageCount = 3;
     private float maxFillAmount = 1f;
     private float currentFillAmount = 0f;
     private bool isPopupShowing = false;
-    public Button Buton1;
-    public Button Buton2;
-    public Button Buton3;
-    public Button Buton4;
-    private ProjectileController projectileController; // ProjectileController referansý eklendi
-  
-    private void Awake()
-    {
-        projectileController = GetComponent<ProjectileController>(); // ProjectileController referansý alýndý
-    }
-
-    private void Start()
-    {
-        // Diðer baþlatma iþlemleri
-    }
+    private bool isGamePaused = false;
+    private float buttonSpacing = 300f;
+    private AudioSource audiosource;
+    private List<Button> activeButtons = new List<Button>();
 
     private void Update()
     {
-        if (currentFillAmount >= maxFillAmount)
+        audiosource = GetComponent<AudioSource>();
+        if (!isGamePaused && currentFillAmount >= maxFillAmount)
         {
-            if (!isPopupShowing)
-            {
-                ShowPopup();
-                currentFillAmount = 0f; // EXP BAR'ý sýfýrla
-                expBar.fillAmount = currentFillAmount; // Fill Amount'i güncelle
-            }
+            PauseGame();
+            ShowPopup();
+            currentFillAmount = 0f;
+            expBar.fillAmount = currentFillAmount;
+        }
+
+        if (isGamePaused && !isPopupShowing && Input.GetKeyDown(KeyCode.Space))
+        {
+            ResumeGame();
         }
     }
 
-    public void UpdateExpBar()
+    public void UpdateExpBar(float expIncreaseAmount)
     {
-        currentFillAmount += expIncreaseAmount;
-        currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
-        expBar.fillAmount = currentFillAmount;
-        HidePopup();
+        if (!isGamePaused)
+        {
+            currentFillAmount += expIncreaseAmount * maxFillAmount;
+            currentFillAmount = Mathf.Clamp(currentFillAmount, 0f, maxFillAmount);
+            expBar.fillAmount = currentFillAmount;
+
+            HidePopup();
+        }
     }
 
     private void ShowPopup()
     {
-        popupObject.SetActive(true);
-        isPopupShowing = true;
+        SetPopupShowing(true);
+        audiosource.Play();
     }
 
     public void HidePopup()
@@ -60,5 +60,76 @@ public class expController : MonoBehaviour
         isPopupShowing = false;
     }
 
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        isGamePaused = true;
+    }
 
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isGamePaused = false;
+    }
+
+    public void SetRandomButtons()
+    {
+        foreach (Image image in allImages)
+        {
+            image.gameObject.SetActive(false);
+        }
+
+        activeButtons.Clear();
+
+        int imageCount = Mathf.Min(maxButtonCount, maxImageCount, allImages.Count);
+        List<Image> availableImages = new List<Image>(allImages);
+
+        float totalButtonWidth = imageCount * buttonSpacing;
+        float startX = -totalButtonWidth / 2f + (buttonSpacing / 2f); // Saða kaydýrma eklendi
+
+        for (int i = 0; i < imageCount; i++)
+        {
+            int randomIndex = Random.Range(0, availableImages.Count);
+            Image randomImage = availableImages[randomIndex];
+            availableImages.RemoveAt(randomIndex);
+
+            Button button = randomImage.GetComponentInChildren<Button>();
+            if (button != null)
+            {
+                activeButtons.Add(button);
+                randomImage.gameObject.SetActive(true);
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() => OnButtonClick(randomImage));
+
+                RectTransform imageRectTransform = randomImage.GetComponent<RectTransform>();
+                float imageX = startX + (i * buttonSpacing);
+                imageRectTransform.anchoredPosition = new Vector2(imageX, -10f);
+            }
+        }
+
+        foreach (Button button in allButtons)
+        {
+            if (!activeButtons.Contains(button))
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void OnButtonClick(Image clickedImage)
+    {
+        Debug.Log("Button clicked: " + clickedImage.name);
+        SetPopupShowing(false);
+    }
+
+    public void SetPopupShowing(bool showing)
+    {
+        isPopupShowing = showing;
+        popupObject.SetActive(showing);
+
+        if (!showing)
+        {
+            ResumeGame();
+        }
+    }
 }

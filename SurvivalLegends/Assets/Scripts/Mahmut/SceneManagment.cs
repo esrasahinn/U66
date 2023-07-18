@@ -16,7 +16,7 @@ public class SceneManagment : MonoBehaviour
 
         public void Ready()
     {
-        SceneManager.LoadScene("Ready");
+        SceneManager.LoadScene("Birlestirme");
     }
 
             public void MainMenu()
@@ -29,7 +29,14 @@ public class SceneManagment : MonoBehaviour
         SceneManager.LoadScene("MainMenu"); 
     }
 
-    
+    public void Shop()
+    {
+        SceneManager.LoadScene("Shop");
+    }
+    public void Map()
+    {
+        SceneManager.LoadScene("LevelSelector");
+    }
 
 
     public void QuitGame()

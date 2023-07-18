@@ -5,13 +5,14 @@ public class KatanaSpine : MonoBehaviour
 {
     public KeyCode abilityKeyCode = KeyCode.E; // Yetenek tuþu
     [SerializeField] public NinjaInventoryComponent ninjaInventory; // NinjaInventoryComponent bileþeni
-
+    AudioSource audiosource;
     private Button abilityButton;
 
     private void Start()
     {
         abilityButton = GetComponent<Button>();
         abilityButton.onClick.AddListener(ActivateAbility);
+        audiosource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -27,6 +28,7 @@ public class KatanaSpine : MonoBehaviour
         if (!ninjaInventory.isInventoryActive && ninjaInventory.canUseAbility)
         {
             ninjaInventory.ToggleInventory();
+            audiosource.Play();
         }
     }
 }

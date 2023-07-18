@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ArcherPlayerBehaviour : MonoBehaviour
@@ -8,7 +7,10 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     public int _health = 100;
     private static ArcherPlayerBehaviour _instance;
     private Animator _animator;
-    private ArcherMenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme; // MenzileGirenDusmanaAtesVeDonme scriptine eriþmek için referans
+    private ArcherMenzileGirenDusmanaAtesVeDonme menzileGirenDusmanaAtesVeDonme;
+    private bool isDead = false;
+    private bool isImmuneToDamage = false; // Hasar almama durumu
+    public AudioSource audiosource;
 
     public static ArcherPlayerBehaviour GetInstance()
     {
@@ -26,52 +28,67 @@ public class ArcherPlayerBehaviour : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        menzileGirenDusmanaAtesVeDonme = GetComponent<ArcherMenzileGirenDusmanaAtesVeDonme>(); // MenzileGirenDusmanaAtesVeDonme componentini al
+        menzileGirenDusmanaAtesVeDonme = GetComponent<ArcherMenzileGirenDusmanaAtesVeDonme>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!isDead && !isImmuneToDamage)
         {
-            PlayerTakeDmg(20);
-            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
-
-            if (GameManager.gameManager._dusmanHealth.Health <= 0)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Destroy(gameObject);
-            }
-        }
+                PlayerTakeDmg(20);
+                Debug.Log(GameManager.gameManager._dusmanHealth.Health);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            PlayerHeal(10);
-            Debug.Log(GameManager.gameManager._dusmanHealth.Health);
+                if (GameManager.gameManager._dusmanHealth.Health <= 0)
+                {
+                    DestroyPlayer();
+                    LevelManager levelManager = FindObjectOfType<LevelManager>();
+                    if (levelManager != null)
+                    {
+                        levelManager.Defaited();
+                    }
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                PlayerHeal(10);
+                Debug.Log(GameManager.gameManager._dusmanHealth.Health);
+            }
         }
     }
 
     public void DestroyPlayer()
     {
+        audiosource.Play();
+        isDead = true;
         _animator.SetBool("Death", true);
         StartCoroutine(ResetAfterAnimation());
     }
 
     private IEnumerator ResetAfterAnimation()
     {
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-        _health = 0; // Can deðerini sýfýrla
-        _healthbar.SetHealth(_health);
-        gameObject.SetActive(true);
-        menzileGirenDusmanaAtesVeDonme.enabled = false; // MenzileGirenDusmanaAtesVeDonme scriptini devre dýþý býrak
+        yield return new WaitForSeconds(3f);
+        Time.timeScale = 0f;
+        LevelManager levelManager = FindObjectOfType<LevelManager>();
+        if (levelManager != null)
+        {
+            levelManager.Defaited();
+        }
     }
 
     public void PlayerTakeDmg(int dmg)
     {
-        _health -= dmg;
-        _healthbar.SetHealth(_health);
-
-        if (_health <= 0)
+        if (!isImmuneToDamage)
         {
-            DestroyPlayer();
+            _health -= dmg;
+            _healthbar.SetHealth(_health);
+
+            if (_health <= 0)
+            {
+                DestroyPlayer();
+            }
         }
     }
 
@@ -82,10 +99,32 @@ public class ArcherPlayerBehaviour : MonoBehaviour
         _healthbar.SetHealth(_health);
     }
 
+    public void ActivateImmunity(float duration)
+    {
+        StartCoroutine(ImmuneToDamage(duration));
+    }
+
+    private IEnumerator ImmuneToDamage(float duration)
+    {
+        isImmuneToDamage = true;
+        yield return new WaitForSeconds(duration);
+        isImmuneToDamage = false;
+        Debug.Log("Hasar almama süresi doldu.");
+    }
+
+    public void DeactivateImmunity()
+    {
+        isImmuneToDamage = false;
+    }
+
+    public bool IsImmuneToDamage
+    {
+        get { return isImmuneToDamage; }
+    }
+
     public void PerformLeftShiftAction()
     {
         PlayerHeal(10);
         Debug.Log(GameManager.gameManager._dusmanHealth.Health);
     }
 }
-

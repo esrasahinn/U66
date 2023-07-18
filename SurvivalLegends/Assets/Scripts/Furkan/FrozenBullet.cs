@@ -10,10 +10,16 @@ public class FrozenBullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyAI enemyAI = other.GetComponent<EnemyAI>();
+        EnemyController enemyAI = other.GetComponent<EnemyController>();
         if (enemyAI != null && other.CompareTag("Dusman")) // Sadece Dusman tag'ine sahip objeleri etkile
         {
             enemyAI.FreezeEnemy(); // Düþmaný dondur
+        }
+
+        RangedEnemyController RenemyAI = other.GetComponent<RangedEnemyController>();
+        if (RenemyAI != null && other.CompareTag("Dusman")) // Sadece Dusman tag'ine sahip objeleri etkile
+        {
+            RenemyAI.FreezeEnemy(); // Düþmaný dondur
         }
 
         Destroy(gameObject); // Mermiyi yok et

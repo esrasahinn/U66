@@ -1,58 +1,128 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Buton4 : MonoBehaviour
 {
     public GameObject zehirliSuPrefab;
-    public Transform dusmanAlan;
     public int dusmanHasarMiktari = 10;
     private expController controller;
+    private GameObject[] dusmanlar;
+    public Image buton4;
+    public Text countdownText;
+
+    [SerializeField]
+    private int coinCost = 5; // Alým için gereken coin miktarý
+
+    private Button button;
 
     private void Awake()
     {
         controller = FindObjectOfType<expController>();
+        button = GetComponent<Button>();
+        UpdateButtonInteractivity();
     }
 
     public void ButonTiklama()
     {
-        // Zehirli suyu rastgele bir konuma yerleþtir
-        Vector3 randomPosition = RandomPositionInArea(dusmanAlan);
-        randomPosition.y += 5f; // Yükseklik ekleyerek prefab'ý yukarý taþý
-        GameObject zehirliSu = Instantiate(zehirliSuPrefab, randomPosition, Quaternion.identity);
-
-        // Rastgele düþmana zarar ver
-        DusmanlaraZararVer(zehirliSu.GetComponent<ZehirliSu>());
-    }
-
-    private Vector3 RandomPositionInArea(Transform area)
-    {
-        // Alanýn sýnýrlarýný kullanarak rastgele bir konum üret
-        Vector3 min = area.position - area.localScale / 2f;
-        Vector3 max = area.position + area.localScale / 2f;
-
-        return new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), Random.Range(min.z, max.z));
-    }
-
-    private void DusmanlaraZararVer(ZehirliSu zehirliSu)
-    {
-        // Tüm düþmanlarý seç
-        EnemyAI[] dusmanlar = FindObjectsOfType<EnemyAI>();
-
-        // Rastgele düþmana zarar ver
-        if (dusmanlar.Length > 0)
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
         {
-            // Rastgele bir düþman seç
-            int rastgeleDusmanIndex = Random.Range(0, dusmanlar.Length);
-            EnemyAI rastgeleDusman = dusmanlar[rastgeleDusmanIndex];
+            int playerCoins = collectCoinScript.coinAmount;
 
-            // Seçilen düþmana zarar ver
-            rastgeleDusman.HasarAl(dusmanHasarMiktari);
+            playerCoins -= coinCost; // Coinlerden düþülüyor
+            PlayerPrefs.SetInt("CoinAmount", playerCoins);
 
-            // Zehirli suyu düþmana at
-            zehirliSu.At(rastgeleDusman);
+            // Düþmanlarý bul
+            dusmanlar = GameObject.FindGameObjectsWithTag("Dusman");
+
+            if (dusmanlar.Length > 0)
+            {
+                // Rastgele 3 düþman seç
+                List<GameObject> rastgeleDusmanlar = new List<GameObject>();
+                int maxDusmanSayisi = Mathf.Min(dusmanlar.Length, 3);
+
+                while (rastgeleDusmanlar.Count < maxDusmanSayisi)
+                {
+                    int rastgeleIndex = Random.Range(0, dusmanlar.Length);
+                    GameObject rastgeleDusman = dusmanlar[rastgeleIndex];
+
+                    if (!rastgeleDusmanlar.Contains(rastgeleDusman))
+                    {
+                        rastgeleDusmanlar.Add(rastgeleDusman);
+
+                        // Zehirli suyu düþmana at
+                        Vector3 spawnPosition = rastgeleDusman.transform.position + Vector3.up * 6f;
+                        GameObject zehirliSu = Instantiate(zehirliSuPrefab, spawnPosition, Quaternion.identity);
+
+                        // Düþmana zarar verme iþlemini yap
+                        if (rastgeleDusman.GetComponent<RangedEnemyController>() != null)
+                        {
+                            RangedEnemyController dusmanAI = rastgeleDusman.GetComponent<RangedEnemyController>();
+                            ZehirliSu suScript = zehirliSu.GetComponent<ZehirliSu>();
+                            suScript.Atesle(dusmanHasarMiktari, dusmanAI);
+                        }
+                        else if (rastgeleDusman.GetComponent<EnemyController>() != null)
+                        {
+                            EnemyController dusmanController = rastgeleDusman.GetComponent<EnemyController>();
+                            ZehirliSu suScript = zehirliSu.GetComponent<ZehirliSu>();
+                            suScript.Atesle(dusmanHasarMiktari, dusmanController);
+                        }
+                    }
+                }
+
+                controller.HidePopup();
+                controller.ResumeGame();
+
+                // Coin sayýsýný güncelle
+                collectCoinScript.coinAmount = playerCoins;
+                collectCoinScript.coinUI.text = playerCoins.ToString();
+
+                countdownText.text = "8";
+                countdownText.gameObject.SetActive(true);
+                buton4.gameObject.SetActive(true);
+
+                InvokeRepeating(nameof(UpdateCountdown), 1f, 1f);
+            }
+        }
+        else
+        {
+            Debug.Log("Yeterli coininiz yok.");
         }
 
-        controller.HidePopup();
+        UpdateButtonInteractivity();
+    }
+
+    private void UpdateCountdown()
+    {
+        int remainingTime = int.Parse(countdownText.text);
+        countdownText.text = (remainingTime - 1).ToString();
+
+        if (remainingTime <= 1)
+        {
+            CancelInvoke(nameof(UpdateCountdown));
+            countdownText.text = "";
+            countdownText.gameObject.SetActive(false);
+            buton4.gameObject.SetActive(false);
+            Debug.Log("Geri sayým tamamlandý.");
+        }
+    }
+
+    public void UpdateButtonInteractivity()
+    {
+        CollectCoin collectCoinScript = FindObjectOfType<CollectCoin>();
+        if (collectCoinScript != null && collectCoinScript.coinAmount >= coinCost)
+        {
+            button.interactable = true;
+        }
+        else
+        {
+            button.interactable = false;
+        }
+    }
+    public void SetInteractable(bool interactable)
+    {
+        button.interactable = interactable;
     }
 }
