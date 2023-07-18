@@ -1,5 +1,3 @@
-
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] float maxCan = 100f;
     private float rotationCorrectionFactor = 50f;
 
-    [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
+    [SerializeField] Slider canBariSlider; // Can ?ubu?u Slider bile?eni
 
     [Header("Inventory")]
     [SerializeField] InventoryComponent inventoryComponent;
@@ -32,6 +30,8 @@ public class Player : MonoBehaviour
         testShopSystem.TryPurchase(testItem, GetComponent<CreditComponent>());
     }
 
+
+
     Vector2 moveInput;
     Vector2 aimInput;
     public PlayerBehaviour _playH;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     public static Player instance;
     float animatorTurnSpeed;
 
-    // Hýzlandýrma özelliði için deðiþkenler
+    // H?zland?rma ?zelli?i i?in de?i?kenler
     public bool isSpeedBoostActive = false;
     public float originalMoveSpeed;
     public float speedBoostDuration;
@@ -64,12 +64,14 @@ public class Player : MonoBehaviour
 
         if (canBariSlider != null)
         {
-            canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
-            canBariSlider.value = can; // Can çubuðunun deðerini ayarla
+            canBariSlider.maxValue = maxCan; // Can ?ubu?unun maksimum de?erini ayarla
+            canBariSlider.value = can; // Can ?ubu?unun de?erini ayarla
         }
 
         // Invoke("TestPurchase", 3);
     }
+
+
 
     public void AttackPoint()
     {
@@ -96,9 +98,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        moveInput = new Vector2(horizontalInput, verticalInput);
+
         PerformMoveAndAim();
         UpdateCamera();
-        // SetRunningAnimation((Mathf.Abs(Horizontal) > 0 || Mathf.Abs(Vertical) > 0));
     }
 
     private void PerformMoveAndAim()
@@ -119,7 +124,7 @@ public class Player : MonoBehaviour
         animator.SetFloat("Aim", aim);
         animator.SetFloat("rforward", rforward);
 
-        // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
+        // Hareket giri?i varsa animasyonu ?al??t?r, yoksa durumu g?ncelle
         if (Mathf.Abs(moveInput.x) > 0 || Mathf.Abs(moveInput.y) > 0)
         {
             animator.SetBool("Running", true);
@@ -130,7 +135,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    // private void SetRunningAnimation(bool run) //yeni karakter için(warrior)
+    // private void SetRunningAnimation(bool run) //yeni karakter i?in(warrior)
     // {
     //     animator.SetBool("Running", run);
     // }
@@ -147,7 +152,7 @@ public class Player : MonoBehaviour
 
     private void UpdateCamera()
     {
-        // Oyuncu hareket ediyor ama niþan almýyor ve cameraController var
+        // Oyuncu hareket ediyor ama ni?an alm?yor ve cameraController var
         if (moveInput.magnitude != 0 && aimInput.magnitude == 0 && cameraController != null)
         {
             cameraController.AddYawInput(moveInput.x);
@@ -162,10 +167,10 @@ public class Player : MonoBehaviour
             Quaternion prevRot = transform.rotation;
             Quaternion targetRot = Quaternion.LookRotation(AimDir, Vector3.up);
 
-            float smoothTime = 0.1f; // Dönüþün hýzýný kontrol etmek için kullanýlan bir süre
+            float smoothTime = 0.1f; // D?n???n h?z?n? kontrol etmek i?in kullan?lan bir s?re
             Quaternion currentRot = Quaternion.Slerp(prevRot, targetRot, smoothTime);
 
-            // Düzeltme faktörü uygulayýn
+            // D?zeltme fakt?r? uygulay?n
             currentRot = Quaternion.Lerp(prevRot, currentRot, rotationCorrectionFactor);
 
             float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
@@ -180,7 +185,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        originalMoveSpeed = moveSpeed; // Ýlk hýzý kaydet
+        originalMoveSpeed = moveSpeed; // ?lk h?z? kaydet
     }
 
     public void HasarAl(int hasar)
@@ -189,7 +194,7 @@ public class Player : MonoBehaviour
 
         if (canBariSlider != null)
         {
-            canBariSlider.value = can; // Can çubuðunun deðerini güncelle
+            canBariSlider.value = can; // Can ?ubu?unun de?erini g?ncelle
         }
 
         if (can <= 0)
@@ -201,7 +206,7 @@ public class Player : MonoBehaviour
     private void Olum()
     {
         Debug.Log("Player Oldu");
-        // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
-        // Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+        // D??man?n ?l?m?yle ilgili yap?lmas? gereken i?lemler buraya eklenebilir.
+        // Destroy(gameObject); // D??man nesnesini yok etmek i?in kullanabilirsiniz.
     }
 }
