@@ -33,6 +33,10 @@ public class SceneManagment : MonoBehaviour
     {
         SceneManager.LoadScene("Shop");
     }
+    public void Map()
+    {
+        SceneManager.LoadScene("LevelSelector");
+    }
 
 
     public void QuitGame()

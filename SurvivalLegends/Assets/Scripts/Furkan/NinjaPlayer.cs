@@ -17,7 +17,7 @@ public class NinjaPlayer : MonoBehaviour
     [SerializeField] float can = 100f;
     [SerializeField] float maxCan = 100f;
     //a
-    [SerializeField] Slider canBariSlider; // Can çubuðu Slider bileþeni
+    [SerializeField] Slider canBariSlider; // Can Ã§ubuÄŸu Slider bileÅŸeni
 
     [Header("Inventory")]
     [SerializeField] NinjaInventoryComponent inventoryComponent;
@@ -57,22 +57,22 @@ public class NinjaPlayer : MonoBehaviour
     }
 
 
-   //public void ActivateAbility1()
-   //{
-   //    ability1Active = true;
-   //    ability1Timer = ability1Duration;
-   //    moveSpeed *= ability1SpeedMultiplier;
-   //    StartCoroutine(DisableAbility1AfterDuration());
-   //}
-   //
-   //
-   //
-   //public IEnumerator DisableAbility1AfterDuration()
-   //{
-   //    yield return new WaitForSeconds(ability1Duration);
-   //    ability1Active = false;
-   //    moveSpeed /= ability1SpeedMultiplier;
-   //}
+    //public void ActivateAbility1()
+    //{
+    //    ability1Active = true;
+    //    ability1Timer = ability1Duration;
+    //    moveSpeed *= ability1SpeedMultiplier;
+    //    StartCoroutine(DisableAbility1AfterDuration());
+    //}
+    //
+    //
+    //
+    //public IEnumerator DisableAbility1AfterDuration()
+    //{
+    //    yield return new WaitForSeconds(ability1Duration);
+    //    ability1Active = false;
+    //    moveSpeed /= ability1SpeedMultiplier;
+    //}
 
 
 
@@ -87,8 +87,8 @@ public class NinjaPlayer : MonoBehaviour
         animator = GetComponent<Animator>();
         if (canBariSlider != null)
         {
-            canBariSlider.maxValue = maxCan; // Can çubuðunun maksimum deðerini ayarla
-            canBariSlider.value = can; // Can çubuðunun deðerini ayarla
+            canBariSlider.maxValue = maxCan; // Can Ã§ubuÄŸunun maksimum deÄŸerini ayarla
+            canBariSlider.value = can; // Can Ã§ubuÄŸunun deÄŸerini ayarla
         }
 
 
@@ -127,7 +127,7 @@ public class NinjaPlayer : MonoBehaviour
 
     private void PerformMoveAndAim()
     {
-        // Hareket giriþini al
+        // Hareket giriÅŸini al
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         moveInput = new Vector2(horizontalInput, verticalInput);
@@ -148,7 +148,7 @@ public class NinjaPlayer : MonoBehaviour
         animator.SetFloat("Aim", aim);
         animator.SetFloat("rforward", rforward);
 
-        // Hareket giriþi varsa animasyonu çalýþtýr, yoksa durumu güncelle
+        // Hareket giriÅŸi varsa animasyonu Ã§alÄ±ÅŸtÄ±r, yoksa durumu gÃ¼ncelle
         if (Mathf.Abs(horizontalInput) > 0 || Mathf.Abs(verticalInput) > 0)
         {
             animator.SetBool("Running", true);
@@ -159,7 +159,7 @@ public class NinjaPlayer : MonoBehaviour
         }
     }
 
-    //private void SetRunningAnimation(bool run) //yeni karakter için(warrior)
+    //private void SetRunningAnimation(bool run) //yeni karakter iÃ§in(warrior)
     //{
     //    animator.SetBool("Running", run);
     //}
@@ -176,7 +176,7 @@ public class NinjaPlayer : MonoBehaviour
 
     private void UpdateCamera()
     {
-        // Oyuncu hareket ediyor ama niþan almýyor ve cameraController var
+        // Oyuncu hareket ediyor ama niÅŸan almÄ±yor ve cameraController var
         if (moveInput.magnitude != 0 && aimInput.magnitude == 0 && cameraController != null)
         {
             cameraController.AddYawInput(moveInput.x);
@@ -191,7 +191,7 @@ public class NinjaPlayer : MonoBehaviour
             Quaternion prevRot = transform.rotation;
 
             float turnLerpAlpha = turnSpeed * Time.deltaTime;
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);//yavaþ dönüþ için.
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(AimDir, Vector3.up), turnLerpAlpha);//yavaÅŸ dÃ¶nÃ¼ÅŸ iÃ§in.
 
             Quaternion currentRot = transform.rotation;
             float Dir = Vector3.Dot(AimDir, transform.right) > 0 ? 1 : -1;
@@ -215,7 +215,7 @@ public class NinjaPlayer : MonoBehaviour
 
         if (canBariSlider != null)
         {
-            canBariSlider.value = can; // Can çubuðunun deðerini güncelle
+            canBariSlider.value = can; // Can Ã§ubuÄŸunun deÄŸerini gÃ¼ncelle
         }
 
         if (can <= 0)
@@ -231,8 +231,8 @@ public class NinjaPlayer : MonoBehaviour
     private void Olum()
     {
         Debug.Log("Player Oldu");
-        // Düþmanýn ölümüyle ilgili yapýlmasý gereken iþlemler buraya eklenebilir.
-        // Destroy(gameObject); // Düþman nesnesini yok etmek için kullanabilirsiniz.
+        // DÃ¼ÅŸmanÄ±n Ã¶lÃ¼mÃ¼yle ilgili yapÄ±lmasÄ± gereken iÅŸlemler buraya eklenebilir.
+        // Destroy(gameObject); // DÃ¼ÅŸman nesnesini yok etmek iÃ§in kullanabilirsiniz.
     }
 
 }

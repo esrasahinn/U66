@@ -48,7 +48,7 @@ Aksiyon ve macera seven oyuncular: Dungeon/arena ortamı, düşmanlarla savaşma
 Yetenek tabanlı oyunlardan hoşlanan oyuncular: Oyunun beceri kullanımı, tuzaklardan kaçma ve düşmanları yenme gibi yetenek gerektiren mekaniklere sahip olması, yetenek tabanlı oyunları seven oyuncuları hedefleyebilir.
 
 ## Juriye Not
-Karakterleri Product Ownerımız kendisi yapmıştır. Oyunu bilgisayarda WASD ile oynayabilirisiniz ayrıca apk için joystick scriptimiz var ayrıca test edildi. Multiplayer testleri başarılı olsada Sprint 2 bitiminden sonra zaman yetersizliği karşısında olası buglar sebebiyle eklenmemeye karar verilmiştir.
+Karakterleri Product Ownerımız kendisi yapmıştır. Oyunu bilgisayarda WASD ile oynayabilirisiniz ayrıca apk için joystick scriptimiz var ayrıca test edildi. Multiplayer testleri başarılı olsada Sprint 2 bitiminden sonra zaman yetersizliği karşısında olası buglar sebebiyle eklenmemeye karar verilmiştir. Exp bar full dolduğunda açılan popup sahnesinde "collect coin" adında reklam izleyip coin kazandıran bir buton bulunmaktadır ve bu buton Google onayında olduğu için Unity sahnesinde çalışıyor fakat apk üzerinde açılmıyor.
 
 ## Kullanılan Ücretsiz Assetler
 - https://kaylousberg.itch.io/kaykit-dungeon-remastered
