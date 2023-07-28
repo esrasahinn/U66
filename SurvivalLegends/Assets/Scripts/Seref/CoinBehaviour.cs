@@ -19,14 +19,21 @@ public class CoinBehaviour : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    private void FixedUpdate()
+  private void FixedUpdate()
+{
+    if (transform.position.y <= stopY)
     {
-        if (transform.position.y <= stopY)
+        if (rb != null)
         {
             rb.isKinematic = true;
             StartCoroutine(FlyToPlayer());
         }
+        else
+        {
+            Debug.LogError("Rigidbody component not found!");
+        }
     }
+}
 
     void Update()
     {
